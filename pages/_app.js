@@ -1,13 +1,6 @@
-import "bootstrap/dist/css/bootstrap.css";
-import "../styles/styles.scss";
-
-import { useEffect } from "react";
+import "../styles/styles.scss"
 
 function MyApp({ Component, pageProps }) {
-  useEffect(() => {
-    import("bootstrap/dist/js/bootstrap");
-  }, []);
-
   return <Component {...pageProps} />;
 }
 

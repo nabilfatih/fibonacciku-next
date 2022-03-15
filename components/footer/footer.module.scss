@@ -30,6 +30,7 @@
         width: 110.5px;
         height: 25px;
         display: inline-block;
+        cursor: pointer;
 
         @include breakpoint-down(medium){
             margin-bottom: 1.875rem;
@@ -132,7 +133,7 @@
     }
 
     &__copyright {
-        height: 23px;
+        height: 25px;
         font-size: 0.8125rem;
         color: $verylightBlue;
         
