@@ -11,10 +11,14 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    // margin-bottom: 2rem;
+
+    &.forms_daftar {
+        @include breakpoint-down(small) {
+            min-height: 88vh;
+        }
+    }
 
     @include breakpoint-down(small) {
-        height: 100%;
         min-height: 75vh;
         margin-top: 80px;
     }
@@ -299,6 +303,7 @@
             padding: 2.1875rem 2.1875rem 0.9375rem;
             padding-top: 1rem;
             padding-bottom: 0;
+    
         }
 
 
