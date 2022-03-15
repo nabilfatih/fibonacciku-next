@@ -64,17 +64,18 @@
     }
 
     &__logo {
+        position: relative;
         cursor: pointer;
-        .img {
-            width: 12.375rem;
-            height: 2.875rem;
-            // margin-top: 0.2rem;
-        }
+        
+        width: 12.375rem;
+        height: 2.875rem;
+        // margin-top: 0.2rem;
+        
 
         @include breakpoint-down(small){
-            .img {
-                width: 10.375rem;
-            }
+            
+            width: 11.375rem;
+            
         }
     }
 

@@ -39,11 +39,9 @@ const NavBar = (props) => {
       <nav className="container flex flex-jc-sb flex-ai-c">
         <a className={styles.header__logo} onClick={HandleClickBeranda}>
           <Image
-            className={styles.img}
             src={"/static/img/logofibonama.svg"}
             alt="Logo FibonacciKu"
-            width={"198"}
-            height={"40.5"}
+            layout="fill"
           />
         </a>
 
