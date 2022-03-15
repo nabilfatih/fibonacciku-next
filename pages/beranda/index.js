@@ -2,7 +2,7 @@ import Head from "next/head";
 import Footer from "../../components/footer/footer";
 import NavBar from "../../components/nav/nav";
 
-const Beranda = () => {
+export default function Beranda() {
   return (
     <div>
       <Head>
@@ -14,5 +14,3 @@ const Beranda = () => {
     </div>
   );
 };
-
-export default Beranda;
