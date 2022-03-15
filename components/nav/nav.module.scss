@@ -1,0 +1,290 @@
+@import "/styles/variables";
+@import "/styles/mixins";
+@import "/styles/animations";
+
+.header {
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 3px 6px 0 rgba(0,0,0,.2);
+    z-index: 2;
+    top: 0;
+    // Hamburger Open Styles
+    &.open {
+
+        .header__toggle {
+            > span:first-child {
+                transform: rotate(45deg);
+            }
+
+            > span:nth-child(2) {
+                opacity: 0;
+            }
+
+            > span:last-child {
+                transform: rotate(-45deg);
+            }
+        }
+    }
+
+    .overlay {
+        opacity: 0;
+        position: fixed;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        background-image: linear-gradient($darkBlue, transparent);
+        z-index: 1;
+        overflow-y: hidden;
+
+        &.fade-in {
+            display: block;
+            @include breakpoint-up(large) {
+                display: none;
+            }
+        }
+
+        &.fade-out {
+            display: block;
+        }
+
+        @include breakpoint-up(large) {
+            display: none;
+        }
+    }
+
+    nav {
+        max-width: 89rem;
+        position: relative;
+        background-color: white;
+        padding-top: 1.0625rem;
+        padding-bottom: 1.0625rem;
+        z-index: 2;
+    }
+
+    &__logo {
+        cursor: pointer;
+        .img {
+            width: 12.375rem;
+            height: 2.875rem;
+            // margin-top: 0.2rem;
+        }
+
+        @include breakpoint-down(small){
+            .img {
+                width: 10.375rem;
+            }
+        }
+    }
+
+    &__toggle { // mobile menu toggle
+
+        > span {
+            display: block;
+            width: 26px;
+            height: 2px;
+            background-color: $darkBlue;
+            transition: all 300ms ease-in-out;
+            transform-origin: 3px 1px;
+
+            &:not(:last-child){
+                margin-bottom: 5px;
+            }
+        }
+    }
+
+    &__menu {
+        position: absolute;
+        width: calc(100% - 3rem);
+        left: 50%;
+        transform: translateX(-50%);
+        background: $mostveryLightGreen;
+        margin-top: 1.5rem;
+        padding: 1.625rem;
+        border-radius: 5px;
+        z-index: 1;
+
+        @include breakpoint-down(medium){
+            overflow-y: scroll;
+        }
+
+        a {
+            display: block;
+            padding: 0.625rem;
+            color: $darkBlue;
+            text-align: center;
+
+            overflow-y: scroll;
+        }
+    }
+
+    &__links {
+
+        a {
+            position: relative;
+            font-size: $font-sm;
+            color: $darkBlue;
+            cursor: pointer;
+
+            &:not(:last-child) {
+                margin-right: 32px;
+            }
+
+            &::before {
+                content: "";
+                display: block;
+                position: absolute;
+                height: 4px;
+                left: 0;
+                right: 0;
+                bottom: -30.5px;
+                background: linear-gradient(to right, $greenTeal, $blue);
+                opacity: 0;
+                transition: opacity 300ms ease-in-out;
+            }
+
+            &:hover {
+                color: $darkBlue;
+
+                &::before {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    &__cta {
+        color: black;
+    }
+
+    &__register {
+        
+        height: 44px;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        @include breakpoint-down(medium) {
+            display: none;
+        }
+
+        .menu-desktop {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+
+            .display-username {
+                font-size: $font-med;
+                color: $darkBlue;
+            }
+        }
+
+        .dropdowns {
+            position: relative;
+            text-align: right;
+
+            .drop-down {
+                display: flex;
+                gap: 0.5rem;
+                align-items: center;
+
+                .uil {
+                    color: $darkBlue;
+                }
+
+                .foto-profil {
+                    width: 48px;
+                    height: 48px;
+                    border-radius: 50%;
+                    background-color: $cream;
+                }
+            }
+
+            &.aktif {
+                .drop-down + .dropdown-menu {
+                    opacity: 1;
+                    pointer-events: auto;
+                    transform: translateY(0px);
+                }
+
+                .foto-profil {
+                    border: 1px solid $verylightBlue;
+                }
+            }
+
+            .dropdown-menu {
+                position: absolute;
+                background: $verylightBlue;
+                margin-top: 10px;
+                right: 0;
+                padding: 0;
+                width: 200px;
+                display: flex;
+                gap: 0;
+                text-align: right;
+                align-items: center;
+                flex-direction: column;
+                list-style: none;
+                border-radius: 10px;
+                border: none;
+                box-shadow: 0 0 10px rgba(0,0,0,.2);
+                opacity: 0;
+                pointer-events: none;
+                transform: translateY(-10px);
+                transition: all 150ms ease-in-out;
+
+                li {
+                    padding: 10px;
+                    padding-left: 1rem;
+                    text-align: left;
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+
+                    a {
+                        display: flex;
+                        align-items: center;
+                    }
+
+                    .uil {
+                        padding-right: 0.5rem;
+                        font-size: 1.5rem;
+                    }
+                    
+                    font-size: 1rem;
+                    
+                }
+
+                .profil-dropdown {
+                    &:hover {
+                        border-top-left-radius: 10px;
+                        border-top-right-radius: 10px;
+                        background-color: rgba(124, 124, 124, 0.2);
+                    }
+                }
+                .pengaturan-dropdown {
+                    &:hover {
+                        background-color: rgba(124, 124, 124, 0.2);
+                    }
+                }
+                .keluar-dropdown {
+                    &:hover {
+                        border-bottom-left-radius: 10px;
+                        border-bottom-right-radius: 10px;
+                        background-color: rgba(124, 124, 124, 0.2);
+                    }
+                }
+                .garis-batas {
+                    padding: 0;
+                    hr {
+                        margin: 0;
+                        height: 1px;
+                        color: black;
+                    }
+                }
+            }
+            
+        }
+    }
+}
