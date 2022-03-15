@@ -30,13 +30,13 @@ const NavBar = (props) => {
   };
   const HandleClickDaftar = (e) => {
     e.preventDefault();
-    router.push("/masuk");
+    router.push("/daftar");
   };
 
   return (
     <header className={styles.header}>
       <div className={cls(styles.overlay, "has-fade")}></div>
-      <nav className="container flex flex-jc-sb flex-ai-c">
+      <nav className="container container--pall flex flex-jc-sb flex-ai-c">
         <a className={styles.header__logo} onClick={HandleClickBeranda}>
           <Image
             src={"/static/img/logofibonama.svg"}
