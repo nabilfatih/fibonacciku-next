@@ -15,7 +15,7 @@ const Hero = () => {
   return (
     <section className={styles.hero}>
       <div className={cls(styles.container, "container")}>
-        <div className={styles.hero__image}></div>
+        <div className={styles.hero__image}/>
         <div className={cls(styles.hero__text, "container--pall")}>
           <h1>Belajar Gratis Kapanpun Dimanapun</h1>
           <p>
