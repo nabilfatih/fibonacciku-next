@@ -2,7 +2,10 @@ import styles from "./hero.module.scss";
 import cls from "classnames";
 import Link from "next/link";
 
+import { useRouter } from "next/router";
+
 const Hero = () => {
+  const router = useRouter();
   const HandleClickMasuk = (e) => {
     e.preventDefault();
     router.push("/masuk");
@@ -15,7 +18,7 @@ const Hero = () => {
   return (
     <section className={styles.hero}>
       <div className={cls(styles.container, "container")}>
-        <div className={styles.hero__image}/>
+        <div className={styles.hero__image} />
         <div className={cls(styles.hero__text, "container--pall")}>
           <h1>Belajar Gratis Kapanpun Dimanapun</h1>
           <p>
