@@ -78,7 +78,7 @@ const FormMasuk = () => {
               </a>
               <a>
                 <img
-                  src="/static/img/facebook.png"
+                  src="/static/img/facebook.webp"
                   alt="Logo Facebook FibonacciKu"
                 />
               </a>
@@ -95,7 +95,7 @@ const FormMasuk = () => {
           </div>
           <img
             className={styles.masuk}
-            src="/static/img/cartoon_ular.png"
+            src="/static/img/cartoon_ular.webp"
             alt="Logo Daftar FibonacciKu"
           />
         </div>

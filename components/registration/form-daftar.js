@@ -47,7 +47,7 @@ const FormDaftar = () => {
               </a>
               <a>
                 <img
-                  src="/static/img/facebook.png"
+                  src="/static/img/facebook.webp"
                   alt="Logo Facebook FibonacciKu"
                 />
               </a>
