@@ -29,11 +29,11 @@ const Footer = () => {
   };
   const HandleClickKebijakan = (e) => {
     e.preventDefault();
-    router.push("/kebijakan");
+    router.push("/kebijakan-privasi");
   };
   const HandleClickSyarat = (e) => {
     e.preventDefault();
-    router.push("/syarat");
+    router.push("/syarat-ketentuan");
   };
 
   return (
@@ -93,7 +93,7 @@ const Footer = () => {
         </div>
 
         <div className={styles.footer__copyright}>
-          Jerman - Indonesia &copy; FibonacciKu 2022. All Rights Reserved
+          <p>Jerman - Indonesia &copy; FibonacciKu 2022. All Rights Reserved</p>
         </div>
       </div>
     </footer>

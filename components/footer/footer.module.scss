@@ -137,6 +137,10 @@
         font-size: 0.8125rem;
         color: $verylightBlue;
         
+        p {
+            margin: 0;
+        }
+        
         @include breakpoint-up(large){
             grid-area: copyright;
             align-self: end;
