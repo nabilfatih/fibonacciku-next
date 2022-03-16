@@ -34,8 +34,8 @@
         background-position: center;
 
         @include breakpoint-down(medium){
-            min-height: 100%;
-            background-size: 180%;
+            min-height: 105%;
+            background-size: 190%;
         }
 
         @include breakpoint-down(small){
@@ -46,7 +46,7 @@
     z-index: 0;
 
     &__container {
-        position: absolute;
+        position: relative;
         display: flex;
         justify-content: center;
         align-items: center;
