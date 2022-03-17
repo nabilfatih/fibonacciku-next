@@ -72,7 +72,7 @@
                 // border: 1px solid $darkBlue;
             }
             background-image: linear-gradient(to right, $lightGreen, $greenTeal);
-            box-shadow: 0 2px 15px rgba(0,0,0,.2);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
         @include breakpoint-up(medium){
@@ -177,7 +177,7 @@
                 // border: 1px solid $darkBlue;
             }
             background-image: linear-gradient(to right, $blueSky, $greenTeal);
-            box-shadow: 0 2px 15px rgba(0,0,0,.2);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             // background-image: linear-gradient(to right, $lightBrown, $mostLightBrown);
         }
 
