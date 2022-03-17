@@ -127,6 +127,11 @@
         padding-bottom: 3rem;
     }
 
+    @include breakpoint-down(small){
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
     &__intro {
         margin-bottom: 2rem;
         margin-bottom: 0;

@@ -129,6 +129,14 @@
             @include breakpoint-down(medium){
                 margin-bottom: 1.875rem;
             }
+
+            color: black;
+            transition: transform 300ms ease-in-out, box-shadow 150ms ease-in-out;
+            &:hover {
+                transform: translate(1px, -1px);
+                box-shadow: 0 0 15px $blueSky;
+            }
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
     }
 

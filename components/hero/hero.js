@@ -29,13 +29,13 @@ const Hero = () => {
           <div className={cls(styles.hero__register, "hide-for-mobile")}>
             <a
               onClick={HandleClickMasuk}
-              className={cls("button", styles.header__cta)}
+              className={cls("button", styles.hero__cta)}
             >
               Masuk
             </a>
             <a
               onClick={HandleClickDaftar}
-              className={cls("button", styles.header__cta)}
+              className={cls("button", styles.hero__cta)}
             >
               Daftar
             </a>
