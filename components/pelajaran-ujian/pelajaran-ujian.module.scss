@@ -53,7 +53,6 @@
     }
 
     &__card {
-        
         padding: 1rem;
         // border: 5px solid black;
         border-radius: 15px;
@@ -86,18 +85,16 @@
 
     &__icon {
         content: "";
+        // max-width: 128px;
+        // height: 128px;  
         position: relative;
-        width: 100%;
+        text-align: center;
         margin-top: 0.5rem;
         margin-bottom: 1rem;
         padding-bottom: 0rem;
 
         @include breakpoint-up(large){
             margin-bottom: 1.5rem;
-        }
-
-        img {
-            max-width: 128px;
         }
     }
 
@@ -118,7 +115,7 @@
 .ujian {
     // background-color: $mostLightPink;
     text-align: center;
-    padding-top: 2.5rem;
+    padding-top: 3rem;
     padding-bottom: 3rem;
     padding-left: 5rem;
     padding-right: 5rem;

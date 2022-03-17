@@ -1,5 +1,7 @@
 import styles from "./pelajaran-ujian.module.scss";
 import cls from "classnames";
+import dataPelajaran from "../../data/dataPelajaran.json";
+import Image from "next/image";
 
 const Pelajaran = () => {
   return (
@@ -10,15 +12,31 @@ const Pelajaran = () => {
         </div>
 
         <div className={styles.pelajaran__grid}>
-          <div className={styles.pelajaran__card}>
-            <div className={styles.pelajaran__icon}></div>
+          {dataPelajaran.map((Pelajaran) => {
+            if (Pelajaran.jenis == "pelajaran") {
+              return (
+                <div className={styles.pelajaran__card}>
+                  <div className={styles.pelajaran__icon}>
+                    <Image
+                      className={styles.img}
+                      src={Pelajaran.icon}
+                      width={128}
+                      height={128}
+                      alt={`Logo ${Pelajaran.pelajaran} FibonacciKu`}
+                    />
+                  </div>
 
-            <div className={styles.pelajaran__title}>
-              <h3></h3>
-            </div>
+                  <div className={styles.pelajaran__title}>
+                    <h3>{Pelajaran.pelajaran}</h3>
+                  </div>
 
-            <a className={cls(styles.button, "button")}>Belajar Disini!</a>
-          </div>
+                  <a className={cls(styles.button, "button")}>
+                    Belajar Disini!
+                  </a>
+                </div>
+              );
+            }
+          })}
         </div>
       </div>
     </section>

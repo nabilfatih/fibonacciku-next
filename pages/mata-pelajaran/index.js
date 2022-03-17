@@ -13,6 +13,7 @@ export default function MataPelajaran() {
 
       <NavBar />
       <Pelajaran />
+
       <Ujian />
       <Footer />
     </div>
