@@ -2,9 +2,7 @@ import styles from "./pelajaran-ujian.module.scss";
 import cls from "classnames";
 import Image from "next/image";
 
-import dataPelajaran from "../../data/dataPelajaran.json";
-
-const Ujian = () => {
+const Ujian = (props) => {
   function randomAlphaNumeric() {
     return Math.random().toString(36).charAt(2);
   }
@@ -21,7 +19,7 @@ const Ujian = () => {
         </div>
 
         <div className={styles.ujian__grid}>
-          {dataPelajaran.map((ujians) => {
+          {props.data.map((ujians) => {
             if (ujians.jenis == "ujian") {
               return (
                 <div

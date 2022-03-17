@@ -3,7 +3,7 @@ import cls from "classnames";
 import dataPelajaran from "../../data/dataPelajaran.json";
 import Image from "next/image";
 
-const Pelajaran = () => {
+const Pelajaran = (props) => {
   function randomAlphaNumeric() {
     return Math.random().toString(36).charAt(2);
   }
@@ -20,7 +20,7 @@ const Pelajaran = () => {
         </div>
 
         <div className={styles.pelajaran__grid}>
-          {dataPelajaran.map((Pelajaran) => {
+          {props.data.map((Pelajaran) => {
             if (Pelajaran.jenis == "pelajaran") {
               return (
                 <div

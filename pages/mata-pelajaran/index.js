@@ -4,7 +4,25 @@ import NavBar from "../../components/nav/nav";
 import Pelajaran from "../../components/pelajaran-ujian/pelajaran";
 import Ujian from "../../components/pelajaran-ujian/ujian";
 
-export default function MataPelajaran() {
+import dataPelajaran from "../../data/dataPelajaran.json";
+
+export async function getStaticProps(context) {
+  return {
+    props: {
+      dataPelajaran,
+    }, // will be passed to the page component as props
+  };
+}
+
+export default function MataPelajaran(props) {
+  function randomAlphaNumeric() {
+    return Math.random().toString(36).charAt(2);
+  }
+  function createFromPattern(pattern) {
+    pattern = pattern.split("");
+    return pattern.map((x) => x.replace("x", randomAlphaNumeric())).join("");
+  }
+
   return (
     <div>
       <Head>
@@ -12,9 +30,13 @@ export default function MataPelajaran() {
       </Head>
 
       <NavBar />
-      <Pelajaran />
+      <Pelajaran
+        data={props.dataPelajaran}
+        key={createFromPattern("xxx-xxx")}
+      />
 
-      <Ujian />
+      <Ujian data={props.dataPelajaran} key={createFromPattern("xxx-xxx")} />
+
       <Footer />
     </div>
   );
