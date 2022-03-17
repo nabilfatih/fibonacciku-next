@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Footer from "../../components/footer/footer";
+import KebijakanPrivasi from "../../components/kebijakan-privasi/kebijakan-privasi";
 import NavBar from "../../components/nav/nav";
 
 export default function Kebijakan() {
@@ -9,7 +10,7 @@ export default function Kebijakan() {
         <title>Kebijakan Privasi | FibonacciKu</title>
       </Head>
       <NavBar />
-
+      <KebijakanPrivasi />
       <Footer />
     </div>
   );
