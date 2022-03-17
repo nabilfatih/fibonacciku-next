@@ -1,0 +1,11 @@
+@import "/styles/variables";
+
+.bar {
+    background: linear-gradient(to right, $veryLightRed, $lightBlueSky);
+    height: 3px;
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: fixed;
+    z-index: 50;
+}
