@@ -5,6 +5,14 @@ import Image from "next/image";
 import dataPelajaran from "../../data/dataPelajaran.json";
 
 const Ujian = () => {
+  function randomAlphaNumeric() {
+    return Math.random().toString(36).charAt(2);
+  }
+  function createFromPattern(pattern) {
+    pattern = pattern.split("");
+    return pattern.map((x) => x.replace("x", randomAlphaNumeric())).join("");
+  }
+
   return (
     <section className={styles.persiapan_ujian}>
       <div className={cls(styles.ujian, "container container--pall")}>
@@ -16,9 +24,16 @@ const Ujian = () => {
           {dataPelajaran.map((ujians) => {
             if (ujians.jenis == "ujian") {
               return (
-                <div className={styles.ujian__card}>
-                  <div className={styles.ujian__icon}>
+                <div
+                  key={createFromPattern("xxx-xxx")}
+                  className={styles.ujian__card}
+                >
+                  <div
+                    key={createFromPattern("xxx-xxx")}
+                    className={styles.ujian__icon}
+                  >
                     <Image
+                      key={createFromPattern("xxx-xxx")}
                       className={styles.img}
                       src={ujians.icon}
                       width={128}
@@ -28,7 +43,9 @@ const Ujian = () => {
                   </div>
 
                   <div className={styles.ujian__title}>
-                    <h3>{ujians.pelajaran}</h3>
+                    <h3 key={createFromPattern("xxx-xxx")}>
+                      {ujians.pelajaran}
+                    </h3>
                   </div>
 
                   <a className={cls(styles.button, "button")}>

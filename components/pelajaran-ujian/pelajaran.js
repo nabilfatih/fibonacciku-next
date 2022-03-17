@@ -4,6 +4,14 @@ import dataPelajaran from "../../data/dataPelajaran.json";
 import Image from "next/image";
 
 const Pelajaran = () => {
+  function randomAlphaNumeric() {
+    return Math.random().toString(36).charAt(2);
+  }
+  function createFromPattern(pattern) {
+    pattern = pattern.split("");
+    return pattern.map((x) => x.replace("x", randomAlphaNumeric())).join("");
+  }
+
   return (
     <section className={styles.mata_pelajaran}>
       <div className={cls(styles.pelajaran, "container container--pall")}>
@@ -15,9 +23,16 @@ const Pelajaran = () => {
           {dataPelajaran.map((Pelajaran) => {
             if (Pelajaran.jenis == "pelajaran") {
               return (
-                <div className={styles.pelajaran__card}>
-                  <div className={styles.pelajaran__icon}>
+                <div
+                  key={createFromPattern("xxx-xxx")}
+                  className={styles.pelajaran__card}
+                >
+                  <div
+                    key={createFromPattern("xxx-xxx")}
+                    className={styles.pelajaran__icon}
+                  >
                     <Image
+                      key={createFromPattern("xxx-xxx")}
                       className={styles.img}
                       src={Pelajaran.icon}
                       width={128}
@@ -27,10 +42,15 @@ const Pelajaran = () => {
                   </div>
 
                   <div className={styles.pelajaran__title}>
-                    <h3>{Pelajaran.pelajaran}</h3>
+                    <h3 key={createFromPattern("xxx-xxx")}>
+                      {Pelajaran.pelajaran}
+                    </h3>
                   </div>
 
-                  <a className={cls(styles.button, "button")}>
+                  <a
+                    key={createFromPattern("xxx-xxx")}
+                    className={cls(styles.button, "button")}
+                  >
                     Belajar Disini!
                   </a>
                 </div>
