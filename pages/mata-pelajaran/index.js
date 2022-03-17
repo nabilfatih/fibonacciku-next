@@ -30,6 +30,7 @@ export default function MataPelajaran(props) {
       </Head>
 
       <NavBar />
+
       <Pelajaran
         data={props.dataPelajaran}
         key={createFromPattern("xxx-xxx")}
