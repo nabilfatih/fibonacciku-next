@@ -50,6 +50,9 @@
 
     &__konten {
         padding: 1rem;
+        // display: flex;
+        // flex-direction: column;
+        // text-align: left;
     }
 
     &__bab {
@@ -67,6 +70,10 @@
 
         ul {
             padding-left: 1rem;
+
+            @include breakpoint-down(medium){
+                padding-left: 0.8rem;
+            }
 
             a {
                 color: blue;
