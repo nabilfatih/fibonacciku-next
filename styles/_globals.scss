@@ -22,6 +22,17 @@ body {
     line-height: 1.3;
     min-height: 100vh;
     overflow-x: hidden;
+    // background: url("/static/img/mesh-gradient.webp");
+    // background-repeat: no-repeat;
+    // background-size: cover;
+    background-image:#99ffda;background-image:  
+radial-gradient(at 90% 62%, hsla(226,98%,77%,1) 0, transparent 50%),  
+radial-gradient(at 90% 25%, hsla(190,73%,78%,1) 0, transparent 53%),  
+radial-gradient(at 76% 86%, hsla(335,85%,77%,1) 0, transparent 46%),  
+radial-gradient(at 9% 97%, hsla(227,61%,77%,1) 0, transparent 44%),  
+radial-gradient(at 19% 4%, hsla(180,82%,77%,1) 0, transparent 53%),  
+radial-gradient(at 22% 17%, hsla(123,80%,67%,1) 0, transparent 44%),  
+radial-gradient(at 20% 31%, hsla(311,65%,75%,1) 0, transparent 43%);
 
     @include breakpoint-up(large){
         font-size: $font-med;

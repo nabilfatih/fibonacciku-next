@@ -107,8 +107,8 @@ const FormKontak = () => {
               ></textarea>
             </div>
 
-            <div>
-              <button type="submit">
+            <div className={styles.button}>
+              <button type="submit" className={styles.button__button}>
                 Kirim Pesan
                 <i className={cls(styles.button__icon, "uil uil-message")}></i>
               </button>

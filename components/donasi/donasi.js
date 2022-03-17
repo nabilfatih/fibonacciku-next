@@ -17,7 +17,7 @@ const Donasi = () => {
           <a
             href="https://saweria.co/Fibonacciku"
             target="_blank"
-            class="button footer__cta"
+            className={cls(styles.button, "button")}
           >
             Donasi Sekarang
           </a>

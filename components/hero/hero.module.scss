@@ -4,7 +4,10 @@
 
 .hero {
 
-    background-color: $mostveryLightGreen;
+    @include breakpoint-down(medium) {
+        background-image: linear-gradient(to right, $mostLightPink, $lightBlue);
+    }
+    
     margin: 0;
     margin-top: 80px;
 

@@ -4,15 +4,15 @@
 
 .mata_pelajaran {
     margin-top: 80px;
-    background-color: $cream;
+    // background-color: $cream;
 }
-.persiapan_ujian {
-    background-color: $mostLightPink;
-}
+// .persiapan_ujian {
+//     background-color: $mostLightPink;
+// }
 
 .pelajaran {
 
-    background-color: $cream;
+    // background-color: $cream;
     text-align: center;
     padding-top: 3rem;
     padding-bottom: 3rem;
@@ -59,6 +59,9 @@
         border-radius: 15px;
         box-shadow: 6px 3px 6px 0 rgba(0,0,0,.2);
         background: linear-gradient(to right, $blueSky, $lightPurple);
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+        backdrop-filter: blur( 3px );
+        -webkit-backdrop-filter: blur( 3px );
 
         .button {
             transition: transform 300ms ease-in-out, box-shadow 300ms ease-in-out;
@@ -69,6 +72,7 @@
                 // border: 1px solid $darkBlue;
             }
             background-image: linear-gradient(to right, $lightGreen, $greenTeal);
+            box-shadow: 0 2px 15px rgba(0,0,0,.2);
         }
 
         @include breakpoint-up(medium){
@@ -112,7 +116,7 @@
 }
 
 .ujian {
-    background-color: $mostLightPink;
+    // background-color: $mostLightPink;
     text-align: center;
     padding-top: 2.5rem;
     padding-bottom: 3rem;
@@ -156,8 +160,13 @@
         padding: 1rem;
         // border: 5px solid black;
         border-radius: 15px;
-        box-shadow: 6px 3px 6px 0 rgba(0,0,0,.2);
+        // box-shadow: 6px 3px 6px 0 rgba(0,0,0,.2);
         background: linear-gradient(to left, $greenTeal, $yellowGreen);
+        // background: rgba( 174, 239, 236, 0.8 );
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+        backdrop-filter: blur( 3px );
+        -webkit-backdrop-filter: blur( 3px );
+        // border-radius: 10px;
 
         .button {
             transition: transform 300ms ease-in-out, box-shadow 300ms ease-in-out;
@@ -167,7 +176,9 @@
                 box-shadow: 0 0 20px rgba(0,0,0,.2);
                 // border: 1px solid $darkBlue;
             }
-            background-image: linear-gradient(to right, $lightBrown, $mostLightBrown);
+            background-image: linear-gradient(to right, $blueSky, $greenTeal);
+            box-shadow: 0 2px 15px rgba(0,0,0,.2);
+            // background-image: linear-gradient(to right, $lightBrown, $mostLightBrown);
         }
 
         @include breakpoint-up(medium){

@@ -3,9 +3,13 @@
 @import "/styles/animations";
 
 .donasi {
-    background-color: $blueSky;
+    // background-color: $blueSky;
     margin: 0;
     overflow: hidden;
+
+    @include breakpoint-down(medium) {
+        background: linear-gradient(to left, $blueSky, $lightPurple);
+    }
 
     .container {
         padding-left: 0;
@@ -95,6 +99,16 @@
         p {
             line-height: 1.5rem;
             margin-bottom: 2.25rem;
+        }
+
+        .button {
+            
+            transition: transform 300ms ease-in-out, box-shadow 150ms ease-in-out;
+            &:hover {
+                transform: translate(3px, -3px);
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            }
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
     }
 }
