@@ -11,8 +11,9 @@
     top: 0;
     // Hamburger Open Styles
     &.open {
-
+        
         .header__toggle {
+            
             > span:first-child {
                 transform: rotate(45deg);
             }
@@ -80,6 +81,7 @@
     }
 
     &__toggle { // mobile menu toggle
+        cursor: pointer;
 
         > span {
             display: block;
