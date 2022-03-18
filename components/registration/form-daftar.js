@@ -55,10 +55,9 @@ const FormDaftar = () => {
             <p className={styles.text}>Atau, daftar dengan email...</p>
           </div>
 
-          <form method="POST" novalidate class="validated-form">
+          <form method="POST" noValidate class="validated-form">
             <div className={styles.field}>
               <i className="uil uil-at" />
-              <label for="email" />
               <input
                 className="form-control"
                 type="email"
@@ -70,7 +69,6 @@ const FormDaftar = () => {
             </div>
             <div className={styles.field}>
               <i className="uil uil-user" />
-              <label for="nama" />
               <input
                 className="form-control"
                 type="text"
@@ -82,7 +80,6 @@ const FormDaftar = () => {
             </div>
             <div className={styles.field}>
               <i className="uil uil-user-circle" />
-              <label for="username" />
               <input
                 className="form-control"
                 type="text"
@@ -95,7 +92,6 @@ const FormDaftar = () => {
             </div>
             <div className={styles.field}>
               <i className="uil uil-lock-alt" />
-              <label for="password" />
               <input
                 className="form-control"
                 type="password"
