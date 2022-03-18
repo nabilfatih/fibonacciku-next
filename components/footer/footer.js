@@ -49,7 +49,7 @@ const Footer = () => {
         <div className={styles.footer__social}>
           <a href="https://www.instagram.com/fibonacciku.id/" target="_blank">
             <img
-              src="/static/img/instagram.png"
+              src="/static/img/instagram.webp"
               alt="Logo Instagram FibonacciKu"
             ></img>
           </a>
@@ -58,13 +58,13 @@ const Footer = () => {
             target="_blank"
           >
             <img
-              src="/static/img/linkedin.png"
+              src="/static/img/linkedin.webp"
               alt="Logo LinkedIn FibonacciKu"
             ></img>
           </a>
           <a href="https://www.youtube.com/c/Fibonacciku" target="_blank">
             <img
-              src="/static/img/youtube.png"
+              src="/static/img/youtube.webp"
               alt="Logo YouTube FibonacciKu"
             ></img>
           </a>

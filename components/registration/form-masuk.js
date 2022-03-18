@@ -66,13 +66,13 @@ const FormMasuk = () => {
             <div className={styles.other_logins}>
               <a>
                 <img
-                  src="/static/img/google.png"
+                  src="/static/img/google.webp"
                   alt="Logo Google FibonacciKu"
                 />
               </a>
               <a>
                 <img
-                  src="/static/img/GitHub.png"
+                  src="/static/img/GitHub.webp"
                   alt="Logo GitHub FibonacciKu"
                 />
               </a>
