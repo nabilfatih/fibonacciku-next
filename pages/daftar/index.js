@@ -11,7 +11,11 @@ export default function Daftar() {
       </Head>
 
       <NavBar />
-      <FormDaftar />
+
+      <main>
+        <FormDaftar />
+      </main>
+
       <Footer />
     </div>
   );

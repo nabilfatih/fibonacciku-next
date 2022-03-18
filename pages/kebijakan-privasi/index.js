@@ -10,7 +10,11 @@ export default function Kebijakan() {
         <title>Kebijakan Privasi | FibonacciKu</title>
       </Head>
       <NavBar />
-      <KebijakanPrivasi />
+
+      <main>
+        <KebijakanPrivasi />
+      </main>
+
       <Footer />
     </div>
   );

@@ -1,8 +1,7 @@
 import styles from "./pelajaran-ujian.module.scss";
 import cls from "classnames";
-import Image from "next/image";
 
-const Ujian = (props) => {
+const Ujian = ({ children }) => {
   function randomAlphaNumeric() {
     return Math.random().toString(36).charAt(2);
   }
@@ -18,42 +17,7 @@ const Ujian = (props) => {
           <h1>Belajar Persiapan Ujian!</h1>
         </div>
 
-        <div className={styles.ujian__grid}>
-          {props.data.map((ujians) => {
-            if (ujians.jenis == "ujian") {
-              return (
-                <div
-                  key={createFromPattern("xxx-xxx")}
-                  className={styles.ujian__card}
-                >
-                  <div
-                    key={createFromPattern("xxx-xxx")}
-                    className={styles.ujian__icon}
-                  >
-                    <Image
-                      key={createFromPattern("xxx-xxx")}
-                      className={styles.img}
-                      src={ujians.icon}
-                      width={128}
-                      height={128}
-                      alt={`Logo ${ujians.pelajaran} FibonacciKu`}
-                    />
-                  </div>
-
-                  <div className={styles.ujian__title}>
-                    <h3 key={createFromPattern("xxx-xxx")}>
-                      {ujians.pelajaran}
-                    </h3>
-                  </div>
-
-                  <a className={cls(styles.button, "button")}>
-                    Belajar Disini!
-                  </a>
-                </div>
-              );
-            }
-          })}
-        </div>
+        <div className={styles.ujian__grid}>{children}</div>
       </div>
     </section>
   );

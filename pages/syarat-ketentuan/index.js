@@ -10,7 +10,11 @@ export default function Syarat() {
         <title>Syarat & Ketentuan | FibonacciKu</title>
       </Head>
       <NavBar />
-      <SyaratKetentuan />
+
+      <main>
+        <SyaratKetentuan />
+      </main>
+
       <Footer />
     </div>
   );

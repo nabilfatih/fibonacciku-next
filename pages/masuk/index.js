@@ -11,7 +11,11 @@ export default function Masuk() {
       </Head>
 
       <NavBar />
-      <FormMasuk />
+
+      <main>
+        <FormMasuk />
+      </main>
+
       <Footer />
     </div>
   );

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@iconscout/react-unicons": "^1.1.6",
+    "@sendgrid/mail": "^7.6.2",
     "@tanem/react-nprogress": "^4.0.10",
     "classnames": "^2.3.1",
     "mongodb": "^4.4.1",
