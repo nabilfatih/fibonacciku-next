@@ -50,7 +50,7 @@ const FormKontak = ({ children }) => {
               </div>
             </div>
 
-            <div className={styles.kontak__information}>
+            <div className={cls(styles.kontak__information, styles.foto)}>
               <div className={cls(styles.kontak__foto)}>
                 <Image
                   src={"/static/icon/kontak-icon.png"}

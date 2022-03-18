@@ -55,6 +55,13 @@
         display: flex;
         // gap: 0.5rem;
         margin-bottom: 2rem;
+
+        &.foto {
+            @include breakpoint-down(small) {
+                display: none;
+                margin: 0;
+            }
+        }
     }
 
     &__subtitle {
