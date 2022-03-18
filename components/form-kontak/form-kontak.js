@@ -54,11 +54,7 @@ const FormKontak = () => {
 
             <div className={styles.kontak__information}>
               <div className={cls(styles.kontak__foto)}>
-                <Image src={"/static/icon/kontak-icon.png"} layout="fill" />
-                {/* <img
-                  src="/static/icon/kontak-icon.png"
-                  alt="Logo Kontak FibonacciKu"
-                /> */}
+                <Image src={"/static/icon/kontak-icon.png"} layout="fill" priority={true}/>
               </div>
             </div>
           </div>
