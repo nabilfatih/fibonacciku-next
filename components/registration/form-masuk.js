@@ -23,10 +23,9 @@ const FormMasuk = () => {
         <div className={styles.forms__box}>
           <h2>Masuk</h2>
 
-          <form method="POST" novalidate className="validated-form">
+          <form method="POST" noValidate className="validated-form">
             <div className={styles.field}>
               <i className="uil uil-user-circle"></i>
-              <label for="username"></label>
               <input
                 className={"form-control"}
                 type="text"
@@ -39,8 +38,7 @@ const FormMasuk = () => {
             </div>
 
             <div className={styles.field}>
-              <i class="uil uil-lock-alt"></i>
-              <label for="password"></label>
+              <i className="uil uil-lock-alt"></i>
               <input
                 className={"password-inpu form-control"}
                 type="password"
