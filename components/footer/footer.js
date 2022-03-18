@@ -58,7 +58,7 @@ const Footer = () => {
             target="_blank"
           >
             <img
-              src="/static/img/linkedin.webp"
+              src="/static/img/linkedin.png"
               alt="Logo LinkedIn FibonacciKu"
             ></img>
           </a>

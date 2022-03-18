@@ -174,12 +174,12 @@
     .button {
 
         &__button {
-            transition: transform 300ms ease-in-out, box-shadow 150ms ease-in-out;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 300ms ease, box-shadow 150ms ease;
             &:hover {
                 transform: translate(2px, -2px);
                 box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
             }
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
         &__icon {
