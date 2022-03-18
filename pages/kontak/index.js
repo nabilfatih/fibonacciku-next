@@ -61,19 +61,22 @@ const Kontak = () => {
     if (!pesan) {
       setPesanMsg("Masukkan pesan kamu");
     }
-    nama && email.match(mailformat) && subjek && pesan
-      ? console.log("routes")
-      : setSubmitMsg("Ada yang error!");
+    if (nama && email.match(mailformat) && subjek && pesan) {
+      try {
+      } catch (e) {
+        setSubmitMsg("Ada yang error!");
+      }
+    }
 
     const formData = {
       nama,
       email,
       subjek,
-      pesan
+      pesan,
     };
-    
-      console.log(formData);
-    
+
+    console.log(formData);
+
     // fetch("/api/mail", {
     //   method: "post",
     //   body: JSON.stringify(formData),
@@ -151,7 +154,9 @@ const Kontak = () => {
               <button type="submit" onClick={handleOnSubmit}>
                 Kirim Pesan
               </button>
-              <p className={cls(styles.kontak__userMsg, styles.submit)}>{submitMsg}</p>
+              <p className={cls(styles.kontak__userMsg, styles.submit)}>
+                {submitMsg}
+              </p>
             </div>
           </form>
         </FormKontak>
