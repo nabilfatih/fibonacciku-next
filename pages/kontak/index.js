@@ -47,7 +47,7 @@ const Kontak = () => {
     setPesan(pesan);
   };
 
-  const handleOnSubmit = (e) => {
+  async function handleOnSubmit(e) {
     e.preventDefault();
     if (!nama) {
       setNamaMsg("Masukkan nama kamu");
@@ -81,7 +81,7 @@ const Kontak = () => {
     //   method: "post",
     //   body: JSON.stringify(formData),
     // });
-  };
+  }
 
   return (
     <div>
