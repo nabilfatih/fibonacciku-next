@@ -52,10 +52,10 @@ const FormKontak = () => {
             action=""
             method="POST"
             className={cls(styles.kontak__form, "grid validated-form")}
-            novalidate
+            noValidate
           >
             <div className={styles.kontak__konten}>
-              <label for="" className={cls(styles.kontak__label, "form-label")}>
+              <label className={cls(styles.kontak__label, "form-label")}>
                 Nama Lengkap
               </label>
               <input
@@ -67,7 +67,7 @@ const FormKontak = () => {
               />
             </div>
             <div className={styles.kontak__konten}>
-              <label for="" className={cls(styles.kontak__label, "form-label")}>
+              <label className={cls(styles.kontak__label, "form-label")}>
                 Email
               </label>
               <input
@@ -80,7 +80,7 @@ const FormKontak = () => {
             </div>
 
             <div className={styles.kontak__konten}>
-              <label for="" className={cls(styles.kontak__label, "form-label")}>
+              <label className={cls(styles.kontak__label, "form-label")}>
                 Subjek
               </label>
               <input
@@ -93,7 +93,7 @@ const FormKontak = () => {
             </div>
 
             <div className={styles.kontak__konten}>
-              <label for="" className={cls(styles.kontak__label, "form-label")}>
+              <label className={cls(styles.kontak__label, "form-label")}>
                 Pesan
               </label>
               <textarea
