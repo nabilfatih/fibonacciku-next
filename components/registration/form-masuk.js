@@ -2,6 +2,10 @@ import styles from "./registration.module.scss";
 import cls from "classnames";
 import { useRouter } from "next/router";
 
+import { UilUserCircle } from '@iconscout/react-unicons'
+import { UilLockAlt } from '@iconscout/react-unicons'
+import { UilEyeSlash } from '@iconscout/react-unicons'
+
 const FormMasuk = () => {
   const router = useRouter();
 
@@ -25,7 +29,7 @@ const FormMasuk = () => {
 
           <form method="POST" noValidate className="validated-form">
             <div className={styles.field}>
-              <i className="uil uil-user-circle"></i>
+              <UilUserCircle className={cls(styles.icon, styles.icon__user)}/>
               <input
                 className={"form-control"}
                 type="text"
@@ -38,9 +42,9 @@ const FormMasuk = () => {
             </div>
 
             <div className={styles.field}>
-              <i className="uil uil-lock-alt"></i>
+              <UilLockAlt className={styles.icon} />
               <input
-                className={"password-inpu form-control"}
+                className={"password-input form-control"}
                 type="password"
                 id="password"
                 name="password"
@@ -48,7 +52,7 @@ const FormMasuk = () => {
                 required
               />
               <div className={styles.eye_btn}>
-                <i className="uil uil-eye-slash"></i>
+                <UilEyeSlash className={styles.icon}/>
               </div>
             </div>
 

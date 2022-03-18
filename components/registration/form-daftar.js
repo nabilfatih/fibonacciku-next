@@ -2,6 +2,11 @@ import styles from "./registration.module.scss";
 import cls from "classnames";
 import { useRouter } from "next/router";
 
+import { UilAt } from '@iconscout/react-unicons'
+import { UilUser } from '@iconscout/react-unicons'
+import { UilUserCircle } from '@iconscout/react-unicons'
+import { UilLockAlt } from '@iconscout/react-unicons'
+
 const FormDaftar = () => {
   const router = useRouter();
 
@@ -55,9 +60,9 @@ const FormDaftar = () => {
             <p className={styles.text}>Atau, daftar dengan email...</p>
           </div>
 
-          <form method="POST" noValidate class="validated-form">
+          <form method="POST" noValidate className="validated-form">
             <div className={styles.field}>
-              <i className="uil uil-at" />
+              <UilAt className={styles.icon}/>
               <input
                 className="form-control"
                 type="email"
@@ -68,7 +73,7 @@ const FormDaftar = () => {
               />
             </div>
             <div className={styles.field}>
-              <i className="uil uil-user" />
+              <UilUser className={styles.icon}/>
               <input
                 className="form-control"
                 type="text"
@@ -79,26 +84,26 @@ const FormDaftar = () => {
               />
             </div>
             <div className={styles.field}>
-              <i className="uil uil-user-circle" />
+              <UilUserCircle className={styles.icon}/>
               <input
                 className="form-control"
                 type="text"
                 id="username"
                 name="username"
                 placeholder="username"
-                maxlength="20"
+                maxLength={20}
                 required
               />
             </div>
             <div className={styles.field}>
-              <i className="uil uil-lock-alt" />
+              <UilLockAlt className={styles.icon}/>
               <input
                 className="form-control"
                 type="password"
                 id="password"
                 name="password"
                 placeholder="password"
-                minlength="8"
+                minLength={8}
                 required
               />
             </div>

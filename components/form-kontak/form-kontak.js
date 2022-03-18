@@ -2,6 +2,9 @@ import styles from "./form-kontak.module.scss";
 import cls from "classnames";
 import Image from "next/image";
 
+import { UilPhoneAlt } from "@iconscout/react-unicons";
+import { UilMap } from "@iconscout/react-unicons";
+
 const FormKontak = () => {
   return (
     <section className={styles.kontak_form}>
@@ -21,7 +24,12 @@ const FormKontak = () => {
         <div className={styles.kontak__container}>
           <div className={styles.kontak__grid}>
             <div className={styles.kontak__information}>
-              <i className={cls(styles.kontak__icon, "uil uil-phone")}></i>
+              <UilPhoneAlt
+                className={styles.kontak__icon}
+                
+                width="38"
+                height="38"
+              />
               <div>
                 <h3 className={styles.kontak__title}>Telepon</h3>
                 <span className={styles.kontak__subtitle}>+49-17669341393</span>
@@ -29,21 +37,28 @@ const FormKontak = () => {
             </div>
 
             <div className={styles.kontak__information}>
-              <i className={cls(styles.kontak__icon, "uil uil-map-marker")}></i>
+              <UilMap
+                className={cls(styles.kontak__icon, styles.kontak__icon__map)}
+                
+                width="38"
+                height="38"
+              />
               <div>
                 <h3 className={styles.kontak__title}>Lokasi</h3>
                 <span className={styles.kontak__subtitle}>
-                  Regensburg - Jerman, Plato Wild Str. 2A, Nr. 1024
+                  <p>Regesnburg, Jerman</p>
+                  <p>Plato Wild Straße 2A, Nr. 1024</p>
                 </span>
               </div>
             </div>
 
             <div className={styles.kontak__information}>
               <div className={cls(styles.kontak__foto)}>
-                <img
+                <Image src={"/static/icon/kontak-icon.png"} layout="fill" />
+                {/* <img
                   src="/static/icon/kontak-icon.png"
                   alt="Logo Kontak FibonacciKu"
-                />
+                /> */}
               </div>
             </div>
           </div>
@@ -110,7 +125,6 @@ const FormKontak = () => {
             <div className={styles.button}>
               <button type="submit" className={styles.button__button}>
                 Kirim Pesan
-                <i className={cls(styles.button__icon, "uil uil-message")}></i>
               </button>
             </div>
           </form>

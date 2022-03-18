@@ -12,6 +12,11 @@
     padding-top: 3rem;
     padding-bottom: 3rem;
 
+    @include breakpoint-down(small) {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+
     &__intro {
 
         text-align: center;
@@ -39,6 +44,7 @@
         row-gap: 3rem;
 
         @include breakpoint-up(medium) {
+            gap: 0.5rem;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
         }
@@ -47,40 +53,50 @@
     &__information {
 
         display: flex;
+        // gap: 0.5rem;
         margin-bottom: 2rem;
     }
 
     &__subtitle {
         margin-right: 1rem;
+        display: flex;
+        flex-direction: column;
+
+        P {
+            margin: 0;
+        }
     }
 
     &__foto {
-        img {
+        position: relative;
+        
             margin-top: 2rem;
-            margin-left: 7rem;
+            margin-left: 3rem;
             margin-right: 2rem;
             width: 22rem;
+            height: 22rem;
 
             @include breakpoint-down(medium) {
-                margin-left: 5rem;
+                margin-left: 1rem;
                 margin-right: 2rem;
-                width: 17rem;
+                width: 15rem;
+                height: 15rem;
             }
 
             @include breakpoint-down(small) {
                 display: none;
             }
-        }
+        
     }
 
     &__icon {
-        font-size: 2rem;
+        // font-size: 2rem;
         color: $darkBlue;
-        margin-right: 0.5rem;
+        margin-right: 1rem;
     }
 
     &__title {
-        margin-bottom: 0.3rem;
+        margin-bottom: 0.5rem;
         font-weight: 900;
         font-size: large;
     }
@@ -180,10 +196,6 @@
                 transform: translate(2px, -2px);
                 box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
             }
-        }
-
-        &__icon {
-            padding-left: 0.2rem;
         }
     }
 }

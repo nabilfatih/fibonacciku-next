@@ -120,17 +120,21 @@
                 padding-bottom: 0.3125rem;
             }
 
-            i {
+            .icon {
                 color: #828da0;
                 font-size: 1.3em;
                 margin-right: 0.625rem;
                 padding-bottom: 0.3125rem;
+
+                &__user {
+                    margin-right: 0.475rem;
+                }
             }
 
             .eye_btn {
                 cursor: pointer;
 
-                i:hover {
+                .icon:hover {
                     color: #0065ff;
                     transition: 0.3s ease;
                 }
