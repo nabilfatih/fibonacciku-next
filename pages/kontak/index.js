@@ -10,6 +10,8 @@ import styles from "./kontak.module.scss";
 import cls from "classnames";
 
 const Kontak = () => {
+  const router = useRouter();
+
   const [email, setEmail] = useState("");
   const [nama, setNama] = useState("");
   const [subjek, setSubjek] = useState("");
@@ -49,20 +51,17 @@ const Kontak = () => {
 
   async function handleOnSubmit(e) {
     e.preventDefault();
-    if (!nama) {
-      setNamaMsg("Masukkan nama kamu");
-    }
-    if (!email.match(mailformat)) {
-      setEmailMsg("Masukkan email yang valid");
-    }
-    if (!subjek) {
-      setSubjekMsg("Masukkan subjek pesan");
-    }
-    if (!pesan) {
-      setPesanMsg("Masukkan pesan kamu");
-    }
+    if (!nama) setNamaMsg("Masukkan nama kamu");
+
+    if (!email.match(mailformat)) setEmailMsg("Masukkan email yang valid");
+
+    if (!subjek) setSubjekMsg("Masukkan subjek pesan");
+
+    if (!pesan) setPesanMsg("Masukkan pesan kamu");
+
     if (nama && email.match(mailformat) && subjek && pesan) {
       try {
+        router.push("/kontak");
       } catch (e) {
         setSubmitMsg("Ada yang error!");
       }
