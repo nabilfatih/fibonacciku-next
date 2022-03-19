@@ -1,16 +1,15 @@
+import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
+import styles from "./daftar.module.scss";
+import cls from "classnames";
 
 import Head from "next/head";
 import Footer from "../../components/footer/footer";
 import NavBar from "../../components/nav/nav";
 import FormDaftar from "../../components/registration/form-daftar";
-
-import styles from "./daftar.module.scss";
-import cls from "classnames";
-import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
 
 import { UilAt } from "@iconscout/react-unicons";
 import { UilUser } from "@iconscout/react-unicons";
