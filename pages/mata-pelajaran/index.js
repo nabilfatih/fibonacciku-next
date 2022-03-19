@@ -6,6 +6,7 @@ import Ujian from "../../components/pelajaran-ujian/ujian";
 import styles from "./matapelajaran.module.scss";
 import cls from "classnames";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 import dataPelajaran from "../../data/dataPelajaran.json";
 
@@ -18,6 +19,8 @@ export async function getStaticProps(context) {
 }
 
 export default function MataPelajaran(props) {
+  const router = useRouter();
+
   function randomAlphaNumeric() {
     return Math.random().toString(36).charAt(2);
   }
@@ -69,6 +72,7 @@ export default function MataPelajaran(props) {
                   <a
                     key={createFromPattern("xxx-xxx")}
                     className={cls(styles.button, "button")}
+                    onClick={() => router.push(`/mata-pelajaran/${Pelajaran.query}`)}
                   >
                     Belajar Disini!
                   </a>

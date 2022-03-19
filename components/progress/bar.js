@@ -6,7 +6,7 @@ export const Bar = ({ animationDuration, progress }) => {
       className={styles.bar}
       style={{
         marginLeft: `${(-1 + progress) * 100}%`,
-        transition: `margin-left ${animationDuration}ms linear`,
+        transition: `margin-left ${animationDuration}ms ease-in-out`,
       }}
     ></div>
   );
