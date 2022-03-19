@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
 
 import Head from "next/head";
 import Footer from "../../components/footer/footer";
@@ -12,74 +15,27 @@ import cls from "classnames";
 const Kontak = () => {
   const router = useRouter();
 
-  const [email, setEmail] = useState("");
-  const [nama, setNama] = useState("");
-  const [subjek, setSubjek] = useState("");
-  const [pesan, setPesan] = useState("");
-  const [emailMsg, setEmailMsg] = useState("");
-  const [namaMsg, setNamaMsg] = useState("");
-  const [subjekMsg, setSubjekMsg] = useState("");
-  const [pesanMsg, setPesanMsg] = useState("");
-  const [submitMsg, setSubmitMsg] = useState("");
-  const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  const validationSchema = Yup.object().shape({
+    nama: Yup.string().required("Masukkan nama kamu"),
+    email: Yup.string()
+      .required("Masukkan email kamu")
+      .email("Email tidak valid"),
+    subjek: Yup.string().required("Masukkan subjek pesan"),
+    pesan: Yup.string().required("Masukkan pesan kamu"),
+  });
+  const formOptions = { resolver: yupResolver(validationSchema) };
 
-  const handleOnChangeEmail = (e) => {
-    const email = e.target.value;
-    email.match(mailformat)
-      ? setEmailMsg("")
-      : setEmailMsg("Masukkan email yang valid");
-    setEmail(email);
-  };
+  const { register, handleSubmit, formState } = useForm(formOptions);
+  const { errors } = formState;
 
-  const handleOnChangeNama = (e) => {
-    const nama = e.target.value;
-    nama ? setNamaMsg("") : setNamaMsg("Masukkan nama kamu");
-    setNama(nama);
-  };
-
-  const handleOnChangeSubjek = (e) => {
-    const subjek = e.target.value;
-    subjek ? setSubjekMsg("") : setSubjekMsg("Masukkan subjek pesan");
-    setSubjek(subjek);
-  };
-
-  const handleOnChangePesan = (e) => {
-    const pesan = e.target.value;
-    pesan ? setPesanMsg("") : setPesanMsg("Masukkan pesan kamu");
-    setPesan(pesan);
-  };
-
-  async function handleOnSubmit(e) {
-    e.preventDefault();
-    if (!nama) setNamaMsg("Masukkan nama kamu");
-
-    if (!email.match(mailformat)) setEmailMsg("Masukkan email yang valid");
-
-    if (!subjek) setSubjekMsg("Masukkan subjek pesan");
-
-    if (!pesan) setPesanMsg("Masukkan pesan kamu");
-
-    if (nama && email.match(mailformat) && subjek && pesan) {
-      try {
-        router.push("/kontak");
-      } catch (e) {
-        setSubmitMsg("Ada yang error!");
-      }
-    }
-
-    const formData = {
-      nama,
-      email,
-      subjek,
-      pesan,
-    };
-
-    console.log(formData);
-
-    // fetch("/api/mail", {
-    //   method: "post",
-    //   body: JSON.stringify(formData),
-    // });
+  function onSubmit(data) {
+    console.log(data.nama);
+    console.log(data.subjek);
+    console.log(data.email);
+    console.log(data.pesan);
+    // display form data on success
+    // alert("SUCCESS!! :-)\n\n" + JSON.stringify(data, null, 4));
+    return false;
   }
 
   return (
@@ -92,9 +48,8 @@ const Kontak = () => {
       <main>
         <FormKontak>
           <form
-            method="POST"
             className={cls(styles.kontak__form)}
-            // onSubmit={handleOnSubmit}
+            onSubmit={handleSubmit(onSubmit)}
           >
             <div className={styles.kontak__konten}>
               <label className={cls(styles.kontak__label)}>Nama Lengkap</label>
@@ -103,10 +58,9 @@ const Kontak = () => {
                 type="text"
                 id="nama"
                 name="nama"
-                required
-                onChange={handleOnChangeNama}
+                {...register("nama")}
               />
-              <p className={styles.kontak__userMsg}>{namaMsg}</p>
+              <p className={styles.kontak__userMsg}>{errors.nama?.message}</p>
             </div>
             <div className={styles.kontak__konten}>
               <label className={cls(styles.kontak__label)}>Email</label>
@@ -115,10 +69,9 @@ const Kontak = () => {
                 type="email"
                 id="email"
                 name="email"
-                required
-                onChange={handleOnChangeEmail}
+                {...register("email")}
               />
-              <p className={styles.kontak__userMsg}>{emailMsg}</p>
+              <p className={styles.kontak__userMsg}>{errors.email?.message}</p>
             </div>
 
             <div className={styles.kontak__konten}>
@@ -128,10 +81,9 @@ const Kontak = () => {
                 type="text"
                 id="subject"
                 name="subjek"
-                required
-                onChange={handleOnChangeSubjek}
+                {...register("subjek")}
               />
-              <p className={styles.kontak__userMsg}>{subjekMsg}</p>
+              <p className={styles.kontak__userMsg}>{errors.subjek?.message}</p>
             </div>
 
             <div className={styles.kontak__konten}>
@@ -143,19 +95,14 @@ const Kontak = () => {
                 cols="0"
                 rows="9"
                 name="pesan"
-                required
-                onChange={handleOnChangePesan}
+                {...register("pesan")}
               ></textarea>
-              <p className={styles.kontak__userMsg}>{pesanMsg}</p>
+              <p className={styles.kontak__userMsg}>{errors.pesan?.message}</p>
             </div>
 
             <div className={styles.kontak__button}>
-              <button type="submit" onClick={handleOnSubmit}>
-                Kirim Pesan
-              </button>
-              <p className={cls(styles.kontak__userMsg, styles.submit)}>
-                {submitMsg}
-              </p>
+              <button type="submit">Kirim Pesan</button>
+              <p className={cls(styles.kontak__userMsg, styles.submit)}></p>
             </div>
           </form>
         </FormKontak>
