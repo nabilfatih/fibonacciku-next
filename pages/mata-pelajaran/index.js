@@ -72,7 +72,9 @@ export default function MataPelajaran(props) {
                   <a
                     key={createFromPattern("xxx-xxx")}
                     className={cls(styles.button, "button")}
-                    onClick={() => router.push(`/mata-pelajaran/${Pelajaran.query}`)}
+                    onClick={() =>
+                      router.push(`/mata-pelajaran/${Pelajaran.query}`)
+                    }
                   >
                     Belajar Disini!
                   </a>
