@@ -112,7 +112,12 @@ export default function MataPelajaran(props) {
                     </h3>
                   </div>
 
-                  <a className={cls(styles.button, "button")}>
+                  <a
+                    className={cls(styles.button, "button")}
+                    onClick={() =>
+                      router.push(`/mata-pelajaran/${ujians.query}`)
+                    }
+                  >
                     Belajar Disini!
                   </a>
                 </div>
