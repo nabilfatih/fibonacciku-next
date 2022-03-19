@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -25,17 +24,21 @@ const Kontak = () => {
   });
   const formOptions = { resolver: yupResolver(validationSchema) };
 
-  const { register, handleSubmit, formState } = useForm(formOptions);
+  const { register, handleSubmit, reset, formState } = useForm(formOptions);
   const { errors } = formState;
 
-  function onSubmit(data) {
-    console.log(data.nama);
-    console.log(data.subjek);
-    console.log(data.email);
-    console.log(data.pesan);
-    // display form data on success
-    // alert("SUCCESS!! :-)\n\n" + JSON.stringify(data, null, 4));
-    return false;
+  async function onSubmit(data) {
+    const formData = data;
+
+    try {
+      await fetch("/api/mail", {
+        method: "POST",
+        body: JSON.stringify(formData),
+      });
+      return router.push("/kontak");
+    } catch (e) {
+      return router.push("/");
+    }
   }
 
   return (

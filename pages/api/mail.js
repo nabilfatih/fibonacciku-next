@@ -2,27 +2,32 @@
 
 import mail from "@sendgrid/mail";
 
-mail.setApiKey(process.env.SENDGRID_API_KEY)
+mail.setApiKey(process.env.SENDGRID_API_KEY);
 
 export default async (req, res) => {
   const body = JSON.parse(req.body);
-
+  const { nama, email, subjek, pesan } = body;
   const message = `
-    Nama: ${body.nama}\r\n
-    Email: ${body.email}\r\n
-    Subjek: ${body.subjek}\r\n
-    Pesan: ${body.pesan}
+    Nama: ${nama}\r\n
+    Email: ${email}\r\n
+    Subjek: ${subjek}\r\n
+    Pesan: ${pesan}
   `;
 
   const data = {
     to: "kontak@fibonacciku.com",
-    from: `${body.name} <kontak-noreply@fibonacciku.com>`,
-    subject: `${body.subjek}`,
+    from: `${nama} <kontak-noreply@fibonacciku.com>`,
+    subject: `${subjek}`,
     text: message,
-    html: message.replace(/\r\n/g, "<br>"),
+    html: `
+      <p style="white-space: pre-line; font-family: Verdana, Arial, Helvetica, sans-serif;">Nama: ${nama}
+      Email: ${email}
+      Subjek: ${subjek}
+      
+      Pesan:
+      
+      ${pesan}</p>
+    `,
   };
-
   await mail.send(data);
-
-  res.status(200).json({ status: "Ok" });
 };
