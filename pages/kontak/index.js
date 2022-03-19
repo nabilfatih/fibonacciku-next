@@ -15,12 +15,12 @@ const Kontak = () => {
   const router = useRouter();
 
   const validationSchema = Yup.object().shape({
-    nama: Yup.string().required("Masukkan nama kamu"),
+    nama: Yup.string().required("Masukkan nama"),
     email: Yup.string()
-      .required("Masukkan email kamu")
+      .required("Masukkan email")
       .email("Email tidak valid"),
     subjek: Yup.string().required("Masukkan subjek pesan"),
-    pesan: Yup.string().required("Masukkan pesan kamu"),
+    pesan: Yup.string().required("Masukkan pesan"),
   });
   const formOptions = { resolver: yupResolver(validationSchema) };
 
@@ -35,9 +35,9 @@ const Kontak = () => {
         method: "POST",
         body: JSON.stringify(formData),
       });
-      return router.push("/kontak");
+      router.push("/kontak");
     } catch (e) {
-      return router.push("/");
+      router.push("/");
     }
   }
 

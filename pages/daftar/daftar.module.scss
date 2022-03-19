@@ -1,0 +1,115 @@
+@import "/styles/variables";
+@import "/styles/mixins";
+@import "/styles/animations";
+
+
+.forms {
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5625rem;
+    }
+
+    &__fieldBox {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+    }
+
+    &__field {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 2px solid #eee;
+        // margin-bottom: 1.5625rem;
+
+        &.aktif {
+            border-bottom: 0.125rem solid $darkBlue;
+            transition: 0.3s ease;
+    
+            .icon {
+                color: $darkBlue;
+                transition: 0.3s ease;
+            }
+        }
+
+        textarea:focus,
+        input[type="text"]:focus,
+        input[type="password"]:focus,
+        input[type="datetime"]:focus,
+        input[type="datetime-local"]:focus,
+        input[type="date"]:focus,
+        input[type="month"]:focus,
+        input[type="time"]:focus,
+        input[type="week"]:focus,
+        input[type="number"]:focus,
+        input[type="email"]:focus,
+        input[type="url"]:focus,
+        input[type="search"]:focus,
+        input[type="tel"]:focus,
+        input[type="color"]:focus,
+        .uneditable-input:focus {
+            border-color: none;
+            box-shadow: none;
+            outline: 0 none;
+        }
+
+        input {
+            border: none;
+            outline: none;
+            background: none;
+            width: 100%;
+            font-size: 1em;
+            padding-bottom: 0.3125rem;
+        }
+
+        .icon {
+            color: #828da0;
+            font-size: 1.3em;
+            margin-right: 0.625rem;
+            padding-bottom: 0.3125rem;
+
+            &__user {
+                margin-right: 0.475rem;
+            }
+        }
+
+        .eye_btn {
+            cursor: pointer;
+
+            .icon:hover {
+                color: #0065ff;
+                transition: 0.3s ease;
+            }
+        }
+    }
+
+    &__submit_btn {
+        background: linear-gradient(to right, $greenTeal, $blue);
+        color: black;
+        border: none;
+        outline: none;
+        width: 7.5rem;
+        padding: 0.625rem 1.875rem;
+        border-radius: 0.3125rem;
+        font-size: 0.85em;
+        font-weight: 500;
+        margin-top: 0.3125rem;
+        cursor: pointer;
+
+        
+        transition: transform 250ms ease-in-out, box-shadow 150ms ease-in-out;
+        &:hover {
+            transform: translate(1px, -1px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    &__userMsg {
+        margin: 0;
+        color: red;
+        font-size: small;
+    }
+}

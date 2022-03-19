@@ -2,12 +2,7 @@ import styles from "./registration.module.scss";
 import cls from "classnames";
 import { useRouter } from "next/router";
 
-import { UilAt } from '@iconscout/react-unicons'
-import { UilUser } from '@iconscout/react-unicons'
-import { UilUserCircle } from '@iconscout/react-unicons'
-import { UilLockAlt } from '@iconscout/react-unicons'
-
-const FormDaftar = () => {
+const FormDaftar = ({ children }) => {
   const router = useRouter();
 
   const HandleClickMasuk = (e) => {
@@ -60,56 +55,7 @@ const FormDaftar = () => {
             <p className={styles.text}>Atau, daftar dengan email...</p>
           </div>
 
-          <form method="POST" noValidate className="validated-form">
-            <div className={styles.field}>
-              <UilAt className={styles.icon}/>
-              <input
-                className="form-control"
-                type="email"
-                id="email"
-                name="email"
-                placeholder="email"
-                required
-              />
-            </div>
-            <div className={styles.field}>
-              <UilUser className={styles.icon}/>
-              <input
-                className="form-control"
-                type="text"
-                id="nama"
-                name="nama"
-                placeholder="nama lengkap"
-                required
-              />
-            </div>
-            <div className={styles.field}>
-              <UilUserCircle className={styles.icon}/>
-              <input
-                className="form-control"
-                type="text"
-                id="username"
-                name="username"
-                placeholder="username"
-                maxLength={20}
-                required
-              />
-            </div>
-            <div className={styles.field}>
-              <UilLockAlt className={styles.icon}/>
-              <input
-                className="form-control"
-                type="password"
-                id="password"
-                name="password"
-                placeholder="password"
-                minLength={8}
-                required
-              />
-            </div>
-
-            <button className={styles.submit_btn}>Daftar</button>
-          </form>
+          {children}
         </div>
       </div>
     </section>

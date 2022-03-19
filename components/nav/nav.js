@@ -42,6 +42,7 @@ const NavBar = (props) => {
             src={"/static/img/logofibonama.svg"}
             alt="Logo FibonacciKu"
             layout="fill"
+            priority="true"
           />
         </a>
 
