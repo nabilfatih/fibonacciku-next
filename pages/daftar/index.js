@@ -42,7 +42,7 @@ export default function Daftar() {
   };
 
   const validationSchema = Yup.object().shape({
-    email: Yup.string().required("Masukkan email").email("Email tidak valid"),
+    email: Yup.string().email("Email tidak valid").required("Masukkan email"),
     nama: Yup.string().required("Masukkan nama lengkap"),
     username: Yup.string()
       .max(20, "Username max. 20 karakter")
@@ -75,6 +75,7 @@ export default function Daftar() {
           <form
             className={styles.forms__form}
             onSubmit={handleSubmit(onSubmit)}
+            noValidate
           >
             <div className={styles.forms__fieldBox}>
               <div className={cls(styles.forms__field, emailActive)}>
@@ -116,7 +117,6 @@ export default function Daftar() {
                   id="username"
                   name="username"
                   placeholder="username"
-                  maxLength={20}
                   {...register("username")}
                   onFocus={handleFocus}
                   onBlur={handleBlur}

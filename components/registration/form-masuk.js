@@ -6,13 +6,8 @@ import { UilUserCircle } from '@iconscout/react-unicons'
 import { UilLockAlt } from '@iconscout/react-unicons'
 import { UilEyeSlash } from '@iconscout/react-unicons'
 
-const FormMasuk = () => {
+const FormMasuk = ({ children }) => {
   const router = useRouter();
-
-  const HandleCLickLupaPassword = (e) => {
-    e.preventDefault();
-    router.push("/lupa-password");
-  };
 
   const HandleClickDaftar = (e) => {
     e.preventDefault();
@@ -27,41 +22,7 @@ const FormMasuk = () => {
         <div className={styles.forms__box}>
           <h2>Masuk</h2>
 
-          <form method="POST" noValidate className="validated-form">
-            <div className={styles.field}>
-              <UilUserCircle className={cls(styles.icon, styles.icon__user)}/>
-              <input
-                className={"form-control"}
-                type="text"
-                id="username"
-                name="username"
-                placeholder="username"
-                maxLength="20"
-                required
-              />
-            </div>
-
-            <div className={styles.field}>
-              <UilLockAlt className={styles.icon} />
-              <input
-                className={"password-input form-control"}
-                type="password"
-                id="password"
-                name="password"
-                placeholder="password"
-                required
-              />
-              <div className={styles.eye_btn}>
-                <UilEyeSlash className={styles.icon}/>
-              </div>
-            </div>
-
-            <div className={styles.forgot_link}>
-              <a onClick={HandleCLickLupaPassword}>Lupa password?</a>
-            </div>
-
-            <button className={styles.submit_btn}>Masuk</button>
-          </form>
+          {children}
 
           <div className={styles.login_options}>
             <p className={styles.text}>Atau, masuk dengan...</p>
