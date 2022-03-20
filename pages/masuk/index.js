@@ -41,7 +41,7 @@ export default function Masuk() {
 
   const validationSchema = Yup.object().shape({
     username: Yup.string().required("Masukkan username"),
-    password: Yup.string().required("Masukkan Password"),
+    password: Yup.string().required("Masukkan password"),
   });
   const formOptions = { resolver: yupResolver(validationSchema) };
 
@@ -79,6 +79,7 @@ export default function Masuk() {
                   id="username"
                   name="username"
                   placeholder="username"
+                  {...register("username")}
                   onFocus={handleFocus}
                   onBlur={handleBlur}
                 />
@@ -96,6 +97,7 @@ export default function Masuk() {
                   id="password"
                   name="password"
                   placeholder="password"
+                  {...register("password")}
                   onFocus={handleFocus}
                   onBlur={handleBlur}
                 />
