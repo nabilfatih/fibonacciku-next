@@ -44,7 +44,7 @@ const FormKontak = ({ children }) => {
               <div>
                 <h3 className={styles.kontak__title}>Lokasi</h3>
                 <span className={styles.kontak__subtitle}>
-                  <p>Regesnburg, Jerman</p>
+                  <p>Regensburg, Jerman</p>
                   <p>Plato Wild Straße 2A, Nr. 1024</p>
                 </span>
               </div>
