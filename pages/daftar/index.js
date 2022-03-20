@@ -23,37 +23,23 @@ export default function Daftar() {
   const [usernameActive, setUsernameActive] = useState("");
   const [passwordActive, setPasswordActive] = useState("");
 
-  useEffect(() => {
-    const emailInput = document.getElementById("email");
-    const namaInput = document.getElementById("nama");
-    const usernameInput = document.getElementById("username");
-    const passwordInput = document.getElementById("password");
+  const handleFocus = (e) => {
+    e.preventDefault();
+    const target = e.target.id;
+    if (target == "email") setEmailActive(styles.aktif);
+    if (target == "nama") setNamaActive(styles.aktif);
+    if (target == "username") setUsernameActive(styles.aktif);
+    if (target == "password") setPasswordActive(styles.aktif);
+  };
 
-    emailInput.addEventListener("focus", () => {
-      setEmailActive(styles.aktif);
-    });
-    emailInput.addEventListener("blur", () => {
-      setEmailActive("");
-    });
-    namaInput.addEventListener("focus", () => {
-      setNamaActive(styles.aktif);
-    });
-    namaInput.addEventListener("blur", () => {
-      setNamaActive("");
-    });
-    usernameInput.addEventListener("focus", () => {
-      setUsernameActive(styles.aktif);
-    });
-    usernameInput.addEventListener("blur", () => {
-      setUsernameActive("");
-    });
-    passwordInput.addEventListener("focus", () => {
-      setPasswordActive(styles.aktif);
-    });
-    passwordInput.addEventListener("blur", () => {
-      setPasswordActive("");
-    });
-  }, []);
+  const handleBlur = (e) => {
+    e.preventDefault();
+    const target = e.target.id;
+    if (target == "email") setEmailActive("");
+    if (target == "nama") setNamaActive("");
+    if (target == "username") setUsernameActive("");
+    if (target == "password") setPasswordActive("");
+  };
 
   const validationSchema = Yup.object().shape({
     email: Yup.string().required("Masukkan email").email("Email tidak valid"),
@@ -99,6 +85,8 @@ export default function Daftar() {
                   name="email"
                   placeholder="email"
                   {...register("email")}
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
                 />
               </div>
               <p className={styles.forms__userMsg}>{errors.email?.message}</p>
@@ -113,6 +101,8 @@ export default function Daftar() {
                   name="nama"
                   placeholder="nama lengkap"
                   {...register("nama")}
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
                 />
               </div>
               <p className={styles.forms__userMsg}>{errors.nama?.message}</p>
@@ -128,6 +118,8 @@ export default function Daftar() {
                   placeholder="username"
                   maxLength={20}
                   {...register("username")}
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
                 />
               </div>
               <p className={styles.forms__userMsg}>
@@ -144,6 +136,8 @@ export default function Daftar() {
                   name="password"
                   placeholder="password"
                   {...register("password")}
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
                 />
               </div>
               <p className={styles.forms__userMsg}>
