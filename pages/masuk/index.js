@@ -44,7 +44,6 @@ export default function Masuk() {
     password: Yup.string().required("Masukkan password"),
   });
   const formOptions = { resolver: yupResolver(validationSchema) };
-
   const { register, handleSubmit, reset, formState } = useForm(formOptions);
   const { errors } = formState;
 

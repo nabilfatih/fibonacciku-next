@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
@@ -52,7 +52,6 @@ export default function Daftar() {
       .required("Masukkan Password"),
   });
   const formOptions = { resolver: yupResolver(validationSchema) };
-
   const { register, handleSubmit, reset, formState } = useForm(formOptions);
   const { errors } = formState;
 
