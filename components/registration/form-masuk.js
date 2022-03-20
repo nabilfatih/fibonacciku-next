@@ -2,10 +2,6 @@ import styles from "./registration.module.scss";
 import cls from "classnames";
 import { useRouter } from "next/router";
 
-import { UilUserCircle } from '@iconscout/react-unicons'
-import { UilLockAlt } from '@iconscout/react-unicons'
-import { UilEyeSlash } from '@iconscout/react-unicons'
-
 const FormMasuk = ({ children }) => {
   const router = useRouter();
 
