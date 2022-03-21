@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
-import cls from 'classnames'
+import cls from "classnames";
 
 import Head from "next/head";
 import Footer from "../../components/footer/footer";
