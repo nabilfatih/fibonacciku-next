@@ -102,7 +102,7 @@
         box-shadow: 0 4px 16px 0 rgba( 31, 38, 135, 0.37 );
         background: linear-gradient(to right, $lightBlue, $lightGreen);
 
-        transition: transform 300ms ease-in-out, box-shadow 150ms ease-in-out;
+        transition: transform 300ms ease-in-out, box-shadow 250ms ease-in-out;
 
         &:hover {
             box-shadow: 0 8px 36px 7px $blueSky;
