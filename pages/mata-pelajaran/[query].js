@@ -7,24 +7,54 @@ import NavBar from "../../components/nav/nav";
 import dataBab from "../../data/dataBab.json";
 
 export async function getStaticPaths() {
-  // Return a list of possible value for id
+  return {
+    paths: dataBab.map((bab) => {
+      return {
+        params: {
+          query: bab.query,
+        },
+      };
+    }),
+    fallback: false,
+  };
 }
 
 export async function getStaticProps({ params }) {
-  // Fetch necessary data for the blog post using params.id
+  const pelajaran = dataBab.find((bab) => bab.query === params.query);
+  const babs = dataBab.filter((bab) => bab.query === params.query);
+
+  return {
+    props: {
+      babs,
+      pelajaran,
+    }, // will be passed to the page component as props
+  };
 }
 
-const Query = () => {
+const Query = ({ babs, pelajaran }) => {
   const router = useRouter();
-  // console.log(getBabData);
+
+  function randomAlphaNumeric() {
+    return Math.random().toString(36).charAt(2);
+  }
+  function createFromPattern(pattern) {
+    pattern = pattern.split("");
+    return pattern.map((x) => x.replace("x", randomAlphaNumeric())).join("");
+  }
 
   return (
     <div>
       <Head>
-        <title> | FibonacciKu</title>
+        <title>{pelajaran.pelajaran} | FibonacciKu</title>
       </Head>
 
       <NavBar />
+
+      <div>
+        {babs.map((bab) => {
+          return <div>{bab.bab}</div>;
+        })}
+      </div>
 
       <Footer />
     </div>
