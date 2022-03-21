@@ -1,0 +1,155 @@
+
+@import "/styles/variables";
+@import "/styles/mixins";
+@import "/styles/animations";
+
+.shows_pelajaran {
+    margin-top: 80px;
+}
+
+.shows {
+    
+    padding-bottom: 2.5rem;
+    // background-color: $verylightBlue;
+
+    &__header {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        background-color: $mostLightDarkBlue;
+    }
+
+    &__pelajaran {
+        display: flex;
+        gap: 1.275rem;
+        // padding-left: 1.275rem;
+        text-align: left;
+        align-items: center;
+
+        // img {
+        //     max-width: 85px;
+        //     max-height: 85px;
+        // }
+
+        .header__belajar {
+
+            display: flex;
+            flex-direction: column;
+            // margin-top: 0.4rem;
+            text-align: left;
+            // padding-left: 1.25rem;
+            margin: 0;
+
+            a {
+                cursor: pointer;
+            }
+
+            h3 {
+                padding-left: 0.13rem;
+                margin: 0;
+                font-size: 1.1rem;
+                color: $blueGrey;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+
+                @include breakpoint-down(small){
+                    padding-left: 0.05rem;
+                    // padding-left: 1rem;
+                }
+            }
+
+            h1 {
+                margin: 0;
+                // margin-top: 0.9rem;
+                padding: 0;
+                // margin-bottom: 0;
+                // padding-left: 1rem;
+                font-weight: 600;
+                color: white;
+
+                @include breakpoint-down(medium){
+                    font-size: 3rem;
+                    // margin-top: 1rem;
+                }
+
+                @include breakpoint-down(small) {
+                    margin: 0;
+                    font-size: 2rem;
+                }
+            }
+        }
+    }
+
+    &__grid {
+        gap: 2.5rem;
+        padding-top: 2.5rem;
+        display: flex;
+        flex-wrap: wrap;
+
+        @include breakpoint-down(small) {
+            flex-direction: column;
+        }
+    }
+
+    &__card {
+        
+        padding: 1rem;
+        // border: 5px solid black;
+        text-align: center;
+        border-radius: 15px;
+        // box-shadow: 3px 3px 6px 0 rgba(0,0,0,.2);
+        box-shadow: 0 4px 16px 0 rgba( 31, 38, 135, 0.37 );
+        background: linear-gradient(to right, $lightBlue, $lightGreen);
+
+        transition: transform 300ms ease-in-out, box-shadow 150ms ease-in-out;
+
+        &:hover {
+            box-shadow: 0 8px 36px 7px $blueSky;
+            transform: translate(5px, -5px);
+        }
+
+        @include breakpoint-up(medium){
+            flex: 2 1 30%;
+        }
+
+        @include breakpoint-up(large){
+            flex: 2 1 20%;
+        }
+    }
+
+    &__icon {
+        content: "";
+        position: relative;
+        width: 100%;
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0rem;
+
+        @include breakpoint-up(large){
+            margin-bottom: 1.5rem;
+        }
+
+        // img {
+        //     max-width: 128px;
+        //     max-height: 128px;
+        // }
+    }
+
+    &__bab {
+
+        h3 {
+            font-size: 1.1rem;
+            color: $darkBlue;
+            margin-bottom: 0.5rem;
+
+            @include breakpoint-down(medium) {
+                font-size: 1rem;
+            }
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
