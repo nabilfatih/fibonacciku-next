@@ -86,9 +86,14 @@ const Query = ({ babs, pelajaran }) => {
               <div className={styles.shows__grid}>
                 {babs.map((bab) => {
                   return (
-                    <div className={styles.shows__card}>
+                    <div
+                      className={styles.shows__card}
+                      key={createFromPattern("xxx-xxx")}
+                    >
                       <div className={styles.shows__icon}>
-                        <Link href={`${pelajaran.query}/${bab.querybab}`}>
+                        <Link
+                          href={`/mata-pelajaran/${pelajaran.query}/${bab.querybab}`}
+                        >
                           <a>
                             <Image
                               src={bab.icon}
@@ -100,7 +105,9 @@ const Query = ({ babs, pelajaran }) => {
                         </Link>
                       </div>
 
-                      <Link href={`${pelajaran.query}/${bab.querybab}`}>
+                      <Link
+                        href={`/mata-pelajaran/${pelajaran.query}/${bab.querybab}`}
+                      >
                         <a className={styles.shows__bab}>
                           <h3>{bab.bab}</h3>
                         </a>

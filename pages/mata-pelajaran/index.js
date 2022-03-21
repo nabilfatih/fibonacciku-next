@@ -46,15 +46,11 @@ export default function MataPelajaran(props) {
             if (Pelajaran.jenis == "pelajaran") {
               return (
                 <div
-                  key={createFromPattern("xxx-xxx")}
                   className={styles.pelajaran__card}
+                  key={createFromPattern("xxx-xxx")}
                 >
-                  <div
-                    key={createFromPattern("xxx-xxx")}
-                    className={styles.pelajaran__icon}
-                  >
+                  <div className={styles.pelajaran__icon}>
                     <Image
-                      key={createFromPattern("xxx-xxx")}
                       className={styles.img}
                       src={Pelajaran.icon}
                       width={128}
@@ -64,13 +60,10 @@ export default function MataPelajaran(props) {
                   </div>
 
                   <div className={styles.pelajaran__title}>
-                    <h3 key={createFromPattern("xxx-xxx")}>
-                      {Pelajaran.pelajaran}
-                    </h3>
+                    <h3>{Pelajaran.pelajaran}</h3>
                   </div>
 
                   <a
-                    key={createFromPattern("xxx-xxx")}
                     className={cls(styles.button, "button")}
                     onClick={() =>
                       router.push(`/mata-pelajaran/${Pelajaran.query}`)
@@ -92,12 +85,8 @@ export default function MataPelajaran(props) {
                   key={createFromPattern("xxx-xxx")}
                   className={styles.ujian__card}
                 >
-                  <div
-                    key={createFromPattern("xxx-xxx")}
-                    className={styles.ujian__icon}
-                  >
+                  <div className={styles.ujian__icon}>
                     <Image
-                      key={createFromPattern("xxx-xxx")}
                       className={styles.img}
                       src={ujians.icon}
                       width={128}
@@ -107,9 +96,7 @@ export default function MataPelajaran(props) {
                   </div>
 
                   <div className={styles.ujian__title}>
-                    <h3 key={createFromPattern("xxx-xxx")}>
-                      {ujians.pelajaran}
-                    </h3>
+                    <h3>{ujians.pelajaran}</h3>
                   </div>
 
                   <a
