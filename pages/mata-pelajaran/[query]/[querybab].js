@@ -42,6 +42,14 @@ export async function getStaticProps({ params }) {
 }
 
 export default function QueryBab({ bab, subBabs, kontens }) {
+  function randomAlphaNumeric() {
+    return Math.random().toString(36).charAt(2);
+  }
+  function createFromPattern(pattern) {
+    pattern = pattern.split("");
+    return pattern.map((x) => x.replace("x", randomAlphaNumeric())).join("");
+  }
+
   return (
     <div>
       <NavBar />
@@ -69,7 +77,10 @@ export default function QueryBab({ bab, subBabs, kontens }) {
               <div className={styles.belajar__grid}>
                 {subBabs.map((subbab) => {
                   return (
-                    <div className={styles.belajar__card}>
+                    <div
+                      className={styles.belajar__card}
+                      key={createFromPattern("xxx-xxx")}
+                    >
                       <div className={styles.belajar__subbab}>
                         <h3>{subbab.subbab}</h3>
                       </div>
@@ -83,8 +94,11 @@ export default function QueryBab({ bab, subBabs, kontens }) {
                           {kontens.map((konten) => {
                             if (subbab.querysubbab === konten.querysubbab) {
                               return (
-                                <div className={styles.konten}>
-                                  <UilPlayCircle className={styles.icon}/>
+                                <div
+                                  className={styles.konten}
+                                  key={createFromPattern("xxx-xxx")}
+                                >
+                                  <UilPlayCircle className={styles.icon} />
                                   <div className={styles.judul}>
                                     <Link
                                       href={`/mata-pelajaran/${konten.query}/${konten.querybab}/${konten.queryjudul}`}

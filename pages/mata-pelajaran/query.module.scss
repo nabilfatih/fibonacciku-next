@@ -89,6 +89,7 @@
         flex-wrap: wrap;
 
         @include breakpoint-down(small) {
+            gap: 2rem;
             flex-direction: column;
         }
     }

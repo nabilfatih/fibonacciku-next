@@ -90,6 +90,10 @@
         padding-top: 2.5rem;
         display: flex;
         flex-direction: column;
+
+        @include breakpoint-down(small) {
+            gap: 1rem;
+        }
     }
 
     &__card {
