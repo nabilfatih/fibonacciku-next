@@ -13,10 +13,10 @@ import Link from "next/link";
 
 export async function getStaticPaths() {
   return {
-    paths: dataBab.map((bab) => {
+    paths: dataPelajaran.map((pelajaran) => {
       return {
         params: {
-          query: bab.query,
+          query: pelajaran.query,
         },
       };
     }),
@@ -25,7 +25,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const pelajaran = dataPelajaran.find((bab) => bab.query === params.query);
+  const pelajaran = dataPelajaran.find(
+    (pelajaran) => pelajaran.query === params.query
+  );
   const babs = dataBab.filter((bab) => bab.query === params.query);
 
   return {
@@ -36,7 +38,7 @@ export async function getStaticProps({ params }) {
   };
 }
 
-const Query = ({ babs, pelajaran }) => {
+export default function Query({ babs, pelajaran }) {
   const router = useRouter();
 
   function randomAlphaNumeric() {
@@ -63,8 +65,8 @@ const Query = ({ babs, pelajaran }) => {
       <main>
         <section className={styles.shows_pelajaran}>
           <div className={styles.shows}>
-            <div className={cls(styles.shows__header, "container--px")}>
-              <div className="container">
+            <div className={cls(styles.shows__header)}>
+              <div className="container container--px">
                 <div className={styles.shows__pelajaran}>
                   <Image
                     src={pelajaran.icon}
@@ -124,6 +126,4 @@ const Query = ({ babs, pelajaran }) => {
       <Footer />
     </div>
   );
-};
-
-export default Query;
+}
