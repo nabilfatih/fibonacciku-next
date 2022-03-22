@@ -60,7 +60,12 @@ export default function QueryBab({ bab, subBabs, kontens }) {
             <div className={styles.shows__header}>
               <div className="container container--px">
                 <div className={styles.shows__pelajaran}>
-                  <Image src={bab.icon} width={85} height={85} />
+                  <Image
+                    src={bab.icon}
+                    width={85}
+                    height={85}
+                    alt={`Logo ${bab.bab} FibonacciKu`}
+                  />
                   <div className={styles.header__belajar}>
                     <Link href={`/mata-pelajaran/${bab.query}`}>
                       <a>
