@@ -8,6 +8,7 @@ import { UilPlayCircle } from "@iconscout/react-unicons";
 
 import styles from "./querybab.module.scss";
 import Link from "next/link";
+import Head from "next/head";
 
 export async function getStaticPaths() {
   return {
@@ -52,6 +53,10 @@ export default function QueryBab({ bab, subBabs, kontens }) {
 
   return (
     <div>
+      <Head>
+        <title>{bab.bab} | FibonacciKu</title>
+      </Head>
+
       <NavBar />
 
       <main>
