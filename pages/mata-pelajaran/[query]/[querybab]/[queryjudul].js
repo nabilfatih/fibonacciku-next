@@ -6,7 +6,6 @@ import cls from "classnames";
 import { useRouter } from "next/router";
 
 import dataKonten from "../../../../data/dataKonten.json";
-import Link from "next/link";
 
 export async function getStaticPaths() {
   return {
