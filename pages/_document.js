@@ -5,7 +5,7 @@ class MyDocument extends Document {
     return (
       <Html lang="id">
         <Head>
-          <link rel="icon" href="/static/img/logofibo.svg" />
+          <link rel="icon" href="/static/img/logofibo.png" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             rel="preconnect"
