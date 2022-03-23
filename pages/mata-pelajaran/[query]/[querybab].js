@@ -5,6 +5,7 @@ import NavBar from "../../../components/nav/nav";
 import Footer from "../../../components/footer/footer";
 import Image from "next/image";
 import { UilPlayCircle } from "@iconscout/react-unicons";
+import { useRouter } from "next/router";
 
 import styles from "./querybab.module.scss";
 import Link from "next/link";
@@ -43,6 +44,8 @@ export async function getStaticProps({ params }) {
 }
 
 export default function QueryBab({ bab, subBabs, kontens }) {
+  const router = useRouter();
+
   function randomAlphaNumeric() {
     return Math.random().toString(36).charAt(2);
   }
