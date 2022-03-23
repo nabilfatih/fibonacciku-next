@@ -1655,7 +1655,9 @@
   {
     "query": "informatika",
     "querybab": "sistem-bilangan",
-    "querysubbab": "merubah-bilangan-biner-dan-oktal-dengan-metode-dual-triad",
+    "querysubbab": "merubah-bilangan",
+    "queryjudul": "merubah-bilangan-biner-dan-oktal-dengan-metode-dual-triad",
+    "tipe": "video",
     "pelajaran": "Informatika",
     "bab": "Sistem Bilangan",
     "subbab": "Metode Merubah Bilangan",
@@ -1665,7 +1667,9 @@
   {
     "query": "informatika",
     "querybab": "sistem-bilangan",
-    "querysubbab": "merubah-bilangan-biner-dan-oktal-dengan-metode-dual-tetrad",
+    "querysubbab": "merubah-bilangan",
+    "queryjudul": "merubah-bilangan-biner-dan-oktal-dengan-metode-dual-tetrad",
+    "tipe": "video",
     "pelajaran": "Informatika",
     "bab": "Sistem Bilangan",
     "subbab": "Metode Merubah Bilangan",
@@ -1675,7 +1679,9 @@
   {
     "query": "informatika",
     "querybab": "sistem-bilangan",
-    "querysubbab": "metode-horner-untuk-merubah-bilangan-oktal-ke-desimal",
+    "querysubbab": "merubah-bilangan",
+    "queryjudul": "metode-horner-untuk-merubah-bilangan-oktal-ke-desimal",
+    "tipe": "video",
     "pelajaran": "Informatika",
     "bab": "Sistem Bilangan",
     "subbab": "Metode Merubah Bilangan",
@@ -1685,7 +1691,9 @@
   {
     "query": "informatika",
     "querybab": "sistem-bilangan",
-    "querysubbab": "skema-horner-untuk-merubah-bilangan-biner-ke-desimal",
+    "querysubbab": "merubah-bilangan",
+    "queryjudul": "skema-horner-untuk-merubah-bilangan-biner-ke-desimal",
+    "tipe": "video",
     "pelajaran": "Informatika",
     "bab": "Sistem Bilangan",
     "subbab": "Metode Merubah Bilangan",

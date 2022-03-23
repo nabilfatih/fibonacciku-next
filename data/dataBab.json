@@ -1,5 +1,4 @@
 [
-  
   {
     "query": "matematika",
     "querybab": "fungsi",
@@ -71,8 +70,6 @@
     "bab": "Analisis"
   },
 
-  
-
   {
     "query": "fisika",
     "querybab": "fisika-dasar",
@@ -116,8 +113,6 @@
     "bab": "Usaha & Energi"
   },
 
-  
-
   {
     "query": "informatika",
     "querybab": "sistem-bilangan",
@@ -153,8 +148,6 @@
     "icon": "/static/icon/arsitekturkomputer-icon.png",
     "bab": "Arsitektur Komputer"
   },
-
-  
 
   {
     "query": "biologi",
@@ -199,8 +192,6 @@
     "bab": "Virus"
   },
 
-  
-
   {
     "query": "kimia",
     "querybab": "atom",
@@ -244,8 +235,6 @@
     "bab": "Asam Basa"
   },
 
-  
-
   {
     "query": "kecerdasan-buatan",
     "querybab": "fundamental-kecerdasan-buatan",
@@ -281,10 +270,6 @@
     "icon": "/static/icon/etik-icon.png",
     "bab": "Etik"
   },
-
-  
-  
-
 
   {
     "query": "aufnahmeprüfung",
