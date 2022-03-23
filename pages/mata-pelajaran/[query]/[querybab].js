@@ -113,11 +113,21 @@ export default function QueryBab({ bab, subBabs, kontens }) {
                                 >
                                   <UilPlayCircle className={styles.icon} />
                                   <div className={styles.judul}>
-                                    <Link
+                                    {/* <Link
                                       href={`/mata-pelajaran/${konten.query}/${konten.querybab}/${konten.queryjudul}`}
+                                    > */}
+                                    <a
+                                      onClick={() =>
+                                        router.push(
+                                          `/mata-pelajaran/${konten.query}/${konten.querybab}/${konten.queryjudul}`,
+                                          undefined,
+                                          { shallow: true }
+                                        )
+                                      }
                                     >
-                                      <a>{konten.judul}</a>
-                                    </Link>
+                                      {konten.judul}
+                                    </a>
+                                    {/* </Link> */}
                                   </div>
                                 </div>
                               );

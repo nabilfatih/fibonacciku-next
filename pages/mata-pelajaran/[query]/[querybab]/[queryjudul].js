@@ -54,7 +54,7 @@ export default function QueryJudul({ konten }) {
                   <h3>{konten.judul}</h3>
                   <a
                     className={styles.close_button}
-                    onClick={() => router.back()}
+                    onClick={() => router.back(undefined, { shallow: true })}
                   >
                     &times;
                   </a>

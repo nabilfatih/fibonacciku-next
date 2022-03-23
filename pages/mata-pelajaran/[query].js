@@ -91,29 +91,36 @@ export default function Query({ babs, pelajaran }) {
                     <div
                       className={styles.shows__card}
                       key={createFromPattern("xxx-xxx")}
+                      onClick={() =>
+                        router.push(
+                          `/mata-pelajaran/${pelajaran.query}/${bab.querybab}`,
+                          undefined,
+                          { shallow: true }
+                        )
+                      }
                     >
                       <div className={styles.shows__icon}>
-                        <Link
+                        {/* <Link
                           href={`/mata-pelajaran/${pelajaran.query}/${bab.querybab}`}
-                        >
-                          <a>
-                            <Image
-                              src={bab.icon}
-                              alt={`Logo ${bab.bab} FibonacciKu`}
-                              width={128}
-                              height={128}
-                            />
-                          </a>
-                        </Link>
+                        > */}
+                        <a>
+                          <Image
+                            src={bab.icon}
+                            alt={`Logo ${bab.bab} FibonacciKu`}
+                            width={128}
+                            height={128}
+                          />
+                        </a>
+                        {/* </Link> */}
                       </div>
 
-                      <Link
+                      {/* <Link
                         href={`/mata-pelajaran/${pelajaran.query}/${bab.querybab}`}
-                      >
-                        <a className={styles.shows__bab}>
-                          <h3>{bab.bab}</h3>
-                        </a>
-                      </Link>
+                      > */}
+                      <a className={styles.shows__bab}>
+                        <h3>{bab.bab}</h3>
+                      </a>
+                      {/* </Link> */}
                     </div>
                   );
                 })}
