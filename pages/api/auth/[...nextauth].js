@@ -22,7 +22,8 @@ export default NextAuth({
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
     }),
   ],
-//   pages: {
-//       signIn: "/masuk"
-//   }
+  pages: {
+    signIn: "/masuk",
+  },
+  secret: process.env.NEXTAUTH_URL,
 });
