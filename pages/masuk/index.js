@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import styles from "./masuk.module.scss";
 import cls from "classnames";
+import { getProviders, getSession } from "next-auth/react";
 
 import Head from "next/head";
 import Footer from "../../components/footer/footer";
@@ -15,8 +16,24 @@ import { UilUserCircle } from "@iconscout/react-unicons";
 import { UilLockAlt } from "@iconscout/react-unicons";
 import { UilEyeSlash } from "@iconscout/react-unicons";
 
-export default function Masuk() {
+Masuk.getInitialProps = async (context) => {
+  return {
+    providers: await getProviders(context),
+    sessions: await getSession(context),
+  };
+};
+
+export default function Masuk({ providers, sessions }) {
   const router = useRouter();
+
+  console.log({ providers, sessions })
+
+  useEffect(() => {
+    if (sessions) return router.push("/mata-pelajaran");
+  }, [sessions]);
+
+  // if (sessions) return null;
+
   const [usernameActive, setUsernameActive] = useState("");
   const [passwordActive, setPasswordActive] = useState("");
 
@@ -62,7 +79,7 @@ export default function Masuk() {
       <NavBar />
 
       <main>
-        <FormMasuk>
+        <FormMasuk provider={providers}>
           <form
             className={styles.forms__form}
             onSubmit={handleSubmit(onSubmit)}

@@ -1,8 +1,9 @@
 import styles from "./registration.module.scss";
 import cls from "classnames";
 import { useRouter } from "next/router";
+import { signIn } from "next-auth/react";
 
-const FormMasuk = ({ children }) => {
+const FormMasuk = ({ children, provider }) => {
   const router = useRouter();
 
   const HandleClickDaftar = (e) => {
@@ -23,19 +24,19 @@ const FormMasuk = ({ children }) => {
           <div className={styles.login_options}>
             <p className={styles.text}>Atau, masuk dengan...</p>
             <div className={styles.other_logins}>
-              <a>
+              <a onClick={() => signIn(provider.google.id)}>
                 <img
                   src="/static/img/google.webp"
                   alt="Logo Google FibonacciKu"
                 />
               </a>
-              <a>
+              <a onClick={() => signIn(provider.github.id)}>
                 <img
                   src="/static/img/GitHub.webp"
                   alt="Logo GitHub FibonacciKu"
                 />
               </a>
-              <a>
+              <a onClick={() => signIn(provider.facebook.id)}>
                 <img
                   src="/static/img/facebook.webp"
                   alt="Logo Facebook FibonacciKu"
