@@ -14,7 +14,6 @@ import { useSession, signOut } from "next-auth/react";
 
 const NavBar = (props) => {
   const { data: session, status } = useSession();
-  // console.log({ session, status });
 
   const router = useRouter();
   const [statusAktif, setStatusAktif] = useState(false);
@@ -75,7 +74,10 @@ const NavBar = (props) => {
         </div>
 
         <div className={cls(styles.header__register, "hide-for-mobile")}>
-          <div className={styles.no_user} style={{ display: "none" }}>
+          <div
+            className={styles.no_user}
+            style={session ? { display: "none" } : { display: "flex" }}
+          >
             <a
               className={cls("button", styles.header__cta)}
               onClick={() => router.push("/masuk")}
@@ -91,7 +93,10 @@ const NavBar = (props) => {
             </a>
           </div>
 
-          <div className={styles.menu_desktop}>
+          <div
+            className={styles.menu_desktop}
+            style={session ? { display: "flex" } : { display: "none" }}
+          >
             <div id="dropdowns" className={cls(styles.dropdowns, statusAktif)}>
               <a
                 id="drop_down"
@@ -100,7 +105,14 @@ const NavBar = (props) => {
                 onClick={handleDropdown}
               >
                 <Image
-                  src={"/static/img/default-icon.png"}
+                  src={
+                    session
+                      ? session.user.image
+                      : "/static/img/default-icon.png"
+                  }
+                  alt={`Logo ${
+                    session ? session.user.name : null
+                  } Profile FibonacciKu`}
                   className={styles.foto_profil}
                   width={48}
                   height={48}
@@ -126,7 +138,7 @@ const NavBar = (props) => {
                     <hr className={styles.line} />
                   </li>
                   <li className={styles.keluar_dropdown}>
-                    <a>
+                    <a onClick={() => signOut()}>
                       <UilSignout className={styles.uil} size={30} />
                       Keluar
                     </a>

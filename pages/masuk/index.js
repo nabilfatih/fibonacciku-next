@@ -28,8 +28,6 @@ Masuk.getInitialProps = async (context) => {
 export default function Masuk({ providers, sessions }) {
   const router = useRouter();
 
-  console.log({ providers, sessions });
-
   useEffect(() => {
     if (sessions) return router.push("/mata-pelajaran");
   }, [sessions]);
