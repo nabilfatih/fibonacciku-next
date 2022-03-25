@@ -1,43 +1,46 @@
 import styles from "./nav.module.scss";
 import cls from "classnames";
-import Link from "next/link";
 import Image from "next/image";
 
+import {
+  UilAngleDown,
+  UilUserCircle,
+  UilSetting,
+  UilSignout,
+} from "@iconscout/react-unicons";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import { useSession, signOut } from "next-auth/react";
 
 const NavBar = (props) => {
   const router = useRouter();
+  const [status, setStatus] = useState(null);
 
-  const HandleClickBeranda = (e) => {
-    e.preventDefault();
-    router.push("/beranda");
-  };
-  const HandleClickPelajaran = (e) => {
-    e.preventDefault();
-    router.push("/mata-pelajaran");
-  };
-  const HandleClickTentang = (e) => {
-    e.preventDefault();
-    router.push("/tentang");
-  };
-  const HandleClickKontak = (e) => {
-    e.preventDefault();
-    router.push("/kontak");
-  };
-  const HandleClickMasuk = (e) => {
-    e.preventDefault();
-    router.push("/masuk");
-  };
-  const HandleClickDaftar = (e) => {
-    e.preventDefault();
-    router.push("/daftar");
-  };
+  useEffect(() => {
+    const dropdowns = document.querySelector(".dropdowns");
+    const dropdownButton = document.querySelector("#drop_down");
+
+    dropdownButton.addEventListener("click", function () {
+      if (!dropdownButton && dropdowns != null) return;
+
+      status ? setStatus(null) : setStatus(styles.aktif);
+    });
+
+    document.addEventListener("click", function (event) {
+      if (!event.target.closest("#dropdowns")) {
+        setStatus(null);
+      }
+    });
+  }, []);
 
   return (
     <header className={styles.header}>
       <div className={cls(styles.overlay, "has-fade")}></div>
       <nav className="container container--pall flex flex-jc-sb flex-ai-c">
-        <a className={styles.header__logo} onClick={HandleClickBeranda}>
+        <a
+          className={styles.header__logo}
+          onClick={() => router.push("/beranda")}
+        >
           <Image
             src={"/static/img/logofibonama.svg"}
             alt="Logo FibonacciKu"
@@ -57,45 +60,81 @@ const NavBar = (props) => {
         </a>
 
         <div className={cls(styles.header__links, "hide-for-mobile")}>
-          <a onClick={HandleClickBeranda}>Beranda</a>
-          <a onClick={HandleClickPelajaran}>Mata Pelajaran</a>
-          <a onClick={HandleClickTentang}>Tentang</a>
-          <a onClick={HandleClickKontak}>Kontak</a>
+          <a onClick={() => router.push("/beranda")}>Beranda</a>
+          <a onClick={() => router.push("/mata-pelajaran")}>Mata Pelajaran</a>
+          <a onClick={() => router.push("/tentang")}>Tentang</a>
+          <a onClick={() => router.push("/kontak")}>Kontak</a>
           <a href="https://saweria.co/Fibonacciku" target={"_blank"}>
             Donasi
           </a>
         </div>
 
         <div className={cls(styles.header__register, "hide-for-mobile")}>
-          <a
-            className={cls("button", styles.header__cta)}
-            onClick={HandleClickMasuk}
-          >
-            Masuk
-          </a>
+          <div className={styles.no_user} style={{ display: "none" }}>
+            <a
+              className={cls("button", styles.header__cta)}
+              onClick={() => router.push("/masuk")}
+            >
+              Masuk
+            </a>
 
-          <a
-            className={cls("button", styles.header__cta)}
-            onClick={HandleClickDaftar}
-          >
-            Daftar
-          </a>
+            <a
+              className={cls("button", styles.header__cta)}
+              onClick={() => router.push("/daftar")}
+            >
+              Daftar
+            </a>
+          </div>
+
+          <div className={styles.menu_desktop}>
+            <div id="dropdowns" className={cls(styles.dropdowns, status)}>
+              <a id="drop_down" className={styles.drop_down} type="button">
+                <Image
+                  src={"/static/img/default-icon.png"}
+                  className={styles.foto_profil}
+                  width={48}
+                  height={48}
+                />
+                <UilAngleDown className={styles.uil} />
+              </a>
+
+              <ul className={styles.dropdown_menu}>
+                <li className={styles.profil_dropdown}>
+                  <a>
+                    <UilUserCircle className={styles.uil} size={30} />
+                    Profil
+                  </a>
+                </li>
+                <li className={styles.pengaturan_dropdown}>
+                  <a>
+                    <UilSetting className={styles.uil} size={30} />
+                    Pengaturan
+                  </a>
+                </li>
+                <li className={styles.garis_batas}>
+                  <hr className={styles.line} />
+                </li>
+                <li className={styles.keluar_dropdown}>
+                  <a>
+                    <UilSignout className={styles.uil} size={30} />
+                    Keluar
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div className={styles.display_username}>
+              <span>nabilfatih</span>
+            </div>
+          </div>
         </div>
       </nav>
 
       <div className={cls(styles.header__menu, "has-fade", "hide-for-desktop")}>
-        <Link href={"/"}>
-          <a>Beranda</a>
-        </Link>
-        <Link href={"/mata-pelajaran"}>
-          <a>Mata Pelajaran</a>
-        </Link>
-        <Link href={"/tentang"}>
-          <a>Tentang</a>
-        </Link>
-        <Link href={"/kontak"}>
-          <a>Kontak</a>
-        </Link>
+        <a onClick={() => router.push("/beranda")}>Beranda</a>
+        <a onClick={() => router.push("/mata-pelajaran")}>Mata Pelajaran</a>
+        <a onClick={() => router.push("/tentang")}>Tentang</a>
+        <a onClick={() => router.push("/kontak")}>Kontak</a>
         <a href="https://saweria.co/Fibonacciku" target={"_blank"}>
           Donasi
         </a>

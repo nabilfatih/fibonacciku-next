@@ -12,9 +12,11 @@ import Footer from "../../components/footer/footer";
 import NavBar from "../../components/nav/nav";
 import FormMasuk from "../../components/registration/form-masuk";
 
-import { UilUserCircle } from "@iconscout/react-unicons";
-import { UilLockAlt } from "@iconscout/react-unicons";
-import { UilEyeSlash } from "@iconscout/react-unicons";
+import {
+  UilUserCircle,
+  UilLockAlt,
+  UilEyeSlash,
+} from "@iconscout/react-unicons";
 
 Masuk.getInitialProps = async (context) => {
   return {
@@ -26,7 +28,7 @@ Masuk.getInitialProps = async (context) => {
 export default function Masuk({ providers, sessions }) {
   const router = useRouter();
 
-  console.log({ providers, sessions })
+  console.log({ providers, sessions });
 
   useEffect(() => {
     if (sessions) return router.push("/mata-pelajaran");

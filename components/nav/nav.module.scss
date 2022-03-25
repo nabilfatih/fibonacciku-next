@@ -170,30 +170,34 @@
     &__register {
         
         height: 44px;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-
-        @include breakpoint-down(medium) {
-            display: none;
+       
+        .no_user {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .menu-desktop {
+        .menu_desktop {
             display: flex;
             gap: 1rem;
             align-items: center;
 
-            .display-username {
-                font-size: $font-med;
-                color: $darkBlue;
+            .display_username {
+
+                span {
+                    font-size: $font-med;
+                    color: $darkBlue;
+                }
+                
             }
         }
 
         .dropdowns {
             position: relative;
             text-align: right;
+            cursor: pointer;
 
-            .drop-down {
+            .drop_down {
                 display: flex;
                 gap: 0.5rem;
                 align-items: center;
@@ -202,7 +206,7 @@
                     color: $darkBlue;
                 }
 
-                .foto-profil {
+                .foto_profil {
                     width: 48px;
                     height: 48px;
                     border-radius: 50%;
@@ -211,20 +215,25 @@
             }
 
             &.aktif {
-                .drop-down + .dropdown-menu {
+                pointer-events: none;
+                .drop_down + .dropdown_menu {
                     opacity: 1;
                     pointer-events: auto;
                     transform: translateY(0px);
                 }
 
-                .foto-profil {
+                .foto_profil {
                     border: 1px solid $verylightBlue;
                 }
             }
 
-            .dropdown-menu {
+            .dropdown_menu {
                 position: absolute;
-                background: $verylightBlue;
+                // background: $verylightBlue;
+                background: rgba( 239, 255, 253 );
+                box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+                backdrop-filter: blur( 4px );
+                -webkit-backdrop-filter: blur( 4px );
                 margin-top: 10px;
                 right: 0;
                 padding: 0;
@@ -237,7 +246,7 @@
                 list-style: none;
                 border-radius: 10px;
                 border: none;
-                box-shadow: 0 0 10px rgba(0,0,0,.2);
+                // box-shadow: 0 0 10px rgba(0,0,0,.2);
                 opacity: 0;
                 pointer-events: none;
                 transform: translateY(-10px);
@@ -258,38 +267,37 @@
 
                     .uil {
                         padding-right: 0.5rem;
-                        font-size: 1.5rem;
                     }
                     
                     font-size: 1rem;
                     
                 }
 
-                .profil-dropdown {
+                .profil_dropdown {
                     &:hover {
                         border-top-left-radius: 10px;
                         border-top-right-radius: 10px;
                         background-color: rgba(124, 124, 124, 0.2);
                     }
                 }
-                .pengaturan-dropdown {
+                .pengaturan_dropdown {
                     &:hover {
                         background-color: rgba(124, 124, 124, 0.2);
                     }
                 }
-                .keluar-dropdown {
+                .keluar_dropdown {
                     &:hover {
                         border-bottom-left-radius: 10px;
                         border-bottom-right-radius: 10px;
                         background-color: rgba(124, 124, 124, 0.2);
                     }
                 }
-                .garis-batas {
+                .garis_batas {
                     padding: 0;
-                    hr {
+                    .line {
                         margin: 0;
-                        height: 1px;
-                        color: black;
+                        border-width: 0.5px;
+                        border-color: $darkBlue;
                     }
                 }
             }

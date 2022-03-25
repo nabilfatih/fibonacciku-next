@@ -11,10 +11,12 @@ import Footer from "../../components/footer/footer";
 import NavBar from "../../components/nav/nav";
 import FormDaftar from "../../components/registration/form-daftar";
 
-import { UilAt } from "@iconscout/react-unicons";
-import { UilUser } from "@iconscout/react-unicons";
-import { UilUserCircle } from "@iconscout/react-unicons";
-import { UilLockAlt } from "@iconscout/react-unicons";
+import {
+  UilAt,
+  UilUser,
+  UilUserCircle,
+  UilLockAlt,
+} from "@iconscout/react-unicons";
 
 export default function Daftar() {
   const router = useRouter();
