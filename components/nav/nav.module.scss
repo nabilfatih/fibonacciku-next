@@ -215,7 +215,7 @@
             }
 
             &.aktif {
-                pointer-events: none;
+                // pointer-events: none;
                 .drop_down + .dropdown_menu {
                     opacity: 1;
                     pointer-events: auto;
@@ -247,10 +247,10 @@
                 border-radius: 10px;
                 border: none;
                 // box-shadow: 0 0 10px rgba(0,0,0,.2);
-                opacity: 0;
-                pointer-events: none;
-                transform: translateY(-10px);
-                transition: all 150ms ease-in-out;
+                // opacity: 0;
+                // pointer-events: none;
+                // transform: translateY(-10px);
+                transition: all 150ms ease;
 
                 li {
                     padding: 10px;

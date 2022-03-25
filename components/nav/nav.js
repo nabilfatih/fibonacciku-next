@@ -13,25 +13,26 @@ import { useRouter } from "next/router";
 import { useSession, signOut } from "next-auth/react";
 
 const NavBar = (props) => {
+  const { data: session, status } = useSession();
+  // console.log({ session, status });
+
   const router = useRouter();
-  const [status, setStatus] = useState(null);
+  const [statusAktif, setStatusAktif] = useState(false);
+
+  const handleDropdown = (e) => {
+    e.preventDefault();
+    setStatusAktif(!statusAktif);
+  };
 
   useEffect(() => {
-    const dropdowns = document.querySelector(".dropdowns");
-    const dropdownButton = document.querySelector("#drop_down");
-
-    dropdownButton.addEventListener("click", function () {
-      if (!dropdownButton && dropdowns != null) return;
-
-      status ? setStatus(null) : setStatus(styles.aktif);
-    });
-
-    document.addEventListener("click", function (event) {
-      if (!event.target.closest("#dropdowns")) {
-        setStatus(null);
-      }
-    });
-  }, []);
+    return () => {
+      document.addEventListener("click", function (event) {
+        if (!event.target.closest("#dropdowns")) {
+          setStatusAktif(false);
+        }
+      });
+    };
+  });
 
   return (
     <header className={styles.header}>
@@ -87,8 +88,13 @@ const NavBar = (props) => {
           </div>
 
           <div className={styles.menu_desktop}>
-            <div id="dropdowns" className={cls(styles.dropdowns, status)}>
-              <a id="drop_down" className={styles.drop_down} type="button">
+            <div id="dropdowns" className={cls(styles.dropdowns, statusAktif)}>
+              <a
+                id="drop_down"
+                className={styles.drop_down}
+                type="button"
+                onClick={handleDropdown}
+              >
                 <Image
                   src={"/static/img/default-icon.png"}
                   className={styles.foto_profil}
@@ -98,29 +104,31 @@ const NavBar = (props) => {
                 <UilAngleDown className={styles.uil} />
               </a>
 
-              <ul className={styles.dropdown_menu}>
-                <li className={styles.profil_dropdown}>
-                  <a>
-                    <UilUserCircle className={styles.uil} size={30} />
-                    Profil
-                  </a>
-                </li>
-                <li className={styles.pengaturan_dropdown}>
-                  <a>
-                    <UilSetting className={styles.uil} size={30} />
-                    Pengaturan
-                  </a>
-                </li>
-                <li className={styles.garis_batas}>
-                  <hr className={styles.line} />
-                </li>
-                <li className={styles.keluar_dropdown}>
-                  <a>
-                    <UilSignout className={styles.uil} size={30} />
-                    Keluar
-                  </a>
-                </li>
-              </ul>
+              {statusAktif && (
+                <ul className={styles.dropdown_menu}>
+                  <li className={styles.profil_dropdown}>
+                    <a>
+                      <UilUserCircle className={styles.uil} size={30} />
+                      Profil
+                    </a>
+                  </li>
+                  <li className={styles.pengaturan_dropdown}>
+                    <a>
+                      <UilSetting className={styles.uil} size={30} />
+                      Pengaturan
+                    </a>
+                  </li>
+                  <li className={styles.garis_batas}>
+                    <hr className={styles.line} />
+                  </li>
+                  <li className={styles.keluar_dropdown}>
+                    <a>
+                      <UilSignout className={styles.uil} size={30} />
+                      Keluar
+                    </a>
+                  </li>
+                </ul>
+              )}
             </div>
 
             <div className={styles.display_username}>
