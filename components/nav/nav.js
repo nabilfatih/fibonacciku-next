@@ -8,7 +8,7 @@ import {
   UilSetting,
   UilSignout,
 } from "@iconscout/react-unicons";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import { useSession, signOut } from "next-auth/react";
 
@@ -18,21 +18,25 @@ const NavBar = (props) => {
 
   const router = useRouter();
   const [statusAktif, setStatusAktif] = useState(false);
+  const dropdown = useRef(null);
 
-  const handleDropdown = (e) => {
+  const handleDropdown = async (e) => {
     e.preventDefault();
     setStatusAktif(!statusAktif);
   };
 
   useEffect(() => {
-    return () => {
-      document.addEventListener("click", function (event) {
-        if (!event.target.closest("#dropdowns")) {
-          setStatusAktif(false);
-        }
-      });
-    };
-  });
+    // only add the event listener when the dropdown is opened
+    if (!statusAktif) return;
+    function handleClick(event) {
+      if (dropdown.current && !dropdown.current.contains(event.target)) {
+        setStatusAktif(false);
+      }
+    }
+    window.addEventListener("click", handleClick);
+    // clean up
+    return () => window.removeEventListener("click", handleClick);
+  }, [statusAktif]);
 
   return (
     <header className={styles.header}>
@@ -105,7 +109,7 @@ const NavBar = (props) => {
               </a>
 
               {statusAktif && (
-                <ul className={styles.dropdown_menu}>
+                <ul className={styles.dropdown_menu} ref={dropdown}>
                   <li className={styles.profil_dropdown}>
                     <a>
                       <UilUserCircle className={styles.uil} size={30} />
