@@ -12,6 +12,8 @@
     align-items: center;
     overflow: hidden;
     background-color: white;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
 
     // &.forms_daftar {
     //     @include breakpoint-down(small) {
@@ -305,8 +307,8 @@
             overflow: hidden;
             padding-top: 0;
             padding-bottom: 0;
-            padding-right: 1.875rem;
-            padding-left: 1.875rem;
+            padding-right: 1rem;
+            padding-left: 1rem;
             font-size: 1em;
         }
 

@@ -26,6 +26,7 @@ export default function Daftar() {
   useEffect(() => {
     if (cookies?.user) {
       router.push("/mata-pelajaran");
+      toast.success("Anda sudah masuk 🥳");
     }
   }, [router]);
 
@@ -74,7 +75,7 @@ export default function Daftar() {
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
-      pauseOnHover: true,
+      pauseOnHover: false,
       draggable: true,
       progress: undefined,
     };
