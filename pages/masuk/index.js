@@ -113,6 +113,7 @@ export default function Masuk({ providers, sessions }) {
                   id="password"
                   name="password"
                   placeholder="password"
+                  autoComplete="off"
                   {...register("password")}
                   onFocus={handleFocus}
                   onBlur={handleBlur}

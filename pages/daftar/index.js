@@ -1,10 +1,14 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import styles from "./daftar.module.scss";
 import cls from "classnames";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { parseCookies } from "nookies";
+import { useSession, getSession } from "next-auth/react";
 
 import Head from "next/head";
 import Footer from "../../components/footer/footer";
@@ -18,8 +22,33 @@ import {
   UilLockAlt,
 } from "@iconscout/react-unicons";
 
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
+  return {
+    props: {
+      session,
+    },
+  };
+}
+
 export default function Daftar() {
   const router = useRouter();
+
+  const { data: session } = useSession();
+  const cookies = parseCookies;
+
+  useEffect(() => {
+    if (session) {
+      toast.success("Login Success");
+      router.push("/mata-pelajaran");
+    }
+
+    if (cookies?.user) {
+      router.push("/");
+    }
+  }, [router]);
+
   const [emailActive, setEmailActive] = useState("");
   const [namaActive, setNamaActive] = useState("");
   const [usernameActive, setUsernameActive] = useState("");
@@ -57,10 +86,27 @@ export default function Daftar() {
   const { register, handleSubmit, reset, formState } = useForm(formOptions);
   const { errors } = formState;
 
-  async function onSubmit(data) {
-    const formData = data;
+  async function onSubmit(datas) {
+    try {
+      const user = cookies?.user
+        ? JSON.parse(cookies.user)
+        : session?.user
+        ? session?.user
+        : "";
 
-    console.log(formData);
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      const { data } = await axios.post(`/api/register`, datas, config);
+
+      toast.success(data?.message);
+    } catch (error) {
+      console.log(error.response);
+      toast.error(error.response.data.error);
+    }
   }
 
   return (
@@ -136,6 +182,7 @@ export default function Daftar() {
                   id="password"
                   name="password"
                   placeholder="password"
+                  autoComplete="off"
                   {...register("password")}
                   onFocus={handleFocus}
                   onBlur={handleBlur}

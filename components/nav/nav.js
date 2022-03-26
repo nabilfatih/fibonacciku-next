@@ -12,8 +12,8 @@ import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import { useSession, signOut } from "next-auth/react";
 
-const NavBar = (props) => {
-  const { data: session, status } = useSession();
+const NavBar = () => {
+  const { data: session } = useSession();
 
   const router = useRouter();
   const [statusAktif, setStatusAktif] = useState(false);
@@ -25,7 +25,6 @@ const NavBar = (props) => {
   };
 
   useEffect(() => {
-    // only add the event listener when the dropdown is opened
     if (!statusAktif) return;
     function handleClick(event) {
       if (dropdown.current && !dropdown.current.contains(event.target)) {
@@ -33,7 +32,6 @@ const NavBar = (props) => {
       }
     }
     window.addEventListener("click", handleClick);
-    // clean up
     return () => window.removeEventListener("click", handleClick);
   }, [statusAktif]);
 
