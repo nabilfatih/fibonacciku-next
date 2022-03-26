@@ -37,7 +37,7 @@ export default function Masuk({ providers, sessions }) {
 
   useEffect(() => {
     if (session) {
-      toast.success("Anda sudah masuk");
+      toast.success("Anda sudah masuk 🥳");
       router.push("/mata-pelajaran");
     }
 
@@ -77,7 +77,7 @@ export default function Masuk({ providers, sessions }) {
   const formOptions = { resolver: yupResolver(validationSchema) };
   const { register, handleSubmit, reset, formState } = useForm(formOptions);
   const { errors } = formState;
-  
+
   async function onSubmit(data) {
     const formData = data;
 
@@ -92,6 +92,11 @@ export default function Masuk({ providers, sessions }) {
     };
 
     try {
+      if (!formData) {
+        toast.error("Masukkan data 😡", toastConfig);
+        return;
+      }
+
       const config = {
         headers: {
           "Content-Type": "application/json",

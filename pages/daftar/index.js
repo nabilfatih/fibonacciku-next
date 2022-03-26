@@ -40,7 +40,7 @@ export default function Daftar() {
 
   useEffect(() => {
     if (session) {
-      toast.success("Login Success");
+      toast.success("Anda sudah masuk 🥳");
       router.push("/mata-pelajaran");
     }
 
@@ -101,8 +101,7 @@ export default function Daftar() {
 
     try {
       if (!formData) {
-        toast.error("Masukkan data!", toastConfig);
-        // console.log("passwords do not match")
+        toast.error("Masukkan data 😡", toastConfig);
         return;
       }
       const user = cookies?.user
