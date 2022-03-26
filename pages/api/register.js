@@ -11,6 +11,10 @@ export default async (req, res) => {
     if (req.method === "POST") {
       const { email, nama, username, password } = req.body;
 
+      if (!email || !nama || !username || !password) {
+        return res.status(422).json({ error: "Masukkan data kamu 🤬" });
+      }
+
       const user = await User.findOne({
         $or: [{ email: email }, { username: username }],
       });
