@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
+import { toast } from "react-toastify";
 
 import Head from "next/head";
 import Footer from "../../components/footer/footer";
@@ -104,7 +105,7 @@ const Kontak = () => {
             </div>
 
             <div className={styles.kontak__button}>
-              <button type="submit">Kirim Pesan</button>
+              <a className="button" type="submit">Kirim Pesan</a>
               <p className={cls(styles.kontak__userMsg, styles.submit)}></p>
             </div>
           </form>

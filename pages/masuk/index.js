@@ -5,7 +5,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import styles from "./masuk.module.scss";
 import cls from "classnames";
-import { getProviders, getSession } from "next-auth/react";
+import { getProviders, getSession, useSession } from "next-auth/react";
+import axios from "axios";
+import cookie from "js-cookie";
+import { toast } from "react-toastify";
+import { parseCookies } from "nookies";
 
 import Head from "next/head";
 import Footer from "../../components/footer/footer";
@@ -27,6 +31,9 @@ Masuk.getInitialProps = async (context) => {
 
 export default function Masuk({ providers, sessions }) {
   const router = useRouter();
+
+  const cookies = parseCookies();
+  const { data: session } = useSession();
 
   useEffect(() => {
     if (sessions) return router.push("/mata-pelajaran");
@@ -67,7 +74,32 @@ export default function Masuk({ providers, sessions }) {
   async function onSubmit(data) {
     const formData = data;
 
-    console.log(formData);
+    const toastConfig = {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    };
+
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      const { data } = await axios.post(`/api/login`, formData, config);
+
+      toast.success(data.message, toastConfig);
+      cookie.set("token", data?.token);
+      cookie.set("user", JSON.stringify(data?.user));
+      router.push("/");
+    } catch (error) {
+      toast.error(error.response.data.error, toastConfig);
+    }
   }
 
   return (

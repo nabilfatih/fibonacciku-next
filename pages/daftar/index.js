@@ -87,7 +87,24 @@ export default function Daftar() {
   const { errors } = formState;
 
   async function onSubmit(datas) {
+    const formData = datas;
+
+    const toastConfig = {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    };
+
     try {
+      if (!datas) {
+        toast.error("Masukkan data!");
+        // console.log("passwords do not match")
+        return;
+      }
       const user = cookies?.user
         ? JSON.parse(cookies.user)
         : session?.user
@@ -100,12 +117,12 @@ export default function Daftar() {
         },
       };
 
-      const { data } = await axios.post(`/api/register`, datas, config);
+      const { data } = await axios.post(`/api/register`, formData, config);
 
-      toast.success(data?.message);
+      toast.success(data?.message, toastConfig);
     } catch (error) {
-      console.log(error.response);
-      toast.error(error.response.data.error);
+      // console.log(error.response);
+      toast.error(error.response.data.error, toastConfig);
     }
   }
 

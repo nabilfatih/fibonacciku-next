@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import validator from "validator";
 const Schema = mongoose.Schema;
 
 function randomAlphaNumeric() {
@@ -88,7 +89,7 @@ userSchema.index(
   {
     expireAfterSeconds: 1 * 24 * 60 * 60,
     partialFilterExpression: {
-      isVerified: false,
+      emailVerified: false,
     },
   }
 );
