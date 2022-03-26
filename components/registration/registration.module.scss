@@ -240,20 +240,26 @@
         padding: 0.9375rem 1.1875rem;
 
         .masuk {
-            max-width: 13.875rem;
+            position: relative;
+            width: 13.875rem;
+            height: 17.5rem;
 
             @include breakpoint-down(small) {
                 margin-top: 1rem;
-                max-width: 8.875rem;
+                width: 8.875rem;
+                height: 11rem;
             }
         }
 
         .daftar {
-            max-width: 16.875rem;
+            position: relative;
+            width: 16.875rem;
+            height: 17.5rem;
 
             @include breakpoint-down(small) {
                 margin-top: 1rem;
-                max-width: 11.875rem;
+                width: 11.875rem;
+                height: 12rem;
             }
         }
 

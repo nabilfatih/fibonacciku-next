@@ -23,11 +23,14 @@ const FormDaftar = ({ children }) => {
               Masuk
             </a>
           </div>
-          <img
-            className={styles.daftar}
-            src="/static/img/cartoon_nagakecil.webp"
-            alt="Logo Masuk FibonacciKu"
-          />
+          <div className={styles.daftar}>
+            <Image
+              src={"/static/img/cartoon_nagakecil.webp"}
+              alt="Logo Masuk FibonacciKu"
+              layout="fill"
+            />
+          </div>
+      
         </div>
 
         <div className={styles.forms__box}>

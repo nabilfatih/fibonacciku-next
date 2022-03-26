@@ -62,11 +62,13 @@ const FormMasuk = ({ children, provider }) => {
               Daftar
             </a>
           </div>
-          <img
-            className={styles.masuk}
-            src="/static/img/cartoon_ular.webp"
-            alt="Logo Daftar FibonacciKu"
-          />
+          <div className={styles.masuk}>
+            <Image
+              src={"/static/img/cartoon_ular.webp"}
+              alt="Logo Daftar FibonacciKu"
+              layout="fill"
+            />
+          </div>
         </div>
       </div>
     </section>
