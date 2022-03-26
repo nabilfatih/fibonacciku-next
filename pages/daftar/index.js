@@ -8,11 +8,9 @@ import cls from "classnames";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { parseCookies } from "nookies";
-import { useSession, getSession } from "next-auth/react";
+import { useSession, getSession, getProviders } from "next-auth/react";
 
 import Head from "next/head";
-import Footer from "../../components/footer/footer";
-import NavBar from "../../components/nav/nav";
 import FormDaftar from "../../components/registration/form-daftar";
 
 import {
@@ -24,10 +22,11 @@ import {
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
-
+  const providers = await getProviders();
   return {
     props: {
       session,
+      providers,
     },
   };
 }
@@ -35,15 +34,9 @@ export async function getServerSideProps(context) {
 export default function Daftar() {
   const router = useRouter();
 
-  const { data: session } = useSession();
   const cookies = parseCookies();
 
   useEffect(() => {
-    if (session) {
-      toast.success("Anda sudah masuk 🥳");
-      router.push("/mata-pelajaran");
-    }
-
     if (cookies?.user) {
       router.push("/mata-pelajaran");
     }
@@ -91,7 +84,7 @@ export default function Daftar() {
 
     const toastConfig = {
       position: "top-center",
-      autoClose: 2500,
+      autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -104,11 +97,6 @@ export default function Daftar() {
         toast.error("Masukkan data 😡", toastConfig);
         return;
       }
-      const user = cookies?.user
-        ? JSON.parse(cookies.user)
-        : session?.user
-        ? session?.user
-        : "";
 
       const config = {
         headers: {
@@ -120,7 +108,6 @@ export default function Daftar() {
 
       toast.success(data?.message, toastConfig);
     } catch (error) {
-      // console.log(error.response);
       toast.error(error.response.data.error, toastConfig);
     }
   }
@@ -130,8 +117,6 @@ export default function Daftar() {
       <Head>
         <title>Daftar | FibonacciKu</title>
       </Head>
-
-      {/* <NavBar /> */}
 
       <main>
         <FormDaftar>
@@ -213,8 +198,6 @@ export default function Daftar() {
           </form>
         </FormDaftar>
       </main>
-
-      {/* <Footer /> */}
     </div>
   );
 }

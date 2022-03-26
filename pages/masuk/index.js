@@ -12,8 +12,6 @@ import { toast } from "react-toastify";
 import { parseCookies } from "nookies";
 
 import Head from "next/head";
-import Footer from "../../components/footer/footer";
-import NavBar from "../../components/nav/nav";
 import FormMasuk from "../../components/registration/form-masuk";
 
 import {
@@ -22,46 +20,28 @@ import {
   UilEyeSlash,
 } from "@iconscout/react-unicons";
 
-// Masuk.getInitialProps = async (context) => {
-//   return {
-//     providers: await getProviders(context),
-//     sessions: await getSession(context),
-//   };
-// };
-
 export async function getServerSideProps(context) {
   const session = await getSession(context);
-  // console.log(session)
-  // console.log(await getProviders(context))
+  const providers = await getProviders();
   return {
     props: {
-      providers: await getProviders(),
       session,
+      providers,
     },
   };
 }
 
 export default function Masuk({ providers }) {
   const router = useRouter();
-
-  const cookies = parseCookies();
   const { data: session } = useSession();
-  // console.log(session);
-  // console.log(providers);
+  const cookies = parseCookies();
 
   useEffect(() => {
-    if (session) {
-      router.push("/mata-pelajaran");
-      toast.success("Anda sudah masuk 🥳");
-    }
-
     if (cookies?.user) {
       router.push("/mata-pelajaran");
       toast.success("Anda sudah masuk 🥳");
     }
-  }, [router, session]);
-
-  // if (session) return null;
+  }, [router]);
 
   const [usernameActive, setUsernameActive] = useState("");
   const [passwordActive, setPasswordActive] = useState("");
@@ -98,7 +78,7 @@ export default function Masuk({ providers }) {
 
     const toastConfig = {
       position: "top-center",
-      autoClose: 2500,
+      autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -134,8 +114,6 @@ export default function Masuk({ providers }) {
       <Head>
         <title>Masuk | FibonacciKu</title>
       </Head>
-
-      {/* <NavBar /> */}
 
       <main>
         <FormMasuk provider={providers}>
@@ -194,8 +172,6 @@ export default function Masuk({ providers }) {
           </form>
         </FormMasuk>
       </main>
-
-      {/* <Footer /> */}
     </div>
   );
 }

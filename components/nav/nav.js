@@ -13,19 +13,12 @@ import { useRouter } from "next/router";
 import { useSession, signOut } from "next-auth/react";
 import { parseCookies } from "nookies";
 import cookie from "js-cookie";
-import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-// import { loadUser } from "../redux/userAction";
 
 const NavBar = () => {
   const { data: session } = useSession();
   const cookies = parseCookies();
   const router = useRouter();
-  // const dispatch = useDispatch();
-  // const profile = useSelector((state) => state.profile);
-  // const { loading, error, dbUser } = profile;
-
-  // console.log(session)
 
   const user = cookies?.user
     ? JSON.parse(cookies.user)
@@ -33,16 +26,13 @@ const NavBar = () => {
     ? session?.user
     : "";
 
-  // console.log(user);
-
-  const [userState, setUserState] = useState("");
-  const [isLoggedIn, setisLoggedIn] = useState(true);
   const [statusAktif, setStatusAktif] = useState(false);
   const dropdown = useRef(null);
+  const [userState, setUserState] = useState("");
 
-  console.log(user)
-  // console.log(session)
-  // console.log(cookies)
+  useEffect(() => {
+    session ? setUserState(session.user) : setUserState(user);
+  }, [router, setUserState]);
 
   const handleLogout = async () => {
     if (session) signOut();
@@ -105,7 +95,7 @@ const NavBar = () => {
         </div>
 
         <div className={cls(styles.header__register, "hide-for-mobile")}>
-          {!user ? (
+          {!userState ? (
             <div className={styles.no_user}>
               <a
                 className={cls("button", styles.header__cta)}
@@ -134,8 +124,8 @@ const NavBar = () => {
                   onClick={handleDropdown}
                 >
                   <Image
-                    src={user.avatar?.path || user.image}
-                    alt={`Logo ${user.nama} Profile FibonacciKu`}
+                    src={userState.avatar.path}
+                    alt={`Logo ${userState.nama} Profile FibonacciKu`}
                     className={styles.foto_profil}
                     width={48}
                     height={48}
@@ -171,7 +161,7 @@ const NavBar = () => {
               </div>
 
               <div className={styles.display_username}>
-                <span>{user.username}</span>
+                <span>{userState.username}</span>
               </div>
             </div>
           )}
