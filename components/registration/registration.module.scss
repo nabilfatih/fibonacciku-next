@@ -241,7 +241,8 @@
             max-width: 13.875rem;
 
             @include breakpoint-down(small) {
-                display: none;
+                margin-top: 1rem;
+                max-width: 8.875rem;
             }
         }
 
@@ -249,7 +250,8 @@
             max-width: 16.875rem;
 
             @include breakpoint-down(small) {
-                display: none;
+                margin-top: 1rem;
+                max-width: 11.875rem;
             }
         }
 
