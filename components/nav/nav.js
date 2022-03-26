@@ -25,18 +25,24 @@ const NavBar = () => {
   // const profile = useSelector((state) => state.profile);
   // const { loading, error, dbUser } = profile;
 
+  // console.log(session)
+
   const user = cookies?.user
     ? JSON.parse(cookies.user)
     : session?.user
     ? session?.user
     : "";
 
-  console.log(user);
+  // console.log(user);
 
   const [userState, setUserState] = useState("");
   const [isLoggedIn, setisLoggedIn] = useState(true);
   const [statusAktif, setStatusAktif] = useState(false);
   const dropdown = useRef(null);
+
+  console.log(user)
+  // console.log(session)
+  // console.log(cookies)
 
   const handleLogout = async () => {
     if (session) signOut();
@@ -128,7 +134,7 @@ const NavBar = () => {
                   onClick={handleDropdown}
                 >
                   <Image
-                    src={user.avatar.path}
+                    src={user.avatar?.path || user.image}
                     alt={`Logo ${user.nama} Profile FibonacciKu`}
                     className={styles.foto_profil}
                     width={48}

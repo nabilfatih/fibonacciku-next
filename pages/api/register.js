@@ -34,7 +34,7 @@ export default async (req, res) => {
       console.log(newUser);
 
       const token = jwt.sign({ _id: newUser._id }, process.env.JWT_SECRET, {
-        expiresIn: "30d",
+        expiresIn: 60,
       });
 
       newUser.emailToken = token;

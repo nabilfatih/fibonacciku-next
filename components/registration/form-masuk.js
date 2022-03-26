@@ -2,6 +2,7 @@ import styles from "./registration.module.scss";
 import cls from "classnames";
 import { useRouter } from "next/router";
 import { signIn } from "next-auth/react";
+import Image from "next/image";
 
 const FormMasuk = ({ children, provider }) => {
   const router = useRouter();
@@ -17,11 +18,19 @@ const FormMasuk = ({ children, provider }) => {
 
       <div className={styles.forms__container}>
         <div className={styles.forms__box}>
+          <div className={styles.icon} onClick={() => router.push("/")}>
+            <Image
+              src={"/static/img/logofibonama.svg"}
+              width={256}
+              height={48}
+            />
+          </div>
+
           <h2>Masuk</h2>
 
           {children}
 
-          <div className={styles.login_options}>
+          {/* <div className={styles.login_options}>
             <p className={styles.text}>Atau, masuk dengan...</p>
             <div className={styles.other_logins}>
               <a onClick={() => signIn(provider.google.id)}>
@@ -43,7 +52,7 @@ const FormMasuk = ({ children, provider }) => {
                 />
               </a>
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div className={cls(styles.forms__imgBox, styles.sign_in_imgBox)}>

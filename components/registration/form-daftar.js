@@ -1,6 +1,7 @@
 import styles from "./registration.module.scss";
 import cls from "classnames";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const FormDaftar = ({ children }) => {
   const router = useRouter();
@@ -30,8 +31,15 @@ const FormDaftar = ({ children }) => {
         </div>
 
         <div className={styles.forms__box}>
+          <div className={styles.icon} onClick={() => router.push("/")}>
+            <Image
+              src={"/static/img/logofibonama.svg"}
+              width={256}
+              height={48}
+            />
+          </div>
           <h2>Daftar</h2>
-          <div className={styles.login_options}>
+          {/* <div className={styles.login_options}>
             <div className={styles.other_logins}>
               <a>
                 <img
@@ -53,7 +61,7 @@ const FormDaftar = ({ children }) => {
               </a>
             </div>
             <p className={styles.text}>Atau, daftar dengan email...</p>
-          </div>
+          </div> */}
 
           {children}
         </div>

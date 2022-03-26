@@ -91,7 +91,7 @@ export default function Daftar() {
 
     const toastConfig = {
       position: "top-center",
-      autoClose: 5000,
+      autoClose: 2500,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -131,7 +131,7 @@ export default function Daftar() {
         <title>Daftar | FibonacciKu</title>
       </Head>
 
-      <NavBar />
+      {/* <NavBar /> */}
 
       <main>
         <FormDaftar>
@@ -214,7 +214,7 @@ export default function Daftar() {
         </FormDaftar>
       </main>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

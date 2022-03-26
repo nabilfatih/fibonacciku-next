@@ -22,31 +22,46 @@ import {
   UilEyeSlash,
 } from "@iconscout/react-unicons";
 
-Masuk.getInitialProps = async (context) => {
-  return {
-    providers: await getProviders(context),
-    sessions: await getSession(context),
-  };
-};
+// Masuk.getInitialProps = async (context) => {
+//   return {
+//     providers: await getProviders(context),
+//     sessions: await getSession(context),
+//   };
+// };
 
-export default function Masuk({ providers, sessions }) {
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+  // console.log(session)
+  // console.log(await getProviders(context))
+  return {
+    props: {
+      providers: await getProviders(),
+      session,
+    },
+  };
+}
+
+export default function Masuk({ providers }) {
   const router = useRouter();
 
   const cookies = parseCookies();
   const { data: session } = useSession();
+  // console.log(session);
+  // console.log(providers);
 
   useEffect(() => {
     if (session) {
-      toast.success("Anda sudah masuk 🥳");
       router.push("/mata-pelajaran");
+      toast.success("Anda sudah masuk 🥳");
     }
 
     if (cookies?.user) {
       router.push("/mata-pelajaran");
+      toast.success("Anda sudah masuk 🥳");
     }
   }, [router, session]);
 
-  // if (sessions) return null;
+  // if (session) return null;
 
   const [usernameActive, setUsernameActive] = useState("");
   const [passwordActive, setPasswordActive] = useState("");
@@ -83,7 +98,7 @@ export default function Masuk({ providers, sessions }) {
 
     const toastConfig = {
       position: "top-center",
-      autoClose: 5000,
+      autoClose: 2500,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -120,7 +135,7 @@ export default function Masuk({ providers, sessions }) {
         <title>Masuk | FibonacciKu</title>
       </Head>
 
-      <NavBar />
+      {/* <NavBar /> */}
 
       <main>
         <FormMasuk provider={providers}>
@@ -180,7 +195,7 @@ export default function Masuk({ providers, sessions }) {
         </FormMasuk>
       </main>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
