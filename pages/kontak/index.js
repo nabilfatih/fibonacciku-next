@@ -1,8 +1,7 @@
-import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-import { toast } from "react-toastify";
+import { toast, Slide } from "react-toastify";
 import axios from "axios";
 
 import Head from "next/head";
@@ -14,8 +13,6 @@ import styles from "./kontak.module.scss";
 import cls from "classnames";
 
 const Kontak = () => {
-  const router = useRouter();
-
   const validationSchema = Yup.object().shape({
     nama: Yup.string().required("Masukkan nama"),
     email: Yup.string().required("Masukkan email").email("Email tidak valid"),
@@ -40,6 +37,8 @@ const Kontak = () => {
       progress: undefined,
     };
 
+    const loading = toast.loading("Mohon tunggu...", { transition: Slide });
+
     try {
       const config = {
         headers: {
@@ -48,8 +47,10 @@ const Kontak = () => {
       };
 
       const { data } = await axios.post("/api/mail", formData, config);
+      toast.dismiss(loading);
       toast.success(data.success, toastConfig);
     } catch (e) {
+      toast.dismiss(loading);
       toast.error(e.response.data.error, toastConfig);
     }
   }
