@@ -100,8 +100,8 @@ export default function Daftar() {
     };
 
     try {
-      if (!datas) {
-        toast.error("Masukkan data!");
+      if (!formData) {
+        toast.error("Masukkan data!", toastConfig);
         // console.log("passwords do not match")
         return;
       }

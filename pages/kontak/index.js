@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 import Head from "next/head";
 import Footer from "../../components/footer/footer";
@@ -17,9 +18,7 @@ const Kontak = () => {
 
   const validationSchema = Yup.object().shape({
     nama: Yup.string().required("Masukkan nama"),
-    email: Yup.string()
-      .required("Masukkan email")
-      .email("Email tidak valid"),
+    email: Yup.string().required("Masukkan email").email("Email tidak valid"),
     subjek: Yup.string().required("Masukkan subjek pesan"),
     pesan: Yup.string().required("Masukkan pesan"),
   });
@@ -31,14 +30,27 @@ const Kontak = () => {
   async function onSubmit(data) {
     const formData = data;
 
+    const toastConfig = {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    };
+
     try {
-      await fetch("/api/mail", {
-        method: "POST",
-        body: JSON.stringify(formData),
-      });
-      router.push("/kontak");
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      const { data } = await axios.post("/api/mail", formData, config);
+      toast.success(data.success, toastConfig);
     } catch (e) {
-      router.push("/");
+      toast.error(e.response.data.error, toastConfig);
     }
   }
 
@@ -105,7 +117,9 @@ const Kontak = () => {
             </div>
 
             <div className={styles.kontak__button}>
-              <a className="button" type="submit">Kirim Pesan</a>
+              <button className="button" type="submit">
+                Kirim Pesan
+              </button>
               <p className={cls(styles.kontak__userMsg, styles.submit)}></p>
             </div>
           </form>

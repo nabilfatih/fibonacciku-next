@@ -7,10 +7,10 @@ import absoluteUrl from "next-absolute-url";
 connectDB();
 
 export default async (req, res) => {
+  const { email, nama, username, password } = req.body;
+
   try {
     if (req.method === "POST") {
-      const { email, nama, username, password } = req.body;
-
       if (!email || !nama || !username || !password) {
         return res.status(422).json({ error: "Masukkan data kamu 🤬" });
       }
