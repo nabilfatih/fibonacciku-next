@@ -36,7 +36,7 @@ export default async (req, res) => {
     } else {
       return res.status(401).json({ error: "Invalid credentials 🤯" });
     }
-  } catch (err) {
-    console.log(err);
+  } catch (e) {
+    return res.status(401).json({ error: "Gagal masuk 😭" });
   }
 };

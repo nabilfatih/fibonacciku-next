@@ -27,7 +27,6 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      default: createFromPattern("xxxxxxxxxx"),
     },
     password: {
       type: String,
@@ -70,16 +69,8 @@ const userSchema = new Schema(
       required: false,
       default: null,
     },
-    isPassword: {
-      type: Boolean,
-      default: false,
-    },
     resetPasswordToken: String,
     resetPasswordExpires: Date,
-    isAdmin: {
-      type: Boolean,
-      default: false,
-    },
   },
   { timestamps: true }
 );

@@ -5,10 +5,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import styles from "./masuk.module.scss";
 import cls from "classnames";
-import { getProviders, getSession, useSession } from "next-auth/react";
 import axios from "axios";
 import cookie from "js-cookie";
-import { toast } from "react-toastify";
+import { Slide, toast, Zoom } from "react-toastify";
 import { parseCookies } from "nookies";
 
 import Head from "next/head";
@@ -20,20 +19,8 @@ import {
   UilEyeSlash,
 } from "@iconscout/react-unicons";
 
-export async function getServerSideProps(context) {
-  const session = await getSession(context);
-  const providers = await getProviders();
-  return {
-    props: {
-      session,
-      providers,
-    },
-  };
-}
-
-export default function Masuk({ providers }) {
+export default function Masuk() {
   const router = useRouter();
-  const { data: session } = useSession();
   const cookies = parseCookies();
 
   useEffect(() => {
@@ -86,6 +73,8 @@ export default function Masuk({ providers }) {
       progress: undefined,
     };
 
+    const loading = toast.loading("Mohon tunggu...", { transition: Slide });
+
     try {
       if (!formData) {
         toast.error("Masukkan data 😡", toastConfig);
@@ -102,10 +91,12 @@ export default function Masuk({ providers }) {
 
       cookie.set("token", data?.token);
       cookie.set("user", JSON.stringify(data?.user));
+      toast.dismiss(loading);
       await router.push("/mata-pelajaran");
       toast.success(data.message, toastConfig);
-    } catch (error) {
-      toast.error(error.response.data.error, toastConfig);
+    } catch (e) {
+      toast.dismiss(loading);
+      toast.error(e.response.data.error, toastConfig);
     }
   }
 
@@ -116,7 +107,7 @@ export default function Masuk({ providers }) {
       </Head>
 
       <main>
-        <FormMasuk provider={providers}>
+        <FormMasuk>
           <form
             className={styles.forms__form}
             onSubmit={handleSubmit(onSubmit)}

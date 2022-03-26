@@ -45,9 +45,11 @@ export default async (req, res) => {
 
       return res.status(200).json({
         message: `Email sent to ${newUser.email}, please check your email`,
-      })
+      });
+    } else {
+      return res.status(401).json({ error: "Invalid credentials 🤯" });
     }
   } catch (e) {
-    console.log(e);
+    return res.status(401).json({ error: "Gagal daftar 😭" });
   }
 };

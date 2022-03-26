@@ -6,9 +6,8 @@ import * as Yup from "yup";
 import styles from "./daftar.module.scss";
 import cls from "classnames";
 import axios from "axios";
-import { toast } from "react-toastify";
+import { toast, Slide } from "react-toastify";
 import { parseCookies } from "nookies";
-import { useSession, getSession, getProviders } from "next-auth/react";
 
 import Head from "next/head";
 import FormDaftar from "../../components/registration/form-daftar";
@@ -20,20 +19,8 @@ import {
   UilLockAlt,
 } from "@iconscout/react-unicons";
 
-export async function getServerSideProps(context) {
-  const session = await getSession(context);
-  const providers = await getProviders();
-  return {
-    props: {
-      session,
-      providers,
-    },
-  };
-}
-
 export default function Daftar() {
   const router = useRouter();
-
   const cookies = parseCookies();
 
   useEffect(() => {
@@ -92,6 +79,8 @@ export default function Daftar() {
       progress: undefined,
     };
 
+    const loading = toast.loading("Mohon tunggu...", { transition: Slide });
+
     try {
       if (!formData) {
         toast.error("Masukkan data 😡", toastConfig);
@@ -105,10 +94,11 @@ export default function Daftar() {
       };
 
       const { data } = await axios.post(`/api/register`, formData, config);
-
+      toast.dismiss(loading);
       toast.success(data?.message, toastConfig);
-    } catch (error) {
-      toast.error(error.response.data.error, toastConfig);
+    } catch (e) {
+      toast.dismiss(loading);
+      toast.error(e.response.data.error, toastConfig);
     }
   }
 
