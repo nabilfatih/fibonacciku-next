@@ -23,12 +23,12 @@ export default async (req, res) => {
           expiresIn: "7d",
         });
 
-        const { username, _id, name } = user;
+        const { username, _id, nama, avatar } = user;
 
         res.status(201).json({
           token,
-          user: { username, _id, name },
-          message: "login successful",
+          user: { username, _id, nama, avatar },
+          message: "Welcome to FibonacciKu 🤩",
         });
       } else {
         return res.status(401).json({ error: "Password salah 🤐" });

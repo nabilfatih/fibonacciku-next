@@ -33,15 +33,19 @@ export default async (req, res) => {
 
       console.log(newUser);
 
-      // const token = jwt.sign({ _id: newUser._id }, process.env.JWT_SECRET, {
-      //   expiresIn: "30d",
-      // });
+      const token = jwt.sign({ _id: newUser._id }, process.env.JWT_SECRET, {
+        expiresIn: "30d",
+      });
 
-      // newUser.emailToken = token;
-      // await newUser.save();
+      newUser.emailToken = token;
+      await newUser.save();
 
       // const { origin } = absoluteUrl(req);
       // const link = `${origin}/src/user/email/${token}`;
+
+      return res.status(200).json({
+        message: `Email sent to ${newUser.email}, please check your email`,
+      })
     }
   } catch (e) {
     console.log(e);

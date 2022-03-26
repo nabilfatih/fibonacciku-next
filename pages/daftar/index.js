@@ -36,7 +36,7 @@ export default function Daftar() {
   const router = useRouter();
 
   const { data: session } = useSession();
-  const cookies = parseCookies;
+  const cookies = parseCookies();
 
   useEffect(() => {
     if (session) {
@@ -45,7 +45,7 @@ export default function Daftar() {
     }
 
     if (cookies?.user) {
-      router.push("/");
+      router.push("/mata-pelajaran");
     }
   }, [router]);
 

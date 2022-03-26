@@ -36,8 +36,15 @@ export default function Masuk({ providers, sessions }) {
   const { data: session } = useSession();
 
   useEffect(() => {
-    if (sessions) return router.push("/mata-pelajaran");
-  }, [sessions]);
+    if (session) {
+      toast.success("Anda sudah masuk");
+      router.push("/mata-pelajaran");
+    }
+
+    if (cookies?.user) {
+      router.push("/mata-pelajaran");
+    }
+  }, [router, session]);
 
   // if (sessions) return null;
 
@@ -70,7 +77,7 @@ export default function Masuk({ providers, sessions }) {
   const formOptions = { resolver: yupResolver(validationSchema) };
   const { register, handleSubmit, reset, formState } = useForm(formOptions);
   const { errors } = formState;
-
+  
   async function onSubmit(data) {
     const formData = data;
 
@@ -93,10 +100,10 @@ export default function Masuk({ providers, sessions }) {
 
       const { data } = await axios.post(`/api/login`, formData, config);
 
-      toast.success(data.message, toastConfig);
       cookie.set("token", data?.token);
       cookie.set("user", JSON.stringify(data?.user));
-      router.push("/");
+      await router.push("/mata-pelajaran");
+      toast.success(data.message, toastConfig);
     } catch (error) {
       toast.error(error.response.data.error, toastConfig);
     }

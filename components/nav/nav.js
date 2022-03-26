@@ -11,13 +11,40 @@ import {
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import { useSession, signOut } from "next-auth/react";
+import { parseCookies } from "nookies";
+import cookie from "js-cookie";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+// import { loadUser } from "../redux/userAction";
 
 const NavBar = () => {
   const { data: session } = useSession();
-
+  const cookies = parseCookies();
   const router = useRouter();
+  // const dispatch = useDispatch();
+  // const profile = useSelector((state) => state.profile);
+  // const { loading, error, dbUser } = profile;
+
+  const user = cookies?.user
+    ? JSON.parse(cookies.user)
+    : session?.user
+    ? session?.user
+    : "";
+
+  console.log(user);
+
+  const [userState, setUserState] = useState("");
+  const [isLoggedIn, setisLoggedIn] = useState(true);
   const [statusAktif, setStatusAktif] = useState(false);
   const dropdown = useRef(null);
+
+  const handleLogout = async () => {
+    if (session) signOut();
+    cookie.remove("token");
+    cookie.remove("user");
+    await router.push("/masuk");
+    toast.success("Sampai jumpa lagi 👻");
+  };
 
   const handleDropdown = async (e) => {
     e.preventDefault();
@@ -72,83 +99,76 @@ const NavBar = () => {
         </div>
 
         <div className={cls(styles.header__register, "hide-for-mobile")}>
-          <div
-            className={styles.no_user}
-            style={session ? { display: "none" } : { display: "flex" }}
-          >
-            <a
-              className={cls("button", styles.header__cta)}
-              onClick={() => router.push("/masuk")}
-            >
-              Masuk
-            </a>
-
-            <a
-              className={cls("button", styles.header__cta)}
-              onClick={() => router.push("/daftar")}
-            >
-              Daftar
-            </a>
-          </div>
-
-          <div
-            className={styles.menu_desktop}
-            style={session ? { display: "flex" } : { display: "none" }}
-          >
-            <div id="dropdowns" className={cls(styles.dropdowns, statusAktif)}>
+          {!user ? (
+            <div className={styles.no_user}>
               <a
-                id="drop_down"
-                className={styles.drop_down}
-                type="button"
-                onClick={handleDropdown}
+                className={cls("button", styles.header__cta)}
+                onClick={() => router.push("/masuk")}
               >
-                <Image
-                  src={
-                    session
-                      ? session.user.image
-                      : "/static/img/default-icon.png"
-                  }
-                  alt={`Logo ${
-                    session ? session.user.name : null
-                  } Profile FibonacciKu`}
-                  className={styles.foto_profil}
-                  width={48}
-                  height={48}
-                />
-                <UilAngleDown className={styles.uil} />
+                Masuk
               </a>
 
-              {statusAktif && (
-                <ul className={styles.dropdown_menu} ref={dropdown}>
-                  <li className={styles.profil_dropdown}>
-                    <a>
-                      <UilUserCircle className={styles.uil} size={30} />
-                      Profil
-                    </a>
-                  </li>
-                  <li className={styles.pengaturan_dropdown}>
-                    <a>
-                      <UilSetting className={styles.uil} size={30} />
-                      Pengaturan
-                    </a>
-                  </li>
-                  <li className={styles.garis_batas}>
-                    <hr className={styles.line} />
-                  </li>
-                  <li className={styles.keluar_dropdown}>
-                    <a onClick={() => signOut()}>
-                      <UilSignout className={styles.uil} size={30} />
-                      Keluar
-                    </a>
-                  </li>
-                </ul>
-              )}
+              <a
+                className={cls("button", styles.header__cta)}
+                onClick={() => router.push("/daftar")}
+              >
+                Daftar
+              </a>
             </div>
+          ) : (
+            <div className={styles.menu_desktop}>
+              <div
+                id="dropdowns"
+                className={cls(styles.dropdowns, statusAktif)}
+              >
+                <a
+                  id="drop_down"
+                  className={styles.drop_down}
+                  type="button"
+                  onClick={handleDropdown}
+                >
+                  <Image
+                    src={user.avatar.path}
+                    alt={`Logo ${user.nama} Profile FibonacciKu`}
+                    className={styles.foto_profil}
+                    width={48}
+                    height={48}
+                  />
+                  <UilAngleDown className={styles.uil} />
+                </a>
 
-            <div className={styles.display_username}>
-              <span>nabilfatih</span>
+                {statusAktif && (
+                  <ul className={styles.dropdown_menu} ref={dropdown}>
+                    <li className={styles.profil_dropdown}>
+                      <a>
+                        <UilUserCircle className={styles.uil} size={30} />
+                        Profil
+                      </a>
+                    </li>
+                    <li className={styles.pengaturan_dropdown}>
+                      <a>
+                        <UilSetting className={styles.uil} size={30} />
+                        Pengaturan
+                      </a>
+                    </li>
+                    <li className={styles.garis_batas}>
+                      <hr className={styles.line} />
+                    </li>
+                    <li className={styles.keluar_dropdown}>
+                      <a onClick={handleLogout}>
+                        <UilSignout className={styles.uil} size={30} />
+                        Keluar
+                      </a>
+                    </li>
+                  </ul>
+                )}
+              </div>
+
+              <div className={styles.display_username}>
+                <span>{user.username}</span>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </nav>
 

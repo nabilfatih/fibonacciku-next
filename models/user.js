@@ -37,13 +37,13 @@ const userSchema = new Schema(
       type: String,
     },
     avatar: {
-      path: { type: String, default: "/img/profile/default-icon.png" },
+      path: { type: String, default: "/static/img/default-icon.png" },
       filename: String,
     },
     background: {
       type: String,
       required: false,
-      default: "/img/profile/default-background.png",
+      default: "/static/img/default-background.png",
     },
     bio: {
       type: String,
