@@ -13,7 +13,7 @@ export default function Reset() {
       .min(8, "Password min. 8 karakter")
       .required("Masukkan password"),
     confirmPassword: Yup.string()
-      .oneOf([Yup.ref("password"), null], "Passwords harus sama")
+      .oneOf([Yup.ref("password"), null], "Password harus sama")
       .required("Masukkan konfirmasi password"),
   });
   const formOptions = { resolver: yupResolver(validationSchema) };
@@ -62,9 +62,10 @@ export default function Reset() {
                       type="password"
                       id="password"
                       name="password"
-                      {...register("password")}
-                      autofocus
+                      autoFocus
                       placeholder="Password baru"
+                      autoComplete="off"
+                      {...register("password")}
                     />
                     <p className={styles.forgot__userMsg}>
                       {errors.password?.message}
@@ -77,10 +78,11 @@ export default function Reset() {
                     </label>
                     <input
                       type="password"
-                      id="confirm"
-                      name="confirm"
+                      id="confirmPassword"
+                      name="confirmPassword"
                       placeholder="Konfirmasi password"
-                      {...register("confirmation")}
+                      autoComplete="off"
+                      {...register("confirmPassword")}
                     />
                     <p className={styles.forgot__userMsg}>
                       {errors.confirmPassword?.message}
