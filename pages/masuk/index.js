@@ -89,8 +89,6 @@ export default function Masuk() {
 
       const { data } = await axios.post(`/api/login`, formData, config);
 
-      // var inFifteenMinutes = new Date(new Date().getTime() + 1 * 60 * 1000);
-
       cookie.set("token", data?.token);
       cookie.set("user", JSON.stringify(data?.user));
       toast.dismiss(loading);
