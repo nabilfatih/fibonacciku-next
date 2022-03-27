@@ -21,6 +21,7 @@ const FormMasuk = ({ children, provider }) => {
           <div className={styles.icon} onClick={() => router.push("/")}>
             <Image
               src={"/static/img/logofibonama.svg"}
+              alt="Logo FibonacciKu"
               width={256}
               height={48}
             />

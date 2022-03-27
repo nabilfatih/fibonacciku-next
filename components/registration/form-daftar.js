@@ -30,13 +30,13 @@ const FormDaftar = ({ children }) => {
               layout="fill"
             />
           </div>
-      
         </div>
 
         <div className={styles.forms__box}>
           <div className={styles.icon} onClick={() => router.push("/")}>
             <Image
               src={"/static/img/logofibonama.svg"}
+              alt="Logo FibonacciKu"
               width={256}
               height={48}
             />
