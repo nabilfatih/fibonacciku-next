@@ -34,6 +34,7 @@ const userSchema = new Schema(
     emailToken: String,
     emailVerified: {
       type: String,
+      default: false,
     },
     avatar: {
       path: { type: String, default: "/static/img/default-icon.png" },

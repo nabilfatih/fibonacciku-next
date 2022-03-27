@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
+import { Slide, toast, Zoom } from "react-toastify";
+import axios from "axios";
 
 import styles from "./lupa-password.module.scss";
 
@@ -20,7 +22,39 @@ export default function LupaPassword() {
 
   async function onSubmit(data) {
     const formData = data;
-    console.log(formData);
+
+    const toastConfig = {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    };
+
+    const loading = toast.loading("Mohon tunggu...", { transition: Slide });
+
+    try {
+      if (!formData) {
+        toast.error("Masukkan email 😡", toastConfig);
+        return;
+      }
+
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      const { data } = await axios.post(`/api/forget`, formData, config);
+
+      toast.dismiss(loading);
+      toast.success(data.success, toastConfig);
+    } catch (e) {
+      toast.dismiss(loading);
+      toast.error(e.response.data.error, toastConfig);
+    }
   }
 
   return (
@@ -41,6 +75,7 @@ export default function LupaPassword() {
                   alt="Logo FibonacciKu"
                   width={256}
                   height={48}
+                  onClick={() => router.push("/")}
                 />
               </div>
               <form
@@ -76,6 +111,8 @@ export default function LupaPassword() {
 
               <div className={styles.forgot__goBack}>
                 <a onClick={() => router.push("/masuk")}>Kembali untuk masuk</a>
+                <span>Atau...</span>
+                <a onClick={() => router.push("/daftar")}>Membuat akun baru</a>
               </div>
             </div>
           </div>

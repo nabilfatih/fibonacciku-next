@@ -29,15 +29,27 @@ const NavBar = () => {
   const [statusAktif, setStatusAktif] = useState(false);
   const dropdown = useRef(null);
   const [userState, setUserState] = useState("");
+  const [isLoggedIn, setisLoggedIn] = useState(true)
 
   useEffect(() => {
     session ? setUserState(session.user) : setUserState(user);
   }, [router, setUserState]);
 
+  useEffect(() => {
+    if (user) {
+      setisLoggedIn(true)
+    }
+    if (!user) {
+      router.push("/masuk")
+    }
+  }, [isLoggedIn])
+
   const handleLogout = async () => {
     if (session) signOut();
     cookie.remove("token");
     cookie.remove("user");
+    setisLoggedIn(false)
+    setUserState("")
     await router.push("/masuk");
     toast.success("Sampai jumpa lagi 👻");
   };
@@ -70,7 +82,7 @@ const NavBar = () => {
             src={"/static/img/logofibonama.svg"}
             alt="Logo FibonacciKu"
             layout="fill"
-            priority="true"
+            priority
           />
         </a>
 

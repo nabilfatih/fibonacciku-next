@@ -24,6 +24,7 @@ const FormMasuk = ({ children, provider }) => {
               alt="Logo FibonacciKu"
               width={256}
               height={48}
+              priority
             />
           </div>
 
@@ -68,6 +69,7 @@ const FormMasuk = ({ children, provider }) => {
               src={"/static/img/cartoon_ular.webp"}
               alt="Logo Daftar FibonacciKu"
               layout="fill"
+              priority
             />
           </div>
         </div>

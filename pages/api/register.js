@@ -31,10 +31,8 @@ export default async (req, res) => {
         password: HashedPassword,
       }).save();
 
-      console.log(newUser);
-
       const token = jwt.sign({ _id: newUser._id }, process.env.JWT_SECRET, {
-        expiresIn: "7d",
+        expiresIn: "3d"
       });
 
       newUser.emailToken = token;
@@ -50,6 +48,7 @@ export default async (req, res) => {
       return res.status(401).json({ error: "Invalid credentials 🤯" });
     }
   } catch (e) {
+    console.log(e)
     return res.status(401).json({ error: "Gagal daftar 😭" });
   }
 };
