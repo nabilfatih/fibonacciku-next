@@ -58,7 +58,7 @@ export default function LupaPassword() {
                     type="email"
                     id="email"
                     name="email"
-                    placeholder="email"
+                    placeholder="emailkamu@contoh.com"
                     autoFocus
                     {...register("email")}
                   />
