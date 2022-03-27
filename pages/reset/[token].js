@@ -1,6 +1,7 @@
 import Head from "next/head";
 import styles from "./reset.module.scss";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
@@ -8,6 +9,8 @@ import { Slide, toast, Zoom } from "react-toastify";
 import axios from "axios";
 
 export default function Reset() {
+  const router = useRouter();
+
   const validationSchema = Yup.object().shape({
     password: Yup.string()
       .min(8, "Password min. 8 karakter")
@@ -56,7 +59,7 @@ export default function Reset() {
                 <div className={styles.form_group}>
                   <div className={styles.forgot__password}>
                     <label htmlFor="description" className={styles.deskripsi}>
-                      Masukkan password baru kamu:
+                      Masukkan password baru:
                     </label>
                     <input
                       type="password"
@@ -74,7 +77,7 @@ export default function Reset() {
 
                   <div className={styles.forgot__password}>
                     <label htmlFor="description" className={styles.deskripsi}>
-                      Masukkan konfirmasi password baru kamu:
+                      Masukkan konfirmasi password baru:
                     </label>
                     <input
                       type="password"
@@ -96,6 +99,12 @@ export default function Reset() {
                   </button>
                 </div>
               </form>
+
+              <div className={styles.forgot__goBack}>
+                <a onClick={() => router.push("/lupa-password")}>
+                  Buat token lagi
+                </a>
+              </div>
             </div>
           </div>
         </section>
