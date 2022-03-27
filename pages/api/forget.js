@@ -49,7 +49,7 @@ export default async (req, res) => {
             <p>Kamu mendapatkan email ini karena kamu (atau orang lain) ingin mereset/merubah password kamu.</p>
             <p>Tolong klik link di bawah atau copy paste di browser kamu untuk mereset password:</p>
             <div>${link}</div>
-            <p>Jika kamu permintaan reset password bukan dari kamu, tolong abaikan email ini dan password kamu tidak akan berubah.</p>
+            <p>Jika permintaan reset password bukan dari kamu, tolong abaikan email ini dan password kamu tidak akan berubah.</p>
             <p>Terima Kasih, </p>
             <p>FibonacciKu</p>
         `,
