@@ -17,7 +17,7 @@ export default async (req, res) => {
       if (!user) {
         return res.status(404).json({ error: "Akun tidak ditemukan 😤" });
       }
-      if (user.emailVerified) {
+      if (!user.emailVerified) {
         return res.status(401).json({ error: "Akun belum diverifikasi 😤" });
       }
       const doMatch = await bcrypt.compare(password, user.password);
