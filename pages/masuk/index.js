@@ -7,7 +7,7 @@ import styles from "./masuk.module.scss";
 import cls from "classnames";
 import axios from "axios";
 import cookie from "js-cookie";
-import { Slide, toast, Zoom } from "react-toastify";
+import { Slide, toast } from "react-toastify";
 import { parseCookies } from "nookies";
 
 import Head from "next/head";

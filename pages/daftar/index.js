@@ -60,7 +60,7 @@ export default function Daftar() {
       .max(20, "Username max. 20 karakter")
       .required("Masukkan username"),
     password: Yup.string()
-      .min(9, "Password min. 8 karakter")
+      .min(8, "Password min. 8 karakter")
       .required("Masukkan Password"),
   });
   const formOptions = { resolver: yupResolver(validationSchema) };

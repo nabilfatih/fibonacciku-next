@@ -5,11 +5,12 @@ import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-import { Slide, toast, Zoom } from "react-toastify";
+import { Slide, toast } from "react-toastify";
 import axios from "axios";
 
 export default function Reset() {
   const router = useRouter();
+  const { token } = router.query;
 
   const validationSchema = Yup.object().shape({
     password: Yup.string()
@@ -26,7 +27,39 @@ export default function Reset() {
 
   async function onSubmit(data) {
     const formData = data;
-    console.log(formData);
+
+    const toastConfig = {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    };
+
+    const loading = toast.loading("Mohon tunggu...", { transition: Slide });
+
+    try {
+      if (!formData) {
+        toast.error("Masukkan data 😡", toastConfig);
+        return;
+      }
+
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      const { data } = await axios.put(`/api/reset/${token}`, formData, config);
+      toast.dismiss(loading);
+      await router.push("/masuk");
+      toast.success(data.success, toastConfig);
+    } catch (e) {
+      toast.dismiss(loading);
+      toast.error(e?.response?.data?.error, toastConfig);
+    }
   }
 
   return (
