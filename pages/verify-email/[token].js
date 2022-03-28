@@ -7,7 +7,6 @@ import axios from "axios";
 
 export default function VerifyEmail() {
   const router = useRouter();
-
   const { token } = router.query;
 
   async function onSubmit(e) {
