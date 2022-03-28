@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-import { Slide, toast, Zoom } from "react-toastify";
+import { Slide, toast } from "react-toastify";
 import axios from "axios";
 
 import styles from "./lupa-password.module.scss";

@@ -18,11 +18,16 @@ export default async (req, res) => {
       }
 
       const user = await User.findOne({
-        $or: [{ email: email }, { username: username }],
+        $or: [{ email: email }, { username: username.toLowerCase() }],
       });
 
       if (user) {
-        return res.status(422).json({ error: "Akun sudah ada 😤" });
+        if (email == user.email) {
+          return res.status(422).json({ error: "Email sudah dipakai 😤" });
+        }
+        if (username == user.username) {
+          return res.status(422).json({ error: "username sudah dipakai 😤" });
+        }
       }
 
       const HashedPassword = await bcrypt.hash(password, 12);
