@@ -24,7 +24,7 @@ const userSchema = new Schema(
     },
     emailToken: String,
     emailVerified: {
-      type: String,
+      type: Boolean,
       default: false,
     },
     avatar: {
