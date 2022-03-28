@@ -29,7 +29,7 @@ const NavBar = () => {
   const [statusAktif, setStatusAktif] = useState(false);
   const dropdown = useRef(null);
   const [userState, setUserState] = useState("");
-  const [isLoggedIn, setisLoggedIn] = useState(true)
+  const [isLoggedIn, setisLoggedIn] = useState(true);
 
   useEffect(() => {
     session ? setUserState(session.user) : setUserState(user);
@@ -37,19 +37,19 @@ const NavBar = () => {
 
   useEffect(() => {
     if (user) {
-      setisLoggedIn(true)
+      setisLoggedIn(true);
     }
     if (!user) {
-      router.push("/masuk")
+      router.push("/masuk");
     }
-  }, [isLoggedIn])
+  }, [isLoggedIn]);
 
   const handleLogout = async () => {
     if (session) signOut();
     cookie.remove("token");
     cookie.remove("user");
-    setisLoggedIn(false)
-    setUserState("")
+    setisLoggedIn(false);
+    setUserState("");
     await router.push("/masuk");
     toast.success("Sampai jumpa lagi 👻");
   };
@@ -69,6 +69,11 @@ const NavBar = () => {
     window.addEventListener("click", handleClick);
     return () => window.removeEventListener("click", handleClick);
   }, [statusAktif]);
+
+  const handleBeranda = (e) => {
+    e.preventDefault();
+    userState ? router.push("/beranda") : router.push("/");
+  };
 
   return (
     <header className={styles.header}>
@@ -97,7 +102,7 @@ const NavBar = () => {
         </a>
 
         <div className={cls(styles.header__links, "hide-for-mobile")}>
-          <a onClick={() => router.push("/beranda")}>Beranda</a>
+          <a onClick={handleBeranda}>Beranda</a>
           <a onClick={() => router.push("/mata-pelajaran")}>Mata Pelajaran</a>
           <a onClick={() => router.push("/tentang")}>Tentang</a>
           <a onClick={() => router.push("/kontak")}>Kontak</a>
@@ -181,7 +186,7 @@ const NavBar = () => {
       </nav>
 
       <div className={cls(styles.header__menu, "has-fade", "hide-for-desktop")}>
-        <a onClick={() => router.push("/beranda")}>Beranda</a>
+        <a onClick={handleBeranda}>Beranda</a>
         <a onClick={() => router.push("/mata-pelajaran")}>Mata Pelajaran</a>
         <a onClick={() => router.push("/tentang")}>Tentang</a>
         <a onClick={() => router.push("/kontak")}>Kontak</a>

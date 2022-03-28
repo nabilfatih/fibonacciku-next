@@ -17,6 +17,7 @@ import {
   UilUserCircle,
   UilLockAlt,
   UilEyeSlash,
+  UilEye,
 } from "@iconscout/react-unicons";
 
 export default function Masuk() {
@@ -32,6 +33,8 @@ export default function Masuk() {
 
   const [usernameActive, setUsernameActive] = useState("");
   const [passwordActive, setPasswordActive] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [typePassword, setTypePassword] = useState("password");
 
   const HandleCLickLupaPassword = (e) => {
     e.preventDefault();
@@ -50,6 +53,17 @@ export default function Masuk() {
     const target = e.target.id;
     if (target == "username") setUsernameActive("");
     if (target == "password") setPasswordActive("");
+  };
+
+  const handleShowPassword = (e) => {
+    e.preventDefault();
+    if (!showPassword) {
+      setShowPassword(true);
+      setTypePassword("text");
+    } else {
+      setShowPassword(false);
+      setTypePassword("password");
+    }
   };
 
   const validationSchema = Yup.object().shape({
@@ -137,7 +151,7 @@ export default function Masuk() {
               <div className={cls(styles.forms__field, passwordActive)}>
                 <UilLockAlt className={styles.icon} />
                 <input
-                  type="password"
+                  type={typePassword}
                   id="password"
                   name="password"
                   placeholder="password"
@@ -146,8 +160,12 @@ export default function Masuk() {
                   onFocus={handleFocus}
                   onBlur={handleBlur}
                 />
-                <div className={styles.eye_btn}>
-                  <UilEyeSlash className={styles.icon} />
+                <div className={styles.eye_btn} onClick={handleShowPassword}>
+                  {showPassword ? (
+                    <UilEye className={styles.icon} />
+                  ) : (
+                    <UilEyeSlash className={styles.icon} />
+                  )}
                 </div>
               </div>
               <p className={styles.forms__userMsg}>
