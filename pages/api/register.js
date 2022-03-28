@@ -29,7 +29,7 @@ export default async (req, res) => {
       const newUser = await new User({
         nama: nama,
         email: email,
-        username: username,
+        username: username.toLowerCase(),
         password: HashedPassword,
       }).save();
 
@@ -45,7 +45,7 @@ export default async (req, res) => {
 
       const msg = {
         from: "FibonacciKu <no-reply@fibonacciku.com>",
-        to: user.email,
+        to: email,
         subject: "FibonacciKu - Verifikasi Email",
         text: `
           Hai sobat Fibo! Terima kasih sudah mendaftar di FibonacciKu.

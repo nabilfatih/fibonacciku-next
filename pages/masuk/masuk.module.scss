@@ -33,6 +33,10 @@
             }
         }
 
+        input[id="username"] {
+            text-transform: lowercase;
+        }
+
         textarea:focus,
         input[type="text"]:focus,
         input[type="password"]:focus,
