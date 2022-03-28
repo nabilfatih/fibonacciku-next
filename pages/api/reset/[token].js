@@ -54,13 +54,11 @@ export default async (req, res) => {
         await sgMail.send(msg);
 
         return res.status(200).json({ success: "Berhasil ganti password 🤩" });
-      } else {
-        return res.status(404).json({ error: "Token sudah tidak berlaku 😭" });
       }
     } else {
       return res.status(401).json({ error: "Invalid credentials 🤯" });
     }
   } catch (e) {
-    return res.status(401).json({ error: "Gagal rubah password 😭" });
+    return res.status(401).json({ error: "Token sudah tidak berlaku 😭" });
   }
 };
