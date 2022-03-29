@@ -8,7 +8,6 @@ import cls from "classnames";
 import axios from "axios";
 import cookie from "js-cookie";
 import { Slide, toast } from "react-toastify";
-import { parseCookies } from "nookies";
 import Head from "next/head";
 import FormMasuk from "../../components/registration/form-masuk";
 import {
@@ -20,7 +19,6 @@ import {
 
 export default function Masuk() {
   const router = useRouter();
-  const cookies = parseCookies();
 
   const [usernameActive, setUsernameActive] = useState("");
   const [passwordActive, setPasswordActive] = useState("");
