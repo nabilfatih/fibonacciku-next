@@ -31,30 +31,6 @@ const FormMasuk = ({ children, provider }) => {
           <h2>Masuk</h2>
 
           {children}
-
-          {/* <div className={styles.login_options}>
-            <p className={styles.text}>Atau, masuk dengan...</p>
-            <div className={styles.other_logins}>
-              <a onClick={() => signIn(provider.google.id)}>
-                <img
-                  src="/static/img/google.webp"
-                  alt="Logo Google FibonacciKu"
-                />
-              </a>
-              <a onClick={() => signIn(provider.github.id)}>
-                <img
-                  src="/static/img/GitHub.webp"
-                  alt="Logo GitHub FibonacciKu"
-                />
-              </a>
-              <a onClick={() => signIn(provider.facebook.id)}>
-                <img
-                  src="/static/img/facebook.webp"
-                  alt="Logo Facebook FibonacciKu"
-                />
-              </a>
-            </div>
-          </div> */}
         </div>
 
         <div className={cls(styles.forms__imgBox, styles.sign_in_imgBox)}>

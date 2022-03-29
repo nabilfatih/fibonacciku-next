@@ -12,11 +12,11 @@ const FormDaftar = ({ children }) => {
   };
 
   return (
-    <section className={cls(styles.forms, styles.forms_daftar)}>
+    <section className={styles.forms}>
       <div className={styles.forms__image} />
 
       <div className={cls(styles.forms__container, styles.sign_up_form)}>
-        <div className={cls(styles.forms__imgBox, styles.sign_up_box)}>
+        <div className={cls(styles.forms__imgBox, styles.sign_up_imgBox)}>
           <div className={styles.sliding_link}>
             <p>Kamu sudah punya akun?</p>
             <a className={styles.sign_in_btn} onClick={HandleClickMasuk}>
@@ -44,29 +44,6 @@ const FormDaftar = ({ children }) => {
             />
           </div>
           <h2>Daftar</h2>
-          {/* <div className={styles.login_options}>
-            <div className={styles.other_logins}>
-              <a>
-                <img
-                  src="/static/img/google.webp"
-                  alt="Logo Google FibonacciKu"
-                />
-              </a>
-              <a>
-                <img
-                  src="/static/img/GitHub.webp"
-                  alt="Logo GitHub FibonacciKu"
-                />
-              </a>
-              <a>
-                <img
-                  src="/static/img/facebook.webp"
-                  alt="Logo Facebook FibonacciKu"
-                />
-              </a>
-            </div>
-            <p className={styles.text}>Atau, daftar dengan email...</p>
-          </div> */}
 
           {children}
         </div>

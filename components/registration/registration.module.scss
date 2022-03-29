@@ -14,17 +14,6 @@
     background-color: white;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
-
-    // &.forms_daftar {
-    //     @include breakpoint-down(small) {
-    //         min-height: 93vh;
-    //     }
-    // }
-
-    // @include breakpoint-down(small) {
-    //     min-height: 80vh;
-    //     margin-top: 80px;
-    // }
     
     &__image {
         content: "";
@@ -38,7 +27,7 @@
 
         @include breakpoint-down(medium){
             min-height: 105%;
-            background-size: 190%;
+            background-size: 195%;
         }
 
         @include breakpoint-down(small){
@@ -293,6 +282,8 @@
 
     .sign_in_imgBox {
         border-radius: 0 0.3125rem 0.3125rem 0;
+        padding-left: 1.3875rem;
+        padding-right: 1.3875rem;
     }
 
     .sign_up_imgBox {
@@ -313,8 +304,8 @@
             overflow: hidden;
             padding-top: 0;
             padding-bottom: 0;
-            padding-right: 1rem;
-            padding-left: 1rem;
+            padding-right: 3.75rem;
+            padding-left: 3.75rem;
             font-size: 1em;
         }
 
@@ -337,7 +328,6 @@
             padding-bottom: 0;
     
         }
-
 
         .sign_up_form {
             flex-direction: column-reverse;
