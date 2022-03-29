@@ -93,7 +93,8 @@ export default function Masuk() {
       };
 
       const { data } = await axios.post(`/api/login`, formData, config);
-
+      cookie.remove("token");
+      cookie.remove("user");
       cookie.set("token", data?.token);
       cookie.set("user", JSON.stringify(data?.user));
       toast.dismiss(loading);

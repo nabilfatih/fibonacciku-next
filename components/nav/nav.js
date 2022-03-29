@@ -1,7 +1,7 @@
 import styles from "./nav.module.scss";
 import cls from "classnames";
 import Image from "next/image";
-
+import { verifyToken } from "../../lib/utils";
 import {
   UilAngleDown,
   UilUserCircle,
@@ -11,37 +11,28 @@ import {
 } from "@iconscout/react-unicons";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
-import { useSession, signOut } from "next-auth/react";
 import { parseCookies } from "nookies";
 import cookie from "js-cookie";
 import { toast } from "react-toastify";
 
 const NavBar = () => {
-  const { data: session } = useSession();
   const cookies = parseCookies();
   const router = useRouter();
 
-  const user = cookies?.user
-    ? JSON.parse(cookies.user)
-    : session?.user
-    ? session?.user
-    : "";
+  const user = cookies?.user ? JSON.parse(cookies.user) : "";
 
   const [statusAktif, setStatusAktif] = useState(false);
   const dropdown = useRef(null);
   const [userState, setUserState] = useState("");
   const [iconStatus, setIconStatus] = useState(false);
-  const [isLoggedIn, setisLoggedIn] = useState(true);
 
   useEffect(() => {
-    session ? setUserState(session.user) : setUserState(user);
+    verifyToken(cookies.token) ? setUserState(user) : setUserState("");
   }, [router, setUserState]);
 
   const handleLogout = async () => {
-    if (session) signOut();
     cookie.remove("token");
     cookie.remove("user");
-    setisLoggedIn(false);
     setUserState("");
     await router.push("/masuk");
     toast.success("Sampai jumpa lagi 👻");
