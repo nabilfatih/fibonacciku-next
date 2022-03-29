@@ -35,15 +35,6 @@ const NavBar = () => {
     session ? setUserState(session.user) : setUserState(user);
   }, [router, setUserState]);
 
-  useEffect(() => {
-    if (user) {
-      setisLoggedIn(true);
-    }
-    if (!user) {
-      router.push("/masuk");
-    }
-  }, [isLoggedIn]);
-
   const handleLogout = async () => {
     if (session) signOut();
     cookie.remove("token");
@@ -79,10 +70,7 @@ const NavBar = () => {
     <header className={styles.header}>
       <div className={cls(styles.overlay, "has-fade")}></div>
       <nav className="container container--pall flex flex-jc-sb flex-ai-c">
-        <a
-          className={styles.header__logo}
-          onClick={() => router.push("/beranda")}
-        >
+        <a className={styles.header__logo} onClick={handleBeranda}>
           <Image
             src={"/static/img/logofibonama.svg"}
             alt="Logo FibonacciKu"

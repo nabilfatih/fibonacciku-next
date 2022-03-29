@@ -39,7 +39,7 @@ export default async (req, res) => {
       }).save();
 
       const token = jwt.sign({ _id: newUser._id }, process.env.JWT_SECRET, {
-        expiresIn: "3d",
+        expiresIn: "1d",
       });
 
       newUser.emailToken = token;

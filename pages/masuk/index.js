@@ -24,13 +24,6 @@ export default function Masuk() {
   const router = useRouter();
   const cookies = parseCookies();
 
-  useEffect(() => {
-    if (cookies?.user) {
-      router.push("/mata-pelajaran");
-      toast.success("Anda sudah masuk 🥳");
-    }
-  }, [router]);
-
   const [usernameActive, setUsernameActive] = useState("");
   const [passwordActive, setPasswordActive] = useState("");
   const [showPassword, setShowPassword] = useState(false);
