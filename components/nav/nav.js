@@ -7,6 +7,7 @@ import {
   UilUserCircle,
   UilSetting,
   UilSignout,
+  UilAngleUp,
 } from "@iconscout/react-unicons";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
@@ -29,6 +30,7 @@ const NavBar = () => {
   const [statusAktif, setStatusAktif] = useState(false);
   const dropdown = useRef(null);
   const [userState, setUserState] = useState("");
+  const [iconStatus, setIconStatus] = useState(false);
   const [isLoggedIn, setisLoggedIn] = useState(true);
 
   useEffect(() => {
@@ -48,6 +50,7 @@ const NavBar = () => {
   const handleDropdown = async (e) => {
     e.preventDefault();
     setStatusAktif(!statusAktif);
+    setIconStatus(!iconStatus);
   };
 
   useEffect(() => {
@@ -55,6 +58,7 @@ const NavBar = () => {
     function handleClick(event) {
       if (dropdown.current && !dropdown.current.contains(event.target)) {
         setStatusAktif(false);
+        setIconStatus(false);
       }
     }
     window.addEventListener("click", handleClick);
@@ -135,7 +139,11 @@ const NavBar = () => {
                     width={48}
                     height={48}
                   />
-                  <UilAngleDown className={styles.uil} />
+                  {iconStatus ? (
+                    <UilAngleUp className={styles.uil} />
+                  ) : (
+                    <UilAngleDown className={styles.uil} />
+                  )}
                 </a>
 
                 {statusAktif && (

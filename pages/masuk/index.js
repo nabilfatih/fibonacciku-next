@@ -9,10 +9,8 @@ import axios from "axios";
 import cookie from "js-cookie";
 import { Slide, toast } from "react-toastify";
 import { parseCookies } from "nookies";
-
 import Head from "next/head";
 import FormMasuk from "../../components/registration/form-masuk";
-
 import {
   UilUserCircle,
   UilLockAlt,
@@ -99,7 +97,7 @@ export default function Masuk() {
       cookie.set("token", data?.token);
       cookie.set("user", JSON.stringify(data?.user));
       toast.dismiss(loading);
-      await router.push("/mata-pelajaran");
+      await router.push(data.referer || "/beranda");
       toast.success(data.message, toastConfig);
     } catch (e) {
       toast.dismiss(loading);

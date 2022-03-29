@@ -7,6 +7,7 @@ connectDB();
 
 export default async (req, res) => {
   const { username, password } = req.body;
+  const referer = req.headers.referer;
 
   try {
     if (req.method === "POST") {
@@ -31,6 +32,7 @@ export default async (req, res) => {
         res.status(201).json({
           token,
           user: { username, _id, nama, avatar },
+          referer: referer,
           message: "Welcome to FibonacciKu 🤩",
         });
       } else {

@@ -8,10 +8,8 @@ import cls from "classnames";
 import axios from "axios";
 import { toast, Slide } from "react-toastify";
 import { parseCookies } from "nookies";
-
 import Head from "next/head";
 import FormDaftar from "../../components/registration/form-daftar";
-
 import {
   UilAt,
   UilUser,
