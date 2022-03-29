@@ -67,11 +67,6 @@ const KebijakanPrivasi = () => {
                     karena sudah otomatis diencrypt.
                   </li>
                   <li>
-                    Informasi personal dari data akun yang mungkin kamu
-                    hubungkan ke FibonacciKu (Contoh: Gmail, GitHub, Facebook)
-                    tidak disimpan oleh FibonacciKu.
-                  </li>
-                  <li>
                     Contoh data informasi ketika registrasi adalah: nama
                     lengkap, username, email.
                   </li>
@@ -130,16 +125,6 @@ const KebijakanPrivasi = () => {
               <div className={styles.kebijakan__isi}>
                 <ul>
                   <li>Batas minimal data informasi yang harus kamu berikan.</li>
-                  <li>
-                    Dapat memilih apakah kamu ingin menghubungkan akun kamu ke
-                    sosial media (Contoh: Instagram, GitHub, Twitter).
-                  </li>
-                  <li>
-                    Untuk membuat akun memakai GitHub, kamu dapat masuk tanpa
-                    harus memakai email. Karena di GitHub, kamu dapat
-                    menyembunyikan informasi email kamu. Tapi, mungkin ada
-                    beberapa fitur FibonacciKu yang tidak dapat kamu nikmati.
-                  </li>
                   <li>
                     Merubah dan menghapus data informasi kamu melalui pengaturan
                     akun.

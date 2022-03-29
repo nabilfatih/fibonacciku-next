@@ -56,10 +56,7 @@ const SyaratKetentuan = () => {
                   </li>
                   <li>
                     Untuk anak dibawah 13 tahun, disarankan untuk didampingi
-                    oleh orang tuanya untuk membuat akun di FibonacciKu. Dan
-                    jika ingin menggunakan Gmail, GitHub, atau Facebook untuk
-                    mendaftar, mohon untuk melihat syarat ketentuan aplikasi
-                    tersebut.
+                    oleh orang tuanya untuk membuat akun di FibonacciKu.
                   </li>
                   <li>
                     Kamu harus memasukkan data email yang valid dan informasi
