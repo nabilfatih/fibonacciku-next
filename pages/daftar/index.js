@@ -69,7 +69,7 @@ export default function Daftar() {
 
   async function onSubmit(datas) {
     const formData = datas;
-    console.log(formData)
+    console.log(formData);
 
     const toastConfig = {
       position: "top-center",
@@ -185,6 +185,18 @@ export default function Daftar() {
                 {errors.password?.message}
               </p>
             </div>
+
+            <span className={styles.forms__syarat}>
+              Dengan mendaftar, kamu setuju dengan{" "}
+              <a onClick={() => router.push("/syarat-ketentuan")}>
+                syarat ketentuan
+              </a>{" "}
+              &{" "}
+              <a onClick={() => router.push("/kebijakan-privasi")}>
+                kebijakan privasi
+              </a>{" "}
+              FibonacciKu
+            </span>
 
             <button className={styles.forms__submit_btn}>Daftar</button>
           </form>

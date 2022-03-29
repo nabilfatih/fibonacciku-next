@@ -62,7 +62,7 @@ export default async (req, res) => {
           <p>Terima kasih sudah mendaftar di FibonacciKu.</p>
           <p>Tolong klik link di bawah atau copy paste di browser kamu untuk verifikasi akun kamu.</p>
           <div>${link}</div>
-          <p>Email verifikasi ini hanya dikirim 1 kali, jangan sampai hilang email ini. Jika hilang, maka kalian harus menunggu selama 3 hari untuk membuat ulang akun FibonacciKu dengan email yang sama.</p>
+          <p>Email verifikasi ini hanya dikirim 1 kali, jangan sampai hilang email ini. Jika hilang, maka kalian harus menunggu selama 1 hari untuk membuat ulang akun FibonacciKu dengan email yang sama.</p>
           <p>Terima Kasih, </p>
           <p>FibonacciKu</p>
         `,

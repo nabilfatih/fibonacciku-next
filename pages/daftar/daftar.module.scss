@@ -89,6 +89,15 @@
         }
     }
 
+    &__syarat {
+        font-size: 0.67em;
+
+        a {
+            cursor: pointer;
+            color: #0065ff;
+        }
+    }
+
     &__submit_btn {
         background: linear-gradient(to right, $greenTeal, $blue);
         color: black;
