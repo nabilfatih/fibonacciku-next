@@ -150,7 +150,7 @@ const NavBar = () => {
                       </a>
                     </li>
                     <li className={styles.pengaturan_dropdown}>
-                      <a>
+                      <a onClick={() => router.push("/pengaturan/akun")}>
                         <UilSetting className={styles.uil} size={30} />
                         Pengaturan
                       </a>
