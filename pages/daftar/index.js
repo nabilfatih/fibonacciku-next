@@ -21,13 +21,6 @@ export default function Daftar() {
   const router = useRouter();
   const cookies = parseCookies();
 
-  useEffect(() => {
-    if (cookies?.user) {
-      router.push("/mata-pelajaran");
-      toast.success("Anda sudah masuk 🥳");
-    }
-  }, [router]);
-
   const [emailActive, setEmailActive] = useState("");
   const [namaActive, setNamaActive] = useState("");
   const [usernameActive, setUsernameActive] = useState("");

@@ -1,7 +1,6 @@
 import styles from "./nav.module.scss";
 import cls from "classnames";
 import Image from "next/image";
-import { verifyToken } from "../../lib/utils";
 import {
   UilAngleDown,
   UilUserCircle,
@@ -20,15 +19,16 @@ const NavBar = () => {
   const router = useRouter();
 
   const user = cookies?.user ? JSON.parse(cookies.user) : "";
+  const token = cookies?.token;
 
   const [statusAktif, setStatusAktif] = useState(false);
   const dropdown = useRef(null);
   const [userState, setUserState] = useState("");
   const [iconStatus, setIconStatus] = useState(false);
 
-  useEffect(() => {
-    verifyToken(cookies.token) ? setUserState(user) : setUserState("");
-  }, [router, setUserState]);
+  useEffect(async () => {
+    user && token ? setUserState(user) : setUserState("");
+  }, [setUserState]);
 
   const handleLogout = async () => {
     cookie.remove("token");
@@ -140,7 +140,11 @@ const NavBar = () => {
                 {statusAktif && (
                   <ul className={styles.dropdown_menu} ref={dropdown}>
                     <li className={styles.profil_dropdown}>
-                      <a>
+                      <a
+                        onClick={() =>
+                          router.push(`/fibo/${userState.username}`)
+                        }
+                      >
                         <UilUserCircle className={styles.uil} size={30} />
                         Profil
                       </a>

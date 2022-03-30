@@ -7,6 +7,7 @@ import styles from "./masuk.module.scss";
 import cls from "classnames";
 import axios from "axios";
 import cookie from "js-cookie";
+import { parseCookies } from "nookies";
 import { Slide, toast } from "react-toastify";
 import Head from "next/head";
 import FormMasuk from "../../components/registration/form-masuk";
@@ -18,7 +19,25 @@ import {
 } from "@iconscout/react-unicons";
 
 export default function Masuk() {
+  const cookies = parseCookies();
   const router = useRouter();
+
+  const user = cookies?.user ? JSON.parse(cookies.user) : "";
+  const token = cookies.token ? cookies.token : null;
+
+  useEffect(async () => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const { data } = await axios.put(`/api/verify`, { token: token }, config);
+    const tokens = data.userId;
+    if (!tokens || !user) {
+      cookie.remove("user");
+      cookie.remove("token");
+    }
+  }, [router]);
 
   const [usernameActive, setUsernameActive] = useState("");
   const [passwordActive, setPasswordActive] = useState("");
@@ -83,16 +102,12 @@ export default function Masuk() {
         toast.error("Masukkan data 😡", toastConfig);
         return;
       }
-
       const config = {
         headers: {
           "Content-Type": "application/json",
         },
       };
-
       const { data } = await axios.post(`/api/login`, formData, config);
-      cookie.remove("token");
-      cookie.remove("user");
       cookie.set("token", data?.token);
       cookie.set("user", JSON.stringify(data?.user));
       toast.dismiss(loading);
