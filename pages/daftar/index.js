@@ -60,7 +60,6 @@ export default function Daftar() {
 
   async function onSubmit(datas) {
     const formData = datas;
-    console.log(formData);
 
     const toastConfig = {
       position: "top-center",
