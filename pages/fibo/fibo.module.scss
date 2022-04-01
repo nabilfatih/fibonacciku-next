@@ -11,7 +11,7 @@
 
     background-color: $verylightBlue;
     overflow: hidden;
-    padding-bottom: 2rem;
+    // padding-bottom: 2rem;
 
     &__background {
         position: relative;
@@ -39,7 +39,8 @@
         text-align: left;
 
         @include breakpoint-down(small){
-            padding-top: 0.5rem;
+            padding-top: 0;
+            padding-bottom: 0;
             padding-left: 0;
             padding-right: 0;
             flex-direction: column;
