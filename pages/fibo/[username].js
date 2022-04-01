@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import styles from "./fibo.module.scss";
 import Image from "next/image";
 import cls from "classnames";
+import { UilSetting } from "@iconscout/react-unicons";
 
 export default function Profile() {
   const router = useRouter();
@@ -64,9 +65,49 @@ export default function Profile() {
                 <div className={styles.profil__username}>
                   <div className={styles.user}>
                     <h2>{username}</h2>
+                    <a>
+                      <UilSetting className={styles.uil} size="30"/>
+                    </a>
+                  </div>
+
+                  <div className={styles.nama}>
+                    <h3>Nabil Akbarazzima Fatih</h3>
+                    <p>bla bla bla bla</p>
+                    <a
+                      href="https://www.fibonacciku.com"
+                      className={styles.website}
+                      target={"_blank"}
+                    >
+                      fibonacciku.com
+                    </a>
+                    <div className={styles.link}>
+                      <a target={"_blank"}>
+                        <Image
+                          src={"/static/img/instagram-icon.png"}
+                          alt="Logo Instagram FibonacciKu"
+                          width={24}
+                          height={24}
+                        />
+                      </a>
+                      <a target={"_blank"}>
+                        <Image
+                          src={"/static/img/github-icon.png"}
+                          alt="Logo Github FibonacciKu"
+                          width={24}
+                          height={24}
+                        />
+                      </a>
+                      <a target={"_blank"}>
+                        <Image
+                          src={"/static/img/twitter-icon.png"}
+                          alt="Logo Twitter FibonacciKu"
+                          width={24}
+                          height={24}
+                        />
+                      </a>
+                    </div>
                   </div>
                 </div>
-
               </div>
             </div>
           </div>

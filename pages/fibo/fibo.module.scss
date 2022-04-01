@@ -110,7 +110,7 @@
 
     &__username {
         display: flex;
-        gap: 2.5rem;
+        gap: 2rem;
         flex-direction: column;
         justify-content: center;
         text-align: left;
@@ -133,7 +133,7 @@
             }
 
             .uil {
-                font-size: 2rem;
+                margin-top: 0.35rem;
                 color: $darkBlue;
             }
         }
@@ -168,6 +168,7 @@
                 }
 
                 a {
+                    cursor: pointer;
                     border: 1px solid #ccc;
                     padding: 0.6875rem 2rem;
                     border-radius: 0.75rem;
@@ -176,10 +177,6 @@
                     align-items: center;
                     margin-right: 0.5rem;
                     background-color: white;
-
-                    img {
-                        width: 1.5rem;
-                    }
                 }
 
                 a:hover {
