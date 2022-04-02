@@ -33,8 +33,8 @@ const NavBar = () => {
   const handleLogout = async () => {
     cookie.remove("token");
     cookie.remove("user");
-    setUserState("");
     await router.push("/masuk");
+    setUserState("");
     toast.success("Sampai jumpa lagi 👻");
   };
 
