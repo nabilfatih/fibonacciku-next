@@ -10,7 +10,7 @@
 .pengaturan {
 
     // background-color: $cream;
-    padding-top: 3rem;
+    padding-top: 2.75rem;
     padding-bottom: 3rem;
     padding-left: 18rem;
     padding-right: 18rem;
@@ -153,8 +153,12 @@
         flex-direction: column;
         background-color: $verylightBlue;
         border-radius: .5rem;
-        padding: .5rem 1rem .5rem;
+        padding: .5rem 1rem .25rem;
         margin-bottom: 2rem;
+
+        .uil {
+            cursor: pointer;
+        }
 
         .foto_profil {
             max-width: 20rem;

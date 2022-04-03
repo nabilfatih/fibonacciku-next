@@ -8,17 +8,58 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
+import { UilEyeSlash, UilEye } from "@iconscout/react-unicons";
+import axios from "axios";
+import { Slide, toast } from "react-toastify";
 
 export default function PengaturanPassword() {
   const router = useRouter();
 
+  const [showPasswordLama, setShowPasswordLama] = useState(false);
+  const [showPasswordBaru, setShowPasswordBaru] = useState(false);
+  const [showPasswordKonfirmasi, setShowPasswordKonfirmasi] = useState(false);
+  const [showIconLama, setShowIconLama] = useState("password");
+  const [showIconBaru, setShowIconBaru] = useState("password");
+  const [showIconKonfirmasi, setShowIconKonfirmasi] = useState("password");
+
+  const handleShowPasswordLama = (e) => {
+    e.preventDefault();
+    if (!showPasswordLama) {
+      setShowPasswordLama(true);
+      setShowIconLama("text");
+    } else {
+      setShowPasswordLama(false);
+      setShowIconLama("password");
+    }
+  };
+  const handleShowPasswordBaru = (e) => {
+    e.preventDefault();
+    if (!showPasswordBaru) {
+      setShowPasswordBaru(true);
+      setShowIconBaru("text");
+    } else {
+      setShowPasswordBaru(false);
+      setShowIconBaru("password");
+    }
+  };
+  const handleShowPasswordKonfirmasi = (e) => {
+    e.preventDefault();
+    if (!showPasswordKonfirmasi) {
+      setShowPasswordKonfirmasi(true);
+      setShowIconKonfirmasi("text");
+    } else {
+      setShowPasswordKonfirmasi(false);
+      setShowIconKonfirmasi("password");
+    }
+  };
+
   const validationSchema = Yup.object().shape({
     passwordLama: Yup.string().required("Masukkan password lama"),
-    password: Yup.string()
+    passwordBaru: Yup.string()
       .min(8, "Password min. 8 karakter")
       .required("Masukkan password"),
-    confirmPassword: Yup.string()
-      .oneOf([Yup.ref("password"), null], "Password harus sama")
+    passwordKonfirmasi: Yup.string()
+      .oneOf([Yup.ref("passwordBaru"), null], "Password harus sama")
       .required("Masukkan konfirmasi password"),
   });
   const formOptions = { resolver: yupResolver(validationSchema) };
@@ -66,10 +107,96 @@ export default function PengaturanPassword() {
                     </div>
 
                     <div className={styles.pengaturan__konten}>
-                      <label></label>
-                      <input />
-                      <div />
-                      <p className={styles.pengaturan__userMsg}>{errors.passwordLama?.message}</p>
+                      <label className={styles.pengaturan__label}>
+                        Password Lama
+                      </label>
+                      <input
+                        className={styles.pengaturan__input}
+                        type={showIconLama}
+                        id="passwordLama"
+                        name="passwordLama"
+                        {...register("passwordLama")}
+                      />
+                      <div>
+                        {!showPasswordLama ? (
+                          <UilEyeSlash
+                            size={20}
+                            onClick={handleShowPasswordLama}
+                            className={styles.uil}
+                          />
+                        ) : (
+                          <UilEye
+                            size={20}
+                            onClick={handleShowPasswordLama}
+                            className={styles.uil}
+                          />
+                        )}
+                      </div>
+                      <p className={styles.pengaturan__userMsg}>
+                        {errors.passwordLama?.message}
+                      </p>
+                    </div>
+
+                    <div className={styles.pengaturan__konten}>
+                      <label className={styles.pengaturan__label}>
+                        Password Baru
+                      </label>
+                      <input
+                        className={styles.pengaturan__input}
+                        type={showIconBaru}
+                        id="passwordBaru"
+                        name="passwordBaru"
+                        {...register("passwordBaru")}
+                      />
+                      <div>
+                        {!showPasswordBaru ? (
+                          <UilEyeSlash
+                            size={20}
+                            onClick={handleShowPasswordBaru}
+                            className={styles.uil}
+                          />
+                        ) : (
+                          <UilEye
+                            size={20}
+                            onClick={handleShowPasswordBaru}
+                            className={styles.uil}
+                          />
+                        )}
+                      </div>
+                      <p className={styles.pengaturan__userMsg}>
+                        {errors.passwordBaru?.message}
+                      </p>
+                    </div>
+
+                    <div className={styles.pengaturan__konten}>
+                      <label className={styles.pengaturan__label}>
+                        Konfirmasi Password
+                      </label>
+                      <input
+                        className={styles.pengaturan__input}
+                        type={showIconKonfirmasi}
+                        id="passwordKonfirmasi"
+                        name="passwordKonfirmasi"
+                        {...register("passwordKonfirmasi")}
+                      />
+                      <div>
+                        {!showPasswordKonfirmasi ? (
+                          <UilEyeSlash
+                            size={20}
+                            onClick={handleShowPasswordKonfirmasi}
+                            className={styles.uil}
+                          />
+                        ) : (
+                          <UilEye
+                            size={20}
+                            onClick={handleShowPasswordKonfirmasi}
+                            className={styles.uil}
+                          />
+                        )}
+                      </div>
+                      <p className={styles.pengaturan__userMsg}>
+                        {errors.passwordKonfirmasi?.message}
+                      </p>
                     </div>
 
                     <button className={"button"}>Simpan</button>

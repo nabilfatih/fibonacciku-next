@@ -11,6 +11,7 @@ import * as Yup from "yup";
 import cookie from "js-cookie";
 import { parseCookies } from "nookies";
 import { Slide, toast } from "react-toastify";
+import axios from "axios";
 
 export default function PengaturanAkun() {
   const router = useRouter();
