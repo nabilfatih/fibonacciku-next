@@ -4,7 +4,7 @@
 
 .modal_video {
 
-    margin-top: 80px;
+    margin-top: 62px;
     justify-content: center;
     align-items: center;
     background-color: $mostLightDarkBlue;
@@ -15,8 +15,8 @@
         padding-bottom: 1.5rem;
         justify-content: center;
         align-items: center;
-        padding-right: 12.75rem;
-        padding-left: 12.75rem;
+        padding-right: 11.75rem;
+        padding-left: 11.75rem;
 
         @include breakpoint-down(medium) {
             padding-left: 3rem;

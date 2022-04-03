@@ -9,6 +9,12 @@
     box-shadow: 0 3px 6px 0 rgba(0,0,0,.2);
     z-index: 2;
     top: 0;
+
+    .container {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+
     // Hamburger Open Styles
     &.open {
         
@@ -141,7 +147,7 @@
                 height: 4px;
                 left: 0;
                 right: 0;
-                bottom: -30.5px;
+                bottom: -21.5px;
                 background: linear-gradient(to right, $greenTeal, $blue);
                 opacity: 0;
                 transition: opacity 300ms ease-in-out;
@@ -234,7 +240,7 @@
                 box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
                 backdrop-filter: blur( 4px );
                 -webkit-backdrop-filter: blur( 4px );
-                margin-top: 10px;
+                margin-top: 3px;
                 right: 0;
                 padding: 0;
                 width: 200px;

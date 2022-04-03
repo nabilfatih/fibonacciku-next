@@ -64,7 +64,12 @@ const NavBar = () => {
   return (
     <header className={styles.header}>
       <div className={cls(styles.overlay, "has-fade")}></div>
-      <nav className="container container--pall flex flex-jc-sb flex-ai-c">
+      <nav
+        className={cls(
+          styles.container,
+          "container container--pall flex flex-jc-sb flex-ai-c"
+        )}
+      >
         <a className={styles.header__logo} onClick={handleBeranda}>
           <Image
             src={"/static/img/logofibonama.svg"}
