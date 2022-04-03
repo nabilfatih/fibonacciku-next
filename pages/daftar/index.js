@@ -19,7 +19,6 @@ import {
 
 export default function Daftar() {
   const router = useRouter();
-  const cookies = parseCookies();
 
   const [emailActive, setEmailActive] = useState("");
   const [namaActive, setNamaActive] = useState("");
