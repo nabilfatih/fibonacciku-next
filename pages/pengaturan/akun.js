@@ -25,6 +25,7 @@ export default function PengaturanAkun() {
     username: Yup.string()
       .max(20, "Username max. 20 karakter")
       .required("Masukkan username"),
+    bio: Yup.string().max(256, "Bio max. 256 karakter"),
   });
   const formOptions = { resolver: yupResolver(validationSchema) };
   const { register, handleSubmit, reset, formState } = useForm(formOptions);
@@ -148,8 +149,11 @@ export default function PengaturanAkun() {
                         cols={0}
                         rows={5}
                         maxLength="256"
+                        {...register("bio")}
                       ></textarea>
-                      <p className={styles.pengaturan__userMsg}></p>
+                      <p className={styles.pengaturan__userMsg}>
+                        {errors.bio?.message}
+                      </p>
                     </div>
 
                     <div className={styles.pengaturan__konten}>
@@ -186,7 +190,6 @@ export default function PengaturanAkun() {
                         Username saja tanpa @
                       </label>
                       <input className={styles.pengaturan__input} />
-                      <p className={styles.pengaturan__userMsg}></p>
                     </div>
 
                     <div className={styles.pengaturan__konten}>
@@ -202,7 +205,6 @@ export default function PengaturanAkun() {
                         Username saja
                       </label>
                       <input className={styles.pengaturan__input} />
-                      <p className={styles.pengaturan__userMsg}></p>
                     </div>
 
                     <div className={styles.pengaturan__konten}>
@@ -220,7 +222,6 @@ export default function PengaturanAkun() {
                         </label>
                       </label>
                       <input className={styles.pengaturan__input} />
-                      <p className={styles.pengaturan__userMsg}></p>
                     </div>
 
                     <button className={"button"}>Simpan</button>

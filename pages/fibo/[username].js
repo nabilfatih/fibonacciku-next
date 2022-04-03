@@ -66,7 +66,11 @@ export default function Profile() {
                   <div className={styles.user}>
                     <h2>{username}</h2>
                     <a>
-                      <UilSetting className={styles.uil} size="30" />
+                      <UilSetting
+                        className={styles.uil}
+                        size="30"
+                        onClick={() => router.push("/pengaturan/akun")}
+                      />
                     </a>
                   </div>
 
