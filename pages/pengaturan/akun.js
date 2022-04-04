@@ -49,8 +49,6 @@ export default function PengaturanAkun() {
       twitter,
     };
 
-    console.log(formData);
-
     const toastConfig = {
       position: "top-center",
       autoClose: 3000,

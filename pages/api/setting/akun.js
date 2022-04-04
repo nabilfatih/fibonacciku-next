@@ -11,31 +11,32 @@ export default async (req, res) => {
 
       const user = await User.findOne({ username: data.usernameLama });
 
-      if (data.username == user.username) {
-        return res.status(401).json({ error: "Username sudah ada 🤯" });
+      try {
+        user.username = data.username;
+        user.nama = data.nama;
+        user.email = data.email;
+        user.bio = data.bio;
+        user.website = data.website;
+        user.instagram = data.instagram;
+        user.github = data.github;
+        user.twitter = data.twitter;
+
+        await user.save();
+
+        const { username, _id, nama, avatar } = user;
+
+        res.status(201).json({
+          user: { username, _id, nama, avatar },
+          success: "Berhasil perbarui profil 🤩",
+        });
+      } catch (e) {
+        if (e.toString().includes("username")) {
+          return res.status(401).json({ error: "Username sudah ada 🤯" });
+        }
+        if (e.toString().includes("email")) {
+          return res.status(401).json({ error: "Email sudah ada 🤯" });
+        }
       }
-      if (data.email == user.email) {
-        return res.status(401).json({ error: "Email sudah ada 🤯" });
-      }
-      console.log(user);
-
-      user.username = data.username;
-      user.nama = data.nama;
-      user.email = data.email;
-      user.bio = data.bio;
-      user.website = data.website;
-      user.instagram = data.instagram;
-      user.github = data.github;
-      user.twitter = data.twitter;
-
-      await user.save();
-
-      const { username, _id, nama, avatar } = user;
-
-      res.status(201).json({
-        user: { username, _id, nama, avatar },
-        success: "Berhasil perbarui profil 🤩",
-      });
     } else {
       return res.status(401).json({ error: "Invalid credentials 🤯" });
     }
