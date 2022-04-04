@@ -11,9 +11,12 @@ import * as Yup from "yup";
 import { UilEyeSlash, UilEye } from "@iconscout/react-unicons";
 import axios from "axios";
 import { Slide, toast } from "react-toastify";
+import { parseCookies } from "nookies";
 
 export default function PengaturanPassword() {
   const router = useRouter();
+  const cookies = parseCookies();
+  const user = cookies?.user ? JSON.parse(cookies.user) : "";
 
   const [showPasswordLama, setShowPasswordLama] = useState(false);
   const [showPasswordBaru, setShowPasswordBaru] = useState(false);
@@ -68,7 +71,51 @@ export default function PengaturanPassword() {
   const { errors } = formState;
 
   async function onSubmit(data) {
-    const formData = data;
+    const { passwordLama, passwordBaru, passwordKonfirmasi } = data;
+    const username = user.username;
+    const formData = {
+      passwordLama,
+      passwordBaru,
+      passwordKonfirmasi,
+      username,
+    };
+
+    const toastConfig = {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    };
+
+    const loading = toast.loading("Mohon tunggu...", { transition: Slide });
+
+    try {
+      if (!formData) {
+        toast.error("Masukkan data 😡", toastConfig);
+        return;
+      }
+
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      const { data } = await axios.put(
+        `/api/setting/password`,
+        formData,
+        config
+      );
+      toast.dismiss(loading);
+      await router.push("/pengaturan/password");
+      toast.success(data.success, toastConfig);
+    } catch (e) {
+      toast.dismiss(loading);
+      toast.error(e?.response?.data?.error, toastConfig);
+    }
   }
 
   return (
@@ -115,6 +162,7 @@ export default function PengaturanPassword() {
                         type={showIconLama}
                         id="passwordLama"
                         name="passwordLama"
+                        autoComplete="off"
                         {...register("passwordLama")}
                       />
                       <div>
@@ -146,6 +194,7 @@ export default function PengaturanPassword() {
                         type={showIconBaru}
                         id="passwordBaru"
                         name="passwordBaru"
+                        autoComplete="off"
                         {...register("passwordBaru")}
                       />
                       <div>
@@ -177,6 +226,7 @@ export default function PengaturanPassword() {
                         type={showIconKonfirmasi}
                         id="passwordKonfirmasi"
                         name="passwordKonfirmasi"
+                        autoComplete="off"
                         {...register("passwordKonfirmasi")}
                       />
                       <div>
