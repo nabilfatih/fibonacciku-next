@@ -22,7 +22,8 @@ export default async (req, res) => {
       const doMatch = await bcrypt.compare(passwordLama, user.password);
 
       if (doMatch) {
-        user.password = passwordBaru;
+        const HashedPassword = await bcrypt.hash(passwordBaru, 12);
+        user.password = HashedPassword;
         user.save();
 
         return res.status(200).json({ success: "Berhasil ganti password 🤩" });
