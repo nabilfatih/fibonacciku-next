@@ -14,9 +14,9 @@ export async function middleware(req) {
     pathname.includes("/reset") ||
     pathname.includes("/verify-email")
   ) {
-    if (userId) {
-      return NextResponse.redirect(new URL("/beranda", req.url));
+    if (!userId || !user) {
+      return NextResponse.next();
     }
-    return NextResponse.next();
+    return NextResponse.redirect(new URL("/beranda", req.url));
   }
 }
