@@ -27,13 +27,65 @@ export default function PengaturanAkun() {
       .max(20, "Username max. 20 karakter")
       .required("Masukkan username"),
     bio: Yup.string().max(256, "Bio max. 256 karakter"),
+    website: Yup.string(),
+    instagram: Yup.string(),
+    github: Yup.string(),
+    twitter: Yup.string(),
   });
   const formOptions = { resolver: yupResolver(validationSchema) };
   const { register, handleSubmit, reset, formState } = useForm(formOptions);
   const { errors } = formState;
 
   async function onSubmit(datas) {
-    const formData = datas;
+    const { nama, username, email, bio, website, instagram, github, twitter } =
+      datas;
+    const formData = {
+      usernameLama: user.username,
+      nama,
+      username,
+      email,
+      bio,
+      website,
+      instagram,
+      github,
+      twitter,
+    };
+
+    console.log(formData);
+
+    const toastConfig = {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    };
+
+    const loading = toast.loading("Mohon tunggu...", { transition: Slide });
+
+    try {
+      if (!formData) {
+        toast.error("Masukkan data 😡", toastConfig);
+        return;
+      }
+
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      const { data } = await axios.put(`/api/setting/akun`, formData, config);
+      cookie.set("user", JSON.stringify(data?.user));
+      toast.dismiss(loading);
+      await router.push("/pengaturan/akun");
+      toast.success(data.success, toastConfig);
+    } catch (e) {
+      toast.dismiss(loading);
+      toast.error(e?.response?.data?.error, toastConfig);
+    }
   }
 
   return (
@@ -174,6 +226,7 @@ export default function PengaturanAkun() {
                         type="text"
                         id="web"
                         name="web"
+                        {...register("website")}
                       />
                       <p className={styles.pengaturan__userMsg}></p>
                     </div>
@@ -190,7 +243,10 @@ export default function PengaturanAkun() {
                       <label className={styles.deskripsi} htmlFor="deskripsi">
                         Username saja tanpa @
                       </label>
-                      <input className={styles.pengaturan__input} />
+                      <input
+                        className={styles.pengaturan__input}
+                        {...register("instagram")}
+                      />
                     </div>
 
                     <div className={styles.pengaturan__konten}>
@@ -205,7 +261,10 @@ export default function PengaturanAkun() {
                       <label className={styles.deskripsi} htmlFor="deskripsi">
                         Username saja
                       </label>
-                      <input className={styles.pengaturan__input} />
+                      <input
+                        className={styles.pengaturan__input}
+                        {...register("github")}
+                      />
                     </div>
 
                     <div className={styles.pengaturan__konten}>
@@ -222,7 +281,10 @@ export default function PengaturanAkun() {
                           Username saja tanpa @
                         </label>
                       </label>
-                      <input className={styles.pengaturan__input} />
+                      <input
+                        className={styles.pengaturan__input}
+                        {...register("twitter")}
+                      />
                     </div>
 
                     <button className={"button"}>Simpan</button>

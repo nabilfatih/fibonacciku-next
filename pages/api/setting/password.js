@@ -1,7 +1,6 @@
 import connectDB from "../../../config/connectDB";
 import User from "../../../models/user";
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
 
 connectDB();
 
@@ -24,7 +23,7 @@ export default async (req, res) => {
       if (doMatch) {
         const HashedPassword = await bcrypt.hash(passwordBaru, 12);
         user.password = HashedPassword;
-        user.save();
+        await user.save();
 
         return res.status(200).json({ success: "Berhasil ganti password 🤩" });
       } else {

@@ -70,8 +70,8 @@ export default function PengaturanPassword() {
   const { register, handleSubmit, reset, formState } = useForm(formOptions);
   const { errors } = formState;
 
-  async function onSubmit(data) {
-    const { passwordLama, passwordBaru, passwordKonfirmasi } = data;
+  async function onSubmit(datas) {
+    const { passwordLama, passwordBaru, passwordKonfirmasi } = datas;
     const username = user.username;
     const formData = {
       passwordLama,
