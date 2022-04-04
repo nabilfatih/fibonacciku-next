@@ -110,6 +110,7 @@ export default function PengaturanPassword() {
         config
       );
       toast.dismiss(loading);
+      await router.push("/pengaturan/password");
       toast.success(data.success, toastConfig);
     } catch (e) {
       toast.dismiss(loading);
