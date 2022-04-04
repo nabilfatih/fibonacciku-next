@@ -3,7 +3,6 @@ import Footer from "../../components/footer/footer";
 import NavBar from "../../components/nav/nav";
 import styles from "./pengaturan.module.scss";
 import cls from "classnames";
-import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -18,7 +17,6 @@ export default function PengaturanAkun() {
   const cookies = parseCookies();
 
   const user = cookies?.user ? JSON.parse(cookies.user) : "";
-  const token = cookies.token ? cookies.token : null;
 
   const validationSchema = Yup.object().shape({
     email: Yup.string().email("Email tidak valid").required("Masukkan email"),

@@ -3,7 +3,7 @@ import Footer from "../../components/footer/footer";
 import NavBar from "../../components/nav/nav";
 import styles from "./pengaturan.module.scss";
 import cls from "classnames";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { yupResolver } from "@hookform/resolvers/yup";

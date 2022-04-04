@@ -28,13 +28,12 @@ const NavBar = () => {
 
   useEffect(() => {
     user && token ? setUserState(user) : setUserState("");
-  }, [userState]);
+  }, [router, setUserState]);
 
   const handleLogout = async () => {
     cookie.remove("token");
     cookie.remove("user");
     await router.push("/masuk");
-    setUserState("");
     toast.success("Sampai jumpa lagi 👻");
   };
 
