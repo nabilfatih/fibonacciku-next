@@ -1,6 +1,5 @@
 import connectDB from "../../../config/connectDB";
 import User from "../../../models/user";
-import jwt from "jsonwebtoken";
 
 connectDB();
 
