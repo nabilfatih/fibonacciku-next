@@ -1,10 +1,9 @@
 import styles from "./registration.module.scss";
 import cls from "classnames";
 import { useRouter } from "next/router";
-import { signIn } from "next-auth/react";
 import Image from "next/image";
 
-const FormMasuk = ({ children, provider }) => {
+const FormMasuk = ({ children }) => {
   const router = useRouter();
 
   const HandleClickDaftar = (e) => {

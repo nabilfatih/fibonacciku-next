@@ -9,7 +9,7 @@ import { Progress } from "../components";
 import { useProgressStore } from "../store/useProgressStore";
 import Head from "next/head";
 
-function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+function MyApp({ Component, pageProps: { ...pageProps } }) {
   const setIsAnimating = useProgressStore((state) => state.setIsAnimating);
   const isAnimating = useProgressStore((state) => state.isAnimating);
   const router = useRouter();
