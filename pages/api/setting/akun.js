@@ -31,10 +31,10 @@ export default async (req, res) => {
         });
       } catch (e) {
         if (e.toString().includes("username")) {
-          return res.status(401).json({ error: "Username sudah ada 🤯" });
+          return res.status(401).json({ error: "Username sudah ada 😭" });
         }
         if (e.toString().includes("email")) {
-          return res.status(401).json({ error: "Email sudah ada 🤯" });
+          return res.status(401).json({ error: "Email sudah ada 😭" });
         }
       }
     } else {

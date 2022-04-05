@@ -15,16 +15,20 @@
 
     &__background {
         position: relative;
-        width: 189vh;
-        height: 30vh;
+        // width: 100%;
+        min-width: 189vh;
+        max-height: 45vh;
+        min-height: 30vh;
 
         @include breakpoint-down(medium) {
-            width: 234vh;
-            height: 34vh;
+            // width: 234vh;
+            min-width: 160vh;
+            // height: 34vh;
+            min-height: 26vh;
         }
         @include breakpoint-down(small){
-            width: 140vh;
-            height: 22vh;
+            min-width: 140vh;
+            min-height: 22vh;
         }
     
     }

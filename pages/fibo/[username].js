@@ -22,9 +22,9 @@ export default function Profile() {
       <main>
         <section className={styles.profils}>
           <div className={styles.profil}>
-            <div className={styles.profil__background}>
+            <div className={cls(styles.profil__background)}>
               <Image
-                className={styles.img}
+                className={cls(styles.img, "container")}
                 src={"/static/img/default-background.webp"}
                 layout="fill"
                 alt={`Profil ${username} Background`}
