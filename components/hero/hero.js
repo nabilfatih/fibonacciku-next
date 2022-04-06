@@ -1,11 +1,21 @@
 import styles from "./hero.module.scss";
 import cls from "classnames";
-import Link from "next/link";
-
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-const Hero = () => {
+const Hero = ({ user, token }) => {
   const router = useRouter();
+
+  const [status, setStatus] = useState(false);
+
+  useEffect(() => {
+    if (!user || !token) {
+      setStatus(true);
+    } else {
+      setStatus(false);
+    }
+  }, [router]);
+
   const HandleClickMasuk = (e) => {
     e.preventDefault();
     router.push("/masuk");
@@ -27,18 +37,22 @@ const Hero = () => {
           </p>
 
           <div className={cls(styles.hero__register, "hide-for-mobile")}>
-            <a
-              onClick={HandleClickMasuk}
-              className={cls("button", styles.hero__cta)}
-            >
-              Masuk
-            </a>
-            <a
-              onClick={HandleClickDaftar}
-              className={cls("button", styles.hero__cta)}
-            >
-              Daftar
-            </a>
+            {status && (
+              <a
+                onClick={HandleClickMasuk}
+                className={cls("button", styles.hero__cta)}
+              >
+                Masuk
+              </a>
+            )}
+            {status && (
+              <a
+                onClick={HandleClickDaftar}
+                className={cls("button", styles.hero__cta)}
+              >
+                Daftar
+              </a>
+            )}
           </div>
         </div>
       </div>
