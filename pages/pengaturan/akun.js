@@ -15,6 +15,7 @@ import connectDB from "../../config/connectDB";
 import User from "../../models/user";
 import checkCookie from "cookie";
 import { useEffect, useState } from "react";
+import { Form, Formik } from "formik";
 
 export async function getServerSideProps(context) {
   connectDB();
@@ -54,25 +55,6 @@ export default function PengaturanAkun({ dataUser }) {
   const formOptions = { resolver: yupResolver(validationSchema) };
   const { register, handleSubmit, reset, formState } = useForm(formOptions);
   const { errors } = formState;
-  const [dataNama, setDataNama] = useState("");
-  const [dataUsername, setDataUsername] = useState("");
-  const [dataEmail, setDataEmail] = useState("");
-  const [dataBio, setDataBio] = useState("");
-  const [dataWebsite, setDataWebsite] = useState("");
-  const [dataInstagram, setDataInstagram] = useState("");
-  const [dataGithub, setDataGithub] = useState("");
-  const [dataTwitter, setDataTwitter] = useState("");
-
-  useEffect(() => {
-    dataUser.nama ? setDataNama(dataUser.nama) : "";
-    dataUser.username ? setDataUsername(dataUser.username) : "";
-    dataUser.email ? setDataEmail(dataUser.email) : "";
-    dataUser.bio ? setDataBio(dataUser.bio) : "";
-    dataUser.website ? setDataWebsite(dataUser.website) : "";
-    dataUser.instagram ? setDataInstagram(dataUser.instagram) : "";
-    dataUser.github ? setDataGithub(dataUser.github) : "";
-    dataUser.twitter ? setDataTwitter(dataUser.twitter) : "";
-  }, [router]);
 
   async function onSubmit(datas) {
     const { nama, username, email, bio, website, instagram, github, twitter } =
@@ -88,6 +70,7 @@ export default function PengaturanAkun({ dataUser }) {
       github,
       twitter,
     };
+    console.log(formData);
 
     const toastConfig = {
       position: "top-center",
@@ -142,197 +125,245 @@ export default function PengaturanAkun({ dataUser }) {
             <div className={styles.pengaturan__grid}>
               <div className={styles.pengaturan__card}>
                 <div className={styles.pengaturan__isi}>
-                  <form
-                    className={styles.pengaturan__form}
-                    onSubmit={handleSubmit(onSubmit)}
-                    noValidate
+                  <Formik
+                    initialValues={{
+                      nama: dataUser.nama,
+                      username: dataUser.username,
+                      email: dataUser.email,
+                      bio: dataUser.bio,
+                      website: dataUser.website,
+                      instagram: dataUser.instagram,
+                      github: dataUser.github,
+                      twitter: dataUser.twitter,
+                    }}
+                    onSubmit={onSubmit}
+                    validationSchema={validationSchema}
                   >
-                    <div className={styles.judul}>
-                      <div className={styles.pilihan_akun}>
-                        <a onClick={() => router.push("/pengaturan/akun")}>
-                          <h3 className={styles.akun}>Akun</h3>
-                        </a>
-                        <a onClick={() => router.push("/pengaturan/password")}>
-                          <h3 className={styles.password}>Password</h3>
-                        </a>
-                      </div>
-                      <hr className={styles.line} />
-                    </div>
+                    {({ values, handleChange, handleBlur, errors }) => (
+                      <Form className={styles.pengaturan__form}>
+                        <div className={styles.judul}>
+                          <div className={styles.pilihan_akun}>
+                            <a onClick={() => router.push("/pengaturan/akun")}>
+                              <h3 className={styles.akun}>Akun</h3>
+                            </a>
+                            <a
+                              onClick={() =>
+                                router.push("/pengaturan/password")
+                              }
+                            >
+                              <h3 className={styles.password}>Password</h3>
+                            </a>
+                          </div>
+                          <hr className={styles.line} />
+                        </div>
 
-                    <div className={styles.pengaturan__konten}>
-                      <label
-                        className={cls(
-                          styles.pengaturan__label,
-                          styles.form_label
-                        )}
-                      >
-                        Nama Lengkap
-                      </label>
-                      <input
-                        className={styles.pengaturan__input}
-                        type="text"
-                        id="nama"
-                        name="nama"
-                        {...register("nama")}
-                        value={dataNama}
-                      />
-                      <p className={styles.pengaturan__userMsg}>
-                        {errors.nama?.message}
-                      </p>
-                    </div>
+                        <div className={styles.pengaturan__konten}>
+                          <label
+                            className={cls(
+                              styles.pengaturan__label,
+                              styles.form_label
+                            )}
+                          >
+                            Nama Lengkap
+                          </label>
+                          <input
+                            className={styles.pengaturan__input}
+                            type="text"
+                            id="nama"
+                            name="nama"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.nama}
+                          />
+                          <p className={styles.pengaturan__userMsg}>
+                            {errors.nama}
+                          </p>
+                        </div>
 
-                    <div className={styles.pengaturan__konten}>
-                      <label
-                        className={cls(
-                          styles.pengaturan__label,
-                          styles.form_label
-                        )}
-                      >
-                        Username
-                      </label>
-                      <input
-                        className={styles.pengaturan__input}
-                        type="text"
-                        id="username"
-                        name="username"
-                        {...register("username")}
-                        value={dataUsername}
-                      />
-                      <p className={styles.pengaturan__userMsg}>
-                        {errors.username?.message}
-                      </p>
-                    </div>
+                        <div className={styles.pengaturan__konten}>
+                          <label
+                            className={cls(
+                              styles.pengaturan__label,
+                              styles.form_label
+                            )}
+                          >
+                            Username
+                          </label>
+                          <input
+                            className={styles.pengaturan__input}
+                            type="text"
+                            id="username"
+                            name="username"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.username}
+                          />
+                          <p className={styles.pengaturan__userMsg}>
+                            {errors.username}
+                          </p>
+                        </div>
 
-                    <div className={styles.pengaturan__konten}>
-                      <label
-                        className={cls(
-                          styles.pengaturan__label,
-                          styles.form_label
-                        )}
-                      >
-                        Email
-                      </label>
-                      <input
-                        className={styles.pengaturan__input}
-                        type="email"
-                        id="email"
-                        name="email"
-                        {...register("email")}
-                        value={dataEmail}
-                      />
-                      <p className={styles.pengaturan__userMsg}>
-                        {errors.email?.message}
-                      </p>
-                    </div>
+                        <div className={styles.pengaturan__konten}>
+                          <label
+                            className={cls(
+                              styles.pengaturan__label,
+                              styles.form_label
+                            )}
+                          >
+                            Email
+                          </label>
+                          <input
+                            className={styles.pengaturan__input}
+                            type="email"
+                            id="email"
+                            name="email"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.email}
+                          />
+                          <p className={styles.pengaturan__userMsg}>
+                            {errors.email}
+                          </p>
+                        </div>
 
-                    <div className={styles.pengaturan__konten}>
-                      <label
-                        className={cls(
-                          styles.pengaturan__label,
-                          styles.form_label
-                        )}
-                      >
-                        Bio
-                      </label>
-                      <textarea
-                        className={styles.pengaturan__input}
-                        id="bio"
-                        name="bio"
-                        cols={0}
-                        rows={5}
-                        maxLength="256"
-                        {...register("bio")}
-                        value={dataBio}
-                      ></textarea>
-                      <p className={styles.pengaturan__userMsg}>
-                        {errors.bio?.message}
-                      </p>
-                    </div>
+                        <div className={styles.pengaturan__konten}>
+                          <label
+                            className={cls(
+                              styles.pengaturan__label,
+                              styles.form_label
+                            )}
+                          >
+                            Bio
+                          </label>
+                          <textarea
+                            className={styles.pengaturan__input}
+                            id="bio"
+                            name="bio"
+                            cols={0}
+                            rows={5}
+                            maxLength="256"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.bio}
+                          ></textarea>
+                          <p className={styles.pengaturan__userMsg}>
+                            {errors.bio}
+                          </p>
+                        </div>
 
-                    <div className={styles.pengaturan__konten}>
-                      <label
-                        className={cls(
-                          styles.pengaturan__label,
-                          styles.form_label
-                        )}
-                      >
-                        Website
-                      </label>
-                      <label className={styles.deskripsi} htmlFor="deskripsi">
-                        Tulis website kamu: websitekamu.com
-                      </label>
-                      <input
-                        className={styles.pengaturan__input}
-                        type="text"
-                        id="web"
-                        name="web"
-                        {...register("website")}
-                        value={dataWebsite}
-                      />
-                      <p className={styles.pengaturan__userMsg}></p>
-                    </div>
+                        <div className={styles.pengaturan__konten}>
+                          <label
+                            className={cls(
+                              styles.pengaturan__label,
+                              styles.form_label
+                            )}
+                          >
+                            Website
+                          </label>
+                          <label
+                            className={styles.deskripsi}
+                            htmlFor="deskripsi"
+                          >
+                            Tulis website kamu: websitekamu.com
+                          </label>
+                          <input
+                            className={styles.pengaturan__input}
+                            type="text"
+                            id="website"
+                            name="website"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.website}
+                          />
+                          <p className={styles.pengaturan__userMsg}></p>
+                        </div>
 
-                    <div className={styles.pengaturan__konten}>
-                      <label
-                        className={cls(
-                          styles.pengaturan__label,
-                          styles.form_label
-                        )}
-                      >
-                        Instagram
-                      </label>
-                      <label className={styles.deskripsi} htmlFor="deskripsi">
-                        Username saja tanpa @
-                      </label>
-                      <input
-                        className={styles.pengaturan__input}
-                        {...register("instagram")}
-                        value={dataInstagram}
-                      />
-                    </div>
+                        <div className={styles.pengaturan__konten}>
+                          <label
+                            className={cls(
+                              styles.pengaturan__label,
+                              styles.form_label
+                            )}
+                          >
+                            Instagram
+                          </label>
+                          <label
+                            className={styles.deskripsi}
+                            htmlFor="deskripsi"
+                          >
+                            Username saja tanpa @
+                          </label>
+                          <input
+                            className={styles.pengaturan__input}
+                            id="instagram"
+                            name="instagram"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.instagram}
+                          />
+                        </div>
 
-                    <div className={styles.pengaturan__konten}>
-                      <label
-                        className={cls(
-                          styles.pengaturan__label,
-                          styles.form_label
-                        )}
-                      >
-                        Github
-                      </label>
-                      <label className={styles.deskripsi} htmlFor="deskripsi">
-                        Username saja
-                      </label>
-                      <input
-                        className={styles.pengaturan__input}
-                        {...register("github")}
-                        value={dataGithub}
-                      />
-                    </div>
+                        <div className={styles.pengaturan__konten}>
+                          <label
+                            className={cls(
+                              styles.pengaturan__label,
+                              styles.form_label
+                            )}
+                          >
+                            Github
+                          </label>
+                          <label
+                            className={styles.deskripsi}
+                            htmlFor="deskripsi"
+                          >
+                            Username saja
+                          </label>
+                          <input
+                            className={styles.pengaturan__input}
+                            id="github"
+                            name="github"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.github}
+                          />
+                        </div>
 
-                    <div className={styles.pengaturan__konten}>
-                      <label
-                        className={cls(
-                          styles.pengaturan__label,
-                          styles.form_label
-                        )}
-                      >
-                        Twitter
-                      </label>
-                      <label className={styles.deskripsi} htmlFor="deskripsi">
-                        <label className={styles.deskripsi} htmlFor="deskripsi">
-                          Username saja tanpa @
-                        </label>
-                      </label>
-                      <input
-                        className={styles.pengaturan__input}
-                        {...register("twitter")}
-                        value={dataTwitter}
-                      />
-                    </div>
+                        <div className={styles.pengaturan__konten}>
+                          <label
+                            className={cls(
+                              styles.pengaturan__label,
+                              styles.form_label
+                            )}
+                          >
+                            Twitter
+                          </label>
+                          <label
+                            className={styles.deskripsi}
+                            htmlFor="deskripsi"
+                          >
+                            <label
+                              className={styles.deskripsi}
+                              htmlFor="deskripsi"
+                            >
+                              Username saja tanpa @
+                            </label>
+                          </label>
+                          <input
+                            className={styles.pengaturan__input}
+                            id="twitter"
+                            name="twitter"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.twitter}
+                          />
+                        </div>
 
-                    <button className={"button"}>Simpan</button>
-                  </form>
+                        <button className={"button"} type="submit">
+                          Simpan
+                        </button>
+                      </Form>
+                    )}
+                  </Formik>
                 </div>
               </div>
             </div>
