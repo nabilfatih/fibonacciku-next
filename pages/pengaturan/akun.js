@@ -14,12 +14,15 @@ import axios from "axios";
 import connectDB from "../../config/connectDB";
 import User from "../../models/user";
 import checkCookie from "cookie";
+import { useEffect, useState } from "react";
 
 export async function getServerSideProps(context) {
   connectDB();
+
   const cookies = checkCookie.parse(context.req.headers.cookie);
-  const username = cookies.user.username;
-  const dataUser = await User.findOne({ username: username });
+  const user = JSON.parse(cookies.user);
+
+  const dataUser = await User.findOne({ username: user.username });
   if (!dataUser) {
     return { notFound: true };
   }
@@ -51,6 +54,25 @@ export default function PengaturanAkun({ dataUser }) {
   const formOptions = { resolver: yupResolver(validationSchema) };
   const { register, handleSubmit, reset, formState } = useForm(formOptions);
   const { errors } = formState;
+  const [dataNama, setDataNama] = useState("");
+  const [dataUsername, setDataUsername] = useState("");
+  const [dataEmail, setDataEmail] = useState("");
+  const [dataBio, setDataBio] = useState("");
+  const [dataWebsite, setDataWebsite] = useState("");
+  const [dataInstagram, setDataInstagram] = useState("");
+  const [dataGithub, setDataGithub] = useState("");
+  const [dataTwitter, setDataTwitter] = useState("");
+
+  useEffect(() => {
+    dataUser.nama ? setDataNama(dataUser.nama) : "";
+    dataUser.username ? setDataUsername(dataUser.username) : "";
+    dataUser.email ? setDataEmail(dataUser.email) : "";
+    dataUser.bio ? setDataBio(dataUser.bio) : "";
+    dataUser.website ? setDataWebsite(dataUser.website) : "";
+    dataUser.instagram ? setDataInstagram(dataUser.instagram) : "";
+    dataUser.github ? setDataGithub(dataUser.github) : "";
+    dataUser.twitter ? setDataTwitter(dataUser.twitter) : "";
+  }, [router]);
 
   async function onSubmit(datas) {
     const { nama, username, email, bio, website, instagram, github, twitter } =
@@ -152,7 +174,7 @@ export default function PengaturanAkun({ dataUser }) {
                         id="nama"
                         name="nama"
                         {...register("nama")}
-                        value={dataUser.nama}
+                        value={dataNama}
                       />
                       <p className={styles.pengaturan__userMsg}>
                         {errors.nama?.message}
@@ -174,7 +196,7 @@ export default function PengaturanAkun({ dataUser }) {
                         id="username"
                         name="username"
                         {...register("username")}
-                        value={dataUser.username}
+                        value={dataUsername}
                       />
                       <p className={styles.pengaturan__userMsg}>
                         {errors.username?.message}
@@ -196,7 +218,7 @@ export default function PengaturanAkun({ dataUser }) {
                         id="email"
                         name="email"
                         {...register("email")}
-                        value={dataUser.email}
+                        value={dataEmail}
                       />
                       <p className={styles.pengaturan__userMsg}>
                         {errors.email?.message}
@@ -220,7 +242,7 @@ export default function PengaturanAkun({ dataUser }) {
                         rows={5}
                         maxLength="256"
                         {...register("bio")}
-                        value={dataUser.bio}
+                        value={dataBio}
                       ></textarea>
                       <p className={styles.pengaturan__userMsg}>
                         {errors.bio?.message}
@@ -245,7 +267,7 @@ export default function PengaturanAkun({ dataUser }) {
                         id="web"
                         name="web"
                         {...register("website")}
-                        value={dataUser.website}
+                        value={dataWebsite}
                       />
                       <p className={styles.pengaturan__userMsg}></p>
                     </div>
@@ -265,7 +287,7 @@ export default function PengaturanAkun({ dataUser }) {
                       <input
                         className={styles.pengaturan__input}
                         {...register("instagram")}
-                        value={dataUser.instagram}
+                        value={dataInstagram}
                       />
                     </div>
 
@@ -284,7 +306,7 @@ export default function PengaturanAkun({ dataUser }) {
                       <input
                         className={styles.pengaturan__input}
                         {...register("github")}
-                        value={dataUser.github}
+                        value={dataGithub}
                       />
                     </div>
 
@@ -305,7 +327,7 @@ export default function PengaturanAkun({ dataUser }) {
                       <input
                         className={styles.pengaturan__input}
                         {...register("twitter")}
-                        value={dataUser.twitter}
+                        value={dataTwitter}
                       />
                     </div>
 

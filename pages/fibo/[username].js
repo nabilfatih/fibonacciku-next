@@ -43,18 +43,19 @@ export default function Profile({ dataUser }) {
   const { username } = router.query;
 
   const [checkUsername, setCheckUsername] = useState(false);
-  const [fotoProfil, setFotoProfil] = useState(null);
-  const [urlFotoProfil, setUrlFotoProfil] = useState(
-    "/static/img/default-icon.png"
-  );
+  const [checkInstagram, setCheckInstagram] = useState(false);
+  const [checkGithub, setCheckGithub] = useState(false);
+  const [checkTwitter, setCheckTwitter] = useState(false);
 
   useEffect(() => {
-    if (dataUser.username === user.username) {
-      setCheckUsername(true);
-    } else {
-      setCheckUsername(false);
-    }
-  }, []);
+    dataUser.username === user.username
+      ? setCheckUsername(true)
+      : setCheckUsername(false);
+
+    dataUser.instagram ? setCheckInstagram(dataUser.instagram) : null;
+    dataUser.github ? setCheckGithub(dataUser.github) : null;
+    dataUser.twitter ? setCheckTwitter(dataUser.twitter) : null;
+  }, [router]);
 
   const handleAvatar = async (e) => {
     e.preventDefault();
@@ -90,7 +91,6 @@ export default function Profile({ dataUser }) {
         filename: codeName,
         path: url,
       };
-      console.log(formData);
 
       const config = {
         headers: {
@@ -187,39 +187,45 @@ export default function Profile({ dataUser }) {
                       {user.website}
                     </a>
                     <div className={styles.link}>
-                      <a
-                        href={`https://www.instagram.com/${dataUser.instagram}`}
-                        target={"_blank"}
-                      >
-                        <Image
-                          src={"/static/img/instagram-icon.png"}
-                          alt="Logo Instagram FibonacciKu"
-                          width={24}
-                          height={24}
-                        />
-                      </a>
-                      <a
-                        href={`https://www.instagram.com/${dataUser.github}`}
-                        target={"_blank"}
-                      >
-                        <Image
-                          src={"/static/img/github-icon.png"}
-                          alt="Logo Github FibonacciKu"
-                          width={24}
-                          height={24}
-                        />
-                      </a>
-                      <a
-                        href={`https://www.instagram.com/${dataUser.twitter}`}
-                        target={"_blank"}
-                      >
-                        <Image
-                          src={"/static/img/twitter-icon.png"}
-                          alt="Logo Twitter FibonacciKu"
-                          width={24}
-                          height={24}
-                        />
-                      </a>
+                      {checkInstagram && (
+                        <a
+                          href={`https://www.instagram.com/${dataUser.instagram}`}
+                          target={"_blank"}
+                        >
+                          <Image
+                            src={"/static/img/instagram-icon.png"}
+                            alt="Logo Instagram FibonacciKu"
+                            width={24}
+                            height={24}
+                          />
+                        </a>
+                      )}
+                      {checkGithub && (
+                        <a
+                          href={`https://www.instagram.com/${dataUser.github}`}
+                          target={"_blank"}
+                        >
+                          <Image
+                            src={"/static/img/github-icon.png"}
+                            alt="Logo Github FibonacciKu"
+                            width={24}
+                            height={24}
+                          />
+                        </a>
+                      )}
+                      {checkTwitter && (
+                        <a
+                          href={`https://www.instagram.com/${dataUser.twitter}`}
+                          target={"_blank"}
+                        >
+                          <Image
+                            src={"/static/img/twitter-icon.png"}
+                            alt="Logo Twitter FibonacciKu"
+                            width={24}
+                            height={24}
+                          />
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
