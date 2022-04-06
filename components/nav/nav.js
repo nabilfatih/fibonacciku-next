@@ -28,7 +28,7 @@ const NavBar = () => {
 
   useEffect(() => {
     user && token ? setUserState(user) : setUserState("");
-  }, [router, setUserState]);
+  }, [router, cookies]);
 
   const handleLogout = async () => {
     cookie.remove("token");
