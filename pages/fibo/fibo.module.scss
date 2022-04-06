@@ -14,6 +14,7 @@
 
     &__background {
         position: relative;
+        background-color: $darkBlue;
         // width: 100%;
         min-width: 189vh;
         max-height: 45vh;
@@ -177,6 +178,7 @@
                 }
 
                 a {
+                    background-color: $darkBlue;
                     cursor: pointer;
                     border: 1px solid #ccc;
                     padding: 0.6875rem 2rem;

@@ -3,9 +3,7 @@ import Footer from "../../components/footer/footer";
 import NavBar from "../../components/nav/nav";
 import styles from "./pengaturan.module.scss";
 import cls from "classnames";
-import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
-import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import cookie from "js-cookie";
 import { parseCookies } from "nookies";
@@ -14,7 +12,6 @@ import axios from "axios";
 import connectDB from "../../config/connectDB";
 import User from "../../models/user";
 import checkCookie from "cookie";
-import { useEffect, useState } from "react";
 import { Form, Formik } from "formik";
 
 export async function getServerSideProps(context) {
@@ -52,9 +49,6 @@ export default function PengaturanAkun({ dataUser }) {
     github: Yup.string(),
     twitter: Yup.string(),
   });
-  const formOptions = { resolver: yupResolver(validationSchema) };
-  const { register, handleSubmit, reset, formState } = useForm(formOptions);
-  const { errors } = formState;
 
   async function onSubmit(datas) {
     const { nama, username, email, bio, website, instagram, github, twitter } =
