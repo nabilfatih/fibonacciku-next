@@ -9,6 +9,18 @@ import { UilSetting } from "@iconscout/react-unicons";
 import connectDB from "../../config/connectDB";
 import User from "../../models/user";
 import { parseCookies } from "nookies";
+import { useState, useEffect } from "react";
+import { storage } from "../../config/firebase";
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  deleteObject,
+} from "firebase/storage";
+import crypto from "crypto";
+import { Slide, toast } from "react-toastify";
+import axios from "axios";
+import cookie from "js-cookie";
 
 export async function getServerSideProps(context) {
   connectDB();
@@ -29,6 +41,72 @@ export default function Profile({ dataUser }) {
   const cookies = parseCookies();
   const user = cookies?.user ? JSON.parse(cookies.user) : "";
   const { username } = router.query;
+
+  const [checkUsername, setCheckUsername] = useState(false);
+  const [fotoProfil, setFotoProfil] = useState(null);
+  const [urlFotoProfil, setUrlFotoProfil] = useState(
+    "/static/img/default-icon.png"
+  );
+
+  useEffect(() => {
+    if (dataUser.username === user.username) {
+      setCheckUsername(true);
+    } else {
+      setCheckUsername(false);
+    }
+  }, []);
+
+  const handleAvatar = async (e) => {
+    e.preventDefault();
+    const file = e.target.files[0];
+
+    const toastConfig = {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    };
+    const loading = toast.loading("Mohon tunggu...", { transition: Slide });
+
+    try {
+      const codeName = crypto.randomBytes(10).toString("hex");
+      const imageRef = ref(storage, `avatar-fibo/${codeName}`);
+
+      await uploadBytes(imageRef, file);
+
+      if (dataUser.avatar.filename) {
+        await deleteObject(
+          ref(storage, `avatar-fibo/${dataUser.avatar.filename}`)
+        );
+      }
+
+      const url = await getDownloadURL(imageRef);
+
+      const formData = {
+        username: user.username,
+        filename: codeName,
+        path: url,
+      };
+      console.log(formData);
+
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      const { data } = await axios.put(`/api/updatePhoto`, formData, config);
+      cookie.set("user", JSON.stringify(data?.user));
+      await router.push(`/fibo/${user.username}`);
+      toast.dismiss(loading);
+    } catch (e) {
+      toast.dismiss(loading);
+      toast.error(e?.response?.data?.error, toastConfig);
+    }
+  };
 
   return (
     <div>
@@ -56,14 +134,14 @@ export default function Profile({ dataUser }) {
                 <div className={styles.profil__avatar}>
                   <Image
                     className={styles.img}
-                    src={"/static/img/Foto.jpg"}
+                    src={dataUser.avatar.path}
                     alt={`Foto Profile ${dataUser.username} FibonacciKu`}
                     width={128}
                     height={128}
                   />
                   <div className={styles.edit_foto}>
-                    {user.username == dataUser.username && (
-                      <form encType="multipart/form-data">
+                    {checkUsername && (
+                      <form>
                         <label
                           className={styles.custom_foto_upload}
                           htmlFor="avatar"
@@ -77,6 +155,7 @@ export default function Profile({ dataUser }) {
                           id="avatar"
                           name="avatar"
                           accept="image/png, image/jpg, image/jpeg"
+                          onChange={handleAvatar}
                         />
                       </form>
                     )}
@@ -86,7 +165,7 @@ export default function Profile({ dataUser }) {
                 <div className={styles.profil__username}>
                   <div className={styles.user}>
                     <h2>{username}</h2>
-                    {user.username == dataUser.username && (
+                    {checkUsername && (
                       <a>
                         <UilSetting
                           className={styles.uil}

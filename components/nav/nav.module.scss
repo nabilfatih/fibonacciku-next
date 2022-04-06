@@ -6,7 +6,7 @@
     position: fixed;
     width: 100%;
     background-color: white;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,.2);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .2);
     z-index: 2;
     top: 0;
 
@@ -17,18 +17,18 @@
 
     // Hamburger Open Styles
     &.open {
-        
+
         .header__toggle {
-            
-            > span:first-child {
+
+            >span:first-child {
                 transform: rotate(45deg);
             }
 
-            > span:nth-child(2) {
+            >span:nth-child(2) {
                 opacity: 0;
             }
 
-            > span:last-child {
+            >span:last-child {
                 transform: rotate(-45deg);
             }
         }
@@ -47,6 +47,7 @@
 
         &.fade-in {
             display: block;
+
             @include breakpoint-up(large) {
                 display: none;
             }
@@ -73,23 +74,24 @@
     &__logo {
         position: relative;
         cursor: pointer;
-        
+
         width: 11.375rem;
         height: 2.875rem;
         // margin-top: 0.2rem;
-        
 
-        @include breakpoint-down(small){
-            
+
+        @include breakpoint-down(small) {
+
             width: 12rem;
-            
+
         }
     }
 
-    &__toggle { // mobile menu toggle
+    &__toggle {
+        // mobile menu toggle
         cursor: pointer;
 
-        > span {
+        >span {
             display: block;
             width: 26px;
             height: 2px;
@@ -97,7 +99,7 @@
             transition: all 300ms ease-in-out;
             transform-origin: 3px 1px;
 
-            &:not(:last-child){
+            &:not(:last-child) {
                 margin-bottom: 5px;
             }
         }
@@ -114,7 +116,7 @@
         border-radius: 5px;
         z-index: 1;
 
-        @include breakpoint-down(medium){
+        @include breakpoint-down(medium) {
             overflow-y: scroll;
         }
 
@@ -167,6 +169,7 @@
         color: black;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         transition: transform 300ms ease, box-shadow 150ms ease;
+
         &:hover {
             transform: translate(1px, -1px);
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -174,9 +177,9 @@
     }
 
     &__register {
-        
+
         // height: 44px;
-       
+
         .no_user {
             display: flex;
             align-items: center;
@@ -194,7 +197,7 @@
                     font-size: $font-med;
                     color: $darkBlue;
                 }
-                
+
             }
         }
 
@@ -213,16 +216,18 @@
                 }
 
                 .foto_profil {
-                    width: 48px;
-                    height: 48px;
+                    object-fit: cover;
+                    width: 42px;
+                    height: 42px;
                     border-radius: 50%;
                     background-color: $cream;
                 }
             }
 
             &.aktif {
+
                 // pointer-events: none;
-                .drop_down + .dropdown_menu {
+                .drop_down+.dropdown_menu {
                     opacity: 1;
                     pointer-events: auto;
                     transform: translateY(0px);
@@ -236,10 +241,10 @@
             .dropdown_menu {
                 position: absolute;
                 // background: $verylightBlue;
-                background: rgba( 239, 255, 253 );
-                box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-                backdrop-filter: blur( 4px );
-                -webkit-backdrop-filter: blur( 4px );
+                background: rgba(239, 255, 253);
+                box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
                 margin-top: 3px;
                 right: 0;
                 padding: 0;
@@ -274,9 +279,9 @@
                     .uil {
                         padding-right: 0.5rem;
                     }
-                    
+
                     font-size: 1rem;
-                    
+
                 }
 
                 .profil_dropdown {
@@ -286,11 +291,13 @@
                         background-color: rgba(124, 124, 124, 0.2);
                     }
                 }
+
                 .pengaturan_dropdown {
                     &:hover {
                         background-color: rgba(124, 124, 124, 0.2);
                     }
                 }
+
                 .keluar_dropdown {
                     &:hover {
                         border-bottom-left-radius: 10px;
@@ -298,8 +305,10 @@
                         background-color: rgba(124, 124, 124, 0.2);
                     }
                 }
+
                 .garis_batas {
                     padding: 0;
+
                     .line {
                         margin: 0;
                         border-width: 0.5px;
@@ -308,7 +317,7 @@
                     }
                 }
             }
-            
+
         }
     }
 }

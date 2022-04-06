@@ -38,28 +38,18 @@ const userSchema = new Schema(
     },
     bio: {
       type: String,
-      required: false,
-      default: null,
     },
     website: {
       type: String,
-      required: false,
-      default: null,
     },
     instagram: {
       type: String,
-      required: false,
-      default: null,
     },
     github: {
       type: String,
-      required: false,
-      default: null,
     },
     twitter: {
       type: String,
-      required: false,
-      default: null,
     },
     resetPasswordToken: String,
     resetPasswordExpires: Date,

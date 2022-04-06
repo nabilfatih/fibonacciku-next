@@ -11,8 +11,26 @@ import cookie from "js-cookie";
 import { parseCookies } from "nookies";
 import { Slide, toast } from "react-toastify";
 import axios from "axios";
+import connectDB from "../../config/connectDB";
+import User from "../../models/user";
+import checkCookie from "cookie";
 
-export default function PengaturanAkun() {
+export async function getServerSideProps(context) {
+  connectDB();
+  const cookies = checkCookie.parse(context.req.headers.cookie);
+  const username = cookies.user.username;
+  const dataUser = await User.findOne({ username: username });
+  if (!dataUser) {
+    return { notFound: true };
+  }
+  return {
+    props: {
+      dataUser: JSON.parse(JSON.stringify(dataUser)),
+    },
+  };
+}
+
+export default function PengaturanAkun({ dataUser }) {
   const router = useRouter();
   const cookies = parseCookies();
 
@@ -134,6 +152,7 @@ export default function PengaturanAkun() {
                         id="nama"
                         name="nama"
                         {...register("nama")}
+                        value={dataUser.nama}
                       />
                       <p className={styles.pengaturan__userMsg}>
                         {errors.nama?.message}
@@ -155,6 +174,7 @@ export default function PengaturanAkun() {
                         id="username"
                         name="username"
                         {...register("username")}
+                        value={dataUser.username}
                       />
                       <p className={styles.pengaturan__userMsg}>
                         {errors.username?.message}
@@ -176,6 +196,7 @@ export default function PengaturanAkun() {
                         id="email"
                         name="email"
                         {...register("email")}
+                        value={dataUser.email}
                       />
                       <p className={styles.pengaturan__userMsg}>
                         {errors.email?.message}
@@ -199,6 +220,7 @@ export default function PengaturanAkun() {
                         rows={5}
                         maxLength="256"
                         {...register("bio")}
+                        value={dataUser.bio}
                       ></textarea>
                       <p className={styles.pengaturan__userMsg}>
                         {errors.bio?.message}
@@ -223,6 +245,7 @@ export default function PengaturanAkun() {
                         id="web"
                         name="web"
                         {...register("website")}
+                        value={dataUser.website}
                       />
                       <p className={styles.pengaturan__userMsg}></p>
                     </div>
@@ -242,6 +265,7 @@ export default function PengaturanAkun() {
                       <input
                         className={styles.pengaturan__input}
                         {...register("instagram")}
+                        value={dataUser.instagram}
                       />
                     </div>
 
@@ -260,6 +284,7 @@ export default function PengaturanAkun() {
                       <input
                         className={styles.pengaturan__input}
                         {...register("github")}
+                        value={dataUser.github}
                       />
                     </div>
 
@@ -280,6 +305,7 @@ export default function PengaturanAkun() {
                       <input
                         className={styles.pengaturan__input}
                         {...register("twitter")}
+                        value={dataUser.twitter}
                       />
                     </div>
 
