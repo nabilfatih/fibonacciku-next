@@ -70,7 +70,6 @@ export default function PengaturanAkun({ dataUser }) {
       github,
       twitter,
     };
-    console.log(formData);
 
     const toastConfig = {
       position: "top-center",
