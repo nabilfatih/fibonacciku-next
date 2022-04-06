@@ -3,16 +3,19 @@ html {
     box-sizing: border-box;
     overflow-x: hidden;
 
-    @include breakpoint-down(medium){
+    @include breakpoint-down(medium) {
         overflow-x: visible;
     }
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: inherit;
 }
+
 body {
-    
+
     margin: 0;
     padding: 0;
     font-family: 'Public Sans', sans-serif;
@@ -25,16 +28,17 @@ body {
     // background: url("/static/img/mesh-gradient.webp");
     // background-repeat: no-repeat;
     // background-size: cover;
-    background-image:#99ffda;background-image:  
-radial-gradient(at 90% 62%, hsla(226,98%,77%,1) 0, transparent 50%),  
-radial-gradient(at 90% 25%, hsla(190,73%,78%,1) 0, transparent 53%),  
-radial-gradient(at 76% 86%, hsla(335,85%,77%,1) 0, transparent 46%),  
-radial-gradient(at 9% 97%, hsla(227,61%,77%,1) 0, transparent 44%),  
-radial-gradient(at 19% 4%, hsla(180,82%,77%,1) 0, transparent 53%),  
-radial-gradient(at 22% 17%, hsla(123,80%,67%,1) 0, transparent 44%),  
-radial-gradient(at 20% 31%, hsla(311,65%,75%,1) 0, transparent 43%);
+    background-image: #99ffda;
+    background-image:
+        radial-gradient(at 90% 62%, hsla(226, 98%, 77%, 1) 0, transparent 50%),
+        radial-gradient(at 90% 25%, hsla(190, 73%, 78%, 1) 0, transparent 53%),
+        radial-gradient(at 76% 86%, hsla(335, 85%, 77%, 1) 0, transparent 46%),
+        radial-gradient(at 9% 97%, hsla(227, 61%, 77%, 1) 0, transparent 44%),
+        radial-gradient(at 19% 4%, hsla(180, 82%, 77%, 1) 0, transparent 53%),
+        radial-gradient(at 22% 17%, hsla(123, 80%, 67%, 1) 0, transparent 44%),
+        radial-gradient(at 20% 31%, hsla(311, 65%, 75%, 1) 0, transparent 43%);
 
-    @include breakpoint-up(large){
+    @include breakpoint-up(large) {
         font-size: $font-med;
         // background-color: $mostveryLightGreen;
     }
@@ -44,7 +48,9 @@ radial-gradient(at 20% 31%, hsla(311,65%,75%,1) 0, transparent 43%);
     }
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     font-weight: 300;
     line-height: 1.15;
     color: $darkBlue;
@@ -55,7 +61,7 @@ h1 {
     font-size: 2.31rem;
     margin-bottom: 1.5rem;
 
-    @include breakpoint-up(large){
+    @include breakpoint-up(large) {
         font-size: $font-xlg;
     }
 }
@@ -64,7 +70,7 @@ h2 {
     font-size: 1.875rem;
     margin-bottom: 1.5625rem;
 
-    @include breakpoint-up(large){
+    @include breakpoint-up(large) {
         font-size: 2.75rem;
         margin-bottom: 2.25rem;
     }
@@ -75,7 +81,9 @@ p {
     margin-bottom: 2.25rem;
 }
 
-a, a:visited, a:hover {
+a,
+a:visited,
+a:hover {
     text-decoration: none;
     color: black;
 }
@@ -92,41 +100,47 @@ a, a:visited, a:hover {
         padding-bottom: 4.375rem;
         padding-left: 1.5rem;
 
-        @include breakpoint-up(large){
+        @include breakpoint-up(large) {
             padding-top: 6rem;
             padding-bottom: 6rem;
         }
     }
+
     &--py {
         padding-top: 4.375rem;
         padding-bottom: 4.375rem;
 
-        @include breakpoint-up(large){
+        @include breakpoint-up(large) {
             padding-top: 6rem;
             padding-bottom: 6rem;
         }
     }
+
     &--px {
         padding-right: 1.5rem;
         padding-left: 1.5rem;
     }
+
     &--pt {
         padding-top: 4.375rem;
 
-        @include breakpoint-up(large){
+        @include breakpoint-up(large) {
             padding-top: 6rem;
         }
     }
+
     &--pr {
         padding-right: 1.5rem;
     }
+
     &--pb {
         padding-bottom: 4.375rem;
 
-        @include breakpoint-up(large){
+        @include breakpoint-up(large) {
             padding-bottom: 6rem;
         }
     }
+
     &--pl {
         padding-left: 1.5rem;
     }
@@ -150,7 +164,8 @@ a, a:visited, a:hover {
 }
 
 // Buttons
- .button {
+button,
+.button {
     position: relative;
     display: inline-block;
     padding: 0.875rem 2.1875rem;
@@ -183,6 +198,7 @@ a, a:visited, a:hover {
 
 // Visibility
 .hide-for-mobile {
+
     // hide for tablet and mobile
     @include breakpoint-down(medium) {
         display: none;
@@ -190,6 +206,7 @@ a, a:visited, a:hover {
 }
 
 .hide-for-desktop {
+
     // hide for desktop viewport widths
     @include breakpoint-up(large) {
         display: none;

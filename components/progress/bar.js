@@ -1,4 +1,4 @@
-import styles from './bar.module.scss'
+import styles from "./bar.module.scss";
 
 export const Bar = ({ animationDuration, progress }) => {
   return (

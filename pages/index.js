@@ -5,8 +5,31 @@ import NavBar from "../components/nav/nav";
 import Hero from "../components/hero/hero";
 import Features from "../components/features/features";
 import Donasi from "../components/donasi/donasi";
+import { parseCookies } from "nookies";
+import axios from "axios";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export default function Home() {
+  const cookies = parseCookies();
+  const router = useRouter();
+
+  const user = cookies?.user ? JSON.parse(cookies.user) : "";
+  const token = cookies.token ? cookies.token : null;
+
+  useEffect(async () => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const { data } = await axios.put(`/api/verify`, { token: token }, config);
+    const tokens = data.userId;
+    if (tokens || user) {
+      router.push("/beranda");
+    }
+  }, [router]);
+
   return (
     <div className={styles.container}>
       <Head>

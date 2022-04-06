@@ -62,8 +62,8 @@ export default function Profile({ dataUser }) {
                     height={128}
                   />
                   <div className={styles.edit_foto}>
-                    {user.username == dataUser.username ? (
-                      <form>
+                    {user.username == dataUser.username && (
+                      <form encType="multipart/form-data">
                         <label
                           className={styles.custom_foto_upload}
                           htmlFor="avatar"
@@ -79,14 +79,14 @@ export default function Profile({ dataUser }) {
                           accept="image/png, image/jpg, image/jpeg"
                         />
                       </form>
-                    ) : null}
+                    )}
                   </div>
                 </div>
 
                 <div className={styles.profil__username}>
                   <div className={styles.user}>
                     <h2>{username}</h2>
-                    {user.username == dataUser.username ? (
+                    {user.username == dataUser.username && (
                       <a>
                         <UilSetting
                           className={styles.uil}
@@ -94,7 +94,7 @@ export default function Profile({ dataUser }) {
                           onClick={() => router.push("/pengaturan/akun")}
                         />
                       </a>
-                    ) : null}
+                    )}
                   </div>
 
                   <div className={styles.nama}>

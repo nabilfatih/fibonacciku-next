@@ -131,8 +131,8 @@ const NavBar = () => {
                     src={userState.avatar.path}
                     alt={`Logo ${userState.nama} Profile FibonacciKu`}
                     className={styles.foto_profil}
-                    width={48}
-                    height={48}
+                    width={42}
+                    height={42}
                   />
                   {iconStatus ? (
                     <UilAngleUp className={styles.uil} />
