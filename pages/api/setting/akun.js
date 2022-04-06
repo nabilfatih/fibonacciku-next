@@ -10,6 +10,16 @@ export default async (req, res) => {
 
       const user = await User.findOne({ username: data.usernameLama });
 
+      if (!data.nama) {
+        return res.status(401).json({ error: "Masukkan nama 😡" });
+      }
+      if (!data.username) {
+        return res.status(401).json({ error: "Masukkan username 😡" });
+      }
+      if (!data.email) {
+        return res.status(401).json({ error: "Masukkan email 😡" });
+      }
+
       try {
         user.username = data.username;
         user.nama = data.nama;
