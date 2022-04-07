@@ -18,8 +18,7 @@
         // width: 100%;
         min-width: 189vh;
         max-height: 45vh;
-        min-height: 15rem;
-        object-fit: cover;
+        min-height: 29vh;
 
         @include breakpoint-down(medium) {
             // width: 234vh;
