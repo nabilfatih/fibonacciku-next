@@ -6,7 +6,6 @@ import Footer from "../../../components/footer/footer";
 import Image from "next/image";
 import { UilPlayCircle } from "@iconscout/react-unicons";
 import { useRouter } from "next/router";
-
 import styles from "./querybab.module.scss";
 import Link from "next/link";
 import Head from "next/head";
@@ -113,9 +112,6 @@ export default function QueryBab({ bab, subBabs, kontens }) {
                                 >
                                   <UilPlayCircle className={styles.icon} />
                                   <div className={styles.judul}>
-                                    {/* <Link
-                                      href={`/mata-pelajaran/${konten.query}/${konten.querybab}/${konten.queryjudul}`}
-                                    > */}
                                     <a
                                       onClick={() =>
                                         router.push(
@@ -127,7 +123,6 @@ export default function QueryBab({ bab, subBabs, kontens }) {
                                     >
                                       {konten.judul}
                                     </a>
-                                    {/* </Link> */}
                                   </div>
                                 </div>
                               );

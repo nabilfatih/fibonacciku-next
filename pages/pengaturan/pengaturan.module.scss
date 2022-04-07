@@ -15,14 +15,14 @@
     padding-left: 18rem;
     padding-right: 18rem;
 
-    @include breakpoint-down(medium){
+    @include breakpoint-down(medium) {
         padding-left: 6rem;
         padding-right: 6rem;
     }
 
-    @include breakpoint-down(small){
-        padding-left: 1rem;
-        padding-right: 1rem;
+    @include breakpoint-down(small) {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
     }
 
     &__intro {
@@ -49,17 +49,17 @@
     &__card {
         padding: 2rem;
         border-radius: 15px;
-        background: rgba( 255, 255, 255, 0.3 );
-        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-        backdrop-filter: blur( 4px );
-        -webkit-backdrop-filter: blur( 4px );
-        border: 1px solid rgba( 255, 255, 255, 0.18 );
+        background: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
 
-        @include breakpoint-up(medium){
+        @include breakpoint-up(medium) {
             flex: 2 1 100%;
         }
 
-        @include breakpoint-up(large){
+        @include breakpoint-up(large) {
             flex: 2 1 100%;
         }
     }
@@ -139,10 +139,12 @@
 
         button {
             transition: transform 250ms ease-in-out, box-shadow 150ms ease-in-out;
+
             &:hover {
                 transform: translate(1px, -1px);
                 box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
             }
+
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
     }
@@ -206,7 +208,8 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        input ,textarea {
+        input,
+        textarea {
             border: none;
             border-color: none;
             outline: 0 none;
@@ -222,7 +225,7 @@
 
             white-space: pre-line;
 
-            @include breakpoint-down(small){
+            @include breakpoint-down(small) {
                 font-size: 0.8rem;
             }
         }

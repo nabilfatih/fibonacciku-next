@@ -1,15 +1,13 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
 import cls from "classnames";
-
 import Head from "next/head";
 import Footer from "../../components/footer/footer";
 import NavBar from "../../components/nav/nav";
-
 import styles from "./query.module.scss";
 import dataBab from "../../data/dataBab.json";
 import dataPelajaran from "../../data/dataPelajaran.json";
-import Link from "next/link";
+
 
 export async function getStaticPaths() {
   return {
@@ -100,9 +98,6 @@ export default function Query({ babs, pelajaran }) {
                       }
                     >
                       <div className={styles.shows__icon}>
-                        {/* <Link
-                          href={`/mata-pelajaran/${pelajaran.query}/${bab.querybab}`}
-                        > */}
                         <a>
                           <Image
                             src={bab.icon}
@@ -111,16 +106,11 @@ export default function Query({ babs, pelajaran }) {
                             height={128}
                           />
                         </a>
-                        {/* </Link> */}
                       </div>
 
-                      {/* <Link
-                        href={`/mata-pelajaran/${pelajaran.query}/${bab.querybab}`}
-                      > */}
                       <a className={styles.shows__bab}>
                         <h3>{bab.bab}</h3>
                       </a>
-                      {/* </Link> */}
                     </div>
                   );
                 })}

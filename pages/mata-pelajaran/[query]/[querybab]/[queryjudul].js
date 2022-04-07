@@ -4,7 +4,6 @@ import NavBar from "../../../../components/nav/nav";
 import styles from "./queryjudul.module.scss";
 import cls from "classnames";
 import { useRouter } from "next/router";
-
 import dataKonten from "../../../../data/dataKonten.json";
 
 export async function getStaticPaths() {

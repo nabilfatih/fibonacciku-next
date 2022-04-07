@@ -18,7 +18,8 @@
         // width: 100%;
         min-width: 189vh;
         max-height: 45vh;
-        min-height: 30vh;
+        min-height: 15rem;
+        object-fit: cover;
 
         @include breakpoint-down(medium) {
             // width: 234vh;
@@ -153,12 +154,19 @@
             flex-direction: column;
             gap: 1rem;
 
+            @include breakpoint-down(small) {
+                align-items: center;
+                text-align: center;
+                justify-content: center;
+            }
+
             h3 {
                 font-weight: 1000;
                 margin-bottom: 0;
             }
 
             .website {
+                max-width: 9rem;
                 font-size: 1.2rem;
                 font-style: italic;
                 font-weight: 1000;

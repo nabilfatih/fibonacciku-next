@@ -59,7 +59,7 @@ export default function Profile({ dataUser }) {
 
   const handleAvatar = async (e) => {
     e.preventDefault();
-    const file = e.target.files[0];
+    let file = e.target.files[0];
 
     const toastConfig = {
       position: "top-center",
@@ -73,7 +73,7 @@ export default function Profile({ dataUser }) {
     const loading = toast.loading("Mohon tunggu...", { transition: Slide });
 
     try {
-      const codeName = crypto.randomBytes(10).toString("hex");
+      const codeName = crypto.randomBytes(20).toString("hex");
       const imageRef = ref(storage, `avatar-fibo/${codeName}`);
 
       await uploadBytes(imageRef, file);
@@ -84,13 +84,15 @@ export default function Profile({ dataUser }) {
         );
       }
 
-      const url = await getDownloadURL(imageRef);
+      let url = await getDownloadURL(imageRef);
 
       const formData = {
         username: user.username,
         filename: codeName,
         path: url,
       };
+      file = null;
+      url = null;
 
       const config = {
         headers: {
@@ -184,7 +186,7 @@ export default function Profile({ dataUser }) {
                       className={styles.website}
                       target={"_blank"}
                     >
-                      {user.website}
+                      {dataUser.website}
                     </a>
                     <div className={styles.link}>
                       {checkInstagram && (

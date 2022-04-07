@@ -1,5 +1,4 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.scss";
 import Footer from "../components/footer/footer";
 import NavBar from "../components/nav/nav";
 import Hero from "../components/hero/hero";
@@ -31,7 +30,7 @@ export default function Home() {
   }, [router]);
 
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>FibonacciKu | Belajar Gratis Kapanpun Dimanapun</title>
         <meta
