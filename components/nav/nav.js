@@ -36,7 +36,7 @@ const NavBar = () => {
   const [iconStatus, setIconStatus] = useState(false);
   const [iconStatusMobile, setIconStatusMobile] = useState(false);
   const [openHamburger, setOpenHamburger] = useState(false);
-  const [openMobileMenu, setOpenMobileMenu] = useState(false);
+  const [openMobileMenu, setOpenMobileMenu] = useState("");
 
   useEffect(() => {
     user && token ? setUserState(user) : setUserState("");
@@ -75,7 +75,7 @@ const NavBar = () => {
   const handleMobileDropdown = (e) => {
     e.preventDefault();
     setOpenHamburger(!openHamburger);
-    setOpenMobileMenu(!openMobileMenu);
+    setOpenMobileMenu("fade-in");
   };
 
   const handleProfileMobile = (e) => {
@@ -92,7 +92,7 @@ const NavBar = () => {
         !dropdownMobile.current.contains(event.target)
       ) {
         setOpenHamburger(false);
-        setOpenMobileMenu(false);
+        setOpenMobileMenu("");
       }
     }
     window.addEventListener("click", handleClickMobile);
@@ -101,9 +101,7 @@ const NavBar = () => {
 
   return (
     <header className={cls(styles.header, openHamburger ? styles.open : "")}>
-      <div
-        className={cls(styles.overlay, openMobileMenu ? "fade-in" : "fade-out")}
-      ></div>
+      <div className={cls(styles.overlay, "has-fade", openMobileMenu)}></div>
       <nav
         className={cls(
           styles.container,
@@ -229,7 +227,8 @@ const NavBar = () => {
       <div
         className={cls(
           styles.header__menu,
-          openMobileMenu ? "fade-in" : "fade-out",
+          "has-fade",
+          openMobileMenu,
           "hide-for-desktop"
         )}
         ref={dropdownMobile}

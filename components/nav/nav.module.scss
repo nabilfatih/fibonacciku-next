@@ -23,7 +23,7 @@
     &.open {
 
         .header__toggle {
-            transition: transform 100ms;
+            // transition: transform 100ms;
 
             >span:first-child {
                 transform: rotate(45deg);
@@ -101,7 +101,7 @@
             width: 26px;
             height: 2px;
             background-color: $darkBlue;
-            transition: all 300ms ease-in-out;
+            transition: all 300ms ease;
             transform-origin: 3px 1px;
 
             &:not(:last-child) {

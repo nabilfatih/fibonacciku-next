@@ -128,6 +128,7 @@ export default function Profile({ dataUser }) {
                 layout="fill"
                 alt={`Profil ${dataUser.username} Background`}
                 priority
+                quality={90}
               />
             </div>
 
