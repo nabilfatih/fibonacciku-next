@@ -101,7 +101,8 @@ export default function Profile({ dataUser }) {
       };
 
       const { data } = await axios.put(`/api/updatePhoto`, formData, config);
-      cookie.set("user", JSON.stringify(data?.user));
+      cookie.set("token", data?.token, { expires: 3 });
+      cookie.set("user", JSON.stringify(data?.user), { expires: 3 });
       await router.push(`/fibo/${user.username}`);
       toast.dismiss(loading);
     } catch (e) {
