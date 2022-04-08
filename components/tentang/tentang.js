@@ -16,8 +16,8 @@ const TentangFibo = () => {
             <p>
               Kita bermimpi untuk mewujudkan pendidikan gratis agar semua orang
               bisa menikmati pendidikan yang berkualitas tanpa perlu memikirkan
-              biaya. Kita ingin menjadi menjadi wadah pendidikan untuk
-              semua umur dan kalangan, dengan menyediakan pembelajaran tanpa
+              biaya. Kita ingin menjadi menjadi wadah pendidikan untuk semua
+              umur dan kalangan, dengan menyediakan pembelajaran tanpa
               membedakan kelas. Oleh karena itu, kalian bisa belajar sesuai
               keinginan kalian.
             </p>

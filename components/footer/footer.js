@@ -1,15 +1,25 @@
 import styles from "./footer.module.scss";
 import cls from "classnames";
-import Image from "next/image";
-
+import { parseCookies } from "nookies";
 import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 
 const Footer = () => {
+  const cookies = parseCookies();
   const router = useRouter();
+
+  const user = cookies?.user ? JSON.parse(cookies.user) : "";
+  const token = cookies?.token;
+
+  const [userState, setUserState] = useState("");
+
+  useEffect(() => {
+    user && token ? setUserState(user) : setUserState("");
+  }, [router, setUserState]);
 
   const HandleClickBeranda = (e) => {
     e.preventDefault();
-    router.push("/beranda");
+    userState ? router.push("/beranda") : router.push("/");
   };
   const HandleClickKarir = (e) => {
     e.preventDefault();
