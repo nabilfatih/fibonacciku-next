@@ -1,9 +1,9 @@
 @import "/styles/variables";
 
 .bar {
-    background: linear-gradient(to right, $redOrange, $veryLightRed, $lightPink, $lightBlueSky, $blueSky, $greenTeal);
+    background: $darkBlue;
     border-radius: 30px;
-    height: 5px;
+    height: 4px;
     width: 100%;
     left: 0;
     top: 0;
