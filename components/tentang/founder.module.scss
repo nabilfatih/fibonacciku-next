@@ -1,0 +1,141 @@
+@import "/styles/variables";
+@import "/styles/mixins";
+@import "/styles/animations";
+
+.founder {
+
+    &__container {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        padding-left: 5rem;
+        padding-right: 5rem;
+
+        @include breakpoint-down(medium) {
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+
+        @include breakpoint-down(small) {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+    }
+
+    &__intro {
+        text-align: center;
+
+        h1 {
+            font-weight: 1000;
+        }
+    }
+
+    &__judul {
+        text-align: center;
+
+        @include breakpoint-down(small) {
+            text-align: left;
+        }
+
+        h3 {
+            font-size: 1.75rem;
+            font-weight: 400;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+            @include breakpoint-down(small) {
+                font-size: 1.5rem;
+            }
+        }
+
+        .display {
+            display: flex;
+            // flex-wrap: wrap;
+            gap: 2rem;
+
+            @include breakpoint-down(small) {
+                flex-wrap: wrap;
+            }
+        }
+    }
+
+    &__card {
+        padding: 1.5rem;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+
+        p {
+            margin: 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        @include breakpoint-up(medium) {
+            flex: 2 1 100%;
+        }
+
+        @include breakpoint-up(large) {
+            flex: 2 1 100%;
+        }
+
+        .pesan {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            text-align: left;
+        }
+
+        .konten {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .foto {
+            position: relative;
+            width: 128px;
+            height: 128px;
+
+            @include breakpoint-down(medium) {
+                width: 96px;
+                height: 96px;
+            }
+
+            .img {
+                border-radius: 50%;
+                object-fit: cover;
+                background-color: $darkBlue;
+            }
+        }
+
+        .biodata {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            text-align: left;
+
+            @include breakpoint-down(medium) {
+                gap: 1rem;
+            }
+
+            h4 {
+                margin: 0;
+                font-size: 1.25rem;
+
+                @include breakpoint-down(medium) {
+                    font-size: 1rem;
+                }
+            }
+
+            .link {
+                display: flex;
+                gap: 1rem;
+
+                .icon {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
