@@ -238,7 +238,7 @@ const NavBar = () => {
           {userState && (
             <a onClick={handleProfileMobile}>
               <UilUserCircle className={styles.uil} />
-              Profil
+              {userState.username}
             </a>
           )}
           {iconStatusMobile ? (
@@ -268,9 +268,6 @@ const NavBar = () => {
                 Pengaturan
               </a>
             </li>
-            {/* <li className={styles.garis_batas}>
-              <hr className={styles.line} />
-            </li> */}
             <li className={styles.keluar}>
               <a onClick={handleLogout} className={styles.pilihan}>
                 <UilSignout className={styles.uil} size={20} />
