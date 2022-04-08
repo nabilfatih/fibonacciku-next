@@ -124,5 +124,9 @@
         margin: 0;
         color: red;
         font-size: small;
+
+        @include breakpoint-down(small) {
+            font-size: smaller;
+        }
     }
 }

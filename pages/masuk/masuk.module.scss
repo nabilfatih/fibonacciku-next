@@ -26,7 +26,7 @@
         &.aktif {
             border-bottom: 0.125rem solid $darkBlue;
             transition: 0.3s ease;
-    
+
             .icon {
                 color: $darkBlue;
                 transition: 0.3s ease;
@@ -102,12 +102,13 @@
         cursor: pointer;
         transform: translateY(-10px);
 
-        
         transition: transform 250ms ease-in-out, box-shadow 150ms ease-in-out;
+
         &:hover {
             transform: translate(1px, -11px);
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
         }
+
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
 
@@ -115,6 +116,10 @@
         margin: 0;
         color: red;
         font-size: small;
+
+        @include breakpoint-down(small) {
+            font-size: smaller;
+        }
     }
 
     &__forgot_link {

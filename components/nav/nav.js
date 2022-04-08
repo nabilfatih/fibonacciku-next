@@ -27,11 +27,11 @@ const NavBar = () => {
   const user = cookies?.user ? JSON.parse(cookies.user) : "";
   const token = cookies?.token;
 
-  const [statusAktif, setStatusAktif] = useState(false);
-  const [statusMobileAktif, setStatusMobileAktif] = useState(false);
   const dropdown = useRef(null);
   const dropdownMobile = useRef(null);
   const dropdownProfileMobile = useRef(null);
+  const [statusAktif, setStatusAktif] = useState(false);
+  const [statusMobileAktif, setStatusMobileAktif] = useState(false);
   const [userState, setUserState] = useState("");
   const [iconStatus, setIconStatus] = useState(false);
   const [iconStatusMobile, setIconStatusMobile] = useState(false);
@@ -234,19 +234,20 @@ const NavBar = () => {
         )}
         ref={dropdownMobile}
       >
-        <div className={styles.profile}>
-          {userState && (
+        {userState && (
+          <div className={styles.profile}>
             <a onClick={handleProfileMobile}>
               <UilUserCircle className={styles.uil} />
               {userState.username}
             </a>
-          )}
-          {iconStatusMobile ? (
-            <UilAngleUp className={styles.uilStatus} />
-          ) : (
-            <UilAngleDown className={styles.uilStatus} />
-          )}
-        </div>
+
+            {iconStatusMobile ? (
+              <UilAngleUp className={styles.uilStatus} />
+            ) : (
+              <UilAngleDown className={styles.uilStatus} />
+            )}
+          </div>
+        )}
 
         {statusMobileAktif && (
           <ul className={styles.dropdown_profile} ref={dropdownProfileMobile}>
