@@ -187,18 +187,20 @@ const NavBar = () => {
 
                 {statusAktif && (
                   <ul className={styles.dropdown_menu} ref={dropdown}>
-                    <li className={styles.profil_dropdown}>
-                      <a
-                        onClick={() =>
-                          router.push(`/fibo/${userState.username}`)
-                        }
-                      >
+                    <li
+                      className={styles.profil_dropdown}
+                      onClick={() => router.push(`/fibo/${userState.username}`)}
+                    >
+                      <a>
                         <UilUserCircle className={styles.uil} size={30} />
                         Profil
                       </a>
                     </li>
-                    <li className={styles.pengaturan_dropdown}>
-                      <a onClick={() => router.push("/pengaturan/akun")}>
+                    <li
+                      className={styles.pengaturan_dropdown}
+                      onClick={() => router.push("/pengaturan/akun")}
+                    >
+                      <a>
                         <UilSetting className={styles.uil} size={30} />
                         Pengaturan
                       </a>
@@ -206,8 +208,11 @@ const NavBar = () => {
                     <li className={styles.garis_batas}>
                       <hr className={styles.line} />
                     </li>
-                    <li className={styles.keluar_dropdown}>
-                      <a onClick={handleLogout}>
+                    <li
+                      className={styles.keluar_dropdown}
+                      onClick={handleLogout}
+                    >
+                      <a>
                         <UilSignout className={styles.uil} size={30} />
                         Keluar
                       </a>

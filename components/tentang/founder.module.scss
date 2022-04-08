@@ -10,6 +10,8 @@
         padding-left: 5rem;
         padding-right: 5rem;
 
+        text-align: center;
+
         @include breakpoint-down(medium) {
             padding-left: 3rem;
             padding-right: 3rem;
@@ -32,9 +34,6 @@
     &__judul {
         text-align: center;
 
-        @include breakpoint-down(small) {
-            text-align: left;
-        }
 
         h3 {
             font-size: 1.75rem;
@@ -52,6 +51,7 @@
             gap: 2rem;
 
             @include breakpoint-down(small) {
+                justify-content: center;
                 flex-wrap: wrap;
             }
         }

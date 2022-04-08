@@ -205,7 +205,7 @@ export default function Profile({ dataUser }) {
                       )}
                       {checkGithub && (
                         <a
-                          href={`https://www.instagram.com/${dataUser.github}`}
+                          href={`https://www.github.com/${dataUser.github}`}
                           target={"_blank"}
                         >
                           <Image
@@ -218,7 +218,7 @@ export default function Profile({ dataUser }) {
                       )}
                       {checkTwitter && (
                         <a
-                          href={`https://www.instagram.com/${dataUser.twitter}`}
+                          href={`https://www.twitter.com/${dataUser.twitter}`}
                           target={"_blank"}
                         >
                           <Image
