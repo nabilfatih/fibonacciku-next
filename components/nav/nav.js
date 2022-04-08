@@ -7,6 +7,12 @@ import {
   UilSetting,
   UilSignout,
   UilAngleUp,
+  UilBookOpen,
+  UilMoneyInsert,
+  UilGraduationCap,
+  UilEstate,
+  UilEnvelopeEdit,
+  UilUser,
 } from "@iconscout/react-unicons";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
@@ -22,9 +28,15 @@ const NavBar = () => {
   const token = cookies?.token;
 
   const [statusAktif, setStatusAktif] = useState(false);
+  const [statusMobileAktif, setStatusMobileAktif] = useState(false);
   const dropdown = useRef(null);
+  const dropdownMobile = useRef(null);
+  const dropdownProfileMobile = useRef(null);
   const [userState, setUserState] = useState("");
   const [iconStatus, setIconStatus] = useState(false);
+  const [iconStatusMobile, setIconStatusMobile] = useState(false);
+  const [openHamburger, setOpenHamburger] = useState(false);
+  const [openMobileMenu, setOpenMobileMenu] = useState(false);
 
   useEffect(() => {
     user && token ? setUserState(user) : setUserState("");
@@ -37,7 +49,12 @@ const NavBar = () => {
     toast.success("Sampai jumpa lagi 👻");
   };
 
-  const handleDropdown = async (e) => {
+  const handleBeranda = (e) => {
+    e.preventDefault();
+    userState ? router.push("/beranda") : router.push("/");
+  };
+
+  const handleDropdown = (e) => {
     e.preventDefault();
     setStatusAktif(!statusAktif);
     setIconStatus(!iconStatus);
@@ -55,14 +72,38 @@ const NavBar = () => {
     return () => window.removeEventListener("click", handleClick);
   }, [statusAktif]);
 
-  const handleBeranda = (e) => {
+  const handleMobileDropdown = (e) => {
     e.preventDefault();
-    userState ? router.push("/beranda") : router.push("/");
+    setOpenHamburger(!openHamburger);
+    setOpenMobileMenu(!openMobileMenu);
   };
 
+  const handleProfileMobile = (e) => {
+    e.preventDefault();
+    setIconStatusMobile(!iconStatusMobile);
+    setStatusMobileAktif(!statusMobileAktif);
+  };
+
+  useEffect(() => {
+    if (!openHamburger) return;
+    function handleClickMobile(event) {
+      if (
+        dropdownMobile.current &&
+        !dropdownMobile.current.contains(event.target)
+      ) {
+        setOpenHamburger(false);
+        setOpenMobileMenu(false);
+      }
+    }
+    window.addEventListener("click", handleClickMobile);
+    return () => window.removeEventListener("click", handleClickMobile);
+  }, [openHamburger]);
+
   return (
-    <header className={styles.header}>
-      <div className={cls(styles.overlay, "has-fade")}></div>
+    <header className={cls(styles.header, openHamburger ? styles.open : "")}>
+      <div
+        className={cls(styles.overlay, openMobileMenu ? "fade-in" : "fade-out")}
+      ></div>
       <nav
         className={cls(
           styles.container,
@@ -81,7 +122,12 @@ const NavBar = () => {
         <a
           id="btnHamburger"
           type="button"
-          className={cls(styles.header__toggle, "hide-for-desktop")}
+          className={cls(
+            styles.header__toggle,
+            styles.hamburger,
+            "hide-for-desktop"
+          )}
+          onClick={handleMobileDropdown}
         >
           <span></span>
           <span></span>
@@ -180,12 +226,77 @@ const NavBar = () => {
         </div>
       </nav>
 
-      <div className={cls(styles.header__menu, "has-fade", "hide-for-desktop")}>
-        <a onClick={handleBeranda}>Beranda</a>
-        <a onClick={() => router.push("/mata-pelajaran")}>Mata Pelajaran</a>
-        <a onClick={() => router.push("/tentang")}>Tentang</a>
-        <a onClick={() => router.push("/kontak")}>Kontak</a>
+      <div
+        className={cls(
+          styles.header__menu,
+          openMobileMenu ? "fade-in" : "fade-out",
+          "hide-for-desktop"
+        )}
+        ref={dropdownMobile}
+      >
+        <div className={styles.profile}>
+          {userState && (
+            <a onClick={handleProfileMobile}>
+              <UilUserCircle className={styles.uil} />
+              Profil
+            </a>
+          )}
+          {iconStatusMobile ? (
+            <UilAngleUp className={styles.uilStatus} />
+          ) : (
+            <UilAngleDown className={styles.uilStatus} />
+          )}
+        </div>
+
+        {statusMobileAktif && (
+          <ul className={styles.dropdown_profile} ref={dropdownProfileMobile}>
+            <li className={styles.profil}>
+              <a
+                onClick={() => router.push(`/fibo/${userState.username}`)}
+                className={styles.pilihan}
+              >
+                <UilUser className={styles.uil} size={20} />
+                Profil
+              </a>
+            </li>
+            <li className={styles.pengaturan}>
+              <a
+                onClick={() => router.push("/pengaturan/akun")}
+                className={styles.pilihan}
+              >
+                <UilSetting className={styles.uil} size={20} />
+                Pengaturan
+              </a>
+            </li>
+            {/* <li className={styles.garis_batas}>
+              <hr className={styles.line} />
+            </li> */}
+            <li className={styles.keluar}>
+              <a onClick={handleLogout} className={styles.pilihan}>
+                <UilSignout className={styles.uil} size={20} />
+                Keluar
+              </a>
+            </li>
+          </ul>
+        )}
+
+        <a onClick={handleBeranda}>
+          <UilEstate className={styles.uil} /> Beranda
+        </a>
+        <a onClick={() => router.push("/mata-pelajaran")}>
+          <UilBookOpen className={styles.uil} />
+          Mata Pelajaran
+        </a>
+        <a onClick={() => router.push("/tentang")}>
+          <UilGraduationCap className={styles.uil} />
+          Tentang
+        </a>
+        <a onClick={() => router.push("/kontak")}>
+          <UilEnvelopeEdit className={styles.uil} />
+          Kontak
+        </a>
         <a href="https://saweria.co/Fibonacciku" target={"_blank"}>
+          <UilMoneyInsert className={styles.uil} />
           Donasi
         </a>
       </div>
