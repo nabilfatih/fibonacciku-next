@@ -23,7 +23,9 @@ const Bantuan = () => {
               </p>
             </div>
 
-            <button className={styles.button}>Donasi Sekarang</button>
+            <a href="https://saweria.co/Fibonacciku" target={"_blank"}>
+              <button className={styles.button}>Donasi Sekarang</button>
+            </a>
           </div>
         </div>
       </div>

@@ -76,7 +76,6 @@ export default async (req, res) => {
       return res.status(401).json({ error: "Invalid credentials 🤯" });
     }
   } catch (e) {
-    console.log(e);
     return res.status(401).json({ error: "Gagal daftar 😭" });
   }
 };

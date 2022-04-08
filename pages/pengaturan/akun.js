@@ -90,7 +90,8 @@ export default function PengaturanAkun({ dataUser }) {
       };
 
       const { data } = await axios.put(`/api/setting/akun`, formData, config);
-      cookie.set("user", JSON.stringify(data?.user));
+      cookie.set("token", data?.token, { expires: 3 });
+      cookie.set("user", JSON.stringify(data?.user), { expires: 3 });
       toast.dismiss(loading);
       await router.push("/pengaturan/akun");
       toast.success(data.success, toastConfig);
