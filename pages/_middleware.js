@@ -12,7 +12,8 @@ export async function middleware(req) {
     pathname.includes("/masuk") ||
     pathname.includes("/daftar") ||
     pathname.includes("/reset") ||
-    pathname.includes("/verify-email")
+    pathname.includes("/verify-email") ||
+    pathname.includes("/lupa-password")
   ) {
     if (!userId || !user) {
       return NextResponse.next();
