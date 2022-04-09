@@ -25,19 +25,22 @@ export default function Masuk() {
   const user = cookies?.user ? JSON.parse(cookies.user) : "";
   const token = cookies.token ? cookies.token : null;
 
-  useEffect(async () => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    const { data } = await axios.put(`/api/verify`, { token: token }, config);
-    const tokens = data.userId;
-    if (!tokens || !user) {
-      cookie.remove("user");
-      cookie.remove("token");
+  useEffect(() => {
+    async function fetchData() {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const { data } = await axios.put(`/api/verify`, { token: token }, config);
+      const tokens = data.userId;
+      if (!tokens || !user) {
+        cookie.remove("user");
+        cookie.remove("token");
+      }
     }
-  }, [router]);
+    fetchData();
+  }, [router, token, user]);
 
   const [usernameActive, setUsernameActive] = useState("");
   const [passwordActive, setPasswordActive] = useState("");
@@ -111,7 +114,11 @@ export default function Masuk() {
       cookie.set("token", data?.token, { expires: 3 });
       cookie.set("user", JSON.stringify(data?.user), { expires: 3 });
       toast.dismiss(loading);
-      await router.push(data.referer || "/beranda");
+      if (data.referer) {
+        await router.push(data.referer);
+      } else {
+        await router.push("/beranda");
+      }
       toast.success(data.message, toastConfig);
     } catch (e) {
       toast.dismiss(loading);

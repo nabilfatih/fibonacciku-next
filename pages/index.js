@@ -16,18 +16,21 @@ export default function Home() {
   const user = cookies?.user ? JSON.parse(cookies.user) : "";
   const token = cookies.token ? cookies.token : null;
 
-  useEffect(async () => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    const { data } = await axios.put(`/api/verify`, { token: token }, config);
-    const tokens = data.userId;
-    if (tokens || user) {
-      router.push("/beranda");
+  useEffect(() => {
+    async function fetchData() {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const { data } = await axios.put(`/api/verify`, { token: token }, config);
+      const tokens = data.userId;
+      if (tokens || user) {
+        router.push("/beranda");
+      }
     }
-  }, [router]);
+    fetchData();
+  }, [router, token, user]);
 
   return (
     <div>

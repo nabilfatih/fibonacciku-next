@@ -7,7 +7,7 @@ import absoluteUrl from "next-absolute-url";
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 connectDB();
 
-export default async (req, res) => {
+export default async function Forget(req, res) {
   const { email } = req.body;
 
   try {
@@ -63,4 +63,4 @@ export default async (req, res) => {
   } catch (e) {
     return res.status(401).json({ error: "Gagal reset password 😭" });
   }
-};
+}

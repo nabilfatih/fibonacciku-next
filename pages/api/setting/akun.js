@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 
 connectDB();
 
-export default async (req, res) => {
+export default async function settingAkun(req, res) {
   try {
     if (req.method === "PUT") {
       const data = req.body;
@@ -58,4 +58,4 @@ export default async (req, res) => {
   } catch (e) {
     return res.status(401).json({ error: "Gagal perbarui profil 😭" });
   }
-};
+}
