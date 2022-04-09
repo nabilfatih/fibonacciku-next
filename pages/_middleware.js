@@ -8,19 +8,16 @@ export async function middleware(req) {
 
   const { pathname } = req.nextUrl;
 
-  if (!userId || !user) {
-    if (
-      pathname.includes("/masuk") ||
-      pathname.includes("/daftar") ||
-      pathname.includes("/reset") ||
-      pathname.includes("/verify-email") ||
-      pathname.includes("/lupa-password")
-    ) {
+  if (
+    pathname.includes("/masuk") ||
+    pathname.includes("/daftar") ||
+    pathname.includes("/reset") ||
+    pathname.includes("/verify-email") ||
+    pathname.includes("/lupa-password")
+  ) {
+    if (!userId || !user) {
       return NextResponse.next();
     }
-  }
-
-  if (userId) {
     return NextResponse.redirect(new URL("/beranda", req.url));
   }
 }
