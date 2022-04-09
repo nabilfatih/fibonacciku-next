@@ -55,7 +55,13 @@ export default function Profile({ dataUser }) {
     dataUser.instagram ? setCheckInstagram(dataUser.instagram) : null;
     dataUser.github ? setCheckGithub(dataUser.github) : null;
     dataUser.twitter ? setCheckTwitter(dataUser.twitter) : null;
-  }, [router]);
+  }, [
+    user.username,
+    dataUser.username,
+    dataUser.instagram,
+    dataUser.github,
+    dataUser.twitter,
+  ]);
 
   const handleAvatar = async (e) => {
     e.preventDefault();
