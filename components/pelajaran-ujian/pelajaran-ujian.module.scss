@@ -1,0 +1,229 @@
+@import "/styles/variables";
+@import "/styles/mixins";
+@import "/styles/animations";
+
+.mata_pelajaran {
+    margin-top: 62px;
+    // background-color: $cream;
+}
+// .persiapan_ujian {
+//     background-color: $mostLightPink;
+// }
+
+.pelajaran {
+
+    // background-color: $cream;
+    text-align: center;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+    @include breakpoint-down(medium) {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    &__intro {
+        // margin-bottom: 2rem;
+        // margin-bottom: 0;
+
+        h1 {
+            font-weight: 1000;
+        }
+
+        @include breakpoint-up(medium){
+            text-align: center;
+        }
+        @include breakpoint-up(large){
+            text-align: center;
+            width: 100%;
+        }
+    }
+
+    &__grid {
+        gap: 2.5rem;
+
+        display: flex;
+        flex-wrap: wrap;
+
+        @include breakpoint-down(medium) {
+            gap: 1.75rem;
+        }
+
+        @include breakpoint-down(small) {
+            gap: 1.5rem;
+            flex-direction: column;
+        }
+    }
+
+    &__card {
+        padding: 1rem;
+        // border: 5px solid black;
+        border-radius: 15px;
+        box-shadow: 6px 3px 6px 0 rgba(0,0,0,.2);
+        background: linear-gradient(to right, $blueSky, $lightPurple);
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+        backdrop-filter: blur( 3px );
+        -webkit-backdrop-filter: blur( 3px );
+
+        .button {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 300ms ease, box-shadow 150ms ease;
+            // border: 1px solid transparent;
+            &:hover {
+                transform: translate(3px, -3px);
+                box-shadow: 0 0 20px rgba(0,0,0,.2);
+                // border: 1px solid $darkBlue;
+            }
+            background-image: linear-gradient(to right, $lightGreen, $greenTeal);
+        }
+
+        @include breakpoint-up(medium){
+            flex: 2 1 30%;
+        }
+
+        @include breakpoint-up(large){
+            flex: 2 1 30%;
+        }
+    }
+
+    &__icon {
+        content: "";
+        // max-width: 128px;
+        // height: 128px;  
+        position: relative;
+        text-align: center;
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0rem;
+
+        @include breakpoint-up(large){
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    &__title {
+        font-size: 1rem;
+        font-weight: 300;
+        line-height: 1.15;
+        color: $darkBlue;
+        margin-bottom: 1rem;
+
+        @include breakpoint-up(large){
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+    }
+}
+
+.ujian {
+    // background-color: $mostLightPink;
+    text-align: center;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+    @include breakpoint-down(medium) {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    &__intro {
+        margin-bottom: 2rem;
+        margin-bottom: 0;
+
+        h1 {
+            font-weight: 1000;
+        }
+
+        @include breakpoint-up(medium){
+            text-align: center;
+        }
+        @include breakpoint-up(large){
+            text-align: center;
+            width: 100%;
+        }
+    }
+
+    &__grid {
+        gap: 2.5rem;
+
+        display: flex;
+        flex-wrap: wrap;
+
+        @include breakpoint-down(medium) {
+            gap: 1.75rem;
+        }
+
+        @include breakpoint-down(small) {
+            flex-direction: column;
+        }
+    }
+
+    &__card {
+        
+        padding: 1rem;
+        // border: 5px solid black;
+        border-radius: 15px;
+        // box-shadow: 6px 3px 6px 0 rgba(0,0,0,.2);
+        background: linear-gradient(to left, $greenTeal, $yellowGreen);
+        // background: rgba( 174, 239, 236, 0.8 );
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+        backdrop-filter: blur( 3px );
+        -webkit-backdrop-filter: blur( 3px );
+        // border-radius: 10px;
+
+        .button {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 300ms ease, box-shadow 150ms ease;
+            // border: 1px solid transparent;
+            &:hover {
+                transform: translate(3px, -3px);
+                box-shadow: 0 0 20px rgba(0,0,0,.2);
+                // border: 1px solid $darkBlue;
+            }
+            background-image: linear-gradient(to right, $blueSky, $greenTeal);
+            // background-image: linear-gradient(to right, $lightBrown, $mostLightBrown);
+        }
+
+        @include breakpoint-up(medium){
+            flex: 2 1 30%;
+        }
+
+        @include breakpoint-up(large){
+            flex: 2 1 30%;
+        }
+    }
+
+    &__icon {
+        content: "";
+        position: relative;
+        width: 100%;
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0rem;
+
+        @include breakpoint-up(large){
+            margin-bottom: 1.5rem;
+        }
+
+        img {
+            max-width: 128px;
+        }
+    }
+
+    &__title {
+        font-size: 1rem;
+        font-weight: 300;
+        line-height: 1.15;
+        color: $darkBlue;
+        margin-bottom: 1rem;
+
+        @include breakpoint-up(large){
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+    }
+}

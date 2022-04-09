@@ -1,0 +1,102 @@
+@import "/styles/variables";
+@import "/styles/mixins";
+@import "/styles/animations";
+
+.modal_video {
+
+    margin-top: 62px;
+    justify-content: center;
+    align-items: center;
+    background-color: $mostLightDarkBlue;
+    
+    .modals {
+        
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+        justify-content: center;
+        align-items: center;
+        padding-right: 11.75rem;
+        padding-left: 11.75rem;
+
+        @include breakpoint-down(medium) {
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+
+        @include breakpoint-down(small) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        &__button {
+            padding-top: 1rem;
+
+            text-align: right;
+        }
+        
+
+        &__card {
+            padding-left: 1rem;
+            padding-right: 1rem;
+            padding-top: 0.33rem;
+            padding-bottom: 0.33rem;
+            // border: 5px solid black;
+            text-align: center;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            background: linear-gradient(to right, $lightBlue, $lightGreen);
+        }
+    
+        &__judul {
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            justify-content: space-between;
+
+            h3 {
+                margin-bottom: 0;
+                font-weight: 1000;
+                text-align: left;
+                font-size: 1.5rem;
+
+                @include breakpoint-down(medium){
+                    font-size: 1.25rem;
+                }
+
+                @include breakpoint-down(small){
+                    font-size: 1.05rem;
+                }
+            }
+
+            .close_button {
+                font-size: 2.5rem;
+                font-weight: 1000;
+                cursor: pointer;
+                text-align: right;
+
+                @include breakpoint-down(small){
+                    font-size: 1.75rem;
+                }
+            }
+        }
+
+        &__body {
+            background-color: black;
+            position: relative;
+            overflow: hidden;
+            max-width: 100%;
+            padding-top: 71%;
+        }
+
+        &__iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

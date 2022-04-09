@@ -1,0 +1,63 @@
+@import "/styles/variables";
+@import "/styles/mixins";
+@import "/styles/animations";
+
+.maintenance {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    .background {
+        position: absolute;
+        width: 100%;
+        min-height: 100vh;
+        background-image: url('/static/img/latar_planetdarkblueungu_new.webp');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        @include breakpoint-down(small) {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+    }
+
+    .card {
+        position: relative;
+        z-index: 1;
+        background: white;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        max-width: 25.875rem;
+        padding: 2.5rem;
+        border-radius: 0.3125rem;
+        overflow: hidden;
+
+        h3 {
+            font-weight: 1000;
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            margin: 0;
+        }
+    }
+
+
+    .icon {
+        position: relative;
+        cursor: pointer;
+        text-align: center;
+        // margin-bottom: 2.5rem;
+    }
+
+}

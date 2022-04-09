@@ -1,0 +1,254 @@
+@import "/styles/variables";
+@import "/styles/mixins";
+@import "/styles/animations";
+
+.pengaturans {
+    // background-color: $cream;
+    margin-top: 62px;
+}
+
+.pengaturan {
+
+    // background-color: $cream;
+    padding-top: 2.75rem;
+    padding-bottom: 3rem;
+    padding-left: 18rem;
+    padding-right: 18rem;
+
+    @include breakpoint-down(medium) {
+        padding-left: 6rem;
+        padding-right: 6rem;
+    }
+
+    @include breakpoint-down(small) {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    &__intro {
+
+        text-align: center;
+
+        h1 {
+            text-align: center;
+            font-weight: 1000;
+        }
+    }
+
+    &__grid {
+        gap: 2.5rem;
+
+        display: flex;
+        flex-wrap: wrap;
+
+        @include breakpoint-down(small) {
+            flex-direction: column;
+        }
+    }
+
+    &__card {
+        padding: 2rem;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+
+        @include breakpoint-up(medium) {
+            flex: 2 1 100%;
+        }
+
+        @include breakpoint-up(large) {
+            flex: 2 1 100%;
+        }
+    }
+
+    &__form {
+
+        .judul {
+
+            .pilihan_akun {
+                display: flex;
+                gap: 1.5rem;
+                align-items: center;
+                padding-bottom: 2rem;
+
+                a {
+                    cursor: pointer;
+                }
+
+                h3 {
+                    margin: 0;
+                    font-weight: 1000;
+                }
+
+                .akun {
+                    text-decoration: underline;
+                }
+
+                .password {
+                    color: gray;
+
+                    &:hover {
+                        color: $darkBlue;
+                        opacity: 0.7;
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            .line {
+                margin: 0;
+                border-width: 0.5px;
+                border-color: $darkBlue;
+                opacity: 0.8;
+                margin-bottom: 2.5rem;
+            }
+
+            .pilihan_password {
+                display: flex;
+                gap: 1.5rem;
+                align-items: center;
+                padding-bottom: 2rem;
+
+                a {
+                    cursor: pointer;
+                }
+
+                h3 {
+                    margin: 0;
+                    font-weight: 1000;
+                }
+
+                .akun {
+                    color: gray;
+
+                    &:hover {
+                        color: $darkBlue;
+                        opacity: 0.7;
+                        text-decoration: underline;
+                    }
+                }
+
+                .password {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        button {
+            transition: transform 250ms ease-in-out, box-shadow 150ms ease-in-out;
+
+            &:hover {
+                transform: translate(1px, -1px);
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            }
+
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+    }
+
+    &__konten {
+
+        display: flex;
+        flex-direction: column;
+        background-color: $verylightBlue;
+        border-radius: .5rem;
+        padding: .5rem 1rem .25rem;
+        margin-bottom: 2rem;
+
+        .uil {
+            cursor: pointer;
+            color: #828da0;
+
+            &:hover {
+                color: #0065ff;
+                transition: 0.3s ease;
+            }
+        }
+
+        .foto_profil {
+            max-width: 20rem;
+        }
+
+        .form_control {
+            padding: 0;
+            border: 0;
+            box-shadow: none;
+            outline: 0 none;
+            border-color: none;
+        }
+
+        textarea:focus,
+        textarea[type="text"]:focus,
+        input[type="text"]:focus,
+        input[type="password"]:focus,
+        input[type="datetime"]:focus,
+        input[type="datetime-local"]:focus,
+        input[type="date"]:focus,
+        input[type="month"]:focus,
+        input[type="time"]:focus,
+        input[type="week"]:focus,
+        input[type="number"]:focus,
+        input[type="email"]:focus,
+        input[type="url"]:focus,
+        input[type="search"]:focus,
+        input[type="tel"]:focus,
+        input[type="color"]:focus,
+        .uneditable-input:focus {
+            border: none;
+            background: none;
+            border-color: none;
+            box-shadow: none;
+            outline: 0 none;
+        }
+
+        textarea {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        input,
+        textarea {
+            border: none;
+            border-color: none;
+            outline: 0 none;
+            background: none;
+            width: 100%;
+            font-size: 1em;
+            padding-bottom: 0.3125rem;
+        }
+
+        .deskripsi {
+            font-size: 0.9rem;
+            color: gray;
+
+            white-space: pre-line;
+
+            @include breakpoint-down(small) {
+                font-size: 0.8rem;
+            }
+        }
+    }
+
+    &__label {
+        font-size: 0.9rem;
+    }
+
+    &__input {
+
+        width: 100%;
+        background-color: $verylightBlue;
+        font-size: medium;
+        border: none;
+        outline: none;
+        padding: .25rem .5rem .5rem 0;
+        resize: none;
+    }
+
+    &__userMsg {
+        margin: 0;
+        color: red;
+        font-size: small;
+    }
+}

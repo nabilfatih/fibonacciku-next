@@ -1,0 +1,114 @@
+@import "/styles/variables";
+@import "/styles/mixins";
+@import "/styles/animations";
+
+.donasi {
+    // background-color: $blueSky;
+    margin: 0;
+    overflow: hidden;
+
+    @include breakpoint-down(medium) {
+        background: linear-gradient(to left, $blueSky, $lightPurple);
+    }
+
+    .container {
+        padding-left: 0;
+        padding-right: 0;
+
+        @include breakpoint-up(large) {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &__image {
+        position: relative;
+        background-image: url('/static/img/latar_donasi_mobile.webp');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        min-height: 18rem;
+        
+
+        @include breakpoint-up(medium) {
+            min-height: 25rem;
+            background-position: center 30%;
+        }
+
+        @include breakpoint-up(large) {
+            flex: 3;
+            order: 1;
+            height: 41rem;
+            background-image: none;
+        }
+
+        &::before {
+
+            @include breakpoint-up(large){
+                content: "";
+                position: absolute;
+                height: 115%;
+                width: 188%;
+                min-width: 73.875rem;
+                background-image: url('/static/img/latar_donasi_desktop_new.webp');
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 96%;
+                background-position: 100% 90%;
+                left: -40%;
+               
+            }
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url('/static/img/dino_donasi.webp');
+            background-size: 60%;
+            background-repeat: no-repeat;
+            background-position: center 60%;
+
+            @include breakpoint-up(medium){
+                background-size: 53%;
+                background-position: center 65%;
+            }
+
+            @include breakpoint-up(large){
+                width: 120%;
+                height: 122%;
+                min-width: 47.875rem;
+                min-height: 55rem;
+                background-size: 75%;
+                background-position: center 20%;
+                left: -15%;
+            }
+        }
+    }
+
+    &__text {
+        text-align: center;
+
+        @include breakpoint-up(large) {
+            flex: 2;
+            order: 2;
+            text-align: left;
+        }
+
+        p {
+            line-height: 1.5rem;
+            margin-bottom: 2.25rem;
+        }
+
+        .button {
+            
+            transition: transform 300ms ease-in-out, box-shadow 150ms ease-in-out;
+            &:hover {
+                transform: translate(3px, -3px);
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            }
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+    }
+}
