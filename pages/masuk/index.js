@@ -97,7 +97,6 @@ export default function Masuk() {
       draggable: true,
       progress: undefined,
     };
-
     const loading = toast.loading("Mohon tunggu...", { transition: Slide });
 
     try {
