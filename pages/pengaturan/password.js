@@ -12,8 +12,28 @@ import { UilEyeSlash, UilEye } from "@iconscout/react-unicons";
 import axios from "axios";
 import { Slide, toast } from "react-toastify";
 import { parseCookies } from "nookies";
+import connectDB from "../../config/connectDB";
+import User from "../../models/user";
+import checkCookie from "cookie";
 
-export default function PengaturanPassword() {
+export async function getServerSideProps(context) {
+  connectDB();
+
+  const cookies = checkCookie.parse(context.req.headers.cookie);
+  const user = JSON.parse(cookies.user);
+
+  const dataUser = await User.findOne({ username: user.username });
+  if (!dataUser) {
+    return { notFound: true };
+  }
+  return {
+    props: {
+      dataUser: JSON.parse(JSON.stringify(dataUser)),
+    },
+  };
+}
+
+export default function PengaturanPassword({ dataUser }) {
   const router = useRouter();
   const cookies = parseCookies();
   const user = cookies?.user ? JSON.parse(cookies.user) : "";
