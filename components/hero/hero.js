@@ -14,7 +14,7 @@ const Hero = ({ user, token }) => {
     } else {
       setStatus(false);
     }
-  }, [user, token, setStatus]);
+  }, [user, token, status]);
 
   const HandleClickMasuk = (e) => {
     e.preventDefault();
