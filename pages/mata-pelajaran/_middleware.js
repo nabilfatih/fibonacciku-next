@@ -9,7 +9,6 @@ export async function middleware(req) {
   if (!userId || !user) {
     return NextResponse.rewrite(new URL("/masuk", req.url));
   }
-
   if (userId) {
     return NextResponse.next();
   }
