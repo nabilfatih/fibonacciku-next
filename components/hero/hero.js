@@ -14,7 +14,7 @@ const Hero = ({ user, token }) => {
     } else {
       setStatus(false);
     }
-  }, [router]);
+  }, [user, token, setStatus]);
 
   const HandleClickMasuk = (e) => {
     e.preventDefault();
