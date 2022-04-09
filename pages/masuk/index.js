@@ -112,8 +112,8 @@ export default function Masuk() {
       const { data } = await axios.post(`/api/login`, formData, config);
       cookie.set("token", data?.token, { expires: 3 });
       cookie.set("user", JSON.stringify(data?.user), { expires: 3 });
-      toast.dismiss(loading);
       await router.push(data.referer);
+      toast.dismiss(loading);
       toast.success(data.message, toastConfig);
     } catch (e) {
       toast.dismiss(loading);
