@@ -1,4 +1,4 @@
 {
-  "parser": "react-scripts/node_modules/babel-eslint",
+  "parser": "@babel/eslint-parser",
   "extends": ["next/babel", "next/core-web-vitals"]
 }
