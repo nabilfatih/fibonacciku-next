@@ -32,7 +32,7 @@ export default async function Login(req, res) {
         res.status(201).json({
           token,
           user: { username, _id, nama, avatar },
-          referer: referer,
+          referer: referer.toString(),
           message: "Welcome to FibonacciKu 🤩",
         });
       } else {
