@@ -7,7 +7,7 @@ import NavBar from "../../components/nav/nav";
 import styles from "./query.module.scss";
 import dataBab from "../../data/dataBab.json";
 import dataPelajaran from "../../data/dataPelajaran.json";
-
+import crypto from "crypto";
 
 export async function getStaticPaths() {
   return {
@@ -38,14 +38,7 @@ export async function getStaticProps({ params }) {
 
 export default function Query({ babs, pelajaran }) {
   const router = useRouter();
-
-  function randomAlphaNumeric() {
-    return Math.random().toString(36).charAt(2);
-  }
-  function createFromPattern(pattern) {
-    pattern = pattern.split("");
-    return pattern.map((x) => x.replace("x", randomAlphaNumeric())).join("");
-  }
+  const key = crypto.randomBytes(10).toString("hex");
 
   const handleOnClickPelajaran = (e) => {
     e.preventDefault();
@@ -88,7 +81,7 @@ export default function Query({ babs, pelajaran }) {
                   return (
                     <div
                       className={styles.shows__card}
-                      key={createFromPattern("xxx-xxx")}
+                      key={key}
                       onClick={() =>
                         router.push(
                           `/mata-pelajaran/${pelajaran.query}/${bab.querybab}`,
