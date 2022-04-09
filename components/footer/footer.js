@@ -15,7 +15,7 @@ const Footer = () => {
 
   useEffect(() => {
     user && token ? setUserState(user) : setUserState("");
-  }, [router, setUserState]);
+  }, [setUserState]);
 
   const HandleClickBeranda = (e) => {
     e.preventDefault();

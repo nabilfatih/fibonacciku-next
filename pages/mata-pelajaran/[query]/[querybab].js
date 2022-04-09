@@ -115,9 +115,7 @@ export default function QueryBab({ bab, subBabs, kontens }) {
                                     <a
                                       onClick={() =>
                                         router.push(
-                                          `/mata-pelajaran/${konten.query}/${konten.querybab}/${konten.queryjudul}`,
-                                          undefined,
-                                          { shallow: true }
+                                          `/mata-pelajaran/${konten.query}/${konten.querybab}/${konten.queryjudul}`
                                         )
                                       }
                                     >
