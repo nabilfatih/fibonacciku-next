@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 
 connectDB();
 
-export default async function updatePhoto(req, res) {
+export default async (req, res) => {
   try {
     if (req.method === "PUT") {
       const { username, path, filename } = req.body;
@@ -37,4 +37,4 @@ export default async function updatePhoto(req, res) {
   } catch (e) {
     return res.status(401).json({ error: "Gagal perbarui profil 😭" });
   }
-}
+};

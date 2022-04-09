@@ -8,7 +8,7 @@ import sgMail from "@sendgrid/mail";
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 connectDB();
 
-export default async function Register(req, res) {
+export default async (req, res) => {
   const { email, nama, username, password } = req.body;
 
   try {
@@ -78,4 +78,4 @@ export default async function Register(req, res) {
   } catch (e) {
     return res.status(401).json({ error: "Gagal daftar 😭" });
   }
-}
+};

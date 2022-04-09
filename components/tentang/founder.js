@@ -31,28 +31,24 @@ const Founder = () => {
                     <a
                       target={"_blank"}
                       href="https://www.instagram.com/nabilfatih_"
-                      rel="noreferrer"
                     >
                       <Image
                         className={styles.icon}
                         src={"/static/img/instagram-icon.webp"}
                         width={20}
                         height={20}
-                        alt="Logo Instagram Founder FibonacciKu"
                       />
                     </a>
 
                     <a
                       target={"_blank"}
                       href="https://www.linkedin.com/in/nabilfatih/"
-                      rel="noreferrer"
                     >
                       <Image
                         className={styles.icon}
                         src={"/static/img/linkedin.webp"}
                         width={21}
                         height={21}
-                        alt="Logo LinkedIn Founder FibonacciKu"
                       />
                     </a>
                   </div>

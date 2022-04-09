@@ -187,7 +187,6 @@ export default function Profile({ dataUser }) {
                       href="https://www.fibonacciku.com"
                       className={styles.website}
                       target={"_blank"}
-                      rel="noreferrer"
                     >
                       {dataUser.website}
                     </a>
@@ -196,7 +195,6 @@ export default function Profile({ dataUser }) {
                         <a
                           href={`https://www.instagram.com/${dataUser.instagram}`}
                           target={"_blank"}
-                          rel="noreferrer"
                         >
                           <Image
                             src={"/static/img/instagram-icon.png"}
@@ -210,7 +208,6 @@ export default function Profile({ dataUser }) {
                         <a
                           href={`https://www.github.com/${dataUser.github}`}
                           target={"_blank"}
-                          rel="noreferrer"
                         >
                           <Image
                             src={"/static/img/github-icon.png"}
@@ -224,7 +221,6 @@ export default function Profile({ dataUser }) {
                         <a
                           href={`https://www.twitter.com/${dataUser.twitter}`}
                           target={"_blank"}
-                          rel="noreferrer"
                         >
                           <Image
                             src={"/static/img/twitter-icon.png"}

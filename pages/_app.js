@@ -30,7 +30,7 @@ function MyApp({ Component, pageProps: { ...pageProps } }) {
       router.events.off("routeChangeComplete", handleStop);
       router.events.off("routeChangeError", handleStop);
     };
-  }, [router, setIsAnimating]);
+  }, [router]);
   return (
     <>
       <Head>

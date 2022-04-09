@@ -115,7 +115,11 @@ export default function MataPelajaran(props) {
                   <a
                     className={cls(styles.button, "button")}
                     onClick={() =>
-                      router.push(`/mata-pelajaran/${ujians.query}`)
+                      router.push(
+                        `/mata-pelajaran/${ujians.query}`,
+                        undefined,
+                        { shallow: true }
+                      )
                     }
                   >
                     Belajar Disini!

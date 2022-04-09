@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 
 connectDB();
 
-export default async function Login(req, res) {
+export default async (req, res) => {
   const { username, password } = req.body;
   const referer = req.headers.referer;
 
@@ -44,4 +44,4 @@ export default async function Login(req, res) {
   } catch (e) {
     return res.status(401).json({ error: "Gagal masuk 😭" });
   }
-}
+};

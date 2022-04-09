@@ -90,7 +90,9 @@ export default function Query({ babs, pelajaran }) {
                       key={createFromPattern("xxx-xxx")}
                       onClick={() =>
                         router.push(
-                          `/mata-pelajaran/${pelajaran.query}/${bab.querybab}`
+                          `/mata-pelajaran/${pelajaran.query}/${bab.querybab}`,
+                          undefined,
+                          { shallow: true }
                         )
                       }
                     >

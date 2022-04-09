@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 
 connectDB();
 
-export default async function settingPassword(req, res) {
+export default async (req, res) => {
   try {
     if (req.method === "PUT") {
       const { username, passwordLama, passwordBaru, passwordKonfirmasi } =
@@ -35,4 +35,4 @@ export default async function settingPassword(req, res) {
   } catch (e) {
     return res.status(401).json({ error: "Gagal ganti password 😭" });
   }
-}
+};

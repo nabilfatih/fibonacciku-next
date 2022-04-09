@@ -137,11 +137,7 @@ const NavBar = () => {
           <a onClick={() => router.push("/mata-pelajaran")}>Mata Pelajaran</a>
           <a onClick={() => router.push("/tentang")}>Tentang</a>
           <a onClick={() => router.push("/kontak")}>Kontak</a>
-          <a
-            href="https://saweria.co/Fibonacciku"
-            target={"_blank"}
-            rel="noreferrer"
-          >
+          <a href="https://saweria.co/Fibonacciku" target={"_blank"}>
             Donasi
           </a>
         </div>
@@ -301,11 +297,7 @@ const NavBar = () => {
           <UilEnvelopeEdit className={styles.uil} />
           Kontak
         </a>
-        <a
-          href="https://saweria.co/Fibonacciku"
-          target={"_blank"}
-          rel="noreferrer"
-        >
+        <a href="https://saweria.co/Fibonacciku" target={"_blank"}>
           <UilMoneyInsert className={styles.uil} />
           Donasi
         </a>

@@ -18,7 +18,6 @@ const Donasi = () => {
             href="https://saweria.co/Fibonacciku"
             target="_blank"
             className={cls(styles.button, "button")}
-            rel="noreferrer"
           >
             Donasi Sekarang
           </a>

@@ -1,20 +1,17 @@
-import jwt from "jsonwebtoken";
+import { verifyToken } from "../../lib/utils";
 
-export default async function Verify(req, res) {
+export default async (req, res) => {
   const { token } = req.body;
 
   try {
     if (req.method === "PUT") {
-      if (token) {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        if (decoded) {
-          return res.status(200).json({ userId: decoded });
-        }
-        return res.status(200).json({ userId: null });
+      const userId = await verifyToken(token);
+      if (userId) {
+        return res.status(200).json({ userId: token });
       }
       return res.status(200).json({ userId: null });
     }
   } catch (e) {
     return res.status(401).json({ error: "Gagal masuk 😭" });
   }
-}
+};
