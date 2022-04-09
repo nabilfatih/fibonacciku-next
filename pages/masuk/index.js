@@ -21,6 +21,7 @@ import {
 export default function Masuk() {
   const cookies = parseCookies();
   const router = useRouter();
+  
   const user = cookies?.user ? JSON.parse(cookies.user) : "";
   const token = cookies.token ? cookies.token : null;
 
