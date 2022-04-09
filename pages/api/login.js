@@ -2,12 +2,16 @@ import connectDB from "../../config/connectDB";
 import User from "../../models/user";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import absoluteUrl from "next-absolute-url";
 
 connectDB();
 
 export default async function Login(req, res) {
   const { username, password } = req.body;
   const referer = req.headers.referer;
+
+  const { origin } = absoluteUrl(req);
+  const ref = referer.replace(origin, "");
 
   try {
     if (req.method === "POST") {
@@ -32,7 +36,7 @@ export default async function Login(req, res) {
         res.status(201).json({
           token,
           user: { username, _id, nama, avatar },
-          referer: referer,
+          referer: ref,
           message: "Welcome to FibonacciKu 🤩",
         });
       } else {

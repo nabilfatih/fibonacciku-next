@@ -18,7 +18,17 @@ import {
   UilEye,
 } from "@iconscout/react-unicons";
 
-export default function Masuk() {
+export async function getStaticSideProps(context) {
+  const referer = context.req.headers.referer;
+  console.log(referer);
+  return {
+    props: {
+      referer,
+    },
+  };
+}
+
+export default function Masuk({ referer }) {
   const cookies = parseCookies();
   const router = useRouter();
 
@@ -113,15 +123,15 @@ export default function Masuk() {
       cookie.set("token", data?.token, { expires: 3 });
       cookie.set("user", JSON.stringify(data?.user), { expires: 3 });
       toast.dismiss(loading);
-      const referer = data.referer;
       if (data.referer.includes("/masuk")) {
         await router.push("/beranda");
       } else {
-        await router.push(referer);
+        await router.push(data.referer);
       }
       toast.success(data.message, toastConfig);
     } catch (e) {
       toast.dismiss(loading);
+      console.log(e.response);
       toast.error(e.response.data.error, toastConfig);
     }
   }
