@@ -40,7 +40,7 @@ export default function Masuk() {
       }
     }
     fetchData();
-  }, []);
+  }, [token, user]);
 
   const [usernameActive, setUsernameActive] = useState("");
   const [passwordActive, setPasswordActive] = useState("");

@@ -30,7 +30,7 @@ export default function Home() {
       }
     }
     fetchData();
-  }, []);
+  }, [router, token, user]);
 
   return (
     <div>
