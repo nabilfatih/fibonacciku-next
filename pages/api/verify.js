@@ -5,10 +5,12 @@ export default async function Verify(req, res) {
 
   try {
     if (req.method === "PUT") {
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-      if (decoded) {
-        return res.status(200).json({ userId: decoded });
+      if (token) {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        if (decoded) {
+          return res.status(200).json({ userId: decoded });
+        }
+        return res.status(200).json({ userId: null });
       }
       return res.status(200).json({ userId: null });
     }
