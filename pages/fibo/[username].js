@@ -47,15 +47,15 @@ export default function Profile({ dataUser }) {
   const [checkGithub, setCheckGithub] = useState(false);
   const [checkTwitter, setCheckTwitter] = useState(false);
 
-  // useEffect(() => {
-  //   dataUser.username === user.username
-  //     ? setCheckUsername(true)
-  //     : setCheckUsername(false);
+  useEffect(() => {
+    dataUser.username === user.username
+      ? setCheckUsername(true)
+      : setCheckUsername(false);
 
-  //   dataUser.instagram ? setCheckInstagram(dataUser.instagram) : null;
-  //   dataUser.github ? setCheckGithub(dataUser.github) : null;
-  //   dataUser.twitter ? setCheckTwitter(dataUser.twitter) : null;
-  // }, [router]);
+    dataUser.instagram ? setCheckInstagram(dataUser.instagram) : null;
+    dataUser.github ? setCheckGithub(dataUser.github) : null;
+    dataUser.twitter ? setCheckTwitter(dataUser.twitter) : null;
+  }, [router]);
 
   const handleAvatar = async (e) => {
     e.preventDefault();

@@ -38,9 +38,9 @@ const NavBar = () => {
   const [openHamburger, setOpenHamburger] = useState(false);
   const [openMobileMenu, setOpenMobileMenu] = useState("");
 
-  // useEffect(() => {
-  //   user && token ? setUserState(user) : setUserState("");
-  // }, [router, setUserState]);
+  useEffect(() => {
+    user && token ? setUserState(user) : setUserState("");
+  }, [router, setUserState]);
 
   const handleLogout = async () => {
     cookie.remove("token");
