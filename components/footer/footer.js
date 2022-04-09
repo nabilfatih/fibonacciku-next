@@ -13,9 +13,9 @@ const Footer = () => {
   const token = cookies?.token;
   const [userState, setUserState] = useState("");
 
-  useEffect(() => {
-    user && token ? setUserState(user) : setUserState("");
-  }, [router, setUserState]);
+  // useEffect(() => {
+  //   user && token ? setUserState(user) : setUserState("");
+  // }, [router, setUserState]);
 
   const HandleClickBeranda = (e) => {
     e.preventDefault();
