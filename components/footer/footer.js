@@ -11,7 +11,6 @@ const Footer = () => {
 
   const user = cookies?.user ? JSON.parse(cookies.user) : "";
   const token = cookies?.token;
-
   const [userState, setUserState] = useState("");
 
   useEffect(() => {
