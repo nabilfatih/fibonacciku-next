@@ -89,7 +89,7 @@ const SyaratKetentuan = () => {
                     Untuk mengakses semua konten FibonacciKu, kamu diharuskan
                     membuat akun. Oleh karena itu, otomatis kamu menyetujui{" "}
                     <a onClick={HandleClickKebijakan}>kebijakan privasi</a> dan
-                    syarat ketentuan "Membuat Akun" FibonacciKu.
+                    syarat ketentuan &quot;Membuat Akun&quot; FibonacciKu.
                   </li>
                   <li>
                     Semua materi pelajaran yang ada di FibonacciKu dimiliki
@@ -110,12 +110,12 @@ const SyaratKetentuan = () => {
                   <li>
                     Jika kamu ingin menggunakan konten yang ada di FibonacciKu.
                     Maka kamu wajib memberi credit kepada FibonacciKu dengan
-                    format: "
+                    format: &quot;
                     <b>
                       Semua konten FibonacciKu tersedia gratis di
                       www.fibonacciku.com
                     </b>
-                    ".
+                    &quot;.
                   </li>
                 </ul>
               </div>

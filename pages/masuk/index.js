@@ -25,19 +25,22 @@ export default function Masuk() {
   const user = cookies?.user ? JSON.parse(cookies.user) : "";
   const token = cookies.token ? cookies.token : null;
 
-  useEffect(async () => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    const { data } = await axios.put(`/api/verify`, { token: token }, config);
-    const tokens = data.userId;
-    if (!tokens || !user) {
-      cookie.remove("user");
-      cookie.remove("token");
+  useEffect(() => {
+    async function fetchData() {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const { data } = await axios.put(`/api/verify`, { token: token }, config);
+      const tokens = data.userId;
+      if (!tokens || !user) {
+        cookie.remove("user");
+        cookie.remove("token");
+      }
     }
-  }, [router]);
+    fetchData();
+  }, []);
 
   const [usernameActive, setUsernameActive] = useState("");
   const [passwordActive, setPasswordActive] = useState("");

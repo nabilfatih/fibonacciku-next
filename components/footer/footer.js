@@ -57,7 +57,11 @@ const Footer = () => {
         </a>
 
         <div className={styles.footer__social}>
-          <a href="https://www.instagram.com/fibonacciku.id/" target="_blank">
+          <a
+            href="https://www.instagram.com/fibonacciku.id/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <img
               src="/static/img/instagram.webp"
               alt="Logo Instagram FibonacciKu"
@@ -66,13 +70,18 @@ const Footer = () => {
           <a
             href="https://www.linkedin.com/company/fibonacciku"
             target="_blank"
+            rel="noreferrer"
           >
             <img
               src="/static/img/linkedin.png"
               alt="Logo LinkedIn FibonacciKu"
             ></img>
           </a>
-          <a href="https://www.youtube.com/c/Fibonacciku" target="_blank">
+          <a
+            href="https://www.youtube.com/c/Fibonacciku"
+            target="_blank"
+            rel="noreferrer"
+          >
             <img
               src="/static/img/youtube.webp"
               alt="Logo YouTube FibonacciKu"
@@ -96,6 +105,7 @@ const Footer = () => {
           <a
             href="https://saweria.co/Fibonacciku"
             target="_blank"
+            rel="noreferrer"
             className={cls(styles.button, "button")}
           >
             Donasi
