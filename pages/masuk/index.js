@@ -114,7 +114,11 @@ export default function Masuk() {
       cookie.set("token", data?.token, { expires: 3 });
       cookie.set("user", JSON.stringify(data?.user), { expires: 3 });
       toast.dismiss(loading);
-      await router.push(data?.referer || "/beranda");
+      if (data.referer) {
+        await router.push(data.referer);
+      } else {
+        await router.push("/beranda");
+      }
       toast.success(data.message, toastConfig);
     } catch (e) {
       toast.dismiss(loading);
