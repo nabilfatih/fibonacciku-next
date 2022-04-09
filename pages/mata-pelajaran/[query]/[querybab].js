@@ -9,7 +9,6 @@ import { useRouter } from "next/router";
 import styles from "./querybab.module.scss";
 import Link from "next/link";
 import Head from "next/head";
-import crypto from "crypto";
 
 export async function getStaticPaths() {
   return {
@@ -45,8 +44,14 @@ export async function getStaticProps({ params }) {
 
 export default function QueryBab({ bab, subBabs, kontens }) {
   const router = useRouter();
-  const key1 = crypto.randomBytes(10).toString("hex");
-  const key2 = crypto.randomBytes(10).toString("hex");
+
+  function randomAlphaNumeric() {
+    return Math.random().toString(36).charAt(2);
+  }
+  function createFromPattern(pattern) {
+    pattern = pattern.split("");
+    return pattern.map((x) => x.replace("x", randomAlphaNumeric())).join("");
+  }
 
   return (
     <div>
@@ -84,7 +89,10 @@ export default function QueryBab({ bab, subBabs, kontens }) {
               <div className={styles.belajar__grid}>
                 {subBabs.map((subbab) => {
                   return (
-                    <div className={styles.belajar__card} key={key1}>
+                    <div
+                      className={styles.belajar__card}
+                      key={createFromPattern("xxx-xxx")}
+                    >
                       <div className={styles.belajar__subbab}>
                         <h3>{subbab.subbab}</h3>
                       </div>
@@ -98,7 +106,10 @@ export default function QueryBab({ bab, subBabs, kontens }) {
                           {kontens.map((konten) => {
                             if (subbab.querysubbab === konten.querysubbab) {
                               return (
-                                <div className={styles.konten} key={key2}>
+                                <div
+                                  className={styles.konten}
+                                  key={createFromPattern("xxx-xxx")}
+                                >
                                   <UilPlayCircle className={styles.icon} />
                                   <div className={styles.judul}>
                                     <a

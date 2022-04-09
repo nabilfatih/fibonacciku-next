@@ -7,7 +7,6 @@ import styles from "./matapelajaran.module.scss";
 import cls from "classnames";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import crypto from "crypto";
 import dataPelajaran from "../../data/dataPelajaran.json";
 
 export async function getStaticProps(context) {
@@ -20,8 +19,14 @@ export async function getStaticProps(context) {
 
 export default function MataPelajaran(props) {
   const router = useRouter();
-  const key1 = crypto.randomBytes(10).toString("hex");
-  const key2 = crypto.randomBytes(10).toString("hex");
+
+  function randomAlphaNumeric() {
+    return Math.random().toString(36).charAt(2);
+  }
+  function createFromPattern(pattern) {
+    pattern = pattern.split("");
+    return pattern.map((x) => x.replace("x", randomAlphaNumeric())).join("");
+  }
 
   return (
     <div>
@@ -49,7 +54,10 @@ export default function MataPelajaran(props) {
           {props.dataPelajaran.map((Pelajaran) => {
             if (Pelajaran.jenis == "pelajaran") {
               return (
-                <div className={styles.pelajaran__card} key={key1}>
+                <div
+                  className={styles.pelajaran__card}
+                  key={createFromPattern("xxx-xxx")}
+                >
                   <div className={styles.pelajaran__icon}>
                     <Image
                       className={styles.img}
@@ -86,7 +94,10 @@ export default function MataPelajaran(props) {
           {props.dataPelajaran.map((ujians) => {
             if (ujians.jenis == "ujian") {
               return (
-                <div key={key2} className={styles.ujian__card}>
+                <div
+                  key={createFromPattern("xxx-xxx")}
+                  className={styles.ujian__card}
+                >
                   <div className={styles.ujian__icon}>
                     <Image
                       className={styles.img}
