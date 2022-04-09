@@ -20,7 +20,7 @@ import {
 
 export async function getStaticSideProps(context) {
   const referer = context.req.headers.referer;
-  console.log(referer);
+
   return {
     props: {
       referer,
@@ -126,7 +126,7 @@ export default function Masuk({ referer }) {
       if (data.referer.includes("/masuk")) {
         await router.push("/beranda");
       } else {
-        await router.push(`${data.referer}`);
+        await router.push(data.referer);
       }
       toast.success(data.message, toastConfig);
     } catch (e) {
