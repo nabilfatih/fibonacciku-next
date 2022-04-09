@@ -1,6 +1,6 @@
 import { verifyToken } from "../../lib/utils";
 
-export default async (req, res) => {
+export default async function Verify(req, res) {
   const { token } = req.body;
 
   try {
@@ -14,4 +14,4 @@ export default async (req, res) => {
   } catch (e) {
     return res.status(401).json({ error: "Gagal masuk 😭" });
   }
-};
+}

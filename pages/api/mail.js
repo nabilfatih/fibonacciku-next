@@ -1,10 +1,8 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-
 import mail from "@sendgrid/mail";
 
 mail.setApiKey(process.env.SENDGRID_API_KEY);
 
-export default async (req, res) => {
+export default async function Mail(req, res) {
   const { nama, email, subjek, pesan } = req.body;
 
   try {
@@ -43,4 +41,4 @@ export default async (req, res) => {
   } catch (e) {
     return res.status(401).json({ error: "Gagal menngirim pesan 🤯" });
   }
-};
+}

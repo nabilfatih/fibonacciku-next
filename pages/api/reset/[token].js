@@ -7,7 +7,7 @@ import sgMail from "@sendgrid/mail";
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 connectDB();
 
-export default async (req, res) => {
+export default async function Reset(req, res) {
   try {
     if (req.method === "PUT") {
       const { token } = req.query;
@@ -61,4 +61,4 @@ export default async (req, res) => {
   } catch (e) {
     return res.status(401).json({ error: "Token sudah tidak berlaku 😭" });
   }
-};
+}
