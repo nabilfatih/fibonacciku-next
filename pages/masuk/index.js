@@ -115,7 +115,7 @@ export default function Masuk() {
       toast.dismiss(loading);
       const referer = data.referer;
       if (data.referer.includes("/masuk")) {
-        await router.push("https://www.fibonacciku.vercel.app/beranda");
+        await router.push("/beranda");
       } else {
         await router.push(referer);
       }
