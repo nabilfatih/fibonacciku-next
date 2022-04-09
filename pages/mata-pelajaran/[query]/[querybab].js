@@ -45,7 +45,8 @@ export async function getStaticProps({ params }) {
 
 export default function QueryBab({ bab, subBabs, kontens }) {
   const router = useRouter();
-  const key = crypto.randomBytes(10).toString("hex");
+  const key1 = crypto.randomBytes(10).toString("hex");
+  const key2 = crypto.randomBytes(10).toString("hex");
 
   return (
     <div>
@@ -83,7 +84,7 @@ export default function QueryBab({ bab, subBabs, kontens }) {
               <div className={styles.belajar__grid}>
                 {subBabs.map((subbab) => {
                   return (
-                    <div className={styles.belajar__card} key={key}>
+                    <div className={styles.belajar__card} key={key1}>
                       <div className={styles.belajar__subbab}>
                         <h3>{subbab.subbab}</h3>
                       </div>
@@ -97,7 +98,7 @@ export default function QueryBab({ bab, subBabs, kontens }) {
                           {kontens.map((konten) => {
                             if (subbab.querysubbab === konten.querysubbab) {
                               return (
-                                <div className={styles.konten} key={key}>
+                                <div className={styles.konten} key={key2}>
                                   <UilPlayCircle className={styles.icon} />
                                   <div className={styles.judul}>
                                     <a

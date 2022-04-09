@@ -20,7 +20,8 @@ export async function getStaticProps(context) {
 
 export default function MataPelajaran(props) {
   const router = useRouter();
-  const key = crypto.randomBytes(10).toString("hex");
+  const key1 = crypto.randomBytes(10).toString("hex");
+  const key2 = crypto.randomBytes(10).toString("hex");
 
   return (
     <div>
@@ -48,7 +49,7 @@ export default function MataPelajaran(props) {
           {props.dataPelajaran.map((Pelajaran) => {
             if (Pelajaran.jenis == "pelajaran") {
               return (
-                <div className={styles.pelajaran__card} key={key}>
+                <div className={styles.pelajaran__card} key={key1}>
                   <div className={styles.pelajaran__icon}>
                     <Image
                       className={styles.img}
@@ -85,7 +86,7 @@ export default function MataPelajaran(props) {
           {props.dataPelajaran.map((ujians) => {
             if (ujians.jenis == "ujian") {
               return (
-                <div key={key} className={styles.ujian__card}>
+                <div key={key2} className={styles.ujian__card}>
                   <div className={styles.ujian__icon}>
                     <Image
                       className={styles.img}
