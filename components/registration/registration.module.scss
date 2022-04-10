@@ -21,13 +21,13 @@
         min-height: 100%;
         min-width: 102%;
         background-image: url('/static/img/latar_planetdarkblueungu_new.webp');
-        background-size: 115%;
+        background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
 
         @include breakpoint-down(medium){
             min-height: 105%;
-            background-size: 195%;
+            // background-size: 195%;
         }
 
         @include breakpoint-down(small){

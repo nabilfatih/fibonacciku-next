@@ -15,7 +15,7 @@
         position: absolute;
         width: 100%;
         min-height: 100vh;
-        background-image: url('/static/img/tree_sunset.webp');
+        background-image: url('/static/img/planet_sunset.webp');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -32,7 +32,7 @@
         padding: 2rem;
         border-radius: 15px;
         max-width: 40rem;
-        background: linear-gradient(to right, $veryLightRed, $veryLightOrange);
+        background: linear-gradient(to left, $veryLightRed, $veryLightOrange);
         box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
         backdrop-filter: blur(3px);
         -webkit-backdrop-filter: blur(3px);
