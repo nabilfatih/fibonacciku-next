@@ -23,7 +23,8 @@ export async function middleware(req) {
 
   if (
     pathname.includes("/mata-pelajaran") ||
-    pathname.includes("/pengaturan")
+    pathname.includes("/pengaturan") ||
+    pathname.includes("/beranda")
   ) {
     if (!userId || !user) {
       return NextResponse.rewrite(new URL("/masuk", req.url));
