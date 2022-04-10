@@ -57,7 +57,6 @@ const FormKontak = ({ children }) => {
                   layout="fill"
                   priority={true}
                   alt="Logo Kontak FibonacciKu"
-                  placeholder="blur"
                 />
               </div>
             </div>

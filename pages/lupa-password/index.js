@@ -75,7 +75,6 @@ export default function LupaPassword() {
                   alt="Logo FibonacciKu"
                   width={256}
                   height={48}
-                  placeholder="blur"
                   onClick={() => router.push("/")}
                 />
               </div>

@@ -24,7 +24,6 @@ const FormMasuk = ({ children }) => {
               width={256}
               height={48}
               priority
-              placeholder="blur"
             />
           </div>
 
@@ -46,7 +45,6 @@ const FormMasuk = ({ children }) => {
               alt="Logo Daftar FibonacciKu"
               layout="fill"
               priority
-              placeholder="blur"
             />
           </div>
         </div>

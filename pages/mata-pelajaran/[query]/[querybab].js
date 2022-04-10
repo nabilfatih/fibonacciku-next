@@ -72,7 +72,6 @@ export default function QueryBab({ bab, subBabs, kontens }) {
                     width={85}
                     height={85}
                     alt={`Logo ${bab.bab} FibonacciKu`}
-                    placeholder="blur"
                   />
                   <div className={styles.header__belajar}>
                     <Link href={`/mata-pelajaran/${bab.query}`}>

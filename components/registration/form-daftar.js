@@ -29,7 +29,6 @@ const FormDaftar = ({ children }) => {
               alt="Logo Masuk FibonacciKu"
               layout="fill"
               priority
-              placeholder="blur"
             />
           </div>
         </div>
@@ -42,7 +41,6 @@ const FormDaftar = ({ children }) => {
               width={256}
               height={48}
               priority
-              placeholder="blur"
             />
           </div>
           <h2>Daftar</h2>

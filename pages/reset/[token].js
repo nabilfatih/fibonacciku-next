@@ -79,7 +79,6 @@ export default function Reset() {
                   alt="Logo FibonacciKu"
                   width={256}
                   height={48}
-                  placeholder="blur"
                   onClick={() => router.push("/")}
                 />
               </div>
