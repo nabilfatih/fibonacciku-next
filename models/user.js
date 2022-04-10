@@ -28,13 +28,13 @@ const userSchema = new Schema(
       default: false,
     },
     avatar: {
-      path: { type: String, default: "/static/img/default-icon.png" },
+      path: { type: String, default: "/static/img/default-icon.webp" },
       filename: String,
     },
     background: {
       type: String,
       required: false,
-      default: "/static/img/default-background.png",
+      default: "/static/img/default-background.webp",
     },
     bio: {
       type: String,
