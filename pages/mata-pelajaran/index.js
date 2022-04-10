@@ -8,8 +8,6 @@ import cls from "classnames";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import dataPelajaran from "../../data/dataPelajaran.json";
-import { useEffect } from "react";
-import { parseCookies } from "nookies";
 
 export async function getStaticProps(context) {
   return {
@@ -20,17 +18,7 @@ export async function getStaticProps(context) {
 }
 
 export default function MataPelajaran(props) {
-  const cookies = parseCookies();
   const router = useRouter();
-
-  const user = cookies?.user ? JSON.parse(cookies.user) : "";
-  const token = cookies.token ? cookies.token : null;
-
-  useEffect(() => {
-    if (!user || !token) {
-      router.reload();
-    }
-  }, [router, user, token]);
 
   function randomAlphaNumeric() {
     return Math.random().toString(36).charAt(2);
