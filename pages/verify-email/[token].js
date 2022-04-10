@@ -63,6 +63,7 @@ export default function VerifyEmail() {
                   alt="Logo FibonacciKu"
                   width={256}
                   height={48}
+                  placeholder="blur"
                 />
               </div>
 

@@ -114,6 +114,7 @@ const NavBar = () => {
             alt="Logo FibonacciKu"
             layout="fill"
             priority
+            placeholder="blur"
           />
         </a>
 
@@ -181,6 +182,7 @@ const NavBar = () => {
                     className={styles.foto_profil}
                     width={42}
                     height={42}
+                    placeholder="blur"
                   />
                   {iconStatus ? (
                     <UilAngleUp className={styles.uil} />

@@ -30,6 +30,7 @@ const Footer = () => {
             src={"/static/img/logofibonama_footer.svg"}
             alt="Logo FibonacciKu"
             layout="fill"
+            placeholder="blur"
           />
         </a>
 
@@ -44,6 +45,7 @@ const Footer = () => {
               alt="Logo Instagram FibonacciKu"
               width={24}
               height={24}
+              placeholder="blur"
             />
           </a>
           <a
@@ -56,6 +58,7 @@ const Footer = () => {
               alt="Logo LinkedIn FibonacciKu"
               width={24}
               height={24}
+              placeholder="blur"
             />
           </a>
           <a
@@ -68,6 +71,7 @@ const Footer = () => {
               alt="Logo YouTube FibonacciKu"
               width={24}
               height={24}
+              placeholder="blur"
             />
           </a>
         </div>

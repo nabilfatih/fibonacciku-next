@@ -22,6 +22,7 @@ export default function Custom500() {
                   width={256}
                   height={48}
                   priority
+                  placeholder="blur"
                 />
               </div>
 

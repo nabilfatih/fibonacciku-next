@@ -21,6 +21,7 @@ const Founder = () => {
                     src={"/static/img/Foto.JPG"}
                     layout="fill"
                     alt="Foto Nabil Founder FibonacciKu"
+                    placeholder="blur"
                   />
                 </div>
 
@@ -39,6 +40,7 @@ const Founder = () => {
                         width={20}
                         height={20}
                         alt="Logo Instagram Founder FibonacciKu"
+                        placeholder="blur"
                       />
                     </a>
 
@@ -53,6 +55,7 @@ const Founder = () => {
                         width={21}
                         height={21}
                         alt="Logo LinkedIn Founder FibonacciKu"
+                        placeholder="blur"
                       />
                     </a>
                   </div>

@@ -70,6 +70,7 @@ export default function Query({ babs, pelajaran }) {
                     alt={`Logo ${pelajaran.pelajaran} FibonacciKu`}
                     width={85}
                     height={85}
+                    placeholder="blur"
                   />
                   <div className={styles.header__belajar}>
                     <a onClick={handleOnClickPelajaran}>
@@ -101,6 +102,7 @@ export default function Query({ babs, pelajaran }) {
                             alt={`Logo ${bab.bab} FibonacciKu`}
                             width={128}
                             height={128}
+                            placeholder="blur"
                           />
                         </a>
                       </div>

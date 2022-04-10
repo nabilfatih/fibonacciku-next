@@ -146,6 +146,7 @@ export default function Profile({ dataUser }) {
                     alt={`Foto Profile ${dataUser.username} FibonacciKu`}
                     width={128}
                     height={128}
+                    placeholder="blur"
                   />
                   <div className={styles.edit_foto}>
                     {checkUsername && (
@@ -207,6 +208,7 @@ export default function Profile({ dataUser }) {
                             alt="Logo Instagram FibonacciKu"
                             width={24}
                             height={24}
+                            placeholder="blur"
                           />
                         </a>
                       )}
@@ -221,6 +223,7 @@ export default function Profile({ dataUser }) {
                             alt="Logo Github FibonacciKu"
                             width={24}
                             height={24}
+                            placeholder="blur"
                           />
                         </a>
                       )}
@@ -235,6 +238,7 @@ export default function Profile({ dataUser }) {
                             alt="Logo Twitter FibonacciKu"
                             width={24}
                             height={24}
+                            placeholder="blur"
                           />
                         </a>
                       )}

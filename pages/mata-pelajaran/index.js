@@ -65,6 +65,7 @@ export default function MataPelajaran(props) {
                       width={128}
                       height={128}
                       alt={`Logo ${Pelajaran.pelajaran} FibonacciKu`}
+                      placeholder="blur"
                     />
                   </div>
 
@@ -101,6 +102,7 @@ export default function MataPelajaran(props) {
                       width={128}
                       height={128}
                       alt={`Logo ${ujians.pelajaran} FibonacciKu`}
+                      placeholder="blur"
                     />
                   </div>
 
