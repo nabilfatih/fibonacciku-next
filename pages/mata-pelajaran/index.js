@@ -28,7 +28,7 @@ export default function MataPelajaran(props) {
 
   useEffect(() => {
     if (!user || !token) {
-      router.push("/masuk");
+      router.reload();
     }
   }, [router, user, token]);
 

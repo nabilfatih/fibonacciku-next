@@ -42,12 +42,13 @@ const NavBar = () => {
     user && token ? setUserState(user) : setUserState("");
   }, [router]);
 
-  const handleLogout = async () => {
+  async function handleLogout(e) {
+    e.preventDefault();
     cookie.remove("token");
     cookie.remove("user");
     await router.push("/masuk");
     toast.success("Sampai jumpa lagi 👻");
-  };
+  }
 
   const handleBeranda = (e) => {
     e.preventDefault();
