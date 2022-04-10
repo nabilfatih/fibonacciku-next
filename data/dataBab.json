@@ -3,70 +3,70 @@
     "query": "matematika",
     "querybab": "fungsi",
     "pelajaran": "Matematika",
-    "icon": "/static/icon/fungsi-icon.png",
+    "icon": "/static/icon/fungsi-icon.webp",
     "bab": "Fungsi"
   },
   {
     "query": "matematika",
     "querybab": "mtk-dasar",
     "pelajaran": "Matematika",
-    "icon": "/static/icon/mtkdasar-icon.png",
+    "icon": "/static/icon/mtkdasar-icon.webp",
     "bab": "Matematika Dasar"
   },
   {
     "query": "matematika",
     "querybab": "aljabar",
     "pelajaran": "Matematika",
-    "icon": "/static/icon/aljabar-icon.png",
+    "icon": "/static/icon/aljabar-icon.webp",
     "bab": "Aljabar"
   },
   {
     "query": "matematika",
     "querybab": "matriks",
     "pelajaran": "Matematika",
-    "icon": "/static/icon/matriks-icon.png",
+    "icon": "/static/icon/matriks-icon.webp",
     "bab": "Matriks"
   },
   {
     "query": "matematika",
     "querybab": "eksponen",
     "pelajaran": "Matematika",
-    "icon": "/static/icon/eksponen-icon.png",
+    "icon": "/static/icon/eksponen-icon.webp",
     "bab": "Eksponen"
   },
   {
     "query": "matematika",
     "querybab": "teori-bilangan",
     "pelajaran": "Matematika",
-    "icon": "/static/icon/teoribilangan-icon.png",
+    "icon": "/static/icon/teoribilangan-icon.webp",
     "bab": "Teori Bilangan"
   },
   {
     "query": "matematika",
     "querybab": "himpunan",
     "pelajaran": "Matematika",
-    "icon": "/static/icon/himpunan-icon.png",
+    "icon": "/static/icon/himpunan-icon.webp",
     "bab": "Himpunan"
   },
   {
     "query": "matematika",
     "querybab": "turunan",
     "pelajaran": "Matematika",
-    "icon": "/static/icon/turunan-icon.png",
+    "icon": "/static/icon/turunan-icon.webp",
     "bab": "Turunan"
   },
   {
     "query": "matematika",
     "querybab": "aljabar-linear",
     "pelajaran": "Matematika",
-    "icon": "/static/icon/aljabarlinear-icon.png",
+    "icon": "/static/icon/aljabarlinear-icon.webp",
     "bab": "Aljabar Linear"
   },
   {
     "query": "matematika",
     "querybab": "analisis",
     "pelajaran": "Matematika",
-    "icon": "/static/icon/analisis-icon.png",
+    "icon": "/static/icon/analisis-icon.webp",
     "bab": "Analisis"
   },
 
@@ -74,42 +74,42 @@
     "query": "fisika",
     "querybab": "fisika-dasar",
     "pelajaran": "Fisika",
-    "icon": "/static/icon/fisikadasar-icon.png",
+    "icon": "/static/icon/fisikadasar-icon.webp",
     "bab": "Fisika Dasar"
   },
   {
     "query": "fisika",
     "querybab": "gaya",
     "pelajaran": "Fisika",
-    "icon": "/static/icon/gaya-icon.png",
+    "icon": "/static/icon/gaya-icon.webp",
     "bab": "Gaya"
   },
   {
     "query": "fisika",
     "querybab": "gerak",
     "pelajaran": "Fisika",
-    "icon": "/static/icon/gerak-icon.png",
+    "icon": "/static/icon/gerak-icon.webp",
     "bab": "Gerak"
   },
   {
     "query": "fisika",
     "querybab": "relativitas",
     "pelajaran": "Fisika",
-    "icon": "/static/icon/relativitas-icon.png",
+    "icon": "/static/icon/relativitas-icon.webp",
     "bab": "Relativitas"
   },
   {
     "query": "fisika",
     "querybab": "magnet",
     "pelajaran": "Fisika",
-    "icon": "/static/icon/magnet-icon.png",
+    "icon": "/static/icon/magnet-icon.webp",
     "bab": "Magnet"
   },
   {
     "query": "fisika",
     "querybab": "usaha-energi",
     "pelajaran": "Fisika",
-    "icon": "/static/icon/usahaenergi-icon.png",
+    "icon": "/static/icon/usahaenergi-icon.webp",
     "bab": "Usaha & Energi"
   },
 
@@ -117,35 +117,35 @@
     "query": "informatika",
     "querybab": "sistem-bilangan",
     "pelajaran": "Informatika",
-    "icon": "/static/icon/sistembilangan-icon.png",
+    "icon": "/static/icon/sistembilangan-icon.webp",
     "bab": "Sistem Bilangan"
   },
   {
     "query": "informatika",
     "querybab": "assembler",
     "pelajaran": "Informatika",
-    "icon": "/static/icon/assembler-icon.png",
+    "icon": "/static/icon/assembler-icon.webp",
     "bab": "Assembler"
   },
   {
     "query": "informatika",
     "querybab": "logika-operasi",
     "pelajaran": "Informatika",
-    "icon": "/static/icon/logikaoperasi-icon.png",
+    "icon": "/static/icon/logikaoperasi-icon.webp",
     "bab": "Logika Operasi"
   },
   {
     "query": "informatika",
     "querybab": "sistem-pemrosesan-data",
     "pelajaran": "Informatika",
-    "icon": "/static/icon/sistempemrosesandata-icon.png",
+    "icon": "/static/icon/sistempemrosesandata-icon.webp",
     "bab": "Sistem Pemrosesan Data"
   },
   {
     "query": "informatika",
     "querybab": "arsitektur-komputer",
     "pelajaran": "Informatika",
-    "icon": "/static/icon/arsitekturkomputer-icon.png",
+    "icon": "/static/icon/arsitekturkomputer-icon.webp",
     "bab": "Arsitektur Komputer"
   },
 
@@ -153,42 +153,42 @@
     "query": "biologi",
     "querybab": "metabolisme",
     "pelajaran": "Biologi",
-    "icon": "/static/icon/metabolisme-icon.png",
+    "icon": "/static/icon/metabolisme-icon.webp",
     "bab": "Metabolisme"
   },
   {
     "query": "biologi",
     "querybab": "sistem-pernapasan-manusia",
     "pelajaran": "Biologi",
-    "icon": "/static/icon/sistempernapasanmanusia-icon.png",
+    "icon": "/static/icon/sistempernapasanmanusia-icon.webp",
     "bab": "Sistem Pernapasan Manusia"
   },
   {
     "query": "biologi",
     "querybab": "sistem-ekskresi-manusia",
     "pelajaran": "Biologi",
-    "icon": "/static/icon/sistemekskresimanusia-icon.png",
+    "icon": "/static/icon/sistemekskresimanusia-icon.webp",
     "bab": "Sistem Ekskresi Manusia"
   },
   {
     "query": "biologi",
     "querybab": "sistem-saraf-manusia",
     "pelajaran": "Biologi",
-    "icon": "/static/icon/sistemsarafmanusia-icon.png",
+    "icon": "/static/icon/sistemsarafmanusia-icon.webp",
     "bab": "Sistem Saraf Manusia"
   },
   {
     "query": "biologi",
     "querybab": "bioteknologi",
     "pelajaran": "Biologi",
-    "icon": "/static/icon/bioteknologi-icon.png",
+    "icon": "/static/icon/bioteknologi-icon.webp",
     "bab": "Bioteknologi"
   },
   {
     "query": "biologi",
     "querybab": "virus",
     "pelajaran": "Biologi",
-    "icon": "/static/icon/virus-icon.png",
+    "icon": "/static/icon/virus-icon.webp",
     "bab": "Virus"
   },
 
@@ -196,42 +196,42 @@
     "query": "kimia",
     "querybab": "atom",
     "pelajaran": "Kimia",
-    "icon": "/static/icon/atom-icon.png",
+    "icon": "/static/icon/atom-icon.webp",
     "bab": "Atom"
   },
   {
     "query": "kimia",
     "querybab": "sistem-periodik-unsur",
     "pelajaran": "Kimia",
-    "icon": "/static/icon/sistemperiodikunsur-icon.png",
+    "icon": "/static/icon/sistemperiodikunsur-icon.webp",
     "bab": "Sistem Periodik Unsur"
   },
   {
     "query": "kimia",
     "querybab": "ikatan",
     "pelajaran": "Kimia",
-    "icon": "/static/icon/ikatan-icon.png",
+    "icon": "/static/icon/ikatan-icon.webp",
     "bab": "Ikatan"
   },
   {
     "query": "kimia",
     "querybab": "stoikiometri",
     "pelajaran": "Kimia",
-    "icon": "/static/icon/stoikiometri-icon.png",
+    "icon": "/static/icon/stoikiometri-icon.webp",
     "bab": "Stoikiometri"
   },
   {
     "query": "kimia",
     "querybab": "termokimia",
     "pelajaran": "Kimia",
-    "icon": "/static/icon/termokimia-icon.png",
+    "icon": "/static/icon/termokimia-icon.webp",
     "bab": "Termokimia"
   },
   {
     "query": "kimia",
     "querybab": "asam-basa",
     "pelajaran": "Kimia",
-    "icon": "/static/icon/asambasa-icon.png",
+    "icon": "/static/icon/asambasa-icon.webp",
     "bab": "Asam Basa"
   },
 
@@ -239,35 +239,35 @@
     "query": "kecerdasan-buatan",
     "querybab": "fundamental-kecerdasan-buatan",
     "pelajaran": "Kecerdasan Buatan",
-    "icon": "/static/icon/fundamentalkecerdasanbuatan-icon.png",
+    "icon": "/static/icon/fundamentalkecerdasanbuatan-icon.webp",
     "bab": "Fundamental Kecerdasan Buatan"
   },
   {
     "query": "kecerdasan-buatan",
     "querybab": "neural-network",
     "pelajaran": "Kecerdasan Buatan",
-    "icon": "/static/icon/neuralnetwork-icon.png",
+    "icon": "/static/icon/neuralnetwork-icon.webp",
     "bab": "Neural Network"
   },
   {
     "query": "kecerdasan-buatan",
     "querybab": "machine-learning",
     "pelajaran": "Kecerdasan Buatan",
-    "icon": "/static/icon/machinelearning-icon.png",
+    "icon": "/static/icon/machinelearning-icon.webp",
     "bab": "Machine Learning"
   },
   {
     "query": "kecerdasan-buatan",
     "querybab": "deep-learning",
     "pelajaran": "Kecerdasan Buatan",
-    "icon": "/static/icon/deeplearning-icon.png",
+    "icon": "/static/icon/deeplearning-icon.webp",
     "bab": "Deep Learning"
   },
   {
     "query": "kecerdasan-buatan",
     "querybab": "etik",
     "pelajaran": "Kecerdasan Buatan",
-    "icon": "/static/icon/etik-icon.png",
+    "icon": "/static/icon/etik-icon.webp",
     "bab": "Etik"
   },
 
@@ -275,28 +275,28 @@
     "query": "aufnahmeprüfung",
     "querybab": "stk-kaiserslautern",
     "pelajaran": "Aufnahmeprüfung",
-    "icon": "/static/icon/stkkl-icon.png",
+    "icon": "/static/icon/stkkl-icon.webp",
     "bab": "STK Kaiserslautern"
   },
   {
     "query": "aufnahmeprüfung",
     "querybab": "stk-halle",
     "pelajaran": "Aufnahmeprüfung",
-    "icon": "/static/icon/stkhalle-icon.png",
+    "icon": "/static/icon/stkhalle-icon.webp",
     "bab": "STK Halle"
   },
   {
     "query": "aufnahmeprüfung",
     "querybab": "stk-bochum",
     "pelajaran": "Aufnahmeprüfung",
-    "icon": "/static/icon/stkbochum-icon.png",
+    "icon": "/static/icon/stkbochum-icon.webp",
     "bab": "STK Bochum"
   },
   {
     "query": "aufnahmeprüfung",
     "querybab": "stk-zittau-görlitz",
     "pelajaran": "Aufnahmeprüfung",
-    "icon": "/static/icon/stkzittau-icon.png",
+    "icon": "/static/icon/stkzittau-icon.webp",
     "bab": "STK Zittau/Görlitz"
   }
 ]

@@ -4,37 +4,37 @@
     "jenis": "pelajaran",
     "query": "matematika",
     "pelajaran": "Matematika",
-    "icon": "/static/icon/mtk-icon.png"
+    "icon": "/static/icon/mtk-icon.webp"
   },
   {
     "jenis": "pelajaran",
     "query": "fisika",
     "pelajaran": "Fisika",
-    "icon": "/static/icon/fisika-icon.png"
+    "icon": "/static/icon/fisika-icon.webp"
   },
   {
     "jenis": "pelajaran",
     "query": "informatika",
     "pelajaran": "Informatika",
-    "icon": "/static/icon/cs-icon.png"
+    "icon": "/static/icon/cs-icon.webp"
   },
   {
     "jenis": "pelajaran",
     "query": "biologi",
     "pelajaran": "Biologi",
-    "icon": "/static/icon/bio-icon.png"
+    "icon": "/static/icon/bio-icon.webp"
   },
   {
     "jenis": "pelajaran",
     "query": "kimia",
     "pelajaran": "Kimia",
-    "icon": "/static/icon/kimia-icon.png"
+    "icon": "/static/icon/kimia-icon.webp"
   },
   {
     "jenis": "pelajaran",
     "query": "kecerdasan-buatan",
     "pelajaran": "Kecerdasan Buatan",
-    "icon": "/static/icon/kecerdasanbuatan-icon.png"
+    "icon": "/static/icon/kecerdasanbuatan-icon.webp"
   },
 
   
@@ -42,12 +42,12 @@
     "jenis": "ujian",
     "query": "utbk-sbmptn",
     "pelajaran": "UTBK/SBMPTN",
-    "icon": "/static/icon/utbk-icon.png"
+    "icon": "/static/icon/utbk-icon.webp"
   },
   {
     "jenis": "ujian",
     "query": "aufnahmeprüfung",
     "pelajaran": "Aufnahmeprüfung",
-    "icon": "/static/icon/anp-icon.png"
+    "icon": "/static/icon/anp-icon.webp"
   }
 ]
