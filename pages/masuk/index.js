@@ -18,17 +18,7 @@ import {
   UilEye,
 } from "@iconscout/react-unicons";
 
-export async function getStaticSideProps(context) {
-  const referer = context.req.headers.referer;
-
-  return {
-    props: {
-      referer,
-    },
-  };
-}
-
-export default function Masuk({ referer }) {
+export default function Masuk() {
   const cookies = parseCookies();
   const router = useRouter();
 
@@ -50,7 +40,7 @@ export default function Masuk({ referer }) {
       }
     }
     fetchData();
-  });
+  }, [router]);
 
   const [usernameActive, setUsernameActive] = useState("");
   const [passwordActive, setPasswordActive] = useState("");
