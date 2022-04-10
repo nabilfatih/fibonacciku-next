@@ -21,30 +21,6 @@ const Footer = () => {
     e.preventDefault();
     userState ? router.push("/beranda") : router.push("/");
   };
-  const HandleClickKarir = (e) => {
-    e.preventDefault();
-    router.push("/karir");
-  };
-  const HandleClickKontak = (e) => {
-    e.preventDefault();
-    router.push("/kontak");
-  };
-  const HandleClickTim = (e) => {
-    e.preventDefault();
-    router.push("/tentang/tim");
-  };
-  const HandleClickTentang = (e) => {
-    e.preventDefault();
-    router.push("/tentang");
-  };
-  const HandleClickKebijakan = (e) => {
-    e.preventDefault();
-    router.push("/kebijakan-privasi");
-  };
-  const HandleClickSyarat = (e) => {
-    e.preventDefault();
-    router.push("/syarat-ketentuan");
-  };
 
   return (
     <footer className={styles.footer}>
@@ -97,15 +73,19 @@ const Footer = () => {
         </div>
 
         <div className={cls(styles.footer__links, styles.col1)}>
-          <a onClick={HandleClickKarir}>Karir</a>
-          <a onClick={HandleClickKontak}>Kontak</a>
-          <a onClick={HandleClickTim}>Tim Kita</a>
+          <a onClick={() => router.push("/karir")}>Karir</a>
+          <a onClick={() => router.push("/kontak")}>Kontak</a>
+          <a onClick={() => router.push("/tentang/tim")}>Tim Kita</a>
         </div>
 
         <div className={cls(styles.footer__links, styles.col2)}>
-          <a onClick={HandleClickTentang}>Tentang Kita</a>
-          <a onClick={HandleClickKebijakan}>Kebijakan Privasi</a>
-          <a onClick={HandleClickSyarat}>Syarat & Ketentuan</a>
+          <a onClick={() => router.push("/tentang")}>Tentang Kita</a>
+          <a onClick={() => router.push("/kebijakan-privasi")}>
+            Kebijakan Privasi
+          </a>
+          <a onClick={() => router.push("/syarat-ketentuan")}>
+            Syarat & Ketentuan
+          </a>
         </div>
 
         <div className={styles.footer__cta}>
