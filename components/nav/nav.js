@@ -46,7 +46,7 @@ const NavBar = () => {
     e.preventDefault();
     cookie.remove("token");
     cookie.remove("user");
-    await router.replace("/masuk");
+    await router.push("/masuk");
     toast.success("Sampai jumpa lagi 👻");
   }
 
