@@ -20,4 +20,14 @@ export async function middleware(req) {
     }
     return NextResponse.redirect(new URL("/beranda", req.url));
   }
+
+  if (
+    pathname.includes("/mata-pelajaran") ||
+    pathname.includes("/pengaturan")
+  ) {
+    if (!userId || !user) {
+      return NextResponse.rewrite(new URL("/masuk", req.url));
+    }
+    return NextResponse.next();
+  }
 }
