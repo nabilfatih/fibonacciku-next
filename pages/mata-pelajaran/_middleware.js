@@ -6,9 +6,9 @@ export async function middleware(req) {
   const token = req ? req.cookies?.token : null;
   const userId = await verifyToken(token);
 
-  if (userId && user) {
-    return NextResponse.next();
-  } else {
+  if (!userId || !user) {
     return NextResponse.rewrite(new URL("/masuk", req.url));
+  } else {
+    return NextResponse.next();
   }
 }

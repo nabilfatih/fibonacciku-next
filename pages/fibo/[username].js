@@ -135,14 +135,6 @@ export default function Profile({ dataUser }) {
                   backgroundImage: `url("/static/img/default-background.webp")`,
                 }}
               />
-              {/* <Image
-                className={cls(styles.img, "container")}
-                src={"/static/img/default-background.webp"}
-                layout="fill"
-                alt={`Profil ${dataUser.username} Background`}
-                priority
-                quality={95}
-              /> */}
             </div>
 
             <div className={cls(styles.container, "container container--px")}>
