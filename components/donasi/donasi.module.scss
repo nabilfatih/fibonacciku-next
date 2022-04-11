@@ -28,7 +28,7 @@
         background-repeat: no-repeat;
         background-position: center center;
         min-height: 18rem;
-        
+
 
         @include breakpoint-up(medium) {
             min-height: 25rem;
@@ -44,7 +44,7 @@
 
         &::before {
 
-            @include breakpoint-up(large){
+            @include breakpoint-up(large) {
                 content: "";
                 position: absolute;
                 height: 115%;
@@ -56,7 +56,7 @@
                 background-size: 96%;
                 background-position: 100% 90%;
                 left: -40%;
-               
+
             }
         }
 
@@ -70,12 +70,12 @@
             background-repeat: no-repeat;
             background-position: center 60%;
 
-            @include breakpoint-up(medium){
+            @include breakpoint-up(medium) {
                 background-size: 53%;
                 background-position: center 65%;
             }
 
-            @include breakpoint-up(large){
+            @include breakpoint-up(large) {
                 width: 120%;
                 height: 122%;
                 min-width: 47.875rem;
@@ -102,13 +102,18 @@
         }
 
         .button {
-            
-            transition: transform 300ms ease-in-out, box-shadow 150ms ease-in-out;
-            &:hover {
-                transform: translate(3px, -3px);
-                box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+
+            @include breakpoint-up(large) {
+                transition: transform 300ms ease-in-out, box-shadow 150ms ease-in-out;
+
+                &:hover {
+                    transform: translate(3px, -3px);
+                    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+                }
+
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             }
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+
         }
     }
 }

@@ -133,12 +133,15 @@
             }
 
             color: black;
-            transition: transform 300ms ease-in-out,
-            box-shadow 250ms ease-in-out;
 
-            &:hover {
-                transform: translate(2px, -2px);
-                box-shadow: 0 0 15px $blueSky;
+            @include breakpoint-up(large) {
+                transition: transform 300ms ease-in-out,
+                    box-shadow 250ms ease-in-out;
+
+                &:hover {
+                    transform: translate(2px, -2px);
+                    box-shadow: 0 0 15px $blueSky;
+                }
             }
 
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);

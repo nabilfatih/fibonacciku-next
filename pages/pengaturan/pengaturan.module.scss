@@ -138,12 +138,16 @@
         }
 
         button {
-            transition: transform 250ms ease-in-out, box-shadow 150ms ease-in-out;
 
-            &:hover {
-                transform: translate(1px, -1px);
-                box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            @include breakpoint-up(large) {
+                transition: transform 250ms ease-in-out, box-shadow 150ms ease-in-out;
+
+                &:hover {
+                    transform: translate(1px, -1px);
+                    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+                }
             }
+
 
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }

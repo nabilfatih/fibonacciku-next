@@ -147,8 +147,8 @@ export default function Profile({ dataUser }) {
                     width={128}
                     height={128}
                   />
-                  <div className={styles.edit_foto}>
-                    {checkUsername && (
+                  {checkUsername && (
+                    <div className={styles.edit_foto}>
                       <form>
                         <label
                           className={styles.custom_foto_upload}
@@ -166,8 +166,8 @@ export default function Profile({ dataUser }) {
                           onChange={handleAvatar}
                         />
                       </form>
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </div>
 
                 <div className={styles.profil__username}>

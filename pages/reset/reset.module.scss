@@ -11,7 +11,7 @@
     overflow: hidden;
 
     &__image {
-        
+
         position: absolute;
         width: 100%;
         min-height: 100vh;
@@ -25,7 +25,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        
+
         @include breakpoint-down(small) {
             padding-left: 1rem;
             padding-right: 1rem;
@@ -36,7 +36,7 @@
         position: relative;
         z-index: 1;
         background: white;
-        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
         max-width: 25.875rem;
         padding: 2.5rem;
         border-radius: 0.3125rem;
@@ -75,7 +75,7 @@
                 font-size: 0.9rem;
                 color: gray;
 
-                @include breakpoint-down(small){
+                @include breakpoint-down(small) {
                     font-size: 0.8rem;
                 }
             }
@@ -101,11 +101,16 @@
         button {
             border-radius: 0.3125rem;
 
-            transition: transform 250ms ease-in-out, box-shadow 150ms ease-in-out;
-            &:hover {
-                transform: translate(1px, -1px);
-                box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            @include breakpoint-up(large) {
+                transition: transform 250ms ease-in-out, box-shadow 150ms ease-in-out;
+
+                &:hover {
+                    transform: translate(1px, -1px);
+                    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+                }
             }
+
+
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
     }

@@ -6,6 +6,7 @@
     margin-top: 62px;
     // background-color: $cream;
 }
+
 // .persiapan_ujian {
 //     background-color: $mostLightPink;
 // }
@@ -32,10 +33,11 @@
             font-weight: 1000;
         }
 
-        @include breakpoint-up(medium){
+        @include breakpoint-up(medium) {
             text-align: center;
         }
-        @include breakpoint-up(large){
+
+        @include breakpoint-up(large) {
             text-align: center;
             width: 100%;
         }
@@ -61,29 +63,34 @@
         padding: 1rem;
         // border: 5px solid black;
         border-radius: 15px;
-        box-shadow: 6px 3px 6px 0 rgba(0,0,0,.2);
+        box-shadow: 6px 3px 6px 0 rgba(0, 0, 0, .2);
         background: linear-gradient(to right, $blueSky, $lightPurple);
-        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-        backdrop-filter: blur( 3px );
-        -webkit-backdrop-filter: blur( 3px );
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
 
         .button {
+
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            transition: transform 300ms ease, box-shadow 150ms ease;
-            // border: 1px solid transparent;
-            &:hover {
-                transform: translate(3px, -3px);
-                box-shadow: 0 0 20px rgba(0,0,0,.2);
-                // border: 1px solid $darkBlue;
+
+            @include breakpoint-up(large) {
+                transition: transform 300ms ease, box-shadow 150ms ease;
+
+                &:hover {
+                    transform: translate(3px, -3px);
+                    box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+
+                }
             }
+
             background-image: linear-gradient(to right, $lightGreen, $greenTeal);
         }
 
-        @include breakpoint-up(medium){
+        @include breakpoint-up(medium) {
             flex: 2 1 30%;
         }
 
-        @include breakpoint-up(large){
+        @include breakpoint-up(large) {
             flex: 2 1 30%;
         }
     }
@@ -98,7 +105,7 @@
         margin-bottom: 1rem;
         padding-bottom: 0rem;
 
-        @include breakpoint-up(large){
+        @include breakpoint-up(large) {
             margin-bottom: 1.5rem;
         }
     }
@@ -110,7 +117,7 @@
         color: $darkBlue;
         margin-bottom: 1rem;
 
-        @include breakpoint-up(large){
+        @include breakpoint-up(large) {
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
         }
@@ -138,10 +145,11 @@
             font-weight: 1000;
         }
 
-        @include breakpoint-up(medium){
+        @include breakpoint-up(medium) {
             text-align: center;
         }
-        @include breakpoint-up(large){
+
+        @include breakpoint-up(large) {
             text-align: center;
             width: 100%;
         }
@@ -163,36 +171,41 @@
     }
 
     &__card {
-        
+
         padding: 1rem;
         // border: 5px solid black;
         border-radius: 15px;
         // box-shadow: 6px 3px 6px 0 rgba(0,0,0,.2);
         background: linear-gradient(to left, $greenTeal, $yellowGreen);
         // background: rgba( 174, 239, 236, 0.8 );
-        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-        backdrop-filter: blur( 3px );
-        -webkit-backdrop-filter: blur( 3px );
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
         // border-radius: 10px;
 
         .button {
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            transition: transform 300ms ease, box-shadow 150ms ease;
-            // border: 1px solid transparent;
-            &:hover {
-                transform: translate(3px, -3px);
-                box-shadow: 0 0 20px rgba(0,0,0,.2);
-                // border: 1px solid $darkBlue;
+
+            @include breakpoint-up(large) {
+                transition: transform 300ms ease, box-shadow 150ms ease;
+
+                &:hover {
+                    transform: translate(3px, -3px);
+                    box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+
+                }
             }
+
+
             background-image: linear-gradient(to right, $blueSky, $greenTeal);
             // background-image: linear-gradient(to right, $lightBrown, $mostLightBrown);
         }
 
-        @include breakpoint-up(medium){
+        @include breakpoint-up(medium) {
             flex: 2 1 30%;
         }
 
-        @include breakpoint-up(large){
+        @include breakpoint-up(large) {
             flex: 2 1 30%;
         }
     }
@@ -205,7 +218,7 @@
         margin-bottom: 1rem;
         padding-bottom: 0rem;
 
-        @include breakpoint-up(large){
+        @include breakpoint-up(large) {
             margin-bottom: 1.5rem;
         }
 
@@ -221,7 +234,7 @@
         color: $darkBlue;
         margin-bottom: 1rem;
 
-        @include breakpoint-up(large){
+        @include breakpoint-up(large) {
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
         }
