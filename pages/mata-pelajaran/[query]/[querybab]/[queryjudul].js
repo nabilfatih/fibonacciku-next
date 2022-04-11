@@ -42,10 +42,6 @@ export default function QueryJudul({ konten }) {
         <title>{konten.judul} | FibonacciKu</title>
 
         <meta
-          httpEquiv="Content-Security-Policy"
-          content="default-src https://www.fibonacciku.com; child-src 'none'; object-src 'none'"
-        />
-        <meta
           name="description"
           content={`Belajar ${konten.judul} Gratis di FibonacciKu!`}
         />
