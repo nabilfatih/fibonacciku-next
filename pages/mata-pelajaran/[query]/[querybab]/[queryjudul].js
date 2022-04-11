@@ -42,6 +42,10 @@ export default function QueryJudul({ konten }) {
         <title>{konten.judul} | FibonacciKu</title>
 
         <meta
+          httpEquiv="Content-Security-Policy"
+          content="default-src https://www.fibonacciku.com; child-src 'none'; object-src 'none'"
+        />
+        <meta
           name="description"
           content={`Belajar ${konten.judul} Gratis di FibonacciKu!`}
         />
@@ -89,7 +93,7 @@ export default function QueryJudul({ konten }) {
                 <iframe
                   className={styles.modals__iframe}
                   title={`${konten.tipe}: ${konten.judul}`}
-                  src={`${konten.link}?autoplay=1&modestbranding=1&showinfo=0&rel=0&cc_load_policy=1&iv_load_policy=3&cc_lang_pref=id&enablejsapi=1&origin=https%3A%2F%2Fwww.fibonacciku.com`}
+                  src={`${konten.link}?autoplay=1&modestbranding=1&showinfo=0&rel=0&cc_load_policy=0&iv_load_policy=3&cc_lang_pref=id&enablejsapi=1&origin=https://www.fibonacciku.com`}
                   width="800"
                   height="570"
                   frameBorder="0"
