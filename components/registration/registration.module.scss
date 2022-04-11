@@ -14,7 +14,7 @@
     background-color: white;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
-    
+
     &__image {
         content: "";
         position: absolute;
@@ -25,16 +25,16 @@
         background-repeat: no-repeat;
         background-position: center;
 
-        @include breakpoint-down(medium){
+        @include breakpoint-down(medium) {
             min-height: 105%;
             // background-size: 195%;
         }
 
-        @include breakpoint-down(small){
+        @include breakpoint-down(small) {
             display: none;
         }
     }
-    
+
     z-index: 0;
 
     &__container {
@@ -89,6 +89,7 @@
                 border: 0;
                 box-shadow: none;
             }
+
             textarea:focus,
             input[type="text"]:focus,
             input[type="password"]:focus,
@@ -166,12 +167,14 @@
             margin-top: 0.3125rem;
             cursor: pointer;
 
-            
+
             transition: transform 250ms ease-in-out, box-shadow 150ms ease-in-out;
+
             &:hover {
                 transform: translate(1px, -1px);
                 box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
             }
+
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
 
@@ -228,6 +231,7 @@
         height: 25rem;
         padding: 0.9375rem 1.1875rem;
 
+
         .masuk {
             position: relative;
             width: 13.875rem;
@@ -247,8 +251,8 @@
 
             @include breakpoint-down(small) {
                 margin-top: 1rem;
-                width: 11.875rem;
-                height: 12rem;
+                width: 10rem;
+                height: 10.75rem;
             }
         }
 
@@ -284,18 +288,28 @@
         border-radius: 0 0.3125rem 0.3125rem 0;
         padding-left: 1.3875rem;
         padding-right: 1.3875rem;
+
+        @include breakpoint-down(small) {
+            padding-left: 0;
+            padding-right: 0;
+        }
     }
 
     .sign_up_imgBox {
         border-radius: 0.3125rem 0 0 0.3125rem;
         padding-left: 1.3875rem;
         padding-right: 1.3875rem;
+
+        @include breakpoint-down(small) {
+            padding-left: 0;
+            padding-right: 0;
+        }
     }
 
-    
 
-    @include breakpoint-down(small){
-        
+
+    @include breakpoint-down(small) {
+
         &__container {
             display: flex;
             flex-direction: column;
@@ -309,8 +323,8 @@
             font-size: 1em;
         }
 
-        &__box{
-            
+        &__box {
+
             width: 100%;
             box-shadow: none;
             padding: 0;
@@ -319,14 +333,14 @@
         }
 
         &__imgBox {
-            
+
             box-shadow: none;
             width: 100%;
             height: auto;
-            padding: 2.1875rem 2.1875rem 0.9375rem;
+            // padding: 2.1875rem 2.1875rem 0.9375rem;
             padding-top: 1rem;
             padding-bottom: 0;
-    
+
         }
 
         .sign_up_form {
@@ -334,7 +348,7 @@
         }
 
         .other_logins {
-            
+
             a {
                 padding: 0.5625rem 1.5625rem;
                 margin: 0 0.1875rem;
