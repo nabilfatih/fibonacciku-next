@@ -40,6 +40,29 @@ export default function QueryJudul({ konten }) {
     <div>
       <Head>
         <title>{konten.judul} | FibonacciKu</title>
+
+        <meta
+          name="description"
+          content={`Belajar ${konten.judul} Gratis di FibonacciKu!`}
+        />
+        <meta property="og:title" content={`${konten.judul}`} />
+        <meta
+          property="og:description"
+          content={`Belajar ${konten.judul} Gratis di FibonacciKu!`}
+        />
+        <meta
+          property="og:url"
+          content={`https://fibonacciku.com/mata-pelajaran/${konten.query}/${konten.querybab}/${konten.queryjudul}`}
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          name="keywords"
+          content="fibonacciku, fibonacciku.id, fibonacciku indonesia, belajar online, platform pendidikan, bimbel gratis, 
+    bimbel gratis indonesia, patform pendidikan indonesia, platform belajar, belajar, start up muda, start up anak bangsa, bimbel,
+    platform pendidikan gratis indonesia, platform pendidikan terbaik indonesia, belajar gratis indonesia, bimbel sd, bimbel smp, 
+    bimbel sma, bimbel kuliah, belajar pelajaran gratis, bimbel utbk, bimbel utbk gratis, mata pelajaran"
+        />
+        <meta name="robots" content="all" />
       </Head>
 
       <NavBar />

@@ -12,10 +12,14 @@ export default function Tentang() {
       <Head>
         <title>Tentang | FibonacciKu</title>
 
+        <meta name="description" content="Kenalan Tentang FibonacciKu!" />
+        <meta property="og:title" content="FibonacciKu" />
         <meta
-          name="description"
-          content="Belajar gratis dimanapun dan kapanpun di platform pendidikan terbaik di Indonesia - 100% Gratis!"
+          property="og:description"
+          content="Kenalan Tentang FibonacciKu!"
         />
+        <meta property="og:url" content="https://fibonacciku.com/tentang" />
+        <meta property="og:type" content="website" />
         <meta
           name="keywords"
           content="fibonacciku, fibonacciku.id, fibonacciku indonesia, belajar online, platform pendidikan, bimbel gratis, 

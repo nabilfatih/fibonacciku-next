@@ -33,10 +33,17 @@ export default function MataPelajaran(props) {
       <Head>
         <title>Mata Pelajaran | FibonacciKu</title>
 
+        <meta name="description" content="Pilih Pelajaran Sesuka Kamu!" />
+        <meta property="og:title" content="Mata Pelajaran" />
         <meta
-          name="description"
-          content="Belajar gratis dimanapun dan kapanpun di platform pendidikan terbaik di Indonesia - 100% Gratis!"
+          property="og:description"
+          content="Pilih Pelajaran Sesuka Kamu!"
         />
+        <meta
+          property="og:url"
+          content="https://fibonacciku.com/mata-pelajaran"
+        />
+        <meta property="og:type" content="website" />
         <meta
           name="keywords"
           content="fibonacciku, fibonacciku.id, fibonacciku indonesia, belajar online, platform pendidikan, bimbel gratis, 

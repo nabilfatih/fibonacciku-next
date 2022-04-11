@@ -129,10 +129,14 @@ export default function Masuk() {
       <Head>
         <title>Masuk | FibonacciKu</title>
 
+        <meta name="description" content="Masuk Sekarang ke FibonacciKu!" />
+        <meta property="og:title" content="Masuk" />
         <meta
-          name="description"
-          content="Belajar gratis dimanapun dan kapanpun di platform pendidikan terbaik di Indonesia - 100% Gratis!"
+          property="og:description"
+          content="Masuk Sekarang ke FibonacciKu!"
         />
+        <meta property="og:url" content="https://fibonacciku.com/masuk" />
+        <meta property="og:type" content="website" />
         <meta
           name="keywords"
           content="fibonacciku, fibonacciku.id, fibonacciku indonesia, belajar online, platform pendidikan, bimbel gratis, 

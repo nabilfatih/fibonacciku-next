@@ -100,8 +100,15 @@ export default function Daftar() {
 
         <meta
           name="description"
-          content="Belajar gratis dimanapun dan kapanpun di platform pendidikan terbaik di Indonesia - 100% Gratis!"
+          content="Daftar Sekarang Gratis di FibonacciKu!"
         />
+        <meta property="og:title" content="Daftar" />
+        <meta
+          property="og:description"
+          content="Daftar Sekarang Gratis di FibonacciKu!"
+        />
+        <meta property="og:url" content="https://fibonacciku.com/daftar" />
+        <meta property="og:type" content="website" />
         <meta
           name="keywords"
           content="fibonacciku, fibonacciku.id, fibonacciku indonesia, belajar online, platform pendidikan, bimbel gratis, 

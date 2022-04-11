@@ -41,6 +41,16 @@ export default function Home() {
           content="Belajar gratis dimanapun dan kapanpun di platform pendidikan terbaik di Indonesia - 100% Gratis!"
         />
         <meta
+          property="og:title"
+          content="FibonacciKu | Belajar Gratis Kapanpun Dimanapun"
+        />
+        <meta
+          property="og:description"
+          content="Belajar gratis dimanapun dan kapanpun di platform pendidikan terbaik di Indonesia - 100% Gratis!"
+        />
+        <meta property="og:url" content="https://fibonacciku.com" />
+        <meta property="og:type" content="website" />
+        <meta
           name="keywords"
           content="fibonacciku, fibonacciku.id, fibonacciku indonesia, belajar online, platform pendidikan, bimbel gratis, 
     bimbel gratis indonesia, patform pendidikan indonesia, platform belajar, belajar, start up muda, start up anak bangsa, bimbel,
