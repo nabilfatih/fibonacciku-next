@@ -15,6 +15,7 @@ import {
   UilUser,
   UilUserCircle,
   UilLockAlt,
+  UilLockAccess,
 } from "@iconscout/react-unicons";
 
 export default function Daftar() {
@@ -24,6 +25,7 @@ export default function Daftar() {
   const [namaActive, setNamaActive] = useState("");
   const [usernameActive, setUsernameActive] = useState("");
   const [passwordActive, setPasswordActive] = useState("");
+  const [passwordConfirmActive, setPasswordConfirmActive] = useState("");
 
   const handleFocus = (e) => {
     e.preventDefault();
@@ -32,6 +34,7 @@ export default function Daftar() {
     if (target == "nama") setNamaActive(styles.aktif);
     if (target == "username") setUsernameActive(styles.aktif);
     if (target == "password") setPasswordActive(styles.aktif);
+    if (target == "passwordConfirm") setPasswordConfirmActive(styles.aktif);
   };
 
   const handleBlur = (e) => {
@@ -41,6 +44,7 @@ export default function Daftar() {
     if (target == "nama") setNamaActive("");
     if (target == "username") setUsernameActive("");
     if (target == "password") setPasswordActive("");
+    if (target == "passwordConfirm") setPasswordConfirmActive("");
   };
 
   const validationSchema = Yup.object().shape({
@@ -52,6 +56,9 @@ export default function Daftar() {
     password: Yup.string()
       .min(8, "Password min. 8 karakter")
       .required("Masukkan Password"),
+    passwordConfirm: Yup.string()
+      .oneOf([Yup.ref("password"), null], "Password harus sama")
+      .required("Masukkan konfirmasi password"),
   });
   const formOptions = { resolver: yupResolver(validationSchema) };
   const { register, handleSubmit, reset, formState } = useForm(formOptions);
@@ -192,6 +199,25 @@ export default function Daftar() {
               </div>
               <p className={styles.forms__userMsg}>
                 {errors.password?.message}
+              </p>
+            </div>
+
+            <div className={styles.forms__fieldBox}>
+              <div className={cls(styles.forms__field, passwordConfirmActive)}>
+                <UilLockAccess className={styles.icon} />
+                <input
+                  type="password"
+                  id="passwordConfirm"
+                  name="passwordConfirm"
+                  placeholder="konfirmasi password"
+                  autoComplete="off"
+                  {...register("passwordConfirm")}
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
+                />
+              </div>
+              <p className={styles.forms__userMsg}>
+                {errors.passwordConfirm?.message}
               </p>
             </div>
 

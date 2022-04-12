@@ -31,7 +31,7 @@ export async function getStaticProps({ params }) {
     props: {
       babs,
       pelajaran,
-    }, // will be passed to the page component as props
+    },
   };
 }
 

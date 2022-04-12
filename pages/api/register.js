@@ -9,12 +9,16 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 connectDB();
 
 export default async function Register(req, res) {
-  const { email, nama, username, password } = req.body;
+  const { email, nama, username, password, passwordConfirm } = req.body;
 
   try {
     if (req.method === "POST") {
       if (!email || !nama || !username || !password) {
         return res.status(422).json({ error: "Masukkan data kamu 🤬" });
+      }
+
+      if (password !== passwordConfirm) {
+        return res.status(422).json({ error: "Password tidak sama 😤" });
       }
 
       const user = await User.findOne({
