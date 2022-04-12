@@ -5,8 +5,13 @@ import Bantuan from "../../components/tentang/bantuan";
 import Founder from "../../components/tentang/founder";
 import Story from "../../components/tentang/story";
 import TentangFibo from "../../components/tentang/tentang";
+import { parseCookies } from "nookies";
 
 export default function Tentang() {
+  const cookies = parseCookies();
+  const user = cookies?.user ? JSON.parse(cookies.user) : "";
+  const token = cookies.token ? cookies.token : null;
+
   return (
     <div>
       <Head>
@@ -29,7 +34,7 @@ export default function Tentang() {
         />
         <meta name="robots" content="all" />
       </Head>
-      <NavBar />
+      <NavBar user={user} token={token} />
 
       <main>
         <TentangFibo />
@@ -38,7 +43,7 @@ export default function Tentang() {
         <Bantuan />
       </main>
 
-      <Footer />
+      <Footer user={user} token={token} />
     </div>
   );
 }

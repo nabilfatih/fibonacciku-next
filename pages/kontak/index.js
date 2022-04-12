@@ -3,16 +3,19 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { toast, Slide } from "react-toastify";
 import axios from "axios";
-
 import Head from "next/head";
 import Footer from "../../components/footer/footer";
 import FormKontak from "../../components/form-kontak/form-kontak";
 import NavBar from "../../components/nav/nav";
-
+import { parseCookies } from "nookies";
 import styles from "./kontak.module.scss";
 import cls from "classnames";
 
 const Kontak = () => {
+  const cookies = parseCookies();
+  const user = cookies?.user ? JSON.parse(cookies.user) : "";
+  const token = cookies.token ? cookies.token : null;
+
   const validationSchema = Yup.object().shape({
     nama: Yup.string().required("Masukkan nama"),
     email: Yup.string().required("Masukkan email").email("Email tidak valid"),
@@ -74,7 +77,7 @@ const Kontak = () => {
         />
         <meta name="robots" content="all" />
       </Head>
-      <NavBar />
+      <NavBar user={user} token={token} />
 
       <main>
         <FormKontak>
@@ -141,7 +144,7 @@ const Kontak = () => {
         </FormKontak>
       </main>
 
-      <Footer />
+      <Footer user={user} token={token} />
     </div>
   );
 };

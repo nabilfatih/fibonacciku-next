@@ -37,6 +37,7 @@ export default function PengaturanPassword({ dataUser }) {
   const router = useRouter();
   const cookies = parseCookies();
   const user = cookies?.user ? JSON.parse(cookies.user) : "";
+  const token = cookies.token ? cookies.token : null;
 
   const [showPasswordLama, setShowPasswordLama] = useState(false);
   const [showPasswordBaru, setShowPasswordBaru] = useState(false);
@@ -144,7 +145,7 @@ export default function PengaturanPassword({ dataUser }) {
         <title>Pengaturan Password | FibonacciKu</title>
       </Head>
 
-      <NavBar />
+      <NavBar user={user} token={token} />
 
       <main>
         <section className={styles.pengaturans}>
@@ -278,7 +279,7 @@ export default function PengaturanPassword({ dataUser }) {
         </section>
       </main>
 
-      <Footer />
+      <Footer user={user} token={token} />
     </div>
   );
 }

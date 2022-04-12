@@ -30,7 +30,7 @@ export default function Beranda() {
         <meta name="robots" content="all" />
       </Head>
 
-      <NavBar />
+      <NavBar user={user} token={token} />
 
       <main>
         <Hero user={user} token={token} />
@@ -38,7 +38,7 @@ export default function Beranda() {
         <Donasi />
       </main>
 
-      <Footer />
+      <Footer user={user} token={token} />
     </div>
   );
 }

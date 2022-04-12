@@ -8,6 +8,7 @@ import cls from "classnames";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import dataPelajaran from "../../data/dataPelajaran.json";
+import { parseCookies } from "nookies";
 
 export async function getStaticProps(context) {
   return {
@@ -19,6 +20,9 @@ export async function getStaticProps(context) {
 
 export default function MataPelajaran(props) {
   const router = useRouter();
+  const cookies = parseCookies();
+  const user = cookies?.user ? JSON.parse(cookies.user) : "";
+  const token = cookies.token ? cookies.token : null;
 
   function randomAlphaNumeric() {
     return Math.random().toString(36).charAt(2);
@@ -54,7 +58,7 @@ export default function MataPelajaran(props) {
         <meta name="robots" content="all" />
       </Head>
 
-      <NavBar />
+      <NavBar user={user} token={token} />
 
       <main>
         <Pelajaran>
@@ -130,7 +134,7 @@ export default function MataPelajaran(props) {
         </Ujian>
       </main>
 
-      <Footer />
+      <Footer user={user} token={token} />
     </div>
   );
 }

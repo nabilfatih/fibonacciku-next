@@ -4,16 +4,21 @@ import Footer from "../components/footer/footer";
 import styles from "../styles/404.module.scss";
 import cls from "classnames";
 import { useRouter } from "next/router";
+import { parseCookies } from "nookies";
 
 export default function Custom404() {
+  const cookies = parseCookies();
   const router = useRouter();
+
+  const user = cookies?.user ? JSON.parse(cookies.user) : "";
+  const token = cookies.token ? cookies.token : null;
 
   return (
     <div>
       <Head>
         <title>Halaman Tidak Ditemukan! | FibonacciKu</title>
       </Head>
-      <NavBar />
+      <NavBar user={user} token={token} />
 
       <main>
         <section className={styles.error}>
@@ -42,7 +47,7 @@ export default function Custom404() {
         </section>
       </main>
 
-      <Footer />
+      <Footer user={user} token={token} />
     </div>
   );
 }

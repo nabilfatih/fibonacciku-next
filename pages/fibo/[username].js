@@ -40,6 +40,7 @@ export default function Profile({ dataUser }) {
   const router = useRouter();
   const cookies = parseCookies();
   const user = cookies?.user ? JSON.parse(cookies.user) : "";
+  const token = cookies.token ? cookies.token : null;
   const { username } = router.query;
 
   const [checkUsername, setCheckUsername] = useState(false);
@@ -124,7 +125,7 @@ export default function Profile({ dataUser }) {
         <title>{username} | FibonacciKu</title>
       </Head>
 
-      <NavBar />
+      <NavBar user={user} token={token} />
 
       <main>
         <section className={styles.profils}>
@@ -248,7 +249,7 @@ export default function Profile({ dataUser }) {
         </section>
       </main>
 
-      <Footer />
+      <Footer user={user} token={token} />
     </div>
   );
 }

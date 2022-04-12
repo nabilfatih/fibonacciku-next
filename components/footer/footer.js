@@ -5,17 +5,14 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-const Footer = () => {
-  const cookies = parseCookies();
+const Footer = ({ user, token }) => {
   const router = useRouter();
 
-  const user = cookies?.user ? JSON.parse(cookies.user) : "";
-  const token = cookies?.token;
   const [userState, setUserState] = useState("");
 
   useEffect(() => {
     user && token ? setUserState(user) : setUserState("");
-  }, [router]);
+  }, [router, token, user]);
 
   const HandleClickBeranda = (e) => {
     e.preventDefault();

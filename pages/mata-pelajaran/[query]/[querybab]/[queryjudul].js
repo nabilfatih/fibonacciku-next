@@ -5,6 +5,7 @@ import styles from "./queryjudul.module.scss";
 import cls from "classnames";
 import { useRouter } from "next/router";
 import dataKonten from "../../../../data/dataKonten.json";
+import { parseCookies } from "nookies";
 
 export async function getStaticPaths() {
   return {
@@ -35,6 +36,9 @@ export async function getStaticProps({ params }) {
 
 export default function QueryJudul({ konten }) {
   const router = useRouter();
+  const cookies = parseCookies();
+  const user = cookies?.user ? JSON.parse(cookies.user) : "";
+  const token = cookies.token ? cookies.token : null;
 
   return (
     <div>
@@ -65,7 +69,7 @@ export default function QueryJudul({ konten }) {
         <meta name="robots" content="all" />
       </Head>
 
-      <NavBar />
+      <NavBar user={user} token={token} />
 
       <main>
         <section className={styles.modal_video}>
@@ -102,7 +106,7 @@ export default function QueryJudul({ konten }) {
         </section>
       </main>
 
-      <Footer />
+      <Footer user={user} token={token} />
     </div>
   );
 }

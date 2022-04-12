@@ -60,13 +60,13 @@ export default function Home() {
         <meta name="robots" content="all" />
       </Head>
 
-      <NavBar />
+      <NavBar user={user} token={token} />
 
       <Hero />
       <Features />
       <Donasi />
 
-      <Footer />
+      <Footer user={user} token={token} />
     </div>
   );
 }

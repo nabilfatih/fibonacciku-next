@@ -7,6 +7,7 @@ import NavBar from "../../components/nav/nav";
 import styles from "./query.module.scss";
 import dataBab from "../../data/dataBab.json";
 import dataPelajaran from "../../data/dataPelajaran.json";
+import { parseCookies } from "nookies";
 
 export async function getStaticPaths() {
   return {
@@ -37,6 +38,9 @@ export async function getStaticProps({ params }) {
 
 export default function Query({ babs, pelajaran }) {
   const router = useRouter();
+  const cookies = parseCookies();
+  const user = cookies?.user ? JSON.parse(cookies.user) : "";
+  const token = cookies.token ? cookies.token : null;
 
   function randomAlphaNumeric() {
     return Math.random().toString(36).charAt(2);
@@ -80,7 +84,7 @@ export default function Query({ babs, pelajaran }) {
         <meta name="robots" content="all" />
       </Head>
 
-      <NavBar />
+      <NavBar user={user} token={token} />
 
       <main>
         <section className={styles.shows_pelajaran}>
@@ -140,7 +144,7 @@ export default function Query({ babs, pelajaran }) {
         </section>
       </main>
 
-      <Footer />
+      <Footer user={user} token={token} />
     </div>
   );
 }

@@ -16,16 +16,11 @@ import {
 } from "@iconscout/react-unicons";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
-import { parseCookies } from "nookies";
 import cookie from "js-cookie";
 import { toast } from "react-toastify";
 
-const NavBar = () => {
-  const cookies = parseCookies();
+const NavBar = ({ user, token }) => {
   const router = useRouter();
-
-  const user = cookies?.user ? JSON.parse(cookies.user) : "";
-  const token = cookies?.token;
 
   const dropdown = useRef(null);
   const dropdownMobile = useRef(null);
@@ -40,7 +35,7 @@ const NavBar = () => {
 
   useEffect(() => {
     user && token ? setUserState(user) : setUserState("");
-  }, [router]);
+  }, [user, token, router]);
 
   async function handleLogout(e) {
     e.preventDefault();

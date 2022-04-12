@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import styles from "./querybab.module.scss";
 import Link from "next/link";
 import Head from "next/head";
+import { parseCookies } from "nookies";
 
 export async function getStaticPaths() {
   return {
@@ -44,6 +45,9 @@ export async function getStaticProps({ params }) {
 
 export default function QueryBab({ bab, subBabs, kontens }) {
   const router = useRouter();
+  const cookies = parseCookies();
+  const user = cookies?.user ? JSON.parse(cookies.user) : "";
+  const token = cookies.token ? cookies.token : null;
 
   function randomAlphaNumeric() {
     return Math.random().toString(36).charAt(2);
@@ -82,7 +86,7 @@ export default function QueryBab({ bab, subBabs, kontens }) {
         <meta name="robots" content="all" />
       </Head>
 
-      <NavBar />
+      <NavBar user={user} token={token} />
 
       <main>
         <section className={styles.belajar}>
@@ -160,7 +164,7 @@ export default function QueryBab({ bab, subBabs, kontens }) {
         </section>
       </main>
 
-      <Footer />
+      <Footer user={user} token={token} />
     </div>
   );
 }

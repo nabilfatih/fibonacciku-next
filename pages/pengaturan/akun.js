@@ -36,6 +36,7 @@ export default function PengaturanAkun({ dataUser }) {
   const cookies = parseCookies();
 
   const user = cookies?.user ? JSON.parse(cookies.user) : "";
+  const token = cookies.token ? cookies.token : null;
 
   const validationSchema = Yup.object().shape({
     email: Yup.string().email("Email tidak valid").required("Masukkan email"),
@@ -107,7 +108,7 @@ export default function PengaturanAkun({ dataUser }) {
         <title>Pengaturan Akun | FibonacciKu</title>
       </Head>
 
-      <NavBar />
+      <NavBar user={user} token={token} />
 
       <main>
         <section className={styles.pengaturans}>
@@ -365,7 +366,7 @@ export default function PengaturanAkun({ dataUser }) {
         </section>
       </main>
 
-      <Footer />
+      <Footer user={user} token={token} />
     </div>
   );
 }
