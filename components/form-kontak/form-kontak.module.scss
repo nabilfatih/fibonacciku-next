@@ -199,6 +199,11 @@
 
         &__button {
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 150ms ease;
+
+            &:hover {
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            }
 
             @include breakpoint-up(large) {
 
