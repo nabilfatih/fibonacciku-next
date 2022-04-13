@@ -8,7 +8,6 @@ import cls from "classnames";
 import { UilSetting } from "@iconscout/react-unicons";
 import connectDB from "../../config/connectDB";
 import User from "../../models/user";
-import { parseCookies } from "nookies";
 import { useState, useEffect } from "react";
 import { storage } from "../../config/firebase";
 import {
