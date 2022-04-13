@@ -60,9 +60,13 @@ export default function Profile({ dataUser, user, token }) {
       ? setCheckUsername(true)
       : setCheckUsername(false);
 
-    dataUser.instagram ? setCheckInstagram(dataUser.instagram) : null;
-    dataUser.github ? setCheckGithub(dataUser.github) : null;
-    dataUser.twitter ? setCheckTwitter(dataUser.twitter) : null;
+    dataUser.instagram
+      ? setCheckInstagram(dataUser.instagram)
+      : setCheckInstagram(null);
+    dataUser.github ? setCheckGithub(dataUser.github) : setCheckGithub(null);
+    dataUser.twitter
+      ? setCheckTwitter(dataUser.twitter)
+      : setCheckTwitter(null);
   }, [
     router,
     user.username,
