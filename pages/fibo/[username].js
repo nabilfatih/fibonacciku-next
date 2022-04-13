@@ -21,9 +21,17 @@ import crypto from "crypto";
 import { Slide, toast } from "react-toastify";
 import axios from "axios";
 import cookie from "js-cookie";
+import checkCookie from "cookie";
 
 export async function getServerSideProps(context) {
   connectDB();
+
+  const cookies = context.req.headers.cookie
+    ? checkCookie.parse(context.req.headers.cookie)
+    : null;
+  const user = cookies?.user ? JSON.parse(cookies.user) : null;
+  const token = cookies?.token ? cookies.token : null;
+
   const username = context.params.username;
   const dataUser = await User.findOne({ username: username });
   if (!dataUser) {
@@ -31,16 +39,15 @@ export async function getServerSideProps(context) {
   }
   return {
     props: {
+      user,
+      token,
       dataUser: JSON.parse(JSON.stringify(dataUser)),
     },
   };
 }
 
-export default function Profile({ dataUser }) {
+export default function Profile({ dataUser, user, token }) {
   const router = useRouter();
-  const cookies = parseCookies();
-  const user = cookies?.user ? JSON.parse(cookies.user) : "";
-  const token = cookies.token ? cookies.token : null;
   const { username } = router.query;
 
   const [checkUsername, setCheckUsername] = useState(false);
@@ -109,8 +116,11 @@ export default function Profile({ dataUser }) {
       };
 
       const { data } = await axios.put(`/api/updatePhoto`, formData, config);
-      cookie.set("token", data?.token, { expires: 3 });
-      cookie.set("user", JSON.stringify(data?.user), { expires: 3 });
+      cookie.set("user", JSON.stringify(data?.user), {
+        expires: 3,
+        secure: process.env.NODE_ENV === "production",
+        path: "/",
+      });
       await router.push(`/fibo/${user.username}`);
       toast.dismiss(loading);
     } catch (e) {

@@ -1,6 +1,7 @@
 import connectDB from "../../../config/connectDB";
 import User from "../../../models/user";
 import jwt from "jsonwebtoken";
+import { setTokenCookie } from "../../../lib/cookies";
 
 connectDB();
 
@@ -39,8 +40,9 @@ export default async function settingAkun(req, res) {
 
         const { username, _id, nama, avatar } = user;
 
+        setTokenCookie(token, res);
+
         res.status(201).json({
-          token,
           user: { username, _id, nama, avatar },
           success: "Berhasil perbarui profil 🤩",
         });

@@ -17,9 +17,57 @@ import {
   UilLockAlt,
   UilLockAccess,
 } from "@iconscout/react-unicons";
+import checkCookie from "cookie";
+import { verifyToken } from "../../lib/utils";
+import cookie from "js-cookie";
 
-export default function Daftar() {
+export async function getServerSideProps(context) {
+  const cookies = context.req.headers.cookie
+    ? checkCookie.parse(context.req.headers.cookie)
+    : null;
+  const user = cookies?.user ? JSON.parse(cookies.user) : null;
+  const token = cookies?.token ? cookies.token : null;
+  const userId = await verifyToken(token);
+
+  if (userId) {
+    return {
+      redirect: {
+        destination: "/beranda",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: { user, token },
+  };
+}
+
+export default function Daftar({ user, token }) {
   const router = useRouter();
+
+  useEffect(() => {
+    async function fetchData() {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const { data } = await axios.put(`/api/verify`, { token: token }, config);
+      const tokens = data.userId;
+      if (!tokens || !user) {
+        cookie.remove("user");
+        await fetch("/api/logout", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({}),
+        });
+      }
+    }
+    fetchData();
+  }, [router, token, user]);
 
   const [emailActive, setEmailActive] = useState("");
   const [namaActive, setNamaActive] = useState("");

@@ -11,16 +11,17 @@ import * as Yup from "yup";
 import { UilEyeSlash, UilEye } from "@iconscout/react-unicons";
 import axios from "axios";
 import { Slide, toast } from "react-toastify";
-import { parseCookies } from "nookies";
 import connectDB from "../../config/connectDB";
 import User from "../../models/user";
 import checkCookie from "cookie";
 
 export async function getServerSideProps(context) {
   connectDB();
-
-  const cookies = checkCookie.parse(context.req.headers.cookie);
-  const user = JSON.parse(cookies.user);
+  const cookies = context.req.headers.cookie
+    ? checkCookie.parse(context.req.headers.cookie)
+    : null;
+  const user = cookies?.user ? JSON.parse(cookies.user) : null;
+  const token = cookies?.token ? cookies.token : null;
 
   const dataUser = await User.findOne({ username: user.username });
   if (!dataUser) {
@@ -28,16 +29,15 @@ export async function getServerSideProps(context) {
   }
   return {
     props: {
+      user,
+      token,
       dataUser: JSON.parse(JSON.stringify(dataUser)),
     },
   };
 }
 
-export default function PengaturanPassword({ dataUser }) {
+export default function PengaturanPassword({ dataUser, user, token }) {
   const router = useRouter();
-  const cookies = parseCookies();
-  const user = cookies?.user ? JSON.parse(cookies.user) : "";
-  const token = cookies.token ? cookies.token : null;
 
   const [showPasswordLama, setShowPasswordLama] = useState(false);
   const [showPasswordBaru, setShowPasswordBaru] = useState(false);

@@ -17,7 +17,6 @@ import {
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import cookie from "js-cookie";
-import { toast } from "react-toastify";
 
 const NavBar = ({ user, token }) => {
   const router = useRouter();
@@ -39,8 +38,14 @@ const NavBar = ({ user, token }) => {
 
   async function handleLogout(e) {
     e.preventDefault();
-    cookie.remove("token");
-    cookie.remove("user");
+    cookie.remove("user")
+    await fetch("/api/logout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({}),
+    });
     await router.push("/masuk");
     router.reload();
   }

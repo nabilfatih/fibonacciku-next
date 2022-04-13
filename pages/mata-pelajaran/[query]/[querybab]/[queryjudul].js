@@ -38,7 +38,7 @@ export default function QueryJudul({ konten }) {
   const router = useRouter();
   const cookies = parseCookies();
   const user = cookies?.user ? JSON.parse(cookies.user) : "";
-  const token = cookies.token ? cookies.token : null;
+  const token = user ? true : false;
 
   return (
     <div>

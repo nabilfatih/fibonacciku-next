@@ -7,7 +7,6 @@ import styles from "./masuk.module.scss";
 import cls from "classnames";
 import axios from "axios";
 import cookie from "js-cookie";
-import { parseCookies } from "nookies";
 import { Slide, toast } from "react-toastify";
 import Head from "next/head";
 import FormMasuk from "../../components/registration/form-masuk";
@@ -17,13 +16,33 @@ import {
   UilEyeSlash,
   UilEye,
 } from "@iconscout/react-unicons";
+import checkCookie from "cookie";
+import { verifyToken } from "../../lib/utils";
 
-export default function Masuk() {
-  const cookies = parseCookies();
+export async function getServerSideProps(context) {
+  const cookies = context.req.headers.cookie
+    ? checkCookie.parse(context.req.headers.cookie)
+    : null;
+  const user = cookies?.user ? JSON.parse(cookies.user) : null;
+  const token = cookies?.token ? cookies.token : null;
+  const userId = await verifyToken(token);
+
+  if (userId) {
+    return {
+      redirect: {
+        destination: "/beranda",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: { user, token },
+  };
+}
+
+export default function Masuk({ user, token }) {
   const router = useRouter();
-
-  const user = cookies?.user ? JSON.parse(cookies.user) : "";
-  const token = cookies.token ? cookies.token : null;
 
   useEffect(() => {
     async function fetchData() {
@@ -36,7 +55,13 @@ export default function Masuk() {
       const tokens = data.userId;
       if (!tokens || !user) {
         cookie.remove("user");
-        cookie.remove("token");
+        await fetch("/api/logout", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({}),
+        });
       }
     }
     fetchData();
@@ -110,8 +135,11 @@ export default function Masuk() {
         },
       };
       const { data } = await axios.post(`/api/login`, formData, config);
-      cookie.set("token", data?.token, { expires: 3 });
-      cookie.set("user", JSON.stringify(data?.user), { expires: 3 });
+      cookie.set("user", JSON.stringify(data?.user), {
+        expires: 3,
+        secure: process.env.NODE_ENV === "production",
+        path: "/",
+      });
       toast.dismiss(loading);
       if (data.referer.includes("/masuk")) {
         await router.push("/beranda");

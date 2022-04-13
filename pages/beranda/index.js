@@ -4,13 +4,32 @@ import NavBar from "../../components/nav/nav";
 import Hero from "../../components/hero/hero";
 import Features from "../../components/features/features";
 import Donasi from "../../components/donasi/donasi";
-import { parseCookies } from "nookies";
+import { verifyToken } from "../../lib/utils";
+import cookie from "cookie";
 
-export default function Beranda() {
-  const cookies = parseCookies();
-  const user = cookies?.user ? JSON.parse(cookies.user) : "";
-  const token = cookies.token ? cookies.token : null;
+export async function getServerSideProps(context) {
+  const cookies = context.req.headers.cookie
+    ? cookie.parse(context.req.headers.cookie)
+    : null;
+  const user = cookies?.user ? JSON.parse(cookies.user) : null;
+  const token = cookies?.token ? cookies.token : null;
+  const userId = await verifyToken(token);
 
+  if (!userId) {
+    return {
+      redirect: {
+        destination: "/masuk",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: { user, token },
+  };
+}
+
+export default function Beranda({ user, token }) {
   return (
     <div>
       <Head>

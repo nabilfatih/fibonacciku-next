@@ -8,9 +8,11 @@ import cookie from "cookie";
 import { verifyToken } from "../lib/utils";
 
 export async function getServerSideProps(context) {
-  const cookies = cookie.parse(context.req.headers.cookie);
-  const user = cookies.user ? cookies.user : null;
-  const token = cookies.token ? cookies.token : null;
+  const cookies = context.req.headers.cookie
+    ? cookie.parse(context.req.headers.cookie)
+    : null;
+  const user = cookies?.user ? JSON.parse(cookies.user) : null;
+  const token = cookies?.token ? cookies.token : null;
   const userId = await verifyToken(token);
 
   if (userId) {

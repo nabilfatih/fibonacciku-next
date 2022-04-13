@@ -39,7 +39,7 @@ export async function getStaticProps({ params }) {
       bab,
       subBabs,
       kontens,
-    }, // will be passed to the page component as props
+    },
   };
 }
 
@@ -47,7 +47,7 @@ export default function QueryBab({ bab, subBabs, kontens }) {
   const router = useRouter();
   const cookies = parseCookies();
   const user = cookies?.user ? JSON.parse(cookies.user) : "";
-  const token = cookies.token ? cookies.token : null;
+  const token = user ? true : false;
 
   function randomAlphaNumeric() {
     return Math.random().toString(36).charAt(2);

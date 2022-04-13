@@ -2,13 +2,21 @@ import Head from "next/head";
 import Footer from "../../components/footer/footer";
 import NavBar from "../../components/nav/nav";
 import SyaratKetentuan from "../../components/syarat-ketentuan/syarat-ketentuan";
-import { parseCookies } from "nookies";
+import cookie from "cookie";
 
-export default function Syarat() {
-  const cookies = parseCookies();
-  const user = cookies?.user ? JSON.parse(cookies.user) : "";
-  const token = cookies.token ? cookies.token : null;
+export async function getServerSideProps(context) {
+  const cookies = context.req.headers.cookie
+    ? cookie.parse(context.req.headers.cookie)
+    : null;
+  const user = cookies?.user ? JSON.parse(cookies.user) : null;
+  const token = cookies?.token ? cookies.token : null;
 
+  return {
+    props: { user, token },
+  };
+}
+
+export default function Syarat({ user, token }) {
   return (
     <div>
       <Head>

@@ -7,15 +7,23 @@ import Head from "next/head";
 import Footer from "../../components/footer/footer";
 import FormKontak from "../../components/form-kontak/form-kontak";
 import NavBar from "../../components/nav/nav";
-import { parseCookies } from "nookies";
 import styles from "./kontak.module.scss";
 import cls from "classnames";
+import checkCookie from "cookie";
 
-const Kontak = () => {
-  const cookies = parseCookies();
-  const user = cookies?.user ? JSON.parse(cookies.user) : "";
-  const token = cookies.token ? cookies.token : null;
+export async function getServerSideProps(context) {
+  const cookies = context.req.headers.cookie
+    ? checkCookie.parse(context.req.headers.cookie)
+    : null;
+  const user = cookies?.user ? JSON.parse(cookies.user) : null;
+  const token = cookies?.token ? cookies.token : null;
 
+  return {
+    props: { user, token },
+  };
+}
+
+const Kontak = ({ user, token }) => {
   const validationSchema = Yup.object().shape({
     nama: Yup.string().required("Masukkan nama"),
     email: Yup.string().required("Masukkan email").email("Email tidak valid"),

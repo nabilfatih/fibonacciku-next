@@ -3,6 +3,7 @@ import User from "../../models/user";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import absoluteUrl from "next-absolute-url";
+import { setTokenCookie } from "../../lib/cookies";
 
 connectDB();
 
@@ -33,8 +34,9 @@ export default async function Login(req, res) {
 
         const { username, _id, nama, avatar } = user;
 
+        setTokenCookie(token, res);
+
         res.status(201).json({
-          token,
           user: { username, _id, nama, avatar },
           referer: ref,
           message: "Welcome to FibonacciKu 🤩",

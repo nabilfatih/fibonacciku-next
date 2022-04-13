@@ -7,11 +7,11 @@ import { useRouter } from "next/router";
 import { parseCookies } from "nookies";
 
 export default function Custom404() {
-  const cookies = parseCookies();
   const router = useRouter();
+  const cookies = parseCookies();
 
-  const user = cookies?.user ? JSON.parse(cookies.user) : "";
-  const token = cookies.token ? cookies.token : null;
+  const user = cookies?.user ? JSON.parse(cookies.user) : null;
+  const token = user ? true : false;
 
   return (
     <div>

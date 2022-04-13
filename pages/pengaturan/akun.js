@@ -6,7 +6,6 @@ import cls from "classnames";
 import { useRouter } from "next/router";
 import * as Yup from "yup";
 import cookie from "js-cookie";
-import { parseCookies } from "nookies";
 import { Slide, toast } from "react-toastify";
 import axios from "axios";
 import connectDB from "../../config/connectDB";
@@ -16,9 +15,11 @@ import { Form, Formik } from "formik";
 
 export async function getServerSideProps(context) {
   connectDB();
-
-  const cookies = checkCookie.parse(context.req.headers.cookie);
-  const user = JSON.parse(cookies.user);
+  const cookies = context.req.headers.cookie
+    ? checkCookie.parse(context.req.headers.cookie)
+    : null;
+  const user = cookies?.user ? JSON.parse(cookies.user) : null;
+  const token = cookies?.token ? cookies.token : null;
 
   const dataUser = await User.findOne({ username: user.username });
   if (!dataUser) {
@@ -26,17 +27,15 @@ export async function getServerSideProps(context) {
   }
   return {
     props: {
+      user,
+      token,
       dataUser: JSON.parse(JSON.stringify(dataUser)),
     },
   };
 }
 
-export default function PengaturanAkun({ dataUser }) {
+export default function PengaturanAkun({ dataUser, user, token }) {
   const router = useRouter();
-  const cookies = parseCookies();
-
-  const user = cookies?.user ? JSON.parse(cookies.user) : "";
-  const token = cookies.token ? cookies.token : null;
 
   const validationSchema = Yup.object().shape({
     email: Yup.string().email("Email tidak valid").required("Masukkan email"),
@@ -91,8 +90,11 @@ export default function PengaturanAkun({ dataUser }) {
       };
 
       const { data } = await axios.put(`/api/setting/akun`, formData, config);
-      cookie.set("token", data?.token, { expires: 3 });
-      cookie.set("user", JSON.stringify(data?.user), { expires: 3 });
+      cookie.set("user", JSON.stringify(data?.user), {
+        expires: 3,
+        secure: process.env.NODE_ENV === "production",
+        path: "/",
+      });
       toast.dismiss(loading);
       await router.push("/pengaturan/akun");
       toast.success(data.success, toastConfig);
