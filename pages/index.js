@@ -4,34 +4,30 @@ import NavBar from "../components/nav/nav";
 import Hero from "../components/hero/hero";
 import Features from "../components/features/features";
 import Donasi from "../components/donasi/donasi";
-import { parseCookies } from "nookies";
-import axios from "axios";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+import cookie from "cookie";
+import { verifyToken } from "../lib/utils";
 
-export default function Home() {
-  const cookies = parseCookies();
-  const router = useRouter();
-
-  const user = cookies?.user ? JSON.parse(cookies.user) : "";
+export async function getServerSideProps(context) {
+  const cookies = cookie.parse(context.req.headers.cookie);
+  const user = cookies.user ? cookies.user : null;
   const token = cookies.token ? cookies.token : null;
+  const userId = await verifyToken(token);
 
-  useEffect(() => {
-    async function fetchData() {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
-      const { data } = await axios.put(`/api/verify`, { token: token }, config);
-      const tokens = data.userId;
-      if (tokens || user) {
-        router.push("/beranda");
-      }
-    }
-    fetchData();
-  }, [router, token, user]);
+  if (userId) {
+    return {
+      redirect: {
+        destination: "/beranda",
+        permanent: false,
+      },
+    };
+  }
 
+  return {
+    props: { user, token },
+  };
+}
+
+export default function Home({ user, token }) {
   return (
     <div>
       <Head>
