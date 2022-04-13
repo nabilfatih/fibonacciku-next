@@ -50,6 +50,7 @@
         padding: 2rem;
         position: relative;
         display: flex;
+        align-items: flex-start;
         gap: 2.5rem;
 
         @include breakpoint-down(small) {
