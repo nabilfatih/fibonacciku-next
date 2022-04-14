@@ -2,9 +2,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
-
 import "../styles/styles.scss";
-
 import { Progress } from "../components";
 import { useProgressStore } from "../store/useProgressStore";
 import Head from "next/head";
