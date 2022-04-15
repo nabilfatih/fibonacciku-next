@@ -203,7 +203,7 @@ export default function Masuk({ token }) {
 
             <div className={styles.forms__fieldBox}>
               <div className={cls(styles.forms__field, passwordActive)}>
-                <UilLockAlt className={styles.icon} />
+                <UilLockAlt className={cls(styles.icon, styles.icon__user)} />
                 <input
                   type={typePassword}
                   id="password"
