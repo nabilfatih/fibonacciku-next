@@ -6,7 +6,6 @@ import * as Yup from "yup";
 import styles from "./masuk.module.scss";
 import cls from "classnames";
 import axios from "axios";
-import cookie from "js-cookie";
 import { Slide, toast } from "react-toastify";
 import Head from "next/head";
 import FormMasuk from "../../components/registration/form-masuk";
