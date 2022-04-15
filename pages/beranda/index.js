@@ -11,7 +11,6 @@ export async function getServerSideProps(context) {
   const cookies = context.req.headers.cookie
     ? cookie.parse(context.req.headers.cookie)
     : null;
-  const user = cookies?.user ? JSON.parse(cookies.user) : null;
   const token = cookies?.token ? cookies.token : null;
   const userId = await verifyToken(token);
 
@@ -25,11 +24,11 @@ export async function getServerSideProps(context) {
   }
 
   return {
-    props: { user, token },
+    props: { token },
   };
 }
 
-export default function Beranda({ user, token }) {
+export default function Beranda({ token }) {
   return (
     <div>
       <Head>
@@ -49,15 +48,15 @@ export default function Beranda({ user, token }) {
         <meta name="robots" content="all" />
       </Head>
 
-      <NavBar user={user} token={token} />
+      <NavBar />
 
       <main>
-        <Hero user={user} token={token} />
+        <Hero />
         <Features />
         <Donasi />
       </main>
 
-      <Footer user={user} token={token} />
+      <Footer />
     </div>
   );
 }

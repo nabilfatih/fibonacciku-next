@@ -3,7 +3,7 @@ import Footer from "../../components/footer/footer";
 import NavBar from "../../components/nav/nav";
 import styles from "./pengaturan.module.scss";
 import cls from "classnames";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -14,30 +14,32 @@ import { Slide, toast } from "react-toastify";
 import connectDB from "../../config/connectDB";
 import User from "../../models/user";
 import checkCookie from "cookie";
+import { UserContext } from "../../contexts/user.context";
+import { verifyToken } from "../../lib/utils";
 
 export async function getServerSideProps(context) {
   connectDB();
   const cookies = context.req.headers.cookie
     ? checkCookie.parse(context.req.headers.cookie)
     : null;
-  const user = cookies?.user ? JSON.parse(cookies.user) : null;
   const token = cookies?.token ? cookies.token : null;
+  const userId = await verifyToken(token);
 
-  const dataUser = await User.findOne({ username: user.username });
+  const dataUser = await User.findOne({ _id: userId });
   if (!dataUser) {
     return { notFound: true };
   }
   return {
     props: {
-      user,
-      token,
       dataUser: JSON.parse(JSON.stringify(dataUser)),
     },
   };
 }
 
-export default function PengaturanPassword({ dataUser, user, token }) {
+export default function PengaturanPassword({ dataUser }) {
   const router = useRouter();
+
+  const { currentUser } = useContext(UserContext);
 
   const [showPasswordLama, setShowPasswordLama] = useState(false);
   const [showPasswordBaru, setShowPasswordBaru] = useState(false);
@@ -93,7 +95,7 @@ export default function PengaturanPassword({ dataUser, user, token }) {
 
   async function onSubmit(datas) {
     const { passwordLama, passwordBaru, passwordKonfirmasi } = datas;
-    const username = user.username;
+    const username = currentUser.username;
     const formData = {
       passwordLama,
       passwordBaru,
@@ -145,7 +147,7 @@ export default function PengaturanPassword({ dataUser, user, token }) {
         <title>Pengaturan Password | FibonacciKu</title>
       </Head>
 
-      <NavBar user={user} token={token} />
+      <NavBar />
 
       <main>
         <section className={styles.pengaturans}>
@@ -279,7 +281,7 @@ export default function PengaturanPassword({ dataUser, user, token }) {
         </section>
       </main>
 
-      <Footer user={user} token={token} />
+      <Footer />
     </div>
   );
 }

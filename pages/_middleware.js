@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import { verifyToken } from "../lib/utils";
 
 export async function middleware(req) {
-  const user = req ? req.cookies?.user : null;
   const token = req ? req.cookies?.token : null;
   const userId = await verifyToken(token);
 
@@ -15,7 +14,7 @@ export async function middleware(req) {
     pathname.includes("/verify-email") ||
     pathname.includes("/lupa-password")
   ) {
-    if (!userId || !user) {
+    if (!userId) {
       return NextResponse.next();
     }
     return NextResponse.redirect(new URL("/beranda", req.url));
@@ -26,7 +25,7 @@ export async function middleware(req) {
     pathname.includes("/pengaturan") ||
     pathname.includes("/beranda")
   ) {
-    if (!userId || !user) {
+    if (!userId) {
       return NextResponse.rewrite(new URL("/masuk", req.url));
     }
     return NextResponse.next();

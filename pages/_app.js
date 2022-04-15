@@ -6,6 +6,7 @@ import "../styles/styles.scss";
 import { Progress } from "../components";
 import { useProgressStore } from "../store/useProgressStore";
 import Head from "next/head";
+import { UserProvider } from "../contexts/user.context";
 
 function MyApp({ Component, pageProps: { ...pageProps } }) {
   const setIsAnimating = useProgressStore((state) => state.setIsAnimating);
@@ -50,7 +51,9 @@ function MyApp({ Component, pageProps: { ...pageProps } }) {
         pauseOnHover
         theme="colored"
       />
-      <Component {...pageProps} />
+      <UserProvider>
+        <Component {...pageProps} />
+      </UserProvider>
     </>
   );
 }

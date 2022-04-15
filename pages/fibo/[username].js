@@ -8,7 +8,7 @@ import cls from "classnames";
 import { UilSetting } from "@iconscout/react-unicons";
 import connectDB from "../../config/connectDB";
 import User from "../../models/user";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { storage } from "../../config/firebase";
 import {
   ref,
@@ -19,17 +19,10 @@ import {
 import crypto from "crypto";
 import { Slide, toast } from "react-toastify";
 import axios from "axios";
-import cookie from "js-cookie";
-import checkCookie from "cookie";
+import { UserContext } from "../../contexts/user.context";
 
 export async function getServerSideProps(context) {
   connectDB();
-
-  const cookies = context.req.headers.cookie
-    ? checkCookie.parse(context.req.headers.cookie)
-    : null;
-  const user = cookies?.user ? JSON.parse(cookies.user) : null;
-  const token = cookies?.token ? cookies.token : null;
 
   const username = context.params.username;
   const dataUser = await User.findOne({ username: username });
@@ -38,24 +31,31 @@ export async function getServerSideProps(context) {
   }
   return {
     props: {
-      user,
-      token,
       dataUser: JSON.parse(JSON.stringify(dataUser)),
     },
   };
 }
 
-export default function Profile({ dataUser, user, token }) {
+export default function Profile({ dataUser }) {
   const router = useRouter();
   const { username } = router.query;
+
+  const { currentUser, setCurrentUser } = useContext(UserContext);
 
   const [checkUsername, setCheckUsername] = useState(false);
   const [checkInstagram, setCheckInstagram] = useState(false);
   const [checkGithub, setCheckGithub] = useState(false);
   const [checkTwitter, setCheckTwitter] = useState(false);
+  const [usernameState, setUsernameState] = useState(null);
 
   useEffect(() => {
-    dataUser.username === user.username
+    currentUser
+      ? setUsernameState(currentUser.username)
+      : setUsernameState(null);
+  }, [currentUser]);
+
+  useEffect(() => {
+    dataUser.username === usernameState
       ? setCheckUsername(true)
       : setCheckUsername(false);
 
@@ -67,8 +67,7 @@ export default function Profile({ dataUser, user, token }) {
       ? setCheckTwitter(dataUser.twitter)
       : setCheckTwitter(null);
   }, [
-    router,
-    user.username,
+    usernameState,
     dataUser.username,
     dataUser.instagram,
     dataUser.github,
@@ -105,7 +104,7 @@ export default function Profile({ dataUser, user, token }) {
       let url = await getDownloadURL(imageRef);
 
       const formData = {
-        username: user.username,
+        username: currentUser.username,
         filename: codeName,
         path: url,
       };
@@ -119,12 +118,8 @@ export default function Profile({ dataUser, user, token }) {
       };
 
       const { data } = await axios.put(`/api/updatePhoto`, formData, config);
-      cookie.set("user", JSON.stringify(data?.user), {
-        expires: 3,
-        secure: process.env.NODE_ENV === "production",
-        path: "/",
-      });
-      await router.push(`/fibo/${user.username}`);
+      setCurrentUser(data.user);
+      await router.push(`/fibo/${currentUser.username}`);
       toast.dismiss(loading);
     } catch (e) {
       toast.dismiss(loading);
@@ -138,7 +133,7 @@ export default function Profile({ dataUser, user, token }) {
         <title>{username} | FibonacciKu</title>
       </Head>
 
-      <NavBar user={user} token={token} />
+      <NavBar />
 
       <main>
         <section className={styles.profils}>
@@ -262,7 +257,7 @@ export default function Profile({ dataUser, user, token }) {
         </section>
       </main>
 
-      <Footer user={user} token={token} />
+      <Footer />
     </div>
   );
 }

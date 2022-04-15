@@ -9,21 +9,8 @@ import FormKontak from "../../components/form-kontak/form-kontak";
 import NavBar from "../../components/nav/nav";
 import styles from "./kontak.module.scss";
 import cls from "classnames";
-import checkCookie from "cookie";
 
-export async function getServerSideProps(context) {
-  const cookies = context.req.headers.cookie
-    ? checkCookie.parse(context.req.headers.cookie)
-    : null;
-  const user = cookies?.user ? JSON.parse(cookies.user) : null;
-  const token = cookies?.token ? cookies.token : null;
-
-  return {
-    props: { user, token },
-  };
-}
-
-const Kontak = ({ user, token }) => {
+const Kontak = () => {
   const validationSchema = Yup.object().shape({
     nama: Yup.string().required("Masukkan nama"),
     email: Yup.string().required("Masukkan email").email("Email tidak valid"),
@@ -85,7 +72,7 @@ const Kontak = ({ user, token }) => {
         />
         <meta name="robots" content="all" />
       </Head>
-      <NavBar user={user} token={token} />
+      <NavBar />
 
       <main>
         <FormKontak>
@@ -152,7 +139,7 @@ const Kontak = ({ user, token }) => {
         </FormKontak>
       </main>
 
-      <Footer user={user} token={token} />
+      <Footer />
     </div>
   );
 };

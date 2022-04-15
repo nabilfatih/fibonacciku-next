@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
@@ -7,7 +7,6 @@ import styles from "./daftar.module.scss";
 import cls from "classnames";
 import axios from "axios";
 import { toast, Slide } from "react-toastify";
-import { parseCookies } from "nookies";
 import Head from "next/head";
 import FormDaftar from "../../components/registration/form-daftar";
 import {
@@ -19,13 +18,12 @@ import {
 } from "@iconscout/react-unicons";
 import checkCookie from "cookie";
 import { verifyToken } from "../../lib/utils";
-import cookie from "js-cookie";
+import { UserContext } from "../../contexts/user.context";
 
 export async function getServerSideProps(context) {
   const cookies = context.req.headers.cookie
     ? checkCookie.parse(context.req.headers.cookie)
     : null;
-  const user = cookies?.user ? JSON.parse(cookies.user) : null;
   const token = cookies?.token ? cookies.token : null;
   const userId = await verifyToken(token);
 
@@ -39,12 +37,14 @@ export async function getServerSideProps(context) {
   }
 
   return {
-    props: { user, token },
+    props: { token },
   };
 }
 
-export default function Daftar({ user, token }) {
+export default function Daftar({ token }) {
   const router = useRouter();
+
+  const { setCurrentUser } = useContext(UserContext);
 
   useEffect(() => {
     async function fetchData() {
@@ -55,8 +55,7 @@ export default function Daftar({ user, token }) {
       };
       const { data } = await axios.put(`/api/verify`, { token: token }, config);
       const tokens = data.userId;
-      if (!tokens || !user) {
-        cookie.remove("user");
+      if (!tokens) {
         await fetch("/api/logout", {
           method: "POST",
           headers: {
@@ -64,10 +63,11 @@ export default function Daftar({ user, token }) {
           },
           body: JSON.stringify({}),
         });
+        setCurrentUser(null);
       }
     }
     fetchData();
-  }, [router, token, user]);
+  }, [setCurrentUser, token]);
 
   const [emailActive, setEmailActive] = useState("");
   const [namaActive, setNamaActive] = useState("");

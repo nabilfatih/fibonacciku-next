@@ -1,20 +1,21 @@
 import styles from "./hero.module.scss";
 import cls from "classnames";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { UserContext } from "../../contexts/user.context";
 
-const Hero = ({ user, token }) => {
+const Hero = () => {
   const router = useRouter();
-
+  const { currentUser } = useContext(UserContext);
   const [status, setStatus] = useState(false);
 
   useEffect(() => {
-    if (!user || !token) {
+    if (!currentUser) {
       setStatus(true);
     } else {
       setStatus(false);
     }
-  }, [user, token, setStatus]);
+  }, [currentUser]);
 
   const HandleClickMasuk = (e) => {
     e.preventDefault();

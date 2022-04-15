@@ -5,21 +5,8 @@ import Bantuan from "../../components/tentang/bantuan";
 import Founder from "../../components/tentang/founder";
 import Story from "../../components/tentang/story";
 import TentangFibo from "../../components/tentang/tentang";
-import cookie from "cookie";
 
-export async function getServerSideProps(context) {
-  const cookies = context.req.headers.cookie
-    ? cookie.parse(context.req.headers.cookie)
-    : null;
-  const user = cookies?.user ? JSON.parse(cookies.user) : null;
-  const token = cookies?.token ? cookies.token : null;
-
-  return {
-    props: { user, token },
-  };
-}
-
-export default function Tentang({ user, token }) {
+export default function Tentang() {
   return (
     <div>
       <Head>
@@ -42,7 +29,7 @@ export default function Tentang({ user, token }) {
         />
         <meta name="robots" content="all" />
       </Head>
-      <NavBar user={user} token={token} />
+      <NavBar />
 
       <main>
         <TentangFibo />
@@ -51,7 +38,7 @@ export default function Tentang({ user, token }) {
         <Bantuan />
       </main>
 
-      <Footer user={user} token={token} />
+      <Footer />
     </div>
   );
 }

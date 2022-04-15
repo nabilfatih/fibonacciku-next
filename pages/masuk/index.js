@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -18,12 +18,12 @@ import {
 } from "@iconscout/react-unicons";
 import checkCookie from "cookie";
 import { verifyToken } from "../../lib/utils";
+import { UserContext } from "../../contexts/user.context";
 
 export async function getServerSideProps(context) {
   const cookies = context.req.headers.cookie
     ? checkCookie.parse(context.req.headers.cookie)
     : null;
-  const user = cookies?.user ? JSON.parse(cookies.user) : null;
   const token = cookies?.token ? cookies.token : null;
   const userId = await verifyToken(token);
 
@@ -37,12 +37,14 @@ export async function getServerSideProps(context) {
   }
 
   return {
-    props: { user, token },
+    props: { token },
   };
 }
 
-export default function Masuk({ user, token }) {
+export default function Masuk({ token }) {
   const router = useRouter();
+
+  const { setCurrentUser } = useContext(UserContext);
 
   useEffect(() => {
     async function fetchData() {
@@ -53,8 +55,7 @@ export default function Masuk({ user, token }) {
       };
       const { data } = await axios.put(`/api/verify`, { token: token }, config);
       const tokens = data.userId;
-      if (!tokens || !user) {
-        cookie.remove("user");
+      if (!tokens) {
         await fetch("/api/logout", {
           method: "POST",
           headers: {
@@ -62,10 +63,11 @@ export default function Masuk({ user, token }) {
           },
           body: JSON.stringify({}),
         });
+        setCurrentUser(null);
       }
     }
     fetchData();
-  }, [router, token, user]);
+  }, [token, setCurrentUser]);
 
   const [usernameActive, setUsernameActive] = useState("");
   const [passwordActive, setPasswordActive] = useState("");
@@ -135,14 +137,11 @@ export default function Masuk({ user, token }) {
         },
       };
       const { data } = await axios.post(`/api/login`, formData, config);
-      cookie.set("user", JSON.stringify(data?.user), {
-        expires: 3,
-        secure: process.env.NODE_ENV === "production",
-        path: "/",
-      });
+      setCurrentUser(data.user);
       toast.dismiss(loading);
       if (data.referer.includes("/masuk")) {
         await router.push("/beranda");
+        toast.success(data?.message, toastConfig);
       } else {
         router.reload();
       }

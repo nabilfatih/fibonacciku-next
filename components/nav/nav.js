@@ -14,12 +14,14 @@ import {
   UilEnvelopeEdit,
   UilUser,
 } from "@iconscout/react-unicons";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { useRouter } from "next/router";
-import cookie from "js-cookie";
+import { UserContext } from "../../contexts/user.context";
 
-const NavBar = ({ user, token }) => {
+const NavBar = () => {
   const router = useRouter();
+
+  const { currentUser, setCurrentUser } = useContext(UserContext);
 
   const dropdown = useRef(null);
   const dropdownMobile = useRef(null);
@@ -33,12 +35,11 @@ const NavBar = ({ user, token }) => {
   const [openMobileMenu, setOpenMobileMenu] = useState("");
 
   useEffect(() => {
-    user && token ? setUserState(user) : setUserState("");
-  }, [user, token, router]);
+    currentUser ? setUserState(currentUser) : setUserState(null);
+  }, [currentUser]);
 
   async function handleLogout(e) {
     e.preventDefault();
-    cookie.remove("user")
     await fetch("/api/logout", {
       method: "POST",
       headers: {
@@ -47,6 +48,7 @@ const NavBar = ({ user, token }) => {
       body: JSON.stringify({}),
     });
     await router.push("/masuk");
+    setCurrentUser(null);
     router.reload();
   }
 

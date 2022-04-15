@@ -1,17 +1,18 @@
 import styles from "./footer.module.scss";
 import cls from "classnames";
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Image from "next/image";
+import { UserContext } from "../../contexts/user.context";
 
-const Footer = ({ user, token }) => {
+const Footer = () => {
   const router = useRouter();
-
+  const { currentUser } = useContext(UserContext);
   const [userState, setUserState] = useState("");
 
   useEffect(() => {
-    user && token ? setUserState(user) : setUserState("");
-  }, [router, token, user]);
+    currentUser ? setUserState(currentUser) : setUserState(null);
+  }, [currentUser]);
 
   const HandleClickBeranda = (e) => {
     e.preventDefault();
