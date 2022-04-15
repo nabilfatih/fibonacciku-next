@@ -119,7 +119,6 @@ export default function Profile({ dataUser }) {
 
       const { data } = await axios.put(`/api/updatePhoto`, formData, config);
       setCurrentUser(data.user);
-      await router.push(`/fibo/${currentUser.username}`);
       toast.dismiss(loading);
     } catch (e) {
       toast.dismiss(loading);
