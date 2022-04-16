@@ -84,13 +84,11 @@ export default function PengaturanAkun({ dataUser }) {
         toast.error("Masukkan data 😡", toastConfig);
         return;
       }
-
       const config = {
         headers: {
           "Content-Type": "application/json",
         },
       };
-
       const { data } = await axios.put(`/api/setting/akun`, formData, config);
       setCurrentUser(data.user);
       toast.dismiss(loading);
