@@ -173,16 +173,24 @@
     }
 
     &__links {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
 
-        a {
+        @include breakpoint-down(medium) {
+            display: none;
+        }
+
+        .icon {
             position: relative;
             font-size: $font-sm;
             color: $darkBlue;
             cursor: pointer;
+            font-size: 0.7rem;
 
-            &:not(:last-child) {
-                margin-right: 32px;
-            }
+            // &:not(:last-child) {
+            // margin-right: 32px;
+            // }
 
             &::before {
                 content: "";
@@ -191,7 +199,7 @@
                 height: 4px;
                 left: 0;
                 right: 0;
-                bottom: -21.5px;
+                bottom: -0.55125rem;
                 background: linear-gradient(to right, $greenTeal, $blue);
                 opacity: 0;
                 transition: opacity 300ms ease-in-out;
@@ -204,6 +212,12 @@
                     opacity: 1;
                 }
             }
+        }
+
+        .icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
     }
 

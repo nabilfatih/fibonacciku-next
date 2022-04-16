@@ -39,10 +39,7 @@ export default function MataPelajaran(props) {
           property="og:description"
           content="Pilih Pelajaran Sesuka Kamu!"
         />
-        <meta
-          property="og:url"
-          content="https://fibonacciku.com/mata-pelajaran"
-        />
+        <meta property="og:url" content="https://fibonacciku.com/pelajaran" />
         <meta property="og:type" content="website" />
         <meta
           name="keywords"
@@ -81,9 +78,7 @@ export default function MataPelajaran(props) {
 
                   <a
                     className={cls(styles.button, "button")}
-                    onClick={() =>
-                      router.push(`/mata-pelajaran/${Pelajaran.query}`)
-                    }
+                    onClick={() => router.push(`/pelajaran/${Pelajaran.query}`)}
                   >
                     Belajar Disini!
                   </a>
@@ -117,9 +112,7 @@ export default function MataPelajaran(props) {
 
                   <a
                     className={cls(styles.button, "button")}
-                    onClick={() =>
-                      router.push(`/mata-pelajaran/${ujians.query}`)
-                    }
+                    onClick={() => router.push(`/pelajaran/${ujians.query}`)}
                   >
                     Belajar Disini!
                   </a>

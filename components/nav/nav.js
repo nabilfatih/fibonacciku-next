@@ -13,10 +13,12 @@ import {
   UilEstate,
   UilEnvelopeEdit,
   UilUser,
+  UilDiary,
 } from "@iconscout/react-unicons";
 import { useState, useEffect, useRef, useContext } from "react";
 import { useRouter } from "next/router";
 import { UserContext } from "../../contexts/user.context";
+import Link from "next/link";
 
 const NavBar = () => {
   const router = useRouter();
@@ -136,16 +138,34 @@ const NavBar = () => {
         </a>
 
         <div className={cls(styles.header__links, "hide-for-mobile")}>
-          <a onClick={handleBeranda}>Beranda</a>
-          <a onClick={() => router.push("/mata-pelajaran")}>Mata Pelajaran</a>
-          <a onClick={() => router.push("/tentang")}>Tentang</a>
-          <a onClick={() => router.push("/kontak")}>Kontak</a>
+          <div className={styles.icon} onClick={handleBeranda}>
+            <UilEstate size={30} />
+            <a>Beranda</a>
+          </div>
+
+          <div
+            className={styles.icon}
+            onClick={() => router.push("/pelajaran")}
+          >
+            <UilBookOpen size={30} />
+            <a>Pelajaran</a>
+          </div>
+          <div className={styles.icon} onClick={() => router.push("/tentang")}>
+            <UilDiary size={30} />
+            <a>Tentang</a>
+          </div>
+          <div className={styles.icon} onClick={() => router.push("/kontak")}>
+            <UilEnvelopeEdit size={30} />
+            <a>Kontak</a>
+          </div>
           <a
+            className={styles.icon}
             href="https://saweria.co/Fibonacciku"
             target={"_blank"}
             rel="noreferrer"
           >
-            Donasi
+            <UilMoneyInsert size={30} />
+            <span>Donasi</span>
           </a>
         </div>
 
@@ -297,7 +317,7 @@ const NavBar = () => {
           Mata Pelajaran
         </a>
         <a onClick={() => router.push("/tentang")}>
-          <UilGraduationCap className={styles.uil} />
+          <UilDiary className={styles.uil} />
           Tentang
         </a>
         <a onClick={() => router.push("/kontak")}>

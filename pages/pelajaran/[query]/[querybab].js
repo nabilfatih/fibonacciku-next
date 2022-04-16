@@ -69,7 +69,7 @@ export default function QueryBab({ bab, subBabs, kontens }) {
         />
         <meta
           property="og:url"
-          content={`https://fibonacciku.com/mata-pelajaran/${bab.query}/${bab.querybab}`}
+          content={`https://fibonacciku.com/pelajaran/${bab.query}/${bab.querybab}`}
         />
         <meta property="og:type" content="website" />
         <meta
@@ -97,7 +97,7 @@ export default function QueryBab({ bab, subBabs, kontens }) {
                     alt={`Logo ${bab.bab} FibonacciKu`}
                   />
                   <div className={styles.header__belajar}>
-                    <Link href={`/mata-pelajaran/${bab.query}`}>
+                    <Link href={`/pelajaran/${bab.query}`}>
                       <a>
                         <h3>{bab.pelajaran}</h3>
                       </a>
@@ -138,7 +138,7 @@ export default function QueryBab({ bab, subBabs, kontens }) {
                                     <a
                                       onClick={() =>
                                         router.push(
-                                          `/mata-pelajaran/${konten.query}/${konten.querybab}/${konten.queryjudul}`
+                                          `/pelajaran/${konten.query}/${konten.querybab}/${konten.queryjudul}`
                                         )
                                       }
                                     >

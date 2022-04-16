@@ -48,7 +48,7 @@ export default function Query({ babs, pelajaran }) {
 
   const handleOnClickPelajaran = (e) => {
     e.preventDefault();
-    router.push("/mata-pelajaran");
+    router.push("/pelajaran");
   };
 
   return (
@@ -67,7 +67,7 @@ export default function Query({ babs, pelajaran }) {
         />
         <meta
           property="og:url"
-          content={`https://fibonacciku.com/mata-pelajaran/${pelajaran.query}`}
+          content={`https://fibonacciku.com/pelajaran/${pelajaran.query}`}
         />
         <meta property="og:type" content="website" />
         <meta
@@ -113,7 +113,7 @@ export default function Query({ babs, pelajaran }) {
                       key={createFromPattern("xxx-xxx")}
                       onClick={() =>
                         router.push(
-                          `/mata-pelajaran/${pelajaran.query}/${bab.querybab}`
+                          `/pelajaran/${pelajaran.query}/${bab.querybab}`
                         )
                       }
                     >

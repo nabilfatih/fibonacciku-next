@@ -52,7 +52,7 @@ export default function QueryJudul({ konten }) {
         />
         <meta
           property="og:url"
-          content={`https://fibonacciku.com/mata-pelajaran/${konten.query}/${konten.querybab}/${konten.queryjudul}`}
+          content={`https://fibonacciku.com/pelajaran/${konten.query}/${konten.querybab}/${konten.queryjudul}`}
         />
         <meta property="og:type" content="website" />
         <meta
