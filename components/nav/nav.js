@@ -312,9 +312,9 @@ const NavBar = () => {
         <a onClick={handleBeranda}>
           <UilEstate className={styles.uil} /> Beranda
         </a>
-        <a onClick={() => router.push("/mata-pelajaran")}>
+        <a onClick={() => router.push("/pelajaran")}>
           <UilBookOpen className={styles.uil} />
-          Mata Pelajaran
+          Pelajaran
         </a>
         <a onClick={() => router.push("/tentang")}>
           <UilDiary className={styles.uil} />
