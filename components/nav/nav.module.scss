@@ -204,8 +204,9 @@
                 height: 4px;
                 left: 0;
                 right: 0;
-                bottom: -0.49125rem;
-                background: linear-gradient(to right, $greenTeal, $blue);
+                bottom: -0.55125rem;
+                background: $darkBlue;
+                border-radius: 50px;
                 opacity: 0;
                 transition: opacity 300ms ease-in-out;
             }
@@ -221,7 +222,6 @@
 
         .icon {
             display: flex;
-            gap: 0.25rem;
             flex-direction: column;
             align-items: center;
         }
