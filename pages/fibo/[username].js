@@ -43,7 +43,7 @@ export async function getServerSideProps(context) {
 export default function Profile({ dataUser, userCookie }) {
   const router = useRouter();
   const { username } = router.query;
-  console.log(userCookie);
+
   const { currentUser, setCurrentUser } = useContext(UserContext);
 
   useEffect(() => {
