@@ -46,7 +46,10 @@ export default function Profile({ dataUser, userCookie }) {
   const { currentUser, setCurrentUser } = useContext(UserContext);
 
   useEffect(() => {
-    if (dataUser.avatar.filename !== currentUser.avatar.filename) {
+    if (
+      dataUser.avatar.filename !== currentUser.avatar.filename ||
+      dataUser.username !== currentUser.username
+    ) {
       setCurrentUser(userCookie);
     }
   }, [dataUser, currentUser, userCookie, setCurrentUser]);
