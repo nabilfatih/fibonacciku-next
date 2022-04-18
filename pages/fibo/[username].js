@@ -26,7 +26,6 @@ export async function getServerSideProps(context) {
 
   const userName = context.params.username;
   const dataUser = await User.findOne({ username: userName });
-
   const { username, nama, avatar, _id } = dataUser;
   const userCookie = { username, nama, avatar, _id };
   if (!dataUser) {
