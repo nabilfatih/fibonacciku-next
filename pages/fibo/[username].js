@@ -43,14 +43,14 @@ export async function getServerSideProps(context) {
 export default function Profile({ dataUser, userCookie }) {
   const router = useRouter();
   const { username } = router.query;
-
+  console.log(userCookie);
   const { currentUser, setCurrentUser } = useContext(UserContext);
 
   useEffect(() => {
-    if (dataUser.avatar.filename !== userCookie.avatar.filename) {
+    if (dataUser.avatar.filename !== currentUser.avatar.filename) {
       setCurrentUser(userCookie);
     }
-  }, [dataUser.avatar.filename, setCurrentUser, userCookie]);
+  }, [dataUser, currentUser, userCookie, setCurrentUser]);
 
   const [checkUsername, setCheckUsername] = useState(false);
   const [checkInstagram, setCheckInstagram] = useState(false);
