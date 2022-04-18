@@ -24,23 +24,33 @@ import { UserContext } from "../../contexts/user.context";
 export async function getServerSideProps(context) {
   connectDB();
 
-  const username = context.params.username;
-  const dataUser = await User.findOne({ username: username });
+  const userName = context.params.username;
+  const dataUser = await User.findOne({ username: userName });
+
+  const { username, nama, avatar, _id } = dataUser;
+  const userCookie = { username, nama, avatar, _id };
   if (!dataUser) {
     return { notFound: true };
   }
   return {
     props: {
+      userCookie: JSON.parse(JSON.stringify(userCookie)),
       dataUser: JSON.parse(JSON.stringify(dataUser)),
     },
   };
 }
 
-export default function Profile({ dataUser }) {
+export default function Profile({ dataUser, userCookie }) {
   const router = useRouter();
   const { username } = router.query;
 
   const { currentUser, setCurrentUser } = useContext(UserContext);
+
+  useEffect(() => {
+    if (dataUser.avatar.filename !== userCookie.avatar.filename) {
+      setCurrentUser(userCookie);
+    }
+  }, [dataUser.avatar.filename, setCurrentUser, userCookie]);
 
   const [checkUsername, setCheckUsername] = useState(false);
   const [checkInstagram, setCheckInstagram] = useState(false);
