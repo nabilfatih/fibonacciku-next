@@ -8,6 +8,22 @@ export default async function Pelajaranku(req, res) {
 
   try {
     if (req.method === "POST") {
+      const pelajaranku = await PelajaranKu.findOne({
+        userId: userId,
+        username: username,
+        pelajaran: pelajaran,
+        bab: bab,
+        query: query,
+        querybab: querybab,
+        icon: icon,
+      });
+
+      if (pelajaranku) {
+        return res.status(200).json({
+          success: `pelajaran sudah ditambahkan 🥳`,
+        });
+      }
+
       const newPelajaranKu = await new PelajaranKu({
         userId,
         username,
