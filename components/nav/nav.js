@@ -9,7 +9,7 @@ import {
   UilAngleUp,
   UilBookOpen,
   UilMoneyInsert,
-  UilGraduationCap,
+  UilNotebooks,
   UilEstate,
   UilEnvelopeEdit,
   UilUser,
@@ -224,6 +224,17 @@ const NavBar = () => {
                       </a>
                     </li>
                     <li
+                      className={styles.pelajaranku_dropdown}
+                      onClick={() =>
+                        router.push(`/fibo/${userState.username}/pelajaranku`)
+                      }
+                    >
+                      <a>
+                        <UilNotebooks className={styles.uil} size={30} />
+                        PelajaranKu
+                      </a>
+                    </li>
+                    <li
                       className={styles.pengaturan_dropdown}
                       onClick={() => router.push("/pengaturan/akun")}
                     >
@@ -289,6 +300,17 @@ const NavBar = () => {
               >
                 <UilUser className={styles.uil} size={20} />
                 Profil
+              </a>
+            </li>
+            <li className={styles.pelajaranku}>
+              <a
+                onClick={() =>
+                  router.push(`/fibo/${userState.username}/pelajaranku`)
+                }
+                className={styles.pilihan}
+              >
+                <UilNotebooks className={styles.uil} size={20} />
+                PelajaranKu
               </a>
             </li>
             <li className={styles.pengaturan}>

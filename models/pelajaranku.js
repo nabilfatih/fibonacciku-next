@@ -7,14 +7,9 @@ const pelajarankuSchema = new Schema(
     username: String,
     pelajaran: String,
     bab: String,
-    subbab: String,
-    judul: String,
     query: String,
     querybab: String,
-    querysubbab: String,
-    queryjudul: String,
-    tipe: String,
-    link: String,
+    icon: String,
   },
   { timestamps: true }
 );

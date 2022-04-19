@@ -9,6 +9,12 @@ import { useRouter } from "next/router";
 import styles from "./querybab.module.scss";
 import Link from "next/link";
 import Head from "next/head";
+import { UilCloudDownload, UilCloudCheck } from "@iconscout/react-unicons";
+import cls from "classnames";
+import { useContext, useEffect, useState } from "react";
+import axios from "axios";
+import { UserContext } from "../../../contexts/user.context";
+import { toast, Slide } from "react-toastify";
 
 export async function getStaticPaths() {
   return {
@@ -45,12 +51,107 @@ export async function getStaticProps({ params }) {
 export default function QueryBab({ bab, subBabs, kontens }) {
   const router = useRouter();
 
+  const { currentUser } = useContext(UserContext);
+
   function randomAlphaNumeric() {
     return Math.random().toString(36).charAt(2);
   }
   function createFromPattern(pattern) {
     pattern = pattern.split("");
     return pattern.map((x) => x.replace("x", randomAlphaNumeric())).join("");
+  }
+
+  const [statusPelajaranKu, setStatusPelajaranKu] = useState(false);
+
+  useEffect(() => {
+    async function fetchData() {
+      if (!statusPelajaranKu) {
+        const dataPelajaranKu = {
+          userId: currentUser._id,
+          username: currentUser.username,
+          pelajaran: bab.pelajaran,
+          bab: bab.bab,
+          query: bab.query,
+          querybab: bab.querybab,
+          icon: bab.icon,
+        };
+        const config = {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        };
+        const { data } = await axios.put(
+          `/api/checkPelajaranku`,
+          dataPelajaranKu,
+          config
+        );
+        if (data?.success === "ada") {
+          setStatusPelajaranKu(true);
+        } else {
+          setStatusPelajaranKu(false);
+        }
+      }
+    }
+    fetchData();
+  }, [statusPelajaranKu, currentUser, bab]);
+
+  async function handlePelajaranKu() {
+    const dataPelajaranKu = {
+      userId: currentUser._id,
+      username: currentUser.username,
+      pelajaran: bab.pelajaran,
+      bab: bab.bab,
+      query: bab.query,
+      querybab: bab.querybab,
+      icon: bab.icon,
+    };
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const toastConfig = {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    };
+
+    const loading = toast.loading("Mohon tunggu...", { transition: Slide });
+
+    if (statusPelajaranKu) {
+      try {
+        const { data } = await axios.put(
+          `/api/pelajaranku`,
+          dataPelajaranKu,
+          config
+        );
+        toast.dismiss(loading);
+        setStatusPelajaranKu(false);
+      } catch (e) {
+        toast.dismiss(loading);
+        toast.error(e.response.data.error, toastConfig);
+      }
+    }
+
+    if (!statusPelajaranKu) {
+      try {
+        const { data } = await axios.post(
+          `/api/pelajaranku`,
+          dataPelajaranKu,
+          config
+        );
+        toast.dismiss(loading);
+        setStatusPelajaranKu(true);
+      } catch (e) {
+        toast.dismiss(loading);
+        toast.error(e.response.data.error, toastConfig);
+      }
+    }
   }
 
   return (
@@ -105,6 +206,26 @@ export default function QueryBab({ bab, subBabs, kontens }) {
                     <h1>{bab.bab}</h1>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            <div className={cls(styles.shows__pelajaranku)}>
+              <div className={cls(styles.add, "container container--px")}>
+                {!statusPelajaranKu ? (
+                  <UilCloudDownload
+                    size={30}
+                    className={styles.icon}
+                    onClick={handlePelajaranKu}
+                  />
+                ) : (
+                  <UilCloudCheck
+                    size={30}
+                    className={styles.icon}
+                    onClick={handlePelajaranKu}
+                  />
+                )}
+
+                <p onClick={handlePelajaranKu}>PelajaranKu</p>
               </div>
             </div>
 

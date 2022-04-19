@@ -1,4 +1,3 @@
-
 @import "/styles/variables";
 @import "/styles/mixins";
 @import "/styles/animations";
@@ -8,7 +7,7 @@
 }
 
 .shows {
-    
+
     padding-bottom: 2.5rem;
     // background-color: $verylightBlue;
 
@@ -16,6 +15,28 @@
         padding-top: 1rem;
         padding-bottom: 1rem;
         background-color: $mostLightDarkBlue;
+    }
+
+    &__pelajaranku {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        background-color: $darkBlue;
+        color: white;
+
+        .add {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .icon {
+            cursor: pointer;
+        }
+
+        p {
+            cursor: pointer;
+            margin: 0;
+        }
     }
 
     &__pelajaran {
@@ -54,7 +75,7 @@
                     text-decoration: underline;
                 }
 
-                @include breakpoint-down(small){
+                @include breakpoint-down(small) {
                     padding-left: 0.05rem;
                     // padding-left: 1rem;
                 }
@@ -69,7 +90,7 @@
                 font-weight: 600;
                 color: white;
 
-                @include breakpoint-down(medium){
+                @include breakpoint-down(medium) {
                     font-size: 3rem;
                     // margin-top: 1rem;
                 }
@@ -97,15 +118,15 @@
     }
 
     &__card {
-        
+
         padding: 1.5rem;
         text-align: left;
         border-radius: 15px;
         // box-shadow: 0 4px 16px 0 rgba( 31, 38, 135, 0.37 );
-        background: rgba( 255, 255, 255, 0.3 );
-        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-        backdrop-filter: blur( 4px );
-        -webkit-backdrop-filter: blur( 4px );
+        background: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
         // border-radius: 10px;
         // border: 1px solid rgba( 255, 255, 255, 0.18 );
     }

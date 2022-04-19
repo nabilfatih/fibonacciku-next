@@ -354,6 +354,12 @@
                     }
                 }
 
+                .pelajaranku_dropdown {
+                    &:hover {
+                        background-color: rgba(124, 124, 124, 0.2);
+                    }
+                }
+
                 .pengaturan_dropdown {
                     &:hover {
                         background-color: rgba(124, 124, 124, 0.2);
