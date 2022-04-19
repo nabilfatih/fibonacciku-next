@@ -22,23 +22,23 @@ export default async function Pelajaranku(req, res) {
         return res.status(200).json({
           success: `pelajaran sudah ditambahkan 🥳`,
         });
+      } else {
+        const newPelajaranKu = await new PelajaranKu({
+          userId,
+          username,
+          pelajaran,
+          bab,
+          query,
+          querybab,
+          icon,
+        });
+
+        await newPelajaranKu.save();
+
+        return res.status(200).json({
+          success: `Sukses menambah pelajaran 🥳`,
+        });
       }
-
-      const newPelajaranKu = await new PelajaranKu({
-        userId,
-        username,
-        pelajaran,
-        bab,
-        query,
-        querybab,
-        icon,
-      });
-
-      await newPelajaranKu.save();
-
-      return res.status(200).json({
-        success: `Sukses menambah pelajaran 🥳`,
-      });
     }
 
     if (req.method === "PUT") {
