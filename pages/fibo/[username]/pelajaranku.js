@@ -8,7 +8,7 @@ import cls from "classnames";
 import connectDB from "../../../config/connectDB";
 import User from "../../../models/user";
 import PelajaranKu from "../../../models/pelajaranku";
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { UserContext } from "../../../contexts/user.context";
 import Link from "next/link";
 
