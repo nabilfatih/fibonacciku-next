@@ -31,10 +31,10 @@ export default function MataPelajaran(props) {
   return (
     <div>
       <Head>
-        <title>Mata Pelajaran | FibonacciKu</title>
+        <title>Pelajaran | FibonacciKu</title>
 
         <meta name="description" content="Pilih Pelajaran Sesuka Kamu!" />
-        <meta property="og:title" content="Mata Pelajaran" />
+        <meta property="og:title" content="Pelajaran" />
         <meta
           property="og:description"
           content="Pilih Pelajaran Sesuka Kamu!"
