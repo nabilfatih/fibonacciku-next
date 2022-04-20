@@ -104,7 +104,8 @@
         padding: 1rem;
         text-align: center;
         border-radius: 15px;
-        background: rgba(255, 255, 255, 0.3);
+        // background: rgba(255, 255, 255, 0.3);
+        background: linear-gradient(to right, $lightBlue, $lightGreen);
         box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
         backdrop-filter: blur(4px);
         -webkit-backdrop-filter: blur(4px);
@@ -112,7 +113,7 @@
         transition: box-shadow 250ms ease-in-out;
 
         &:hover {
-            box-shadow: 0 8px 36px 7px rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 36px 7px $blueSky;
         }
 
         @include breakpoint-up(large) {
@@ -120,7 +121,7 @@
 
             &:hover {
                 transform: translate(5px, -5px);
-                box-shadow: 0 8px 36px 7px rgba(255, 255, 255, 0.3);
+                box-shadow: 0 8px 36px 7px $blueSky;
             }
         }
 
