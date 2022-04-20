@@ -17,7 +17,9 @@ export async function getServerSideProps(context) {
 
   const userName = context.params.username;
   const dataUser = await User.findOne({ username: userName });
-  const pelajaranKu = await PelajaranKu.find({ username: userName });
+  const pelajaranKu = await PelajaranKu.find({ username: userName }).sort({
+    createdAt: -1,
+  });
 
   function getUniqueListBy(arr, key) {
     return [...new Map(arr.map((item) => [item[key], item])).values()];
