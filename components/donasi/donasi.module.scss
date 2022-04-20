@@ -6,10 +6,11 @@
     // background-color: $blueSky;
     margin: 0;
     overflow: hidden;
+    background-color: $lightBlueSky;
 
-    @include breakpoint-down(medium) {
-        background: linear-gradient(to left, $blueSky, $lightPurple);
-    }
+    // @include breakpoint-down(medium) {
+    //     background: linear-gradient(to left, $blueSky, $lightPurple);
+    // }
 
     .container {
         padding-left: 0;
