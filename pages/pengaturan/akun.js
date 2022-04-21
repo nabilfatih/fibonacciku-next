@@ -101,7 +101,7 @@ export default function PengaturanAkun({ dataUser }) {
   }
 
   return (
-    <div>
+    <>
       <Head>
         <title>Pengaturan Akun | FibonacciKu</title>
       </Head>
@@ -365,6 +365,6 @@ export default function PengaturanAkun({ dataUser }) {
       </main>
 
       <Footer />
-    </div>
+    </>
   );
 }

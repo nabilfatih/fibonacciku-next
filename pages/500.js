@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Custom500() {
   return (
-    <div>
+    <>
       <Head>
         <title>Server Maintenance | FibonacciKu</title>
       </Head>
@@ -31,6 +31,6 @@ export default function Custom500() {
           </div>
         </section>
       </main>
-    </div>
+    </>
   );
 }

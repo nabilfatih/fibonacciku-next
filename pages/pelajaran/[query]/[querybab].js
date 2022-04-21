@@ -155,7 +155,7 @@ export default function QueryBab({ bab, subBabs, kontens }) {
   }
 
   return (
-    <div>
+    <>
       <Head>
         <title>{bab.bab} | FibonacciKu</title>
 
@@ -281,6 +281,6 @@ export default function QueryBab({ bab, subBabs, kontens }) {
       </main>
 
       <Footer />
-    </div>
+    </>
   );
 }

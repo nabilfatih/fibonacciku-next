@@ -9,7 +9,7 @@ export default function Custom404() {
   const router = useRouter();
 
   return (
-    <div>
+    <>
       <Head>
         <title>Halaman Tidak Ditemukan! | FibonacciKu</title>
       </Head>
@@ -43,6 +43,6 @@ export default function Custom404() {
       </main>
 
       <Footer />
-    </div>
+    </>
   );
 }

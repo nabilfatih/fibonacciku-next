@@ -151,7 +151,7 @@ export default function Masuk({ token }) {
   }
 
   return (
-    <div>
+    <>
       <Head>
         <title>Masuk | FibonacciKu</title>
 
@@ -233,6 +233,6 @@ export default function Masuk({ token }) {
           </form>
         </FormMasuk>
       </main>
-    </div>
+    </>
   );
 }

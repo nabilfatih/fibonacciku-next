@@ -52,7 +52,7 @@ export default function Query({ babs, pelajaran }) {
   };
 
   return (
-    <div>
+    <>
       <Head>
         <title>{pelajaran.pelajaran} | FibonacciKu</title>
 
@@ -140,6 +140,6 @@ export default function Query({ babs, pelajaran }) {
       </main>
 
       <Footer />
-    </div>
+    </>
   );
 }

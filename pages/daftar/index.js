@@ -149,7 +149,7 @@ export default function Daftar({ token }) {
   }
 
   return (
-    <div>
+    <>
       <Head>
         <title>Daftar | FibonacciKu</title>
 
@@ -284,6 +284,6 @@ export default function Daftar({ token }) {
           </form>
         </FormDaftar>
       </main>
-    </div>
+    </>
   );
 }

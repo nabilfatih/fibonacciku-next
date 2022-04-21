@@ -5,7 +5,7 @@ import NavBar from "../../components/nav/nav";
 
 export default function Kebijakan() {
   return (
-    <div>
+    <>
       <Head>
         <title>Kebijakan Privasi | FibonacciKu</title>
       </Head>
@@ -16,6 +16,6 @@ export default function Kebijakan() {
       </main>
 
       <Footer />
-    </div>
+    </>
   );
 }

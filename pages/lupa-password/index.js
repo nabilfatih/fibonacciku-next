@@ -58,7 +58,7 @@ export default function LupaPassword() {
   }
 
   return (
-    <div>
+    <>
       <Head>
         <title>Lupa Password | FibonacciKu</title>
       </Head>
@@ -118,6 +118,6 @@ export default function LupaPassword() {
           </div>
         </section>
       </main>
-    </div>
+    </>
   );
 }

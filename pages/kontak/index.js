@@ -54,7 +54,7 @@ const Kontak = () => {
   }
 
   return (
-    <div>
+    <>
       <Head>
         <title>Kontak | FibonacciKu</title>
 
@@ -139,7 +139,7 @@ const Kontak = () => {
       </main>
 
       <Footer />
-    </div>
+    </>
   );
 };
 

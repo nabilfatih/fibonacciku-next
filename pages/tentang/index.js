@@ -8,7 +8,7 @@ import TentangFibo from "../../components/tentang/tentang";
 
 export default function Tentang() {
   return (
-    <div>
+    <>
       <Head>
         <title>Tentang | FibonacciKu</title>
 
@@ -38,6 +38,6 @@ export default function Tentang() {
       </main>
 
       <Footer />
-    </div>
+    </>
   );
 }

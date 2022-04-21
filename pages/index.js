@@ -30,7 +30,7 @@ export async function getServerSideProps(context) {
 
 export default function Home({ token }) {
   return (
-    <div>
+    <>
       <Head>
         <title>FibonacciKu | Belajar Gratis Kapanpun Dimanapun</title>
         <meta
@@ -63,6 +63,6 @@ export default function Home({ token }) {
       <Donasi />
 
       <Footer />
-    </div>
+    </>
   );
 }

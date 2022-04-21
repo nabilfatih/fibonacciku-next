@@ -142,7 +142,7 @@ export default function PengaturanPassword({ dataUser }) {
   }
 
   return (
-    <div>
+    <>
       <Head>
         <title>Pengaturan Password | FibonacciKu</title>
       </Head>
@@ -282,6 +282,6 @@ export default function PengaturanPassword({ dataUser }) {
       </main>
 
       <Footer />
-    </div>
+    </>
   );
 }

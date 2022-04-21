@@ -5,7 +5,7 @@ import SyaratKetentuan from "../../components/syarat-ketentuan/syarat-ketentuan"
 
 export default function Syarat() {
   return (
-    <div>
+    <>
       <Head>
         <title>Syarat & Ketentuan | FibonacciKu</title>
       </Head>
@@ -16,6 +16,6 @@ export default function Syarat() {
       </main>
 
       <Footer />
-    </div>
+    </>
   );
 }

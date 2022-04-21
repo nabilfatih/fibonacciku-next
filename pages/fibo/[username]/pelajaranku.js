@@ -72,7 +72,7 @@ export default function Profile({
   }
 
   return (
-    <div>
+    <>
       <Head>
         <title>{username} - PelajaranKu | FibonacciKu</title>
       </Head>
@@ -154,6 +154,6 @@ export default function Profile({
       </main>
 
       <Footer />
-    </div>
+    </>
   );
 }

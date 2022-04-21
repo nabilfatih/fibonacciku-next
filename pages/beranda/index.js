@@ -30,7 +30,7 @@ export async function getServerSideProps(context) {
 
 export default function Beranda({ token }) {
   return (
-    <div>
+    <>
       <Head>
         <title>FibonacciKu</title>
 
@@ -56,6 +56,6 @@ export default function Beranda({ token }) {
       </main>
 
       <Footer />
-    </div>
+    </>
   );
 }

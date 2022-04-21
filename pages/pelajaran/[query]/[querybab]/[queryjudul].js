@@ -37,7 +37,7 @@ export default function QueryJudul({ konten }) {
   const router = useRouter();
 
   return (
-    <div>
+    <>
       <Head>
         <title>{konten.judul} | FibonacciKu</title>
 
@@ -102,6 +102,6 @@ export default function QueryJudul({ konten }) {
       </main>
 
       <Footer />
-    </div>
+    </>
   );
 }

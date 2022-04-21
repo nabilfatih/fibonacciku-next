@@ -140,7 +140,7 @@ export default function Profile({ dataUser, userCookie }) {
   };
 
   return (
-    <div>
+    <>
       <Head>
         <title>{username} | FibonacciKu</title>
       </Head>
@@ -270,6 +270,6 @@ export default function Profile({ dataUser, userCookie }) {
       </main>
 
       <Footer />
-    </div>
+    </>
   );
 }

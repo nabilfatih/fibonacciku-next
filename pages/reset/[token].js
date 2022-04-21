@@ -63,7 +63,7 @@ export default function Reset() {
   }
 
   return (
-    <div>
+    <>
       <Head>
         <title>Reset Password | FibonacciKu</title>
       </Head>
@@ -142,6 +142,6 @@ export default function Reset() {
           </div>
         </section>
       </main>
-    </div>
+    </>
   );
 }

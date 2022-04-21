@@ -29,7 +29,7 @@ export default function MataPelajaran(props) {
   }
 
   return (
-    <div>
+    <>
       <Head>
         <title>Pelajaran | FibonacciKu</title>
 
@@ -123,6 +123,6 @@ export default function MataPelajaran(props) {
       </main>
 
       <Footer />
-    </div>
+    </>
   );
 }
