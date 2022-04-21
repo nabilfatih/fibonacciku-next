@@ -19,7 +19,6 @@ export async function middleware(req) {
     }
     return NextResponse.redirect(new URL("/beranda", req.url));
   }
-
   if (
     pathname.includes("/pelajaran") ||
     pathname.includes("/pengaturan") ||
