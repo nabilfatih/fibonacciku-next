@@ -38,7 +38,7 @@ export default function Beranda({ token }) {
           name="description"
           content="Belajar gratis dimanapun dan kapanpun di platform pendidikan terbaik di Indonesia - 100% Gratis!"
         />
-        <meta property="og:title" content="Beranda" />
+        <meta property="og:title" content="FibonacciKu" />
         <meta
           property="og:description"
           content="Belajar gratis di FibonacciKu dimanapun kapanpun!"
