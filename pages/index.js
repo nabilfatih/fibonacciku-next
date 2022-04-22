@@ -54,6 +54,10 @@ export default function Home({ token }) {
     platform pendidikan gratis indonesia, platform pendidikan terbaik indonesia, belajar gratis indonesia, bimbel sd, bimbel smp, 
     bimbel sma, bimbel kuliah, belajar pelajaran gratis, bimbel utbk, bimbel utbk gratis, mata pelajaran"
         />
+        <meta
+          name="google-site-verification"
+          content="JArYwXVEHU-CCyXThkBrP2sJoEFv79s-k7V-ekcLxMk"
+        />
       </Head>
 
       <NavBar />
