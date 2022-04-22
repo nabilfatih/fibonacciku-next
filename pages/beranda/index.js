@@ -38,6 +38,13 @@ export default function Beranda({ token }) {
           name="description"
           content="Belajar gratis dimanapun dan kapanpun di platform pendidikan terbaik di Indonesia - 100% Gratis!"
         />
+        <meta property="og:title" content="Beranda" />
+        <meta
+          property="og:description"
+          content="Belajar gratis di FibonacciKu dimanapun kapanpun!"
+        />
+        <meta property="og:url" content="https://fibonacciku.com/beranda" />
+        <meta property="og:type" content="website" />
         <meta
           name="keywords"
           content="fibonacciku, fibonacciku.id, fibonacciku indonesia, belajar online, platform pendidikan, bimbel gratis, 
