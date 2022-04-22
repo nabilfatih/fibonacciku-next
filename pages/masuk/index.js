@@ -156,7 +156,7 @@ export default function Masuk({ token }) {
         <title>Masuk | FibonacciKu</title>
 
         <meta name="description" content="Masuk Sekarang ke FibonacciKu!" />
-        <meta property="og:title" content="Masuk" />
+        <meta property="og:title" content="Masuk | FibonacciKu" />
         <meta
           property="og:description"
           content="Masuk Sekarang ke FibonacciKu!"

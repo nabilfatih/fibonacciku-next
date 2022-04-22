@@ -157,7 +157,7 @@ export default function Daftar({ token }) {
           name="description"
           content="Daftar Sekarang Gratis di FibonacciKu!"
         />
-        <meta property="og:title" content="Daftar" />
+        <meta property="og:title" content="Daftar | FibonacciKu" />
         <meta
           property="og:description"
           content="Daftar Sekarang Gratis di FibonacciKu!"

@@ -13,7 +13,7 @@ export default function Tentang() {
         <title>Tentang | FibonacciKu</title>
 
         <meta name="description" content="Kenalan Tentang FibonacciKu!" />
-        <meta property="og:title" content="FibonacciKu" />
+        <meta property="og:title" content="Tentang | FibonacciKu" />
         <meta
           property="og:description"
           content="Kenalan Tentang FibonacciKu!"

@@ -34,7 +34,7 @@ export default function MataPelajaran(props) {
         <title>Pelajaran | FibonacciKu</title>
 
         <meta name="description" content="Pilih Pelajaran Sesuka Kamu!" />
-        <meta property="og:title" content="Pelajaran" />
+        <meta property="og:title" content="Pelajaran | FibonacciKu" />
         <meta
           property="og:description"
           content="Pilih Pelajaran Sesuka Kamu!"

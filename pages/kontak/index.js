@@ -59,7 +59,7 @@ const Kontak = () => {
         <title>Kontak | FibonacciKu</title>
 
         <meta name="description" content="Kontak Kita!" />
-        <meta property="og:title" content="Kontak" />
+        <meta property="og:title" content="Kontak | FibonacciKu" />
         <meta property="og:description" content="Kontak Kita!" />
         <meta property="og:url" content="https://fibonacciku.com/kontak" />
         <meta property="og:type" content="website" />
