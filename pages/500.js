@@ -21,7 +21,7 @@ export default function Custom500() {
                   alt="Logo FibonacciKu"
                   width={256}
                   height={48}
-                  priority
+                  priority={true}
                 />
               </div>
 

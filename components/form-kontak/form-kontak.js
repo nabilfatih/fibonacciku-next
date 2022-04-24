@@ -55,7 +55,7 @@ const FormKontak = ({ children }) => {
                 <Image
                   src={"/static/icon/kontak-icon.png"}
                   layout="fill"
-                  priority
+                  priority={true}
                   alt="Logo Kontak FibonacciKu"
                 />
               </div>

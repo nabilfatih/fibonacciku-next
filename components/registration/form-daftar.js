@@ -28,7 +28,7 @@ const FormDaftar = ({ children }) => {
               src={"/static/img/cartoon_nagakecil.webp"}
               alt="Logo Masuk FibonacciKu"
               layout="fill"
-              priority
+              priority={true}
             />
           </div>
         </div>
@@ -40,7 +40,7 @@ const FormDaftar = ({ children }) => {
               alt="Logo FibonacciKu"
               width={256}
               height={48}
-              priority
+              priority={true}
             />
           </div>
           <h2>Daftar</h2>

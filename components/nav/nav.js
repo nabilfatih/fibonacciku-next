@@ -118,7 +118,7 @@ const NavBar = () => {
             src={"/static/img/logofibonama.svg"}
             alt="Logo FibonacciKu"
             layout="fill"
-            priority
+            priority={true}
           />
         </a>
 
@@ -204,6 +204,7 @@ const NavBar = () => {
                     className={styles.foto_profil}
                     width={42}
                     height={42}
+                    priority={true}
                   />
                   {iconStatus ? (
                     <UilAngleUp className={styles.uil} />
