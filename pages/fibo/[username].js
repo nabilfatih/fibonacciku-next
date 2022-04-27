@@ -20,14 +20,26 @@ import crypto from "crypto";
 import { Slide, toast } from "react-toastify";
 import axios from "axios";
 import { UserContext } from "../../contexts/user.context";
+import { verifyToken } from "../../lib/utils";
+import checkCookie from "cookie";
 
 export async function getServerSideProps(context) {
   connectDB();
 
+  const cookies = context.req.headers.cookie
+    ? checkCookie.parse(context.req.headers.cookie)
+    : null;
+  const token = cookies?.token ? cookies.token : null;
+  const userId = await verifyToken(token);
+
   const userName = context.params.username;
+
+  const currentDataUser = await User.findOne({ _id: userId });
   const dataUser = await User.findOne({ username: userName });
-  const { username, nama, avatar, _id } = dataUser;
+
+  const { username, nama, avatar, _id } = currentDataUser;
   const userCookie = { username, nama, avatar, _id };
+
   if (!dataUser) {
     return { notFound: true };
   }
@@ -47,12 +59,12 @@ export default function Profile({ dataUser, userCookie }) {
 
   useEffect(() => {
     if (
-      dataUser.avatar.filename !== currentUser.avatar.filename ||
-      dataUser.username !== currentUser.username
+      userCookie.avatar.filename !== currentUser.avatar.filename ||
+      userCookie.username !== currentUser.username
     ) {
       setCurrentUser(userCookie);
     }
-  }, [dataUser, currentUser, userCookie, setCurrentUser]);
+  }, [currentUser, userCookie, setCurrentUser]);
 
   const [checkUsername, setCheckUsername] = useState(false);
   const [checkInstagram, setCheckInstagram] = useState(false);
