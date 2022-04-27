@@ -138,12 +138,7 @@ export default function Masuk({ token }) {
       const { data } = await axios.post(`/api/login`, formData, config);
       setCurrentUser(data.user);
       toast.dismiss(loading);
-      if (data.referer.includes("/masuk")) {
-        await router.push("/beranda");
-        toast.success(data?.message, toastConfig);
-      } else {
-        router.reload();
-      }
+      router.reload();
     } catch (e) {
       toast.dismiss(loading);
       toast.error(e.response.data.error, toastConfig);
