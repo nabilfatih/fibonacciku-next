@@ -303,7 +303,7 @@ export default function PengaturanAkun({ dataUser }) {
                               styles.form_label
                             )}
                           >
-                            Github
+                            GitHub
                           </label>
                           <label
                             className={styles.deskripsi}
