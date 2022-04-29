@@ -21,6 +21,7 @@ export async function middleware(req) {
   }
 
   if (
+    pathname.includes("/fibo") ||
     pathname.includes("/pelajaran") ||
     pathname.includes("/pengaturan") ||
     pathname.includes("/beranda")

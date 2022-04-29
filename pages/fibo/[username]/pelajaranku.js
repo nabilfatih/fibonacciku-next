@@ -11,11 +11,30 @@ import PelajaranKu from "../../../models/pelajaranku";
 import { useEffect, useContext } from "react";
 import { UserContext } from "../../../contexts/user.context";
 import Link from "next/link";
+import checkCookie from "cookie";
+import { verifyToken } from "../../../lib/utils";
 
 export async function getServerSideProps(context) {
   connectDB();
 
+  const cookies = context.req.headers.cookie
+    ? checkCookie.parse(context.req.headers.cookie)
+    : null;
+  const token = cookies?.token ? cookies.token : null;
+  const userId = await verifyToken(token);
+
+  if (!userId) {
+    return {
+      redirect: {
+        destination: "/masuk",
+        permanent: false,
+      },
+    };
+  }
+
   const userName = context.params.username;
+  const currentDataUser = await User.findOne({ _id: userId });
+
   const dataUser = await User.findOne({ username: userName });
   const pelajaranKu = await PelajaranKu.find({ username: userName }).sort({
     createdAt: -1,
@@ -27,7 +46,7 @@ export async function getServerSideProps(context) {
 
   const listPelajaran = getUniqueListBy(pelajaranKu, "pelajaran");
 
-  const { username, nama, avatar, _id } = dataUser;
+  const { username, nama, avatar, _id } = currentDataUser;
   const userCookie = { username, nama, avatar, _id };
 
   if (!dataUser) {
@@ -56,12 +75,12 @@ export default function Profile({
 
   useEffect(() => {
     if (
-      dataUser.avatar.filename !== currentUser.avatar.filename ||
-      dataUser.username !== currentUser.username
+      userCookie.avatar.filename !== currentUser.avatar.filename ||
+      userCookie.username !== currentUser.username
     ) {
       setCurrentUser(userCookie);
     }
-  }, [dataUser, currentUser, userCookie, setCurrentUser]);
+  }, [currentUser, userCookie, setCurrentUser]);
 
   function randomAlphaNumeric() {
     return Math.random().toString(36).charAt(2);

@@ -32,6 +32,15 @@ export async function getServerSideProps(context) {
   const token = cookies?.token ? cookies.token : null;
   const userId = await verifyToken(token);
 
+  if (!userId) {
+    return {
+      redirect: {
+        destination: "/masuk",
+        permanent: false,
+      },
+    };
+  }
+
   const userName = context.params.username;
 
   const currentDataUser = await User.findOne({ _id: userId });
